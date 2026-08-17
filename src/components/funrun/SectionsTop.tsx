@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { CalendarDays, Clock, MapPin, Sparkles, Trophy, Flag } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
-import prizeImg from "@/assets/total-hadiah.png";
+import heroAsset from "@/assets/header.jpg.asset.json";
+import prizeAsset from "@/assets/doorprice.png.asset.json";
 import { Reveal } from "./Reveal";
 import { Countdown } from "./Countdown";
 import { categories, eventInfo, podium } from "@/data/event";
@@ -18,7 +18,7 @@ export function Hero() {
     <section id="top" className="relative isolate overflow-hidden">
       <div className="absolute inset-0 -z-20 overflow-hidden">
         <img
-          src={heroBg}
+          src={heroAsset.url}
           alt="Peserta fun run PKU Muhammadiyah Sukoharjo"
           width={1920}
           height={1280}
@@ -44,40 +44,71 @@ export function Hero() {
 
       <div className="mx-auto max-w-7xl px-4 pt-32 pb-20 sm:px-6 lg:pt-44 lg:pb-28">
         <Reveal>
-          <span className="inline-flex items-center gap-2 rounded-full bg-background/20 px-4 py-2 text-[11px] font-bold tracking-[0.2em] text-primary-foreground uppercase ring-1 ring-white/40 backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5" /> {eventInfo.subtitle}
+          <span className="inline-flex max-w-full items-center gap-2 rounded-full bg-background/95 px-4 py-2 text-[11px] font-extrabold tracking-[0.16em] uppercase shadow-lift ring-1 ring-white/60 backdrop-blur">
+            <Sparkles className="h-3.5 w-3.5 shrink-0 text-brand" />
+            <span className="text-navy">Dalam Rangka</span>
+            <span className="text-brand-deep">Milad RS PKU Muhammadiyah Sukoharjo</span>
           </span>
         </Reveal>
 
         <Reveal delay={100}>
           <h1 className="mt-6 max-w-4xl font-display text-5xl leading-[0.95] text-primary-foreground uppercase drop-shadow-sm sm:text-7xl lg:text-8xl">
-            Rayakan Milad,
+            <span className="text-brand-sky">Rayakan</span>{" "}
+            <span className="bg-gradient-to-r from-white via-brand-sky to-brand-cyan bg-clip-text text-transparent">
+              Milad,
+            </span>
             <br />
-            Langkahkan Semangat!
+            Langkahkan <span className="text-brand-cyan">Semangat!</span>
           </h1>
         </Reveal>
 
         <Reveal delay={180}>
           <p className="mt-5 max-w-xl text-base font-medium text-primary-foreground/90 sm:text-lg">
-            Satu langkah untuk sehat, satu langkah untuk kebersamaan.
+            Satu langkah untuk <span className="font-bold text-brand-cyan">sehat</span>, satu
+            langkah untuk <span className="font-bold text-brand-sky">kebersamaan</span>.
           </p>
         </Reveal>
 
         <Reveal delay={260}>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:max-w-3xl lg:grid-cols-4">
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:max-w-4xl lg:grid-cols-4">
             {[
-              { icon: Flag, label: eventInfo.distances },
-              { icon: CalendarDays, label: eventInfo.dateLabel },
-              { icon: MapPin, label: eventInfo.location },
-              { icon: Clock, label: `START ${eventInfo.startTime}` },
-            ].map(({ icon: Icon, label }) => (
+              { icon: Flag, cap: "Kategori", label: eventInfo.distances, hot: true },
+              { icon: CalendarDays, cap: "Tanggal", label: eventInfo.dateLabel },
+              { icon: MapPin, cap: "Lokasi", label: eventInfo.location },
+              { icon: Clock, cap: "Start", label: eventInfo.startTime },
+            ].map(({ icon: Icon, cap, label, hot }) => (
               <div
                 key={label}
-                className="flex min-w-0 items-center gap-2 rounded-2xl bg-background/15 px-4 py-3 ring-1 ring-white/30 backdrop-blur"
+                className={`flex min-w-0 items-center gap-3 rounded-2xl px-4 py-3 shadow-lift ring-1 backdrop-blur transition-transform hover:-translate-y-1 ${
+                  hot
+                    ? "gradient-brand ring-white/50"
+                    : "bg-background/95 ring-brand-light/60"
+                }`}
               >
-                <Icon className="h-4 w-4 shrink-0 text-primary-foreground" />
-                <span className="truncate text-xs font-bold tracking-wide text-primary-foreground uppercase">
-                  {label}
+                <span
+                  className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl ${
+                    hot ? "bg-white/25" : "bg-brand-sky"
+                  }`}
+                >
+                  <Icon
+                    className={`h-4.5 w-4.5 ${hot ? "text-primary-foreground" : "text-brand"}`}
+                  />
+                </span>
+                <span className="min-w-0">
+                  <span
+                    className={`block text-[10px] font-bold tracking-[0.2em] uppercase ${
+                      hot ? "text-primary-foreground/80" : "text-brand"
+                    }`}
+                  >
+                    {cap}
+                  </span>
+                  <span
+                    className={`block truncate font-display text-sm tracking-wide uppercase ${
+                      hot ? "text-primary-foreground" : "text-navy"
+                    }`}
+                  >
+                    {label}
+                  </span>
                 </span>
               </div>
             ))}
