@@ -12,18 +12,19 @@ function diff(target: number) {
 
 export function Countdown({ dateISO }: { dateISO: string }) {
   const target = new Date(dateISO).getTime();
-  const [t, setT] = useState(() => diff(target));
+  const [t, setT] = useState<ReturnType<typeof diff> | null>(null);
 
   useEffect(() => {
+    setT(diff(target));
     const id = setInterval(() => setT(diff(target)), 1000);
     return () => clearInterval(id);
   }, [target]);
 
   const items = [
-    ["HARI", t.hari],
-    ["JAM", t.jam],
-    ["MENIT", t.menit],
-    ["DETIK", t.detik],
+    ["HARI", t?.hari],
+    ["JAM", t?.jam],
+    ["MENIT", t?.menit],
+    ["DETIK", t?.detik],
   ] as const;
 
   return (
@@ -34,7 +35,7 @@ export function Countdown({ dateISO }: { dateISO: string }) {
           className="rounded-2xl bg-background/95 px-2 py-4 text-center shadow-soft sm:rounded-3xl sm:px-4 sm:py-6"
         >
           <div className="font-display text-3xl text-brand-deep tabular-nums sm:text-5xl">
-            {String(value).padStart(2, "0")}
+            {value === undefined ? "--" : String(value).padStart(2, "0")}
           </div>
           <div className="mt-1 text-[10px] font-bold tracking-[0.18em] text-navy/50 sm:text-xs">
             {label}
