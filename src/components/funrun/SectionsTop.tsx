@@ -220,7 +220,7 @@ export function TotalPrize() {
         <Reveal delay={160}>
           <div className="mt-10 overflow-hidden rounded-[2rem] border border-brand-light/50 bg-brand-sky shadow-soft">
             <img
-              src={prizeImg}
+              src={prizeAsset.url}
               alt="Koleksi hadiah fun run: sepeda, jam tangan, kulkas, elektronik, dan doorprize"
               width={1280}
               height={860}
