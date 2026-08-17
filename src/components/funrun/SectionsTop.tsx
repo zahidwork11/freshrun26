@@ -44,28 +44,28 @@ export function Hero() {
 
       <div className="mx-auto max-w-7xl px-4 pt-32 pb-20 sm:px-6 lg:pt-44 lg:pb-28">
         <Reveal>
-          <span className="inline-flex max-w-full items-center gap-2 rounded-full bg-background/95 px-4 py-2 text-[11px] font-extrabold tracking-[0.16em] uppercase shadow-lift ring-1 ring-white/60 backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5 shrink-0 text-brand" />
-            <span className="text-navy">Dalam Rangka</span>
-            <span className="text-brand-deep">Milad RS PKU Muhammadiyah Sukoharjo</span>
+          <span className="inline-flex max-w-full items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-[11px] font-extrabold tracking-[0.16em] uppercase text-white/95 shadow-lift ring-1 ring-white/70 backdrop-blur">
+            <Sparkles className="h-3.5 w-3.5 shrink-0 text-brand-cyan" />
+            <span className="text-white/90">Dalam Rangka</span>
+            <span className="text-brand-cyan">Milad RS PKU Muhammadiyah Sukoharjo</span>
           </span>
         </Reveal>
 
         <Reveal delay={100}>
-          <h1 className="mt-6 max-w-4xl font-display text-5xl leading-[0.95] text-primary-foreground uppercase drop-shadow-sm sm:text-7xl lg:text-8xl">
-            <span className="text-brand-sky">Rayakan</span>{" "}
-            <span className="bg-gradient-to-r from-white via-brand-sky to-brand-cyan bg-clip-text text-transparent">
-              Milad,
-            </span>
+          <h1 className="mt-6 max-w-4xl font-display text-5xl leading-[0.95] text-primary-foreground uppercase drop-shadow-[0_2px_16px_rgba(0,0,0,0.35)] sm:text-7xl lg:text-8xl">
+            <span className="text-white">Rayakan</span>{" "}
+            <span className="text-brand-cyan">Milad,</span>
             <br />
-            Langkahkan <span className="text-brand-cyan">Semangat!</span>
+            <span className="text-white">Langkahkan</span>{" "}
+            <span className="text-brand-cyan">Semangat!</span>
           </h1>
         </Reveal>
 
         <Reveal delay={180}>
-          <p className="mt-5 max-w-xl text-base font-medium text-primary-foreground/90 sm:text-lg">
-            Satu langkah untuk <span className="font-bold text-brand-cyan">sehat</span>, satu
-            langkah untuk <span className="font-bold text-brand-sky">kebersamaan</span>.
+          <p className="mt-5 max-w-xl text-base font-semibold text-white/95 sm:text-lg">
+            PKU Muhammadiyah Sukoharjo Fun Run — Satu langkah untuk{" "}
+            <span className="font-bold text-brand-cyan">sehat</span>, satu langkah untuk{" "}
+            <span className="font-bold text-brand-cyan">kebersamaan</span>.
           </p>
         </Reveal>
 
@@ -79,34 +79,30 @@ export function Hero() {
             ].map(({ icon: Icon, cap, label, hot }) => (
               <div
                 key={label}
-                className={`flex min-w-0 items-center gap-3 rounded-2xl px-4 py-3 shadow-lift ring-1 backdrop-blur transition-transform hover:-translate-y-1 ${
+                className={`flex min-w-0 items-center gap-3 rounded-2xl border px-4 py-3 shadow-lift backdrop-blur transition-transform hover:-translate-y-1 ${
                   hot
-                    ? "gradient-brand ring-white/50"
-                    : "bg-background/95 ring-brand-light/60"
+                    ? "border-brand-cyan/60 bg-brand-cyan/20 text-white"
+                    : "border-white/50 bg-white/10 text-white"
                 }`}
               >
                 <span
                   className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl ${
-                    hot ? "bg-white/25" : "bg-brand-sky"
+                    hot ? "bg-brand-cyan text-navy" : "bg-white/20 text-white"
                   }`}
                 >
                   <Icon
-                    className={`h-4.5 w-4.5 ${hot ? "text-primary-foreground" : "text-brand"}`}
+                    className={`h-4.5 w-4.5 ${hot ? "text-navy" : "text-white"}`}
                   />
                 </span>
                 <span className="min-w-0">
                   <span
                     className={`block text-[10px] font-bold tracking-[0.2em] uppercase ${
-                      hot ? "text-primary-foreground/80" : "text-brand"
+                      hot ? "text-brand-cyan" : "text-white/80"
                     }`}
                   >
                     {cap}
                   </span>
-                  <span
-                    className={`block truncate font-display text-sm tracking-wide uppercase ${
-                      hot ? "text-primary-foreground" : "text-navy"
-                    }`}
-                  >
+                  <span className="block truncate font-display text-sm tracking-wide uppercase text-white">
                     {label}
                   </span>
                 </span>
