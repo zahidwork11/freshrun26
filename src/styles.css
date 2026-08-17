@@ -77,7 +77,7 @@
   --brand-cyan: oklch(0.78 0.12 208);
   --brand-light: oklch(0.87 0.06 232);
   --navy: oklch(0.267 0.049 254);
-  --gradient-hero: linear-gradient(135deg, oklch(0.657 0.152 240.5 / 0.88), oklch(0.577 0.156 246.5 / 0.82));
+  --gradient-hero: linear-gradient(135deg, oklch(0.267 0.049 254 / 0.82), oklch(0.577 0.156 246.5 / 0.7));
   --gradient-brand: linear-gradient(135deg, var(--brand), var(--brand-deep));
   --shadow-soft: 0 18px 45px -20px oklch(0.577 0.156 246.5 / 0.45);
   --shadow-lift: 0 30px 60px -25px oklch(0.577 0.156 246.5 / 0.55);

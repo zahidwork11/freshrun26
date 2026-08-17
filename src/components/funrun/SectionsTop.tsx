@@ -30,7 +30,7 @@ export function Hero() {
         className="absolute inset-0 -z-10"
         style={{ background: "var(--gradient-hero)" }}
       />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-brand-sky via-transparent to-navy/40" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-brand-sky/90 via-transparent to-navy/50" />
 
       <svg
         className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-64 w-full opacity-30"
