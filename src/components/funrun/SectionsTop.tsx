@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { CalendarDays, Clock, MapPin, Sparkles, Trophy, Flag } from "lucide-react";
-import heroAsset from "@/assets/header.jpg.asset.json";
-import prizeAsset from "@/assets/doorprice.png.asset.json";
+import heroAsset from "@/assets/header.png";
+import prizeAsset from "@/assets/doorprice.png";
 import { Reveal } from "./Reveal";
 import { Countdown } from "./Countdown";
 import { categories, eventInfo, podium } from "@/data/event";
@@ -18,7 +18,7 @@ export function Hero() {
     <section id="top" className="relative isolate overflow-hidden">
       <div className="absolute inset-0 -z-20 overflow-hidden">
         <img
-          src={heroAsset.url}
+          src={heroAsset}
           alt="Peserta fun run PKU Muhammadiyah Sukoharjo"
           width={1920}
           height={1280}
@@ -46,7 +46,7 @@ export function Hero() {
         <Reveal>
           <span className="inline-flex max-w-full items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-[11px] font-extrabold tracking-[0.16em] uppercase text-white/95 shadow-lift ring-1 ring-white/70 backdrop-blur">
             <Sparkles className="h-3.5 w-3.5 shrink-0 text-brand-cyan" />
-            <span className="text-white/90">Dalam Rangka</span>
+            <span className="text-white/90"></span>
             <span className="text-brand-cyan">Milad RS PKU Muhammadiyah Sukoharjo</span>
           </span>
         </Reveal>
@@ -74,21 +74,19 @@ export function Hero() {
             {[
               { icon: Flag, cap: "Kategori", label: eventInfo.distances, hot: true },
               { icon: CalendarDays, cap: "Tanggal", label: eventInfo.dateLabel },
-              { icon: MapPin, cap: "Lokasi", label: eventInfo.location },
-              { icon: Clock, cap: "Start", label: eventInfo.startTime },
+  
+              
             ].map(({ icon: Icon, cap, label, hot }) => (
               <div
                 key={label}
-                className={`flex min-w-0 items-center gap-3 rounded-2xl border px-4 py-3 shadow-lift backdrop-blur transition-transform hover:-translate-y-1 ${
-                  hot
+                className={`flex min-w-0 items-center gap-3 rounded-2xl border px-4 py-3 shadow-lift backdrop-blur transition-transform hover:-translate-y-1 ${hot
                     ? "border-brand-cyan/60 bg-brand-cyan/20 text-white"
                     : "border-white/50 bg-white/10 text-white"
-                }`}
+                  }`}
               >
                 <span
-                  className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl ${
-                    hot ? "bg-brand-cyan text-navy" : "bg-white/20 text-white"
-                  }`}
+                  className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl ${hot ? "bg-brand-cyan text-navy" : "bg-white/20 text-white"
+                    }`}
                 >
                   <Icon
                     className={`h-4.5 w-4.5 ${hot ? "text-navy" : "text-white"}`}
@@ -96,9 +94,8 @@ export function Hero() {
                 </span>
                 <span className="min-w-0">
                   <span
-                    className={`block text-[10px] font-bold tracking-[0.2em] uppercase ${
-                      hot ? "text-brand-cyan" : "text-white/80"
-                    }`}
+                    className={`block text-[10px] font-bold tracking-[0.2em] uppercase ${hot ? "text-brand-cyan" : "text-white/80"
+                      }`}
                   >
                     {cap}
                   </span>
@@ -134,10 +131,8 @@ export function Hero() {
 
 export function RaceInfo() {
   const info = [
-    { label: "Jarak", value: "5K & 2.5K" },
     { label: "Start", value: eventInfo.startTime },
     { label: "Lokasi", value: eventInfo.location },
-    { label: "Momen", value: "Milad RS PKU" },
   ];
 
   return (
@@ -170,12 +165,6 @@ export function RaceInfo() {
               </div>
             ))}
           </div>
-        </Reveal>
-
-        <Reveal delay={240}>
-          <p id="tentang" className="mx-auto mt-12 max-w-2xl text-center font-display text-2xl text-brand-deep sm:text-3xl">
-            “Bukan sekadar lomba. Ini tentang bergerak bersama.”
-          </p>
         </Reveal>
       </div>
     </section>
@@ -216,7 +205,7 @@ export function TotalPrize() {
         <Reveal delay={160}>
           <div className="mt-10 overflow-hidden rounded-[2rem] border border-brand-light/50 bg-brand-sky shadow-soft">
             <img
-              src={prizeAsset.url}
+              src={prizeAsset}
               alt="Koleksi hadiah fun run: sepeda, jam tangan, kulkas, elektronik, dan doorprize"
               width={1280}
               height={860}
