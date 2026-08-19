@@ -18,8 +18,7 @@ export const eventInfo = {
 };
 
 export const navItems = [
-  { label: "Race", href: "#race" },
-  { label: "Hadiah", href: "#hadiah" },
+  { label: "Informasi", href: "#race" },
   { label: "Kategori", href: "#kategori" },
   { label: "Race Pack", href: "#racepack" },
   { label: "Rute", href: "#rute" },
