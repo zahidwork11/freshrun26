@@ -271,10 +271,10 @@ export function Podium() {
         </Reveal>
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
           <Reveal delay={80}>
-            <PodiumCard title="Putra" list={podium.putra} />
+            <PodiumCard title="Putra 5K" list={podium.putra} />
           </Reveal>
           <Reveal delay={160}>
-            <PodiumCard title="Putri" list={podium.putri} />
+            <PodiumCard title="Putri 5K" list={podium.putri} />
           </Reveal>
         </div>
         <Reveal delay={220}>

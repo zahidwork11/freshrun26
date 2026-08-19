@@ -18,7 +18,6 @@ export const eventInfo = {
 };
 
 export const navItems = [
-  { label: "Tentang", href: "#tentang" },
   { label: "Race", href: "#race" },
   { label: "Hadiah", href: "#hadiah" },
   { label: "Kategori", href: "#kategori" },
@@ -137,6 +136,4 @@ export const faqs = [
   { q: "Apa benefit setiap kategori?", a: "Kategori 5K mendapat Jersey, Medal, Race Bag, dan Snack. Kategori 2.5K mendapat Jersey & BIB. Warga Muhammadiyah mendapat BIB only." },
   { q: "Bagaimana mendapatkan e-ticket?", a: "Setelah pembayaran terverifikasi, e-ticket dikirim otomatis ke email dan dapat diunduh dari tautan pada email tersebut." },
   { q: "Bagaimana mengambil racepack?", a: "Tunjukkan e-ticket dan identitas asli di lokasi race pack collection sesuai jadwal yang diumumkan." },
-  { q: "Apakah tersedia rute 5K dan 2.5K?", a: "Ya. Kedua rute dapat dilihat pada bagian Rute di halaman ini." },
-  { q: "Apakah ada doorprize?", a: "Ada. Doorprize berupa sepeda, elektronik, dan hadiah menarik lainnya diundi saat acara berlangsung." },
 ];
