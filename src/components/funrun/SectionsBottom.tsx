@@ -15,43 +15,399 @@ import { eventInfo, faqs, navItems, rundown, sponsors, steps } from "@/data/even
 
 export function RacePack() {
   const items = [
-    { img: jersey, label: "Jersey", desc: "Bahan dry-fit ringan dengan desain Milad." },
-    { img: medal, label: "Medal", desc: "Medali finisher eksklusif edisi khusus." },
+    {
+      img: jersey,
+      label: "Jersey",
+      desc: "Bahan dry-fit ringan dengan desain Milad.",
+    },
+    {
+      img: medal,
+      label: "Medal",
+      desc: "Medali finisher eksklusif edisi khusus.",
+    },
   ];
 
   return (
-    <section id="racepack" className="bg-brand-sky py-20 lg:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section
+      id="racepack"
+      className="
+        relative
+        overflow-hidden
+        bg-[#F5FBDD]
+        py-20
+        sm:py-24
+        lg:py-28
+      "
+    >
+      {/* =====================================================
+          DECORATIVE BACKGROUND
+      ===================================================== */}
+      <div
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        {/* Top left glow */}
+        <div
+          className="
+            absolute
+            -left-32
+            -top-32
+            h-72
+            w-72
+            rounded-full
+            bg-[#97D91B]/15
+            blur-3xl
+            sm:h-96
+            sm:w-96
+          "
+        />
+
+        {/* Bottom right glow */}
+        <div
+          className="
+            absolute
+            -bottom-40
+            -right-32
+            h-80
+            w-80
+            rounded-full
+            bg-[#97D91B]/15
+            blur-3xl
+            sm:h-96
+            sm:w-96
+          "
+        />
+
+        {/* Decorative circles */}
+        <div
+          className="
+            absolute
+            right-[8%]
+            top-[15%]
+            hidden
+            h-24
+            w-24
+            rounded-full
+            border-[10px]
+            border-[#97D91B]/10
+            lg:block
+          "
+        />
+
+        <div
+          className="
+            absolute
+            bottom-[15%]
+            left-[7%]
+            hidden
+            h-14
+            w-14
+            rounded-full
+            bg-[#97D91B]/10
+            lg:block
+          "
+        />
+      </div>
+
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          max-w-6xl
+          px-4
+          sm:px-6
+        "
+      >
+
+        {/* ===================================================
+            HEADING
+        =================================================== */}
         <Reveal>
-          <h2 className="text-center font-display text-4xl text-navy uppercase sm:text-5xl lg:text-6xl">
-            Sudah Kebayang Tampil di Garis Start?
-          </h2>
+          <div className="mx-auto max-w-3xl text-center">
+
+            {/* Label */}
+            <span
+              className="
+                inline-flex
+                items-center
+                rounded-full
+                border
+                border-[#97D91B]/30
+                bg-[#97D91B]/10
+                px-4
+                py-2
+                text-[10px]
+                font-extrabold
+                tracking-[0.22em]
+                text-[#5B850B]
+                uppercase
+                sm:text-xs
+              "
+            >
+              Race Pack
+            </span>
+
+            {/* Heading */}
+            <h2
+              className="
+                mt-4
+                font-display
+                text-4xl
+                leading-[1.05]
+                text-navy
+                uppercase
+                sm:text-5xl
+                lg:text-6xl
+              "
+            >
+              Sudah Kebayang
+              <br />
+              <span className="text-[#70A916]">
+                Tampil di Garis Start?
+              </span>
+            </h2>
+
+            {/* Description */}
+            <p
+              className="
+                mx-auto
+                mt-4
+                max-w-xl
+                text-sm
+                leading-relaxed
+                text-navy/65
+                sm:text-base
+              "
+            >
+              Lengkapi persiapanmu dan nikmati race pack eksklusif
+              untuk menemani langkahmu sampai garis finish.
+            </p>
+
+          </div>
         </Reveal>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+
+        {/* ===================================================
+            RACE PACK ITEMS
+        =================================================== */}
+        <div
+          className="
+            mt-10
+            grid
+            gap-5
+            sm:mt-12
+            sm:grid-cols-2
+            sm:gap-6
+          "
+        >
           {items.map((it, i) => (
-            <Reveal key={it.label} delay={i * 100}>
-              <div className="group h-full overflow-hidden rounded-[2rem] bg-background p-6 text-center shadow-soft transition-all duration-300 hover:-translate-y-2 hover:shadow-lift">
-                <div className="overflow-hidden rounded-3xl bg-brand-sky/70 p-6">
+            <Reveal
+              key={it.label}
+              delay={i * 100}
+            >
+              <div
+                className="
+                  group
+                  h-full
+                  overflow-hidden
+                  rounded-[2rem]
+                  border
+                  border-[#97D91B]/20
+                  bg-white
+                  p-4
+                  shadow-[0_12px_35px_rgba(20,50,0,0.07)]
+                  transition-all
+                  duration-300
+                  hover:-translate-y-2
+                  hover:border-[#97D91B]/45
+                  hover:shadow-[0_20px_45px_rgba(80,120,0,0.14)]
+                  sm:p-6
+                "
+              >
+
+                {/* =================================================
+                    IMAGE AREA
+                ================================================= */}
+                <div
+                  className="
+                    relative
+                    overflow-hidden
+                    rounded-[1.5rem]
+                    border
+                    border-[#97D91B]/15
+                    bg-[#EEF8D5]
+                    p-5
+                    sm:rounded-3xl
+                    sm:p-6
+                  "
+                >
+                  {/* Lime glow */}
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      left-1/2
+                      top-1/2
+                      h-40
+                      w-40
+                      -translate-x-1/2
+                      -translate-y-1/2
+                      rounded-full
+                      bg-[#97D91B]/20
+                      blur-3xl
+                      transition-all
+                      duration-500
+                      group-hover:bg-[#97D91B]/30
+                    "
+                  />
+
+                  {/* Top accent */}
+                  <div
+                    className="
+                      absolute
+                      inset-x-0
+                      top-0
+                      h-1
+                      bg-[#97D91B]
+                    "
+                  />
+
                   <img
                     src={it.img}
                     alt={it.label}
                     width={900}
                     height={900}
                     loading="lazy"
-                    className="mx-auto h-64 w-auto object-contain transition-transform duration-500 group-hover:scale-110 sm:h-72"
+                    className="
+                      relative
+                      z-10
+                      mx-auto
+                      h-60
+                      w-auto
+                      max-w-full
+                      object-contain
+                      transition-transform
+                      duration-500
+                      group-hover:scale-105
+                      sm:h-72
+                      lg:h-80
+                    "
                   />
                 </div>
-                <h3 className="mt-6 font-display text-2xl text-navy uppercase">{it.label}</h3>
-                <p className="mt-2 text-sm text-navy/70">{it.desc}</p>
+
+                {/* =================================================
+                    CONTENT
+                ================================================= */}
+                <div className="px-2 pb-2 text-center sm:px-2 sm:pb-1">
+
+                  <h3
+                    className="
+                      mt-6
+                      font-display
+                      text-2xl
+                      text-navy
+                      uppercase
+                      transition-colors
+                      duration-300
+                      group-hover:text-[#70A916]
+                      sm:text-3xl
+                    "
+                  >
+                    {it.label}
+                  </h3>
+
+                  <p
+                    className="
+                      mx-auto
+                      mt-2
+                      max-w-sm
+                      text-sm
+                      leading-relaxed
+                      text-navy/65
+                    "
+                  >
+                    {it.desc}
+                  </p>
+
+                  {/* Small accent */}
+                  <div
+                    className="
+                      mx-auto
+                      mt-5
+                      h-1
+                      w-8
+                      rounded-full
+                      bg-[#97D91B]
+                      transition-all
+                      duration-300
+                      group-hover:w-14
+                    "
+                  />
+
+                </div>
               </div>
             </Reveal>
           ))}
         </div>
+
+        {/* ===================================================
+            BOTTOM MESSAGE
+        =================================================== */}
         <Reveal delay={180}>
-          <p className="mt-10 text-center font-display text-2xl text-brand-deep uppercase sm:text-3xl">
-            Finish Strong. Wear Your Story.
-          </p>
+          <div
+            className="
+              mx-auto
+              mt-10
+              max-w-2xl
+              text-center
+              sm:mt-12
+            "
+          >
+            <p
+              className="
+                font-display
+                text-xl
+                text-[#5B850B]
+                uppercase
+                sm:text-2xl
+                lg:text-3xl
+              "
+            >
+              Finish Strong.
+              <span className="text-navy">
+                {" "}Wear Your Story.
+              </span>
+            </p>
+
+            <div
+              className="
+                mx-auto
+                mt-4
+                flex
+                max-w-xs
+                items-center
+                gap-3
+              "
+            >
+              <span className="h-px flex-1 bg-[#97D91B]/30" />
+
+              <span
+                className="
+                  h-2
+                  w-2
+                  rounded-full
+                  bg-[#97D91B]
+                "
+              />
+
+              <span className="h-px flex-1 bg-[#97D91B]/30" />
+            </div>
+          </div>
         </Reveal>
+
       </div>
     </section>
   );
@@ -59,33 +415,221 @@ export function RacePack() {
 
 export function RouteMap() {
   const [tab, setTab] = useState<"5k" | "2.5k">("5k");
+
   const tabs = [
-    { id: "5k" as const, label: "5 KM", img: route5k },
-    { id: "2.5k" as const, label: "2.5 KM", img: route25k },
+    {
+      id: "5k" as const,
+      label: "5 KM",
+      img: route5k,
+    },
+    {
+      id: "2.5k" as const,
+      label: "2.5 KM",
+      img: route25k,
+    },
   ];
 
   return (
-    <section id="rute" className="bg-background py-20 lg:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section
+      id="rute"
+      className="
+        relative
+        overflow-hidden
+        bg-white
+        py-20
+        sm:py-24
+        lg:py-28
+      "
+    >
+      {/* =====================================================
+          DECORATIVE BACKGROUND
+      ===================================================== */}
+      <div
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        {/* Top right lime glow */}
+        <div
+          className="
+            absolute
+            -right-32
+            -top-32
+            h-72
+            w-72
+            rounded-full
+            bg-[#97D91B]/10
+            blur-3xl
+            sm:h-96
+            sm:w-96
+          "
+        />
+
+        {/* Bottom left lime glow */}
+        <div
+          className="
+            absolute
+            -bottom-40
+            -left-32
+            h-80
+            w-80
+            rounded-full
+            bg-[#97D91B]/10
+            blur-3xl
+            sm:h-96
+            sm:w-96
+          "
+        />
+
+        {/* Decorative circle */}
+        <div
+          className="
+            absolute
+            right-[8%]
+            top-[25%]
+            hidden
+            h-20
+            w-20
+            rounded-full
+            border-[10px]
+            border-[#97D91B]/10
+            lg:block
+          "
+        />
+      </div>
+
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          max-w-6xl
+          px-4
+          sm:px-6
+        "
+      >
+
+        {/* ===================================================
+            HEADING
+        =================================================== */}
         <Reveal>
-          <h2 className="text-center font-display text-4xl text-navy uppercase sm:text-5xl lg:text-6xl">
-            Kenali Jalurmu,
-            <br />
-            Nikmati Setiap Langkah.
-          </h2>
+          <div className="mx-auto max-w-3xl text-center">
+
+            {/* Label */}
+            <span
+              className="
+                inline-flex
+                items-center
+                rounded-full
+                border
+                border-[#97D91B]/30
+                bg-[#97D91B]/10
+                px-4
+                py-2
+                text-[10px]
+                font-extrabold
+                tracking-[0.22em]
+                text-[#5B850B]
+                uppercase
+                sm:text-xs
+              "
+            >
+              Race Route
+            </span>
+
+            {/* Heading */}
+            <h2
+              className="
+                mt-4
+                font-display
+                text-4xl
+                leading-[1.05]
+                text-navy
+                uppercase
+                sm:text-5xl
+                lg:text-6xl
+              "
+            >
+              Kenali Jalurmu,
+              <br />
+              <span className="text-[#70A916]">
+                Nikmati Setiap Langkah.
+              </span>
+            </h2>
+
+            {/* Description */}
+            <p
+              className="
+                mx-auto
+                mt-4
+                max-w-xl
+                text-sm
+                leading-relaxed
+                text-navy/65
+                sm:text-base
+              "
+            >
+              Pilih kategori dan kenali rute yang akan kamu lewati
+              sebelum memulai perjalanan menuju garis finish.
+            </p>
+
+          </div>
         </Reveal>
 
+        {/* ===================================================
+            ROUTE TABS
+        =================================================== */}
         <Reveal delay={100}>
-          <div className="mx-auto mt-8 flex w-fit gap-1 rounded-full bg-brand-sky p-1.5">
+          <div
+            className="
+              mx-auto
+              mt-8
+              flex
+              w-fit
+              max-w-full
+              gap-1.5
+              rounded-full
+              border
+              border-[#97D91B]/20
+              bg-[#F5FBDD]
+              p-1.5
+              shadow-sm
+            "
+          >
             {tabs.map((t) => (
               <button
                 key={t.id}
                 onClick={() => setTab(t.id)}
-                className={`rounded-full px-6 py-2.5 font-display text-sm tracking-wide uppercase transition-all ${
-                  tab === t.id
-                    ? "gradient-brand text-primary-foreground shadow-soft"
-                    : "text-navy/60 hover:text-brand-deep"
-                }`}
+                className={`
+                  min-w-[100px]
+                  rounded-full
+                  px-5
+                  py-2.5
+                  font-display
+                  text-sm
+                  tracking-wide
+                  uppercase
+                  transition-all
+                  duration-300
+                  sm:min-w-[120px]
+                  sm:px-6
+                  ${
+                    tab === t.id
+                      ? `
+                        bg-[#97D91B]
+                        text-[#193000]
+                        shadow-[0_6px_18px_rgba(112,150,0,0.22)]
+                        hover:bg-[#8CCB16]
+                      `
+                      : `
+                        text-[#5B850B]
+                        hover:bg-[#97D91B]/15
+                        hover:text-[#4A6F08]
+                      `
+                  }
+                `}
               >
                 {t.label}
               </button>
@@ -93,23 +637,101 @@ export function RouteMap() {
           </div>
         </Reveal>
 
+        {/* ===================================================
+            ROUTE IMAGE
+        =================================================== */}
         <Reveal delay={160}>
-          <div className="relative mt-8 overflow-hidden rounded-[2rem] border border-brand-light/50 shadow-soft">
-            {tabs.map((t) => (
-              <img
-                key={t.id}
-                src={t.img}
-                alt={`Rute ${t.label}`}
-                width={1200}
-                height={800}
-                loading="lazy"
-                className={`w-full transition-opacity duration-500 ${
-                  tab === t.id ? "opacity-100" : "absolute inset-0 opacity-0"
-                }`}
-              />
-            ))}
+          <div
+            className="
+              relative
+              mt-8
+              overflow-hidden
+              rounded-[2rem]
+              border
+              border-[#97D91B]/25
+              bg-[#F5FBDD]
+              p-1
+              shadow-[0_15px_45px_rgba(20,50,0,0.08)]
+              sm:mt-10
+              sm:p-1.5
+            "
+          >
+            {/* Lime top accent */}
+            <div
+              className="
+                absolute
+                inset-x-0
+                top-0
+                z-20
+                h-1
+                bg-[#97D91B]
+              "
+            />
+
+            {/* Image wrapper */}
+            <div
+              className="
+                relative
+                overflow-hidden
+                rounded-[1.75rem]
+                bg-white
+              "
+            >
+              {tabs.map((t) => (
+                <img
+                  key={t.id}
+                  src={t.img}
+                  alt={`Rute ${t.label}`}
+                  width={1200}
+                  height={800}
+                  loading="lazy"
+                  className={`
+                    w-full
+                    transition-all
+                    duration-500
+                    ${
+                      tab === t.id
+                        ? "relative opacity-100"
+                        : "absolute inset-0 opacity-0"
+                    }
+                  `}
+                />
+              ))}
+            </div>
           </div>
         </Reveal>
+
+        {/* ===================================================
+            BOTTOM ACCENT
+        =================================================== */}
+        <Reveal delay={220}>
+          <div
+            className="
+              mx-auto
+              mt-8
+              flex
+              max-w-md
+              items-center
+              gap-3
+              sm:mt-10
+            "
+          >
+            <span className="h-px flex-1 bg-[#97D91B]/25" />
+
+            <span
+              className="
+                h-2
+                w-2
+                shrink-0
+                rounded-full
+                bg-[#97D91B]
+              "
+            />
+
+            <span className="h-px flex-1 bg-[#97D91B]/25" />
+          </div>
+        </Reveal>
+
       </div>
     </section>
   );

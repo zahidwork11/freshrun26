@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { eventInfo, navItems } from "@/data/event";
 import pkuLogo from "@/assets/pkulogo.png";
+import pkuLogo2 from "@/assets/pkulogo2.png"; 
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -45,14 +46,20 @@ export function Navbar() {
             className="h-12 w-12 shrink-0 object-contain"
           />
 
-          <span className="min-w-0 leading-tight">
-            <span className="block truncate font-display text-sm tracking-wide text-navy uppercase sm:text-base">
-              Sukoharjo
-            </span>
+            <img
+            src={pkuLogo2}
+            alt="Logo RS PKU Muhammadiyah Sukoharjo"
+            className="h-12 w-12 shrink-0 object-contain"
+          />
 
-            <span className="block truncate text-[11px] font-semibold text-brand uppercase">
-              Fun Run 2026
-            </span>
+          <span className="min-w-0 leading-tight">
+          <span className="block truncate font-display text-sm tracking-wide text-[#0A5490] uppercase sm:text-base">
+            PKU RUN FRESH
+          </span>
+
+          <span className="block truncate text-[11px] font-semibold text-[#000000] uppercase">
+            SUKOHARJO
+          </span>
           </span>
         </a>
 

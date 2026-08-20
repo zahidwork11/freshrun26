@@ -1,105 +1,357 @@
 import { useEffect, useState } from "react";
 import { CalendarDays, Clock, MapPin, Sparkles, Trophy, Flag } from "lucide-react";
-import heroAsset from "@/assets/header.png";
 import prizeAsset from "@/assets/doorprice.png";
 import { Reveal } from "./Reveal";
 import { Countdown } from "./Countdown";
 import { categories, eventInfo, podium } from "@/data/event";
+import { Clock3 } from "lucide-react";
+import hero9 from "@/assets/hero9.png";
+import hero10 from "@/assets/hero10.png";
+import hero11 from "@/assets/hero11.png";
+import hero12 from "@/assets/hero12.png";
+
 
 export function Hero() {
   const [offset, setOffset] = useState(0);
+
   useEffect(() => {
-    const onScroll = () => setOffset(Math.min(window.scrollY * 0.18, 120));
+    const onScroll = () => {
+      setOffset(Math.min(window.scrollY * 0.18, 120));
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
+
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <section id="top" className="relative isolate overflow-hidden">
-      <div className="absolute inset-0 -z-20 overflow-hidden">
+    <section
+      id="top"
+      className="relative isolate overflow-hidden"
+    >
+      {/* =====================================================
+          HERO IMAGE
+      ===================================================== */}
+      <div className="absolute inset-0 -z-30 overflow-hidden">
         <img
-          src={heroAsset}
+          src={hero12}
           alt="Peserta fun run PKU Muhammadiyah Sukoharjo"
           width={1920}
           height={1280}
           className="h-[115%] w-full object-cover"
-          style={{ transform: `translateY(-${offset}px)` }}
+          style={{
+            transform: `translateY(-${offset}px)`,
+          }}
         />
       </div>
+
+      {/* =====================================================
+          BASE BLUE TINT
+          Membuat gambar sedikit lebih gelap secara merata
+      ===================================================== */}
       <div
-        className="absolute inset-0 -z-10"
-        style={{ background: "var(--gradient-hero)" }}
+        className="
+          absolute
+          inset-0
+          -z-20
+          bg-[#062D50]/35
+        "
+        aria-hidden="true"
       />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-brand-sky/90 via-transparent to-navy/50" />
 
-      <svg
-        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-64 w-full opacity-30"
-        viewBox="0 0 1200 300"
-        fill="none"
-        aria-hidden
+      {/* =====================================================
+          SOFT NAVY TOP
+          Memberikan sedikit kedalaman di bagian atas
+      ===================================================== */}
+      <div
+        className="
+          absolute
+          inset-x-0
+          top-0
+          -z-10
+          h-[45%]
+          bg-gradient-to-b
+          from-[#062D50]/60
+          via-[#062D50]/25
+          to-transparent
+        "
+        aria-hidden="true"
+      />
+
+      {/* =====================================================
+          SOFT NAVY BOTTOM
+          Tetap lembut agar tidak menjadi blok biru pekat
+      ===================================================== */}
+      <div
+        className="
+          absolute
+          inset-x-0
+          bottom-0
+          -z-10
+          h-[45%]
+          bg-gradient-to-t
+          from-[#062D50]/55
+          via-[#062D50]/25
+          to-transparent
+        "
+        aria-hidden="true"
+      />
+
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
+      <div
+        className="
+          relative
+          mx-auto
+          max-w-7xl
+          px-4
+          pt-32
+          pb-20
+          sm:px-6
+          lg:pt-44
+          lg:pb-28
+        "
       >
-        <path d="M-50 220 C 250 120, 450 300, 750 180 S 1150 60, 1300 140" stroke="white" strokeWidth="3" />
-        <path d="M-50 260 C 300 180, 500 330, 800 230 S 1150 120, 1300 200" stroke="white" strokeWidth="2" opacity="0.6" />
-      </svg>
 
-      <div className="mx-auto max-w-7xl px-4 pt-32 pb-20 sm:px-6 lg:pt-44 lg:pb-28">
+        {/* ===================================================
+            BADGE
+        =================================================== */}
         <Reveal>
-          <span className="inline-flex max-w-full items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-[11px] font-extrabold tracking-[0.16em] uppercase text-white/95 shadow-lift ring-1 ring-white/70 backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5 shrink-0 text-brand-cyan" />
-            <span className="text-white/90"></span>
-            <span className="text-brand-cyan">Milad RS PKU Muhammadiyah Sukoharjo</span>
+          <span
+            className="
+              inline-flex
+              max-w-full
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-brand-cyan/30
+              bg-[#062D50]/55
+              px-4
+              py-2.5
+              text-[11px]
+              font-extrabold
+              tracking-[0.16em]
+              uppercase
+              text-white
+              shadow-[0_8px_25px_rgba(0,20,45,0.25)]
+              backdrop-blur-md
+              sm:px-5
+              sm:py-3
+              sm:text-xs
+            "
+          >
+            <Sparkles
+              className="
+                h-3.5
+                w-3.5
+                shrink-0
+                text-brand-cyan
+                drop-shadow-[0_2px_5px_rgba(0,20,45,0.8)]
+                sm:h-4
+                sm:w-4
+              "
+            />
+
+            <span
+              className="
+                text-brand-cyan
+                drop-shadow-[0_2px_5px_rgba(0,20,45,0.9)]
+              "
+            >
+              Milad RS PKU Muhammadiyah Sukoharjo
+            </span>
           </span>
         </Reveal>
 
+        {/* ===================================================
+            HEADING
+        =================================================== */}
         <Reveal delay={100}>
-          <h1 className="mt-6 max-w-4xl font-display text-5xl leading-[0.95] text-primary-foreground uppercase drop-shadow-[0_2px_16px_rgba(0,0,0,0.35)] sm:text-7xl lg:text-8xl">
-            <span className="text-white">Rayakan</span>{" "}
-            <span className="text-brand-cyan">Milad,</span>
+          <h1
+            className="
+              mt-6
+              max-w-4xl
+              font-display
+              text-5xl
+              leading-[0.95]
+              text-primary-foreground
+              uppercase
+              drop-shadow-[0_3px_12px_rgba(0,20,45,0.75)]
+              sm:text-7xl
+              lg:text-8xl
+            "
+          >
+            <span className="text-white">
+              Rayakan
+            </span>{" "}
+
+            <span className="text-brand-cyan">
+              Milad,
+            </span>
+
             <br />
-            <span className="text-white">Langkahkan</span>{" "}
-            <span className="text-brand-cyan">Semangat!</span>
+
+            <span className="text-white">
+              Langkahkan
+            </span>{" "}
+
+            <span className="text-brand-cyan">
+              Semangat!
+            </span>
           </h1>
         </Reveal>
 
+        {/* ===================================================
+            DESCRIPTION
+        =================================================== */}
         <Reveal delay={180}>
-          <p className="mt-5 max-w-xl text-base font-semibold text-white/95 sm:text-lg">
+          <p
+            className="
+              mt-5
+              max-w-xl
+              text-base
+              font-semibold
+              leading-relaxed
+              text-white
+              drop-shadow-[0_2px_7px_rgba(0,20,45,0.75)]
+              sm:text-lg
+            "
+          >
             PKU Muhammadiyah Sukoharjo Fun Run — Satu langkah untuk{" "}
-            <span className="font-bold text-brand-cyan">sehat</span>, satu langkah untuk{" "}
-            <span className="font-bold text-brand-cyan">kebersamaan</span>.
+            <span
+              className="
+                font-bold
+                text-brand-cyan
+                drop-shadow-[0_2px_5px_rgba(0,20,45,0.75)]
+              "
+            >
+              sehat
+            </span>
+            , satu langkah untuk{" "}
+            <span
+              className="
+                font-bold
+                text-brand-cyan
+                drop-shadow-[0_2px_5px_rgba(0,20,45,0.75)]
+              "
+            >
+              kebersamaan
+            </span>
+            .
           </p>
         </Reveal>
 
+        {/* ===================================================
+            EVENT INFO
+        =================================================== */}
         <Reveal delay={260}>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:max-w-4xl lg:grid-cols-4">
+          <div
+            className="
+              mt-8
+              grid
+              gap-3
+              sm:grid-cols-2
+              lg:max-w-4xl
+              lg:grid-cols-4
+            "
+          >
             {[
-              { icon: Flag, cap: "Kategori", label: eventInfo.distances, hot: true },
-              { icon: CalendarDays, cap: "Tanggal", label: eventInfo.dateLabel },
-  
-              
+              {
+                icon: Flag,
+                cap: "Kategori",
+                label: eventInfo.distances,
+                hot: true,
+              },
+              {
+                icon: CalendarDays,
+                cap: "Tanggal",
+                label: eventInfo.dateLabel,
+              },
             ].map(({ icon: Icon, cap, label, hot }) => (
               <div
                 key={label}
-                className={`flex min-w-0 items-center gap-3 rounded-2xl border px-4 py-3 shadow-lift backdrop-blur transition-transform hover:-translate-y-1 ${hot
-                    ? "border-brand-cyan/60 bg-brand-cyan/20 text-white"
-                    : "border-white/50 bg-white/10 text-white"
-                  }`}
+                className={`
+                  flex
+                  min-w-0
+                  items-center
+                  gap-3
+                  rounded-2xl
+                  border
+                  px-4
+                  py-3
+                  shadow-lift
+                  backdrop-blur
+                  transition-transform
+                  hover:-translate-y-1
+                  ${
+                    hot
+                      ? "border-brand-cyan/60 bg-brand-cyan/20 text-white"
+                      : "border-white/50 bg-white/10 text-white"
+                  }
+                `}
               >
+                {/* Icon */}
                 <span
-                  className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl ${hot ? "bg-brand-cyan text-navy" : "bg-white/20 text-white"
-                    }`}
+                  className={`
+                    grid
+                    h-9
+                    w-9
+                    shrink-0
+                    place-items-center
+                    rounded-xl
+                    ${
+                      hot
+                        ? "bg-brand-cyan text-navy"
+                        : "bg-white/20 text-white"
+                    }
+                  `}
                 >
                   <Icon
-                    className={`h-4.5 w-4.5 ${hot ? "text-navy" : "text-white"}`}
+                    className={`
+                      h-4.5
+                      w-4.5
+                      ${
+                        hot
+                          ? "text-navy"
+                          : "text-white"
+                      }
+                    `}
                   />
                 </span>
+
+                {/* Text */}
                 <span className="min-w-0">
                   <span
-                    className={`block text-[10px] font-bold tracking-[0.2em] uppercase ${hot ? "text-brand-cyan" : "text-white/80"
-                      }`}
+                    className={`
+                      block
+                      text-[10px]
+                      font-bold
+                      tracking-[0.2em]
+                      uppercase
+                      ${
+                        hot
+                          ? "text-brand-cyan"
+                          : "text-white/80"
+                      }
+                    `}
                   >
                     {cap}
                   </span>
-                  <span className="block truncate font-display text-sm tracking-wide uppercase text-white">
+
+                  <span
+                    className="
+                      block
+                      truncate
+                      font-display
+                      text-sm
+                      tracking-wide
+                      uppercase
+                      text-white
+                      drop-shadow-[0_2px_5px_rgba(0,20,45,0.7)]
+                    "
+                  >
                     {label}
                   </span>
                 </span>
@@ -108,22 +360,64 @@ export function Hero() {
           </div>
         </Reveal>
 
+        {/* ===================================================
+            CTA
+        =================================================== */}
         <Reveal delay={340}>
-          <div className="mt-10 flex flex-wrap gap-3">
+          <div
+            className="
+              mt-10
+              flex
+              flex-wrap
+              gap-3
+            "
+          >
+            {/* Primary CTA */}
             <a
               href={eventInfo.registerUrl}
-              className="rounded-full bg-background px-8 py-4 font-display text-sm tracking-wide text-brand-deep uppercase shadow-lift transition-transform hover:scale-105"
+              className="
+                rounded-full
+                bg-background
+                px-8
+                py-4
+                font-display
+                text-sm
+                tracking-wide
+                text-brand-deep
+                uppercase
+                shadow-lift
+                transition-transform
+                hover:scale-105
+              "
             >
-              Daftar Sekarang
+              Cara Daftar
             </a>
+
+            {/* Secondary CTA */}
             <a
               href="#kategori"
-              className="rounded-full border-2 border-white/70 px-8 py-4 font-display text-sm tracking-wide text-primary-foreground uppercase transition-colors hover:bg-white/15"
+              className="
+                rounded-full
+                border-2
+                border-white/70
+                bg-white/5
+                px-8
+                py-4
+                font-display
+                text-sm
+                tracking-wide
+                text-primary-foreground
+                uppercase
+                backdrop-blur-sm
+                transition-colors
+                hover:bg-white/15
+              "
             >
               Lihat Kategori
             </a>
           </div>
         </Reveal>
+
       </div>
     </section>
   );
@@ -171,6 +465,7 @@ export function RaceInfo() {
   );
 }
 
+
 export function TotalPrize() {
   const chips = [
     "Podium Putra",
@@ -181,55 +476,402 @@ export function TotalPrize() {
   ];
 
   return (
-    <section id="hadiah" className="bg-background py-20 lg:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section
+      id="hadiah"
+      className="
+        relative
+        isolate
+        overflow-hidden
+        bg-[#F5FBDD]
+        py-20
+        sm:py-24
+        lg:py-28
+      "
+    >
+      {/* =====================================================
+          DECORATIVE BACKGROUND
+      ===================================================== */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          overflow-hidden
+        "
+        aria-hidden="true"
+      >
+        {/* Top right lime glow */}
+        <div
+          className="
+            absolute
+            -right-32
+            -top-32
+            h-72
+            w-72
+            rounded-full
+            bg-[#97D91B]/15
+            blur-3xl
+            sm:h-96
+            sm:w-96
+          "
+        />
+
+        {/* Bottom left lime glow */}
+        <div
+          className="
+            absolute
+            -bottom-40
+            -left-32
+            h-80
+            w-80
+            rounded-full
+            bg-[#97D91B]/12
+            blur-3xl
+            sm:h-96
+            sm:w-96
+          "
+        />
+
+        {/* Orange accent - menghubungkan dengan Race Info */}
+        <div
+          className="
+            absolute
+            right-[8%]
+            top-[20%]
+            hidden
+            h-20
+            w-20
+            rounded-full
+            border-[10px]
+            border-[#F18B1F]/10
+            lg:block
+          "
+        />
+
+        <div
+          className="
+            absolute
+            bottom-[15%]
+            left-[8%]
+            hidden
+            h-14
+            w-14
+            rounded-full
+            bg-[#F18B1F]/10
+            lg:block
+          "
+        />
+      </div>
+
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          max-w-6xl
+          px-4
+          sm:px-6
+        "
+      >
+
+        {/* ===================================================
+            HEADING
+        =================================================== */}
         <Reveal>
-          <h2 className="text-center font-display text-4xl text-navy uppercase sm:text-5xl lg:text-6xl">
-            Lari Dapat Sehat,
-            <br />
-            Pulang Bawa Hadiah!
-          </h2>
+          <div className="mx-auto max-w-3xl text-center">
+
+            {/* Label */}
+            <span
+              className="
+                inline-flex
+                items-center
+                rounded-full
+                border
+                border-[#97D91B]/30
+                bg-[#97D91B]/15
+                px-4
+                py-2
+                text-[10px]
+                font-extrabold
+                tracking-[0.22em]
+                text-[#468519]
+                uppercase
+                sm:text-xs
+              "
+            >
+              Hadiah & Penghargaan
+            </span>
+
+            {/* Heading */}
+            <h2
+              className="
+                mt-4
+                font-display
+                text-4xl
+                leading-[1.05]
+                text-navy
+                uppercase
+                sm:text-5xl
+                lg:text-6xl
+              "
+            >
+              Lari Dapat Sehat,
+              <br />
+
+              <span className="text-[#468519]">
+                Pulang Bawa Hadiah!
+              </span>
+            </h2>
+
+            {/* Description */}
+            <p
+              className="
+                mx-auto
+                mt-4
+                max-w-xl
+                text-sm
+                font-medium
+                leading-relaxed
+                text-navy/65
+                sm:text-base
+              "
+            >
+              Tunjukkan semangat terbaikmu dan raih berbagai hadiah
+              menarik di PKU Muhammadiyah Sukoharjo Fun Run.
+            </p>
+
+          </div>
         </Reveal>
 
+        {/* ===================================================
+            TOTAL PRIZE
+        =================================================== */}
         <Reveal delay={100}>
-          <div className="mx-auto mt-10 max-w-md rounded-[2rem] gradient-brand px-8 py-8 text-center shadow-lift">
-            <div className="text-xs font-bold tracking-[0.25em] text-primary-foreground/80 uppercase">
+          <div
+            className="
+              mx-auto
+              mt-10
+              max-w-md
+              rounded-[2rem]
+              border
+              border-[#97D91B]/25
+              bg-white
+              px-8
+              py-8
+              text-center
+              shadow-[0_18px_50px_rgba(40,70,0,0.10)]
+              transition-transform
+              duration-300
+              hover:-translate-y-1
+              hover:shadow-[0_22px_55px_rgba(40,70,0,0.14)]
+              sm:px-10
+              sm:py-9
+            "
+          >
+            {/* Accent */}
+            <div
+              className="
+                mx-auto
+                mb-4
+                h-1
+                w-12
+                rounded-full
+                bg-[#97D91B]
+              "
+            />
+
+            {/* Label */}
+            <div
+              className="
+                text-xs
+                font-extrabold
+                tracking-[0.25em]
+                text-[#468519]
+                uppercase
+              "
+            >
               Total Hadiah
             </div>
-            <div className="mt-2 font-display text-4xl text-primary-foreground sm:text-5xl">
+
+            {/* Total Prize */}
+            <div
+              className="
+                mt-2
+                font-display
+                text-4xl
+                text-[#468519]
+                sm:text-5xl
+              "
+            >
               {eventInfo.totalPrize}
+            </div>
+
+            {/* Description */}
+            <p
+              className="
+                mt-2
+                text-xs
+                font-semibold
+                text-[#468519]/65
+              "
+            >
+              Siapkan langkah terbaikmu!
+            </p>
+          </div>
+        </Reveal>
+
+        {/* ===================================================
+            PRIZE IMAGE
+        =================================================== */}
+        <Reveal delay={160}>
+          <div
+            className="
+              relative
+              mt-10
+              overflow-hidden
+              rounded-[2rem]
+              border
+              border-[#97D91B]/30
+              bg-white
+              p-1
+              shadow-[0_18px_50px_rgba(40,70,0,0.10)]
+              sm:mt-12
+              sm:p-1.5
+            "
+          >
+            {/* Lime accent */}
+            <div
+              className="
+                absolute
+                inset-x-0
+                top-0
+                z-10
+                h-1
+                bg-[#97D91B]
+              "
+            />
+
+            <div className="overflow-hidden rounded-[1.75rem] bg-white">
+              <img
+                src={prizeAsset}
+                alt="Koleksi hadiah fun run: sepeda, jam tangan, kulkas, elektronik, dan doorprize"
+                width={1280}
+                height={860}
+                loading="lazy"
+                className="
+                  w-full
+                  transition-transform
+                  duration-700
+                  hover:scale-105
+                "
+              />
             </div>
           </div>
         </Reveal>
 
-        <Reveal delay={160}>
-          <div className="mt-10 overflow-hidden rounded-[2rem] border border-brand-light/50 bg-brand-sky shadow-soft">
-            <img
-              src={prizeAsset}
-              alt="Koleksi hadiah fun run: sepeda, jam tangan, kulkas, elektronik, dan doorprize"
-              width={1280}
-              height={860}
-              loading="lazy"
-              className="w-full transition-transform duration-700 hover:scale-105"
-            />
+        {/* ===================================================
+            MESSAGE
+        =================================================== */}
+        <Reveal delay={200}>
+          <div className="mt-8 text-center sm:mt-10">
+
+            <p
+              className="
+                font-display
+                text-xl
+                text-[#468519]
+                sm:text-2xl
+              "
+            >
+              Dan masih banyak kejutan menarik lainnya!
+            </p>
+
+            {/* =================================================
+                CHIPS
+            ================================================= */}
+            <div
+              className="
+                mt-6
+                flex
+                flex-wrap
+                justify-center
+                gap-2
+              "
+            >
+              {chips.map((c, index) => (
+                <span
+                  key={c}
+                  className={`
+                    rounded-full
+                    px-4
+                    py-2
+                    text-xs
+                    font-bold
+                    tracking-wide
+                    uppercase
+                    transition-all
+                    duration-200
+                    hover:-translate-y-0.5
+                    ${
+                      index === 0 || index === 1
+                        ? `
+                          bg-[#97D91B]
+                          text-[#193000]
+                          shadow-sm
+                        `
+                        : `
+                          border
+                          border-[#97D91B]/25
+                          bg-white
+                          text-[#468519]
+                        `
+                    }
+                  `}
+                >
+                  {c}
+                </span>
+              ))}
+            </div>
+
           </div>
         </Reveal>
 
-        <Reveal delay={200}>
-          <p className="mt-6 text-center font-display text-xl text-brand-deep sm:text-2xl">
-            Dan masih banyak kejutan menarik lainnya!
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-2">
-            {chips.map((c) => (
-              <span
-                key={c}
-                className="rounded-full bg-brand-sky px-4 py-2 text-xs font-bold tracking-wide text-brand-deep uppercase"
-              >
-                {c}
-              </span>
-            ))}
+        {/* ===================================================
+            BOTTOM ACCENT
+        =================================================== */}
+        <Reveal delay={240}>
+          <div
+            className="
+              mx-auto
+              mt-8
+              flex
+              max-w-xl
+              items-center
+              justify-center
+              gap-3
+              sm:mt-10
+            "
+          >
+            <span className="h-px flex-1 bg-[#97D91B]/30" />
+
+            <span
+              className="
+                h-1.5
+                w-1.5
+                rounded-full
+                bg-[#97D91B]
+                sm:h-2
+                sm:w-2
+              "
+            />
+
+            <span className="h-px flex-1 bg-[#97D91B]/30" />
           </div>
         </Reveal>
+
       </div>
     </section>
   );
