@@ -446,7 +446,7 @@ export function RaceInfo() {
         </Reveal>
 
         <Reveal delay={180}>
-          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-2">
             {info.map((i) => (
               <div
                 key={i.label}
