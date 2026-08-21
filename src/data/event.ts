@@ -204,7 +204,7 @@ export const categories: Category[] = [
     benefits: [
       "Jersey",
       "Medal",
-      "Race Bag",
+      "Race Pack",
       "Snack",
     ],
 
@@ -266,7 +266,7 @@ export const categories: Category[] = [
     benefits: [
       "Jersey",
       "Medal",
-      "Race Bag",
+      "Race Pack",
       "Snack",
     ],
 
