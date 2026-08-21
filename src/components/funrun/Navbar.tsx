@@ -128,7 +128,7 @@ export function Navbar() {
             onClick={() => setOpen(false)}
             className="mt-2 rounded-full gradient-brand px-5 py-3 text-center text-sm font-bold tracking-wide text-primary-foreground uppercase shadow-soft transition-all duration-200 hover:shadow-lg"
           >
-            Daftar Sekarang
+            Cek Pendaftaran
           </a>
         </nav>
       </div>

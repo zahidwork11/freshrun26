@@ -8,7 +8,7 @@ import { Clock3 } from "lucide-react";
 import hero9 from "@/assets/hero9.png";
 import hero10 from "@/assets/hero10.png";
 import hero11 from "@/assets/hero11.png";
-import hero12 from "@/assets/hero12.png";
+import hero12 from "@/assets/hero12.webp";
 
 
 export function Hero() {
@@ -446,7 +446,7 @@ export function RaceInfo() {
         </Reveal>
 
         <Reveal delay={180}>
-          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-2">
             {info.map((i) => (
               <div
                 key={i.label}
@@ -468,11 +468,11 @@ export function RaceInfo() {
 
 export function TotalPrize() {
   const chips = [
-    "Podium Putra",
-    "Podium Putri",
-    "10 Finisher Berikutnya",
-    "Doorprize",
-    "Special Prize",
+    "1 Sepeda Listrik",
+    "2 Jam Tangan Running",
+    "2 Sepeda Gunung",
+    "1 Televisi 43 Inch",
+    "1 Kulkas 2 Pintu",
   ];
 
   return (

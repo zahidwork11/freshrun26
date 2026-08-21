@@ -436,7 +436,7 @@ export function RouteMap() {
       className="
         relative
         overflow-hidden
-        bg-white
+        bg-brand-sky
         py-20
         sm:py-24
         lg:py-28
@@ -446,10 +446,15 @@ export function RouteMap() {
           DECORATIVE BACKGROUND
       ===================================================== */}
       <div
-        className="pointer-events-none absolute inset-0 overflow-hidden"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          overflow-hidden
+        "
         aria-hidden="true"
       >
-        {/* Top right lime glow */}
+        {/* Top right glow */}
         <div
           className="
             absolute
@@ -458,14 +463,14 @@ export function RouteMap() {
             h-72
             w-72
             rounded-full
-            bg-[#97D91B]/10
+            bg-white/30
             blur-3xl
             sm:h-96
             sm:w-96
           "
         />
 
-        {/* Bottom left lime glow */}
+        {/* Bottom left glow */}
         <div
           className="
             absolute
@@ -474,7 +479,7 @@ export function RouteMap() {
             h-80
             w-80
             rounded-full
-            bg-[#97D91B]/10
+            bg-brand-light/40
             blur-3xl
             sm:h-96
             sm:w-96
@@ -486,13 +491,28 @@ export function RouteMap() {
           className="
             absolute
             right-[8%]
-            top-[25%]
+            top-[24%]
             hidden
             h-20
             w-20
             rounded-full
             border-[10px]
-            border-[#97D91B]/10
+            border-brand/20
+            lg:block
+          "
+        />
+
+        {/* Small decorative circle */}
+        <div
+          className="
+            absolute
+            bottom-[18%]
+            left-[8%]
+            hidden
+            h-12
+            w-12
+            rounded-full
+            bg-brand/15
             lg:block
           "
         />
@@ -524,16 +544,15 @@ export function RouteMap() {
                 inline-flex
                 items-center
                 rounded-full
-                border
-                border-[#97D91B]/30
-                bg-[#97D91B]/10
+                bg-background
                 px-4
                 py-2
                 text-[10px]
                 font-extrabold
                 tracking-[0.22em]
-                text-[#5B850B]
+                text-brand-deep
                 uppercase
+                shadow-soft
                 sm:text-xs
               "
             >
@@ -543,7 +562,7 @@ export function RouteMap() {
             {/* Heading */}
             <h2
               className="
-                mt-4
+                mt-5
                 font-display
                 text-4xl
                 leading-[1.05]
@@ -555,7 +574,8 @@ export function RouteMap() {
             >
               Kenali Jalurmu,
               <br />
-              <span className="text-[#70A916]">
+
+              <span className="text-brand-deep">
                 Nikmati Setiap Langkah.
               </span>
             </h2>
@@ -572,132 +592,468 @@ export function RouteMap() {
                 sm:text-base
               "
             >
-              Pilih kategori dan kenali rute yang akan kamu lewati
-              sebelum memulai perjalanan menuju garis finish.
+              Kenali rute yang akan kamu lewati sebelum race dimulai.
+              Pilih jarak dan siapkan langkah terbaikmu menuju garis finish.
             </p>
 
           </div>
         </Reveal>
 
         {/* ===================================================
-            ROUTE TABS
+            ROUTE SELECTOR
         =================================================== */}
         <Reveal delay={100}>
-          <div
-            className="
-              mx-auto
-              mt-8
-              flex
-              w-fit
-              max-w-full
-              gap-1.5
-              rounded-full
-              border
-              border-[#97D91B]/20
-              bg-[#F5FBDD]
-              p-1.5
-              shadow-sm
-            "
-          >
-            {tabs.map((t) => (
-              <button
-                key={t.id}
-                onClick={() => setTab(t.id)}
-                className={`
-                  min-w-[100px]
-                  rounded-full
-                  px-5
-                  py-2.5
-                  font-display
-                  text-sm
-                  tracking-wide
-                  uppercase
-                  transition-all
-                  duration-300
-                  sm:min-w-[120px]
-                  sm:px-6
-                  ${
-                    tab === t.id
-                      ? `
-                        bg-[#97D91B]
-                        text-[#193000]
-                        shadow-[0_6px_18px_rgba(112,150,0,0.22)]
-                        hover:bg-[#8CCB16]
-                      `
-                      : `
-                        text-[#5B850B]
-                        hover:bg-[#97D91B]/15
-                        hover:text-[#4A6F08]
-                      `
-                  }
-                `}
-              >
-                {t.label}
-              </button>
-            ))}
+          <div className="mx-auto mt-9 max-w-sm">
+
+            <div
+              className="
+                rounded-2xl
+                border
+                border-brand-light/50
+                bg-background
+                p-1.5
+                shadow-soft
+              "
+            >
+              <div className="grid grid-cols-2 gap-1.5">
+
+                {tabs.map((t) => {
+                  const isActive = tab === t.id;
+
+                  return (
+                    <button
+                      key={t.id}
+                      type="button"
+                      onClick={() => setTab(t.id)}
+                      className={`
+                        relative
+                        rounded-xl
+                        px-4
+                        py-3
+                        font-display
+                        text-sm
+                        tracking-wide
+                        uppercase
+                        transition-all
+                        duration-300
+                        sm:py-3.5
+
+                        ${
+                          isActive
+                            ? `
+                              gradient-brand
+                              text-primary-foreground
+                              shadow-soft
+                            `
+                            : `
+                              text-navy/55
+                              hover:bg-brand-sky
+                              hover:text-brand-deep
+                            `
+                        }
+                      `}
+                    >
+                      {t.label}
+
+                      {/* Active indicator */}
+                      {isActive && (
+                        <span
+                          className="
+                            absolute
+                            bottom-1
+                            left-1/2
+                            h-0.5
+                            w-6
+                            -translate-x-1/2
+                            rounded-full
+                            bg-white/80
+                          "
+                        />
+                      )}
+                    </button>
+                  );
+                })}
+
+              </div>
+            </div>
+
           </div>
         </Reveal>
 
         {/* ===================================================
-            ROUTE IMAGE
+            ROUTE MAP CARD
         =================================================== */}
         <Reveal delay={160}>
           <div
             className="
-              relative
+              mx-auto
               mt-8
+              max-w-5xl
               overflow-hidden
               rounded-[2rem]
               border
-              border-[#97D91B]/25
-              bg-[#F5FBDD]
-              p-1
-              shadow-[0_15px_45px_rgba(20,50,0,0.08)]
+              border-brand-light/50
+              bg-background
+              shadow-soft
+              transition-shadow
+              duration-300
+              hover:shadow-lift
               sm:mt-10
-              sm:p-1.5
             "
           >
-            {/* Lime top accent */}
-            <div
-              className="
-                absolute
-                inset-x-0
-                top-0
-                z-20
-                h-1
-                bg-[#97D91B]
-              "
-            />
 
-            {/* Image wrapper */}
+            {/* =================================================
+                CARD HEADER
+            ================================================= */}
             <div
               className="
-                relative
-                overflow-hidden
-                rounded-[1.75rem]
-                bg-white
+                flex
+                items-center
+                justify-between
+                gap-4
+                border-b
+                border-brand-light/40
+                px-5
+                py-4
+                sm:px-7
+                sm:py-5
               "
             >
-              {tabs.map((t) => (
-                <img
-                  key={t.id}
-                  src={t.img}
-                  alt={`Rute ${t.label}`}
-                  width={1200}
-                  height={800}
-                  loading="lazy"
-                  className={`
-                    w-full
-                    transition-all
-                    duration-500
-                    ${
-                      tab === t.id
-                        ? "relative opacity-100"
-                        : "absolute inset-0 opacity-0"
-                    }
-                  `}
-                />
-              ))}
+
+              {/* Left */}
+              <div className="min-w-0">
+
+                <span
+                  className="
+                    block
+                    text-[9px]
+                    font-extrabold
+                    tracking-[0.2em]
+                    text-brand-deep
+                    uppercase
+                    sm:text-[10px]
+                  "
+                >
+                  Route Map
+                </span>
+
+                <h3
+                  className="
+                    mt-1
+                    font-display
+                    text-lg
+                    text-navy
+                    uppercase
+                    sm:text-xl
+                  "
+                >
+                  Peta Rute Lari
+                </h3>
+
+              </div>
+
+              {/* Status */}
+              <span
+                className="
+                  shrink-0
+                  rounded-full
+                  bg-brand-sky
+                  px-3
+                  py-1.5
+                  text-[9px]
+                  font-extrabold
+                  tracking-wider
+                  text-brand-deep
+                  uppercase
+                  sm:px-4
+                  sm:py-2
+                  sm:text-[10px]
+                "
+              >
+                Rute Resmi
+              </span>
+
+            </div>
+
+            {/* =================================================
+                ROUTE IMAGE
+            ================================================= */}
+            <div className="bg-background p-2 sm:p-3">
+
+              <div
+                className="
+                  relative
+                  overflow-hidden
+                  rounded-[1.5rem]
+                  bg-brand-sky
+                  sm:rounded-[1.75rem]
+                "
+              >
+
+                {tabs.map((t) => (
+                  <img
+                    key={t.id}
+                    src={t.img}
+                    alt={`Rute ${t.label}`}
+                    width={1200}
+                    height={800}
+                    loading="lazy"
+                    className={`
+                      block
+                      w-full
+                      transition-opacity
+                      duration-500
+
+                      ${
+                        tab === t.id
+                          ? "relative opacity-100"
+                          : "absolute inset-0 opacity-0"
+                      }
+                    `}
+                  />
+                ))}
+
+              </div>
+
+            </div>
+
+            {/* =================================================
+                ROUTE FACILITIES
+                Masih di dalam card yang sama
+            ================================================= */}
+            <div
+              className="
+                border-t
+                border-brand-light/40
+                px-5
+                py-5
+                sm:px-7
+                sm:py-6
+              "
+            >
+
+              {/* Title */}
+              <div className="mb-4 text-center sm:text-left">
+
+                <span
+                  className="
+                    text-[9px]
+                    font-extrabold
+                    tracking-[0.2em]
+                    text-brand-deep
+                    uppercase
+                    sm:text-[10px]
+                  "
+                >
+                  Fasilitas Rute
+                </span>
+
+                <p
+                  className="
+                    mt-1
+                    text-xs
+                    text-navy/55
+                    sm:text-sm
+                  "
+                >
+                  Fasilitas yang tersedia selama perjalanan.
+                </p>
+
+              </div>
+
+              {/* Facilities */}
+              <div
+                className="
+                  grid
+                  grid-cols-2
+                  gap-x-4
+                  gap-y-4
+                  sm:grid-cols-5
+                "
+              >
+
+                {/* Water Station */}
+                <div className="flex items-center gap-3 sm:flex-col sm:justify-center sm:text-center">
+                  <div
+                    className="
+                      grid
+                      h-10
+                      w-10
+                      shrink-0
+                      place-items-center
+                      rounded-xl
+                      bg-brand-sky
+                      text-lg
+                    "
+                  >
+                    💧
+                  </div>
+
+                  <div className="min-w-0">
+                    <div
+                      className="
+                        text-[10px]
+                        font-extrabold
+                        text-navy
+                        uppercase
+                        sm:text-xs
+                      "
+                    >
+                      Water Station
+                    </div>
+
+                    <p className="mt-0.5 text-[10px] text-navy/50 sm:text-xs">
+                      Air minum
+                    </p>
+                  </div>
+                </div>
+
+                {/* Ambulance */}
+                <div className="flex items-center gap-3 sm:flex-col sm:justify-center sm:text-center">
+                  <div
+                    className="
+                      grid
+                      h-10
+                      w-10
+                      shrink-0
+                      place-items-center
+                      rounded-xl
+                      bg-[#F18B1F]/10
+                      text-lg
+                    "
+                  >
+                    🚑
+                  </div>
+
+                  <div className="min-w-0">
+                    <div
+                      className="
+                        text-[10px]
+                        font-extrabold
+                        text-navy
+                        uppercase
+                        sm:text-xs
+                      "
+                    >
+                      Ambulance
+                    </div>
+
+                    <p className="mt-0.5 text-[10px] text-navy/50 sm:text-xs">
+                      Siaga medis
+                    </p>
+                  </div>
+                </div>
+
+                {/* Medical Point */}
+                <div className="flex items-center gap-3 sm:flex-col sm:justify-center sm:text-center">
+                  <div
+                    className="
+                      grid
+                      h-10
+                      w-10
+                      shrink-0
+                      place-items-center
+                      rounded-xl
+                      bg-[#97D91B]/15
+                      text-lg
+                    "
+                  >
+                    🏥
+                  </div>
+
+                  <div className="min-w-0">
+                    <div
+                      className="
+                        text-[10px]
+                        font-extrabold
+                        text-navy
+                        uppercase
+                        sm:text-xs
+                      "
+                    >
+                      Medical Point
+                    </div>
+
+                    <p className="mt-0.5 text-[10px] text-navy/50 sm:text-xs">
+                      Pos kesehatan
+                    </p>
+                  </div>
+                </div>
+
+                {/* Toilet */}
+                <div className="flex items-center gap-3 sm:flex-col sm:justify-center sm:text-center">
+                  <div
+                    className="
+                      grid
+                      h-10
+                      w-10
+                      shrink-0
+                      place-items-center
+                      rounded-xl
+                      bg-brand-sky
+                      text-lg
+                    "
+                  >
+                    🚻
+                  </div>
+
+                  <div className="min-w-0">
+                    <div
+                      className="
+                        text-[10px]
+                        font-extrabold
+                        text-navy
+                        uppercase
+                        sm:text-xs
+                      "
+                    >
+                      Toilet
+                    </div>
+
+                    <p className="mt-0.5 text-[10px] text-navy/50 sm:text-xs">
+                      Fasilitas peserta
+                    </p>
+                  </div>
+                </div>
+
+                {/* Finish Area */}
+                <div className="flex items-center gap-3 sm:flex-col sm:justify-center sm:text-center">
+                  <div
+                    className="
+                      grid
+                      h-10
+                      w-10
+                      shrink-0
+                      place-items-center
+                      rounded-xl
+                      bg-brand/15
+                      text-lg
+                    "
+                  >
+                    🏁
+                  </div>
+
+                  <div className="min-w-0">
+                    <div
+                      className="
+                        text-[10px]
+                        font-extrabold
+                        text-navy
+                        uppercase
+                        sm:text-xs
+                      "
+                    >
+                      Finish Area
+                    </div>
+
+                    <p className="mt-0.5 text-[10px] text-navy/50 sm:text-xs">
+                      Area finish
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
             </div>
           </div>
         </Reveal>
@@ -705,19 +1061,18 @@ export function RouteMap() {
         {/* ===================================================
             BOTTOM ACCENT
         =================================================== */}
-        <Reveal delay={220}>
+        <Reveal delay={240}>
           <div
             className="
               mx-auto
-              mt-8
+              mt-10
               flex
               max-w-md
               items-center
               gap-3
-              sm:mt-10
             "
           >
-            <span className="h-px flex-1 bg-[#97D91B]/25" />
+            <span className="h-px flex-1 bg-brand-light" />
 
             <span
               className="
@@ -725,11 +1080,11 @@ export function RouteMap() {
                 w-2
                 shrink-0
                 rounded-full
-                bg-[#97D91B]
+                bg-brand
               "
             />
 
-            <span className="h-px flex-1 bg-[#97D91B]/25" />
+            <span className="h-px flex-1 bg-brand-light" />
           </div>
         </Reveal>
 
@@ -740,30 +1095,359 @@ export function RouteMap() {
 
 export function Rundown() {
   return (
-    <section id="rundown" className="bg-brand-sky py-20 lg:py-28">
+    <section
+      id="rundown"
+      className="relative overflow-hidden bg-brand-sky py-20 sm:py-24 lg:py-28"
+    >
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
+
+        {/* =====================================================
+            HEADING
+        ===================================================== */}
         <Reveal>
-          <h2 className="text-center font-display text-4xl text-navy uppercase sm:text-5xl lg:text-6xl">
-            Satu Hari. Banyak Cerita.
-          </h2>
+          <div className="mx-auto max-w-2xl text-center">
+
+            {/* Label */}
+            <span
+              className="
+                inline-flex
+                items-center
+                rounded-full
+                bg-background
+                px-4
+                py-2
+                text-[10px]
+                font-extrabold
+                tracking-[0.22em]
+                text-brand-deep
+                uppercase
+                shadow-soft
+                sm:text-xs
+              "
+            >
+              Rundown Acara
+            </span>
+
+            {/* Heading */}
+            <h2
+              className="
+                mt-5
+                font-display
+                text-4xl
+                leading-[1.05]
+                text-navy
+                uppercase
+                sm:text-5xl
+                lg:text-6xl
+              "
+            >
+              Satu Hari.
+              <br />
+              <span className="text-brand-deep">
+                Banyak Cerita.
+              </span>
+            </h2>
+
+            {/* Description */}
+            <p
+              className="
+                mx-auto
+                mt-4
+                max-w-xl
+                text-sm
+                leading-relaxed
+                text-navy/65
+                sm:text-base
+              "
+            >
+              Ikuti seluruh rangkaian acara dan nikmati setiap
+              momen PKU Muhammadiyah Sukoharjo Fun Run.
+            </p>
+
+          </div>
         </Reveal>
-        <div className="relative mt-12 pl-6 sm:pl-10">
-          <span className="absolute top-2 bottom-2 left-[7px] w-0.5 bg-brand-light sm:left-[27px]" />
-          <div className="space-y-4">
-            {rundown.map((r, i) => (
-              <Reveal key={r.time} delay={i * 60}>
-                <div className="relative grid grid-cols-[minmax(0,1fr)] gap-1 rounded-2xl bg-background p-5 shadow-soft transition-transform hover:translate-x-1 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-center sm:gap-5">
-                  <span className="absolute top-1/2 -left-[23px] h-3.5 w-3.5 -translate-y-1/2 rounded-full border-4 border-brand-sky bg-brand sm:-left-[43px]" />
-                  <span className="font-display text-xl text-brand-deep tabular-nums">{r.time}</span>
-                  <span className="min-w-0">
-                    <span className="block font-bold text-navy uppercase">{r.title}</span>
-                    <span className="block text-sm text-navy/65">{r.desc}</span>
-                  </span>
-                </div>
-              </Reveal>
-            ))}
+
+        {/* =====================================================
+            TIMELINE
+        ===================================================== */}
+        <div className="relative mt-12 sm:mt-14">
+
+          {/* Timeline line */}
+          <span
+            className="
+              absolute
+              bottom-6
+              left-[18px]
+              top-6
+              w-0.5
+              bg-brand-light
+              sm:left-[27px]
+            "
+          />
+
+          <div className="space-y-4 sm:space-y-5">
+
+            {rundown.map((r, i) => {
+              const isStart = r.title.toLowerCase().includes("start");
+
+              return (
+                <Reveal
+                  key={`${r.time}-${r.title}`}
+                  delay={i * 60}
+                >
+                  <div className="relative pl-12 sm:pl-16">
+
+                    {/* =================================================
+                        TIMELINE DOT
+                    ================================================= */}
+                    <span
+                      className={`
+                        absolute
+                        left-[9px]
+                        top-1/2
+                        z-10
+                        flex
+                        h-5
+                        w-5
+                        -translate-y-1/2
+                        items-center
+                        justify-center
+                        rounded-full
+                        border-4
+                        border-brand-sky
+                        sm:left-[18px]
+                        sm:h-5
+                        sm:w-5
+                        ${
+                          isStart
+                            ? "bg-brand shadow-[0_0_0_5px_rgba(151,217,27,0.15)]"
+                            : "bg-brand-light"
+                        }
+                      `}
+                    />
+
+                    {/* =================================================
+                        CARD
+                    ================================================= */}
+                    <div
+                      className={`
+                        group
+                        relative
+                        overflow-hidden
+                        rounded-2xl
+                        bg-background
+                        shadow-soft
+                        transition-all
+                        duration-300
+                        hover:-translate-y-0.5
+                        hover:shadow-lift
+                        sm:rounded-3xl
+
+                        ${
+                          isStart
+                            ? "ring-2 ring-brand/25"
+                            : ""
+                        }
+                      `}
+                    >
+
+                      {/* Start accent */}
+                      {isStart && (
+                        <div
+                          className="
+                            absolute
+                            inset-y-0
+                            left-0
+                            w-1
+                            bg-brand
+                          "
+                        />
+                      )}
+
+                      <div
+                        className="
+                          grid
+                          grid-cols-[auto_minmax(0,1fr)]
+                          items-center
+                          gap-4
+                          p-4
+                          sm:gap-5
+                          sm:p-5
+                          lg:p-6
+                        "
+                      >
+
+                        {/* =================================================
+                            TIME
+                        ================================================= */}
+                        <div
+                          className={`
+                            flex
+                            min-w-[68px]
+                            flex-col
+                            items-center
+                            justify-center
+                            rounded-xl
+                            px-3
+                            py-2.5
+                            sm:min-w-[82px]
+                            sm:rounded-2xl
+                            sm:px-4
+                            sm:py-3
+
+                            ${
+                              isStart
+                                ? "bg-brand text-primary-foreground"
+                                : "bg-brand-sky"
+                            }
+                          `}
+                        >
+                          <span
+                            className={`
+                              font-display
+                              text-lg
+                              leading-none
+                              tabular-nums
+                              sm:text-xl
+                              ${
+                                isStart
+                                  ? "text-primary-foreground"
+                                  : "text-brand-deep"
+                              }
+                            `}
+                          >
+                            {r.time}
+                          </span>
+
+                          <span
+                            className={`
+                              mt-1
+                              text-[8px]
+                              font-bold
+                              tracking-wider
+                              uppercase
+                              ${
+                                isStart
+                                  ? "text-primary-foreground/75"
+                                  : "text-navy/45"
+                              }
+                            `}
+                          >
+                            WIB
+                          </span>
+                        </div>
+
+                        {/* =================================================
+                            CONTENT
+                        ================================================= */}
+                        <div className="min-w-0">
+
+                          <div className="flex flex-wrap items-center gap-2">
+
+                            <h3
+                              className="
+                                min-w-0
+                                font-bold
+                                text-navy
+                                uppercase
+                                sm:text-base
+                              "
+                            >
+                              {r.title}
+                            </h3>
+
+                            {isStart && (
+                              <span
+                                className="
+                                  shrink-0
+                                  rounded-full
+                                  bg-brand
+                                  px-2.5
+                                  py-1
+                                  text-[8px]
+                                  font-extrabold
+                                  tracking-wider
+                                  text-primary-foreground
+                                  uppercase
+                                "
+                              >
+                                Start
+                              </span>
+                            )}
+
+                          </div>
+
+                          <p
+                            className="
+                              mt-1
+                              text-xs
+                              leading-relaxed
+                              text-navy/60
+                              sm:text-sm
+                            "
+                          >
+                            {r.desc}
+                          </p>
+
+                        </div>
+
+                      </div>
+
+                      {/* Hover accent */}
+                      <div
+                        className="
+                          absolute
+                          bottom-0
+                          left-0
+                          h-0.5
+                          w-0
+                          bg-brand
+                          transition-all
+                          duration-300
+                          group-hover:w-full
+                        "
+                      />
+
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+
           </div>
         </div>
+
+        {/* =====================================================
+            BOTTOM ACCENT
+        ===================================================== */}
+        <Reveal delay={260}>
+          <div
+            className="
+              mx-auto
+              mt-10
+              flex
+              max-w-md
+              items-center
+              gap-3
+              sm:mt-12
+            "
+          >
+            <span className="h-px flex-1 bg-brand-light" />
+
+            <span
+              className="
+                h-2
+                w-2
+                shrink-0
+                rounded-full
+                bg-brand
+              "
+            />
+
+            <span className="h-px flex-1 bg-brand-light" />
+          </div>
+        </Reveal>
+
       </div>
     </section>
   );
