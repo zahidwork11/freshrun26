@@ -532,7 +532,7 @@ export function TotalPrize() {
           "
         />
 
-        {/* Orange accent - menghubungkan dengan Race Info */}
+        {/* Orange accent */}
         <div
           className="
             absolute
@@ -625,23 +625,6 @@ export function TotalPrize() {
                 Pulang Bawa Hadiah!
               </span>
             </h2>
-
-            {/* Description */}
-            <p
-              className="
-                mx-auto
-                mt-4
-                max-w-xl
-                text-sm
-                font-medium
-                leading-relaxed
-                text-navy/65
-                sm:text-base
-              "
-            >
-              Tunjukkan semangat terbaikmu dan raih berbagai hadiah
-              menarik di PKU Muhammadiyah Sukoharjo Fun Run.
-            </p>
 
           </div>
         </Reveal>
@@ -776,13 +759,28 @@ export function TotalPrize() {
             MESSAGE
         =================================================== */}
         <Reveal delay={200}>
-          <div className="mt-8 text-center sm:mt-10">
+          <div
+            className="
+              mx-auto
+              mt-8
+              max-w-3xl
+              text-center
+              sm:mt-10
+            "
+          >
 
+            {/* Message */}
             <p
               className="
+                mx-auto
+                max-w-md
+                px-2
                 font-display
-                text-xl
+                text-lg
+                leading-snug
                 text-[#468519]
+                sm:max-w-xl
+                sm:px-0
                 sm:text-2xl
               "
             >
@@ -794,39 +792,62 @@ export function TotalPrize() {
             ================================================= */}
             <div
               className="
-                mt-6
+                mx-auto
+                mt-5
                 flex
+                max-w-2xl
                 flex-wrap
+                items-center
                 justify-center
                 gap-2
+                px-2
+                sm:mt-6
+                sm:gap-2.5
+                sm:px-0
               "
             >
               {chips.map((c, index) => (
                 <span
                   key={c}
                   className={`
+                    inline-flex
+                    min-h-[34px]
+                    items-center
+                    justify-center
                     rounded-full
-                    px-4
+                    px-3
                     py-2
-                    text-xs
+                    text-center
+                    text-[10px]
                     font-bold
+                    leading-tight
                     tracking-wide
                     uppercase
                     transition-all
                     duration-200
                     hover:-translate-y-0.5
+
+                    sm:min-h-[38px]
+                    sm:px-4
+                    sm:py-2
+                    sm:text-xs
+
                     ${
                       index === 0 || index === 1
                         ? `
                           bg-[#97D91B]
                           text-[#193000]
                           shadow-sm
+                          hover:bg-[#8BCF13]
                         `
                         : `
                           border
-                          border-[#97D91B]/25
+                          border-[#97D91B]/30
                           bg-white
                           text-[#468519]
+                          shadow-sm
+                          hover:border-[#97D91B]/50
+                          hover:bg-[#F5FBDD]
                         `
                     }
                   `}
@@ -848,19 +869,30 @@ export function TotalPrize() {
               mx-auto
               mt-8
               flex
-              max-w-xl
+              w-full
+              max-w-xs
               items-center
               justify-center
               gap-3
+              px-4
               sm:mt-10
+              sm:max-w-xl
+              sm:px-0
             "
           >
-            <span className="h-px flex-1 bg-[#97D91B]/30" />
+            <span
+              className="
+                h-px
+                flex-1
+                bg-[#97D91B]/30
+              "
+            />
 
             <span
               className="
                 h-1.5
                 w-1.5
+                shrink-0
                 rounded-full
                 bg-[#97D91B]
                 sm:h-2
@@ -868,7 +900,13 @@ export function TotalPrize() {
               "
             />
 
-            <span className="h-px flex-1 bg-[#97D91B]/30" />
+            <span
+              className="
+                h-px
+                flex-1
+                bg-[#97D91B]/30
+              "
+            />
           </div>
         </Reveal>
 
@@ -923,9 +961,10 @@ export function Podium() {
           <div className="mt-6 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-[2rem] gradient-brand px-6 py-7 shadow-lift sm:flex sm:justify-between sm:px-10">
             <div className="min-w-0">
               <div className="font-display text-2xl text-primary-foreground uppercase sm:text-3xl">
-                10 Finisher Berikutnya
+                20 Finisher Berikutnya
               </div>
-              <p className="mt-1 text-sm text-primary-foreground/85">Finisher #4–#13</p>
+              <p className="mt-1 text-sm text-primary-foreground/85">Finisher 4–13 Putra</p>
+              <p className="mt-1 text-sm text-primary-foreground/85">Finisher 4–13 Putri</p>
             </div>
             <div className="shrink-0 rounded-2xl bg-background/95 px-5 py-3 text-center font-display text-lg text-brand-deep">
               Rp100.000<span className="text-xs">/orang</span>
@@ -948,55 +987,604 @@ const toneClass: Record<string, string> = {
 
 export function Categories() {
   return (
-    <section id="kategori" className="bg-background py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+    <section
+      id="kategori"
+      className="
+        relative
+        overflow-hidden
+        bg-background
+        py-20
+        sm:py-24
+        lg:py-28
+      "
+    >
+      {/* =====================================================
+          DECORATIVE BACKGROUND
+      ===================================================== */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          overflow-hidden
+        "
+        aria-hidden="true"
+      >
+        {/* Orange Glow */}
+        <div
+          className="
+            absolute
+            -left-32
+            -top-32
+            h-72
+            w-72
+            rounded-full
+            bg-[#F18B1F]/10
+            blur-3xl
+            sm:h-96
+            sm:w-96
+          "
+        />
+
+        {/* Green Glow */}
+        <div
+          className="
+            absolute
+            left-1/2
+            top-1/3
+            h-72
+            w-72
+            -translate-x-1/2
+            rounded-full
+            bg-[#97D91B]/10
+            blur-3xl
+            sm:h-96
+            sm:w-96
+          "
+        />
+
+        {/* Blue Glow */}
+        <div
+          className="
+            absolute
+            -bottom-40
+            -right-32
+            h-80
+            w-80
+            rounded-full
+            bg-[#1492FA]/10
+            blur-3xl
+            sm:h-96
+            sm:w-96
+          "
+        />
+      </div>
+
+      {/* =====================================================
+          MAIN CONTENT
+      ===================================================== */}
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          max-w-7xl
+          px-4
+          sm:px-6
+          lg:px-8
+        "
+      >
+        {/* ===================================================
+            HEADING
+        =================================================== */}
         <Reveal>
-          <h2 className="text-center font-display text-4xl text-navy uppercase sm:text-5xl lg:text-6xl">
-            Pilih Kategori,
-            <br />
-            Siapkan Langkahmu.
-          </h2>
+          <div className="mx-auto max-w-3xl text-center">
+
+            <h2
+              className="
+                font-display
+                text-4xl
+                leading-[1.05]
+                text-navy
+                uppercase
+                sm:text-5xl
+                lg:text-6xl
+              "
+            >
+              Pilih Kategori,
+              <br />
+
+              <span className="text-navy">
+                Siapkan Langkahmu.
+              </span>
+            </h2>
+
+            <p
+              className="
+                mx-auto
+                mt-4
+                max-w-xl
+                text-sm
+                font-medium
+                leading-relaxed
+                text-navy/60
+                sm:text-base
+              "
+            >
+              Pilih kategori yang sesuai dan bersiap menjadi
+              bagian dari PKU Muhammadiyah Sukoharjo Fun Run.
+            </p>
+
+          </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((c, i) => (
-            <Reveal key={c.slug} delay={i * 70}>
-              <article className="flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-brand-light/50 bg-background shadow-soft transition-all duration-300 hover:-translate-y-2 hover:shadow-lift">
-                <header className={`px-6 py-5 ${toneClass[c.tone]}`}>
-                  <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2">
-                    <h3 className="min-w-0 font-display text-xl uppercase">{c.name}</h3>
-                    {c.note && (
-                      <span className="shrink-0 rounded-full bg-background/90 px-3 py-1 text-[10px] font-bold tracking-widest text-brand-deep uppercase">
-                        {c.note}
-                      </span>
-                    )}
-                  </div>
-                </header>
-                <div className="flex flex-1 flex-col p-6">
-                  <div className="font-display text-3xl text-navy">{c.price}</div>
-                  <ul className="mt-4 space-y-2 text-sm text-navy/75">
-                    {c.benefits.map((b) => (
-                      <li key={b} className="flex items-center gap-2">
-                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-                  {c.requirement && (
-                    <p className="mt-4 rounded-xl bg-brand-sky px-3 py-2 text-xs font-semibold text-brand-deep">
-                      Persyaratan: {c.requirement}
-                    </p>
-                  )}
-                  <a
-                    href={`${eventInfo.registerUrl}?category=${c.slug}`}
-                    className="mt-6 rounded-full gradient-brand px-5 py-3 text-center font-display text-sm tracking-wide text-primary-foreground uppercase transition-transform hover:scale-[1.03]"
+        {/* ===================================================
+            CATEGORY CARDS
+        =================================================== */}
+        <div
+          className="
+            mx-auto
+            mt-10
+            grid
+            max-w-6xl
+            gap-5
+            sm:mt-12
+            sm:grid-cols-2
+            lg:grid-cols-3
+          "
+        >
+          {categories.map((c, i) => {
+
+            /* =================================================
+               COLOR PER CATEGORY
+            ================================================= */
+
+            let headerColor = "#F18B1F";
+            let accentColor = "#DA630E";
+            let softColor = "#FFF3E8";
+            let textColor = "#8A3D06";
+
+            // =================================================
+            // 5K UMUM
+            // ORANGE
+            // =================================================
+            if (c.slug === "5k-umum") {
+              headerColor = "#F18B1F";
+              accentColor = "#DA630E";
+              softColor = "#FFF3E8";
+              textColor = "#8A3D06";
+            }
+
+            // =================================================
+            // 2.5K UMUM
+            // GREEN
+            // =================================================
+            else if (c.slug === "2-5k-umum") {
+              headerColor = "#97D91B";
+              accentColor = "#468519";
+              softColor = "#F2FBDD";
+              textColor = "#468519";
+            }
+
+            // =================================================
+            // PELAJAR / MAHASISWA
+            // BLUE
+            // =================================================
+            else if (c.slug === "pelajar-mahasiswa") {
+              headerColor = "#1492FA";
+              accentColor = "#0A5490";
+              softColor = "#EAF6FF";
+              textColor = "#0A5490";
+            }
+
+            /* =================================================
+               HARGA NORMAL / HARGA CORET
+            ================================================= */
+
+            const originalPrice =
+              c.slug === "5k-umum"
+                ? "Rp 175.000"
+                : c.slug === "2-5k-umum"
+                  ? "Rp 75.000"
+                  : null;
+
+            /* =================================================
+               KUOTA
+            ================================================= */
+
+            const quota = c.quota ?? 0;
+            const registered = c.registered ?? 0;
+
+            // Batasi agar tidak lebih dari 100%
+            const percentage =
+              quota > 0
+                ? Math.min(
+                    Math.round((registered / quota) * 100),
+                    100
+                  )
+                : 0;
+
+            return (
+              <Reveal
+                key={c.slug}
+                delay={i * 80}
+              >
+                <article
+                  className="
+                    group
+                    flex
+                    h-full
+                    flex-col
+                    overflow-hidden
+                    rounded-[1.75rem]
+                    border
+                    border-slate-200
+                    bg-white
+                    shadow-[0_10px_30px_rgba(20,43,77,0.08)]
+                    transition-all
+                    duration-300
+                    hover:-translate-y-2
+                    hover:shadow-[0_20px_45px_rgba(20,43,77,0.14)]
+                  "
+                >
+
+                  {/* =================================================
+                      CARD HEADER
+                  ================================================= */}
+                  <header
+                    className="
+                      relative
+                      overflow-hidden
+                      px-6
+                      py-5
+                      sm:px-7
+                      sm:py-6
+                    "
+                    style={{
+                      backgroundColor: headerColor,
+                    }}
                   >
-                    Daftar
-                  </a>
-                </div>
-              </article>
-            </Reveal>
-          ))}
+
+                    {/* Decorative Circle */}
+                    <div
+                      className="
+                        pointer-events-none
+                        absolute
+                        -right-8
+                        -top-8
+                        h-24
+                        w-24
+                        rounded-full
+                        bg-white/10
+                      "
+                    />
+
+                    <div
+                      className="
+                        pointer-events-none
+                        absolute
+                        -bottom-12
+                        right-10
+                        h-20
+                        w-20
+                        rounded-full
+                        bg-black/5
+                      "
+                    />
+
+                    <div
+                      className="
+                        relative
+                        grid
+                        grid-cols-[minmax(0,1fr)_auto]
+                        items-center
+                        gap-2
+                      "
+                    >
+
+                      {/* Category Name */}
+                      <h3
+                        className="
+                          min-w-0
+                          font-display
+                          text-xl
+                          leading-tight
+                          text-white
+                          uppercase
+                          sm:text-2xl
+                        "
+                      >
+                        {c.name}
+                      </h3>
+
+                      {/* PRESALE */}
+                      {c.note && (
+                        <span
+                          className="
+                            shrink-0
+                            rounded-full
+                            bg-white
+                            px-3
+                            py-1
+                            text-[9px]
+                            font-extrabold
+                            tracking-widest
+                            uppercase
+                            shadow-sm
+                          "
+                          style={{
+                            color: accentColor,
+                          }}
+                        >
+                          {c.note}
+                        </span>
+                      )}
+
+                    </div>
+                  </header>
+
+                  {/* =================================================
+                      CARD BODY
+                  ================================================= */}
+                  <div
+                    className="
+                      flex
+                      flex-1
+                      flex-col
+                      p-6
+                      sm:p-7
+                    "
+                  >
+
+                    {/* =================================================
+                        PRICE
+                    ================================================= */}
+                    <div
+                      className="
+                        flex
+                        flex-wrap
+                        items-baseline
+                        gap-2
+                      "
+                    >
+
+                      {/* Harga Coret */}
+                      {originalPrice && (
+                        <span
+                          className="
+                            font-display
+                            text-base
+                            font-medium
+                            text-slate-400
+                            line-through
+                            decoration-2
+                            sm:text-lg
+                          "
+                        >
+                          {originalPrice}
+                        </span>
+                      )}
+
+                      {/* Harga Aktif */}
+                      <span
+                        className="
+                          font-display
+                          text-3xl
+                          tracking-tight
+                          sm:text-4xl
+                        "
+                        style={{
+                          color: textColor,
+                        }}
+                      >
+                        {c.price}
+                      </span>
+
+                    </div>
+
+                    {/* =================================================
+                        QUOTA
+                        GARIS + JUMLAH PESERTA
+                    ================================================= */}
+                    <div className="mt-5">
+
+                      {/* Header Kuota */}
+                      <div
+                        className="
+                          flex
+                          items-center
+                          justify-between
+                          gap-3
+                        "
+                      >
+                        <span
+                          className="
+                            text-[10px]
+                            font-extrabold
+                            tracking-[0.16em]
+                            text-navy/50
+                            uppercase
+                          "
+                        >
+                          Kuota Peserta
+                        </span>
+
+                        <span
+                          className="
+                            text-xs
+                            font-bold
+                          "
+                          style={{
+                            color: accentColor,
+                          }}
+                        >
+                          {registered}/{quota}
+                        </span>
+                      </div>
+
+                      {/* Progress Track */}
+                      <div
+                        className="
+                          mt-2
+                          h-2
+                          w-full
+                          overflow-hidden
+                          rounded-full
+                        "
+                        style={{
+                          backgroundColor: softColor,
+                        }}
+                      >
+                        {/* Progress */}
+                        <div
+                          className="
+                            h-full
+                            rounded-full
+                            transition-all
+                            duration-700
+                          "
+                          style={{
+                            width: `${percentage}%`,
+                            backgroundColor: headerColor,
+                          }}
+                        />
+                      </div>
+
+                      {/* Participant Text */}
+                      <div
+                        className="
+                          mt-2
+                          flex
+                          items-center
+                          justify-between
+                          gap-2
+                          text-[10px]
+                          font-medium
+                          text-navy/50
+                        "
+                      >
+                        <span>
+                          {registered} peserta terdaftar
+                        </span>
+
+                        <span>
+                          {quota} kuota
+                        </span>
+                      </div>
+
+                    </div>
+
+                    {/* =================================================
+                        BENEFITS
+                    ================================================= */}
+                    <ul
+                      className="
+                        mt-5
+                        space-y-3
+                        text-sm
+                        text-navy/75
+                      "
+                    >
+                      {c.benefits.map((b) => (
+                        <li
+                          key={b}
+                          className="
+                            flex
+                            items-center
+                            gap-3
+                          "
+                        >
+
+                          {/* Bullet */}
+                          <span
+                            className="
+                              grid
+                              h-5
+                              w-5
+                              shrink-0
+                              place-items-center
+                              rounded-full
+                            "
+                            style={{
+                              backgroundColor: softColor,
+                            }}
+                          >
+                            <span
+                              className="
+                                h-1.5
+                                w-1.5
+                                rounded-full
+                              "
+                              style={{
+                                backgroundColor: headerColor,
+                              }}
+                            />
+                          </span>
+
+                          <span>
+                            {b}
+                          </span>
+
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* =================================================
+                        REQUIREMENT
+                    ================================================= */}
+                    {c.requirement && (
+                      <p
+                        className="
+                          mt-5
+                          rounded-xl
+                          px-3
+                          py-2.5
+                          text-xs
+                          font-semibold
+                        "
+                        style={{
+                          backgroundColor: softColor,
+                          color: textColor,
+                        }}
+                      >
+                        Persyaratan: {c.requirement}
+                      </p>
+                    )}
+
+                    {/* =================================================
+                        REGISTER BUTTON
+                    ================================================= */}
+                    <a
+                      href={`${eventInfo.registerUrl}?category=${c.slug}`}
+                      className="
+                        mt-6
+                        rounded-full
+                        px-5
+                        py-3.5
+                        text-center
+                        font-display
+                        text-sm
+                        tracking-wide
+                        text-white
+                        uppercase
+                        shadow-sm
+                        transition-all
+                        duration-300
+                        hover:scale-[1.03]
+                        hover:shadow-md
+                      "
+                      style={{
+                        backgroundColor: headerColor,
+                      }}
+                    >
+                      Daftar
+                    </a>
+
+                  </div>
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

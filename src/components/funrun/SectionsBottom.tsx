@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Download, Instagram, MessageCircle } from "lucide-react";
 import jersey from "@/assets/jersey.png";
+import jersey2 from "@/assets/jersey2.png";
 import medal from "@/assets/medal.png";
 import route5k from "@/assets/maps/route-5k.png";
 import route25k from "@/assets/maps/route-2-5k.png";
@@ -16,7 +17,7 @@ import { eventInfo, faqs, navItems, rundown, sponsors, steps } from "@/data/even
 export function RacePack() {
   const items = [
     {
-      img: jersey,
+      img: jersey2,
       label: "Jersey",
       desc: "Bahan dry-fit ringan dengan desain Milad.",
     },
