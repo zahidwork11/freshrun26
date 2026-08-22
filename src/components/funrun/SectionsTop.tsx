@@ -1081,7 +1081,7 @@ export function Categories() {
 
             // 2.5K UMUM
             else if (c.slug === "2-5k-umum") {
-              headerColor = "#97D91B";
+              headerColor = "#81b71e";
               accentColor = "#468519";
               softColor = "#F2FBDD";
               textColor = "#468519";
