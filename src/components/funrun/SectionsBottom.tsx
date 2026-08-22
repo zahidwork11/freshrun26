@@ -1522,7 +1522,7 @@ function MarqueeRow({
   return (
     <div className="w-full overflow-hidden">
       <div
-        className={`flex w-max shrink-0 items-center gap-4 ${
+        className={`flex w-max shrink-0 items-center gap-3 ${
           dir === "left" ? "marquee-left" : "marquee-right"
         }`}
         style={
@@ -1534,12 +1534,24 @@ function MarqueeRow({
         {items.map((sponsor, index) => (
           <div
             key={`${sponsor.name}-${index}`}
-            className="flex h-24 w-52 shrink-0 items-center justify-center rounded-2xl border border-white/60 bg-white px-8 py-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:h-28 sm:w-60"
+            className="
+              flex h-20 w-40 shrink-0
+              items-center justify-center
+              rounded-xl
+              border border-white/60
+              bg-white
+              px-5 py-4
+              shadow-sm
+              transition-all duration-300
+              hover:-translate-y-1
+              hover:shadow-md
+              sm:h-24 sm:w-52
+            "
           >
             <img
               src={sponsor.logo}
               alt={`Logo ${sponsor.name}`}
-              className="max-h-16 max-w-full object-contain"
+              className="max-h-12 max-w-[85%] object-contain"
               loading="lazy"
             />
           </div>
