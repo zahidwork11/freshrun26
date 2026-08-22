@@ -195,20 +195,36 @@
   }
 }
 
-@keyframes marquee-left {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+/* ============================================================
+   SPONSOR MARQUEE
+============================================================ */
+
+@keyframes sponsor-marquee-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
-@keyframes marquee-right {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
+@keyframes sponsor-marquee-right {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @utility marquee-left {
-  animation: marquee-left var(--marquee-duration, 40s) linear infinite;
+  animation: sponsor-marquee-left var(--marquee-duration, 40s) linear infinite;
+  will-change: transform;
 }
 
 @utility marquee-right {
-  animation: marquee-right var(--marquee-duration, 40s) linear infinite;
+  animation: sponsor-marquee-right var(--marquee-duration, 40s) linear infinite;
+  will-change: transform;
 }

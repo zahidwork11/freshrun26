@@ -1107,27 +1107,6 @@ export function Rundown() {
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
 
-            {/* Label */}
-            <span
-              className="
-                inline-flex
-                items-center
-                rounded-full
-                bg-background
-                px-4
-                py-2
-                text-[10px]
-                font-extrabold
-                tracking-[0.22em]
-                text-brand-deep
-                uppercase
-                shadow-soft
-                sm:text-xs
-              "
-            >
-              Rundown Acara
-            </span>
-
             {/* Heading */}
             <h2
               className="
@@ -1141,29 +1120,12 @@ export function Rundown() {
                 lg:text-6xl
               "
             >
-              Satu Hari.
+              RUNDOWN
               <br />
               <span className="text-brand-deep">
-                Banyak Cerita.
+                PKU RUN FRESH
               </span>
             </h2>
-
-            {/* Description */}
-            <p
-              className="
-                mx-auto
-                mt-4
-                max-w-xl
-                text-sm
-                leading-relaxed
-                text-navy/65
-                sm:text-base
-              "
-            >
-              Ikuti seluruh rangkaian acara dan nikmati setiap
-              momen PKU Muhammadiyah Sukoharjo Fun Run.
-            </p>
-
           </div>
         </Reveal>
 
@@ -1455,35 +1417,89 @@ export function Rundown() {
 
 export function HowTo() {
   return (
-    <section id="cara-daftar" className="bg-background py-20 lg:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section
+      id="cara-daftar"
+      className="relative overflow-hidden bg-[#F18B1F]/90 py-20 lg:py-28"
+    >
+      {/* Decorative Background */}
+      <div
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        <div className="absolute -left-32 -top-32 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+        <div className="absolute -bottom-40 -right-32 h-96 w-96 rounded-full bg-black/10 blur-3xl" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
+        {/* =====================================================
+            HEADING
+        ===================================================== */}
         <Reveal>
-          <h2 className="text-center font-display text-4xl text-navy uppercase sm:text-5xl lg:text-6xl">
-            5 Langkah Menuju Garis Start.
-          </h2>
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="font-display text-4xl text-white uppercase sm:text-5xl lg:text-6xl">
+              5 Langkah Menuju Garis Start.
+            </h2>
+
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/80 sm:text-base">
+              Ikuti langkah pendaftaran berikut dan bersiap menjadi bagian
+              dari PKU Muhammadiyah Sukoharjo Fun Run.
+            </p>
+          </div>
         </Reveal>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {steps.map((s, i) => (
-            <Reveal key={s.no} delay={i * 70}>
-              <div className="h-full rounded-[1.75rem] border border-brand-light/50 bg-background p-6 shadow-soft transition-all hover:-translate-y-2 hover:shadow-lift">
-                <span className="font-display text-4xl text-brand-light">{s.no}</span>
-                <h3 className="mt-2 font-display text-xl text-navy uppercase">{s.title}</h3>
-                <p className="mt-2 text-sm text-navy/70">{s.desc}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+
+        {/* =====================================================
+            MAIN CARD
+        ===================================================== */}
+        <Reveal delay={100}>
+          <div className="mt-12 rounded-[2rem] border border-white/40 bg-white/95 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.12)] sm:p-8 lg:p-10">
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-0">
+              {steps.map((s, i) => (
+                <div
+                  key={s.no}
+                  className="relative flex flex-col items-center text-center lg:px-5"
+                >
+                  {/* Connecting Line */}
+                  {i < steps.length - 1 && (
+                    <div className="absolute left-[calc(50%+32px)] top-8 hidden h-[2px] w-[calc(100%-64px)] rounded-full bg-[#F18B1F]/25 lg:block" />
+                  )}
+
+                  {/* Step Number */}
+                  <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full border-2 border-[#F18B1F]/70 bg-[#FFF3E8]/80">
+                    <span className="font-display text-2xl text-[#F18B1F]">
+                      {s.no}
+                    </span>
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="mt-5 font-display text-lg text-navy uppercase sm:text-xl">
+                    {s.title}
+                  </h3>
+
+                  <p className="mt-2 max-w-[220px] text-sm leading-relaxed text-navy/60">
+                    {s.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+
+        {/* =====================================================
+            BUTTONS
+        ===================================================== */}
         <Reveal delay={200}>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <a
               href={eventInfo.pdfUrl}
-              className="inline-flex items-center gap-2 rounded-full border-2 border-brand px-7 py-3.5 font-display text-sm tracking-wide text-brand-deep uppercase transition-colors hover:bg-brand-sky"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-white/95 px-7 py-3.5 font-display text-sm tracking-wide text-[#F18B1F] uppercase shadow-sm transition-all hover:-translate-y-0.5 hover:bg-white"
             >
-              <Download className="h-4 w-4" /> Download PDF Tata Cara Daftar
+              <Download className="h-4 w-4" />
+              Download PDF Tata Cara Daftar
             </a>
+
             <a
               href={eventInfo.registerUrl}
-              className="rounded-full gradient-brand px-8 py-3.5 font-display text-sm tracking-wide text-primary-foreground uppercase shadow-soft transition-transform hover:scale-105"
+              className="rounded-full border-2 border-white/70 bg-[#D96F0F]/90 px-8 py-3.5 font-display text-sm tracking-wide text-white uppercase shadow-sm transition-all hover:-translate-y-0.5 hover:bg-[#C9630D]/95 hover:shadow-md"
             >
               Daftar Sekarang
             </a>
@@ -1494,22 +1510,38 @@ export function HowTo() {
   );
 }
 
-function MarqueeRow({ dir, speed }: { dir: "left" | "right"; speed: number }) {
-  const row = [...sponsors, ...sponsors];
+function MarqueeRow({
+  dir,
+  speed,
+}: {
+  dir: "left" | "right";
+  speed: number;
+}) {
+  const items = [...sponsors, ...sponsors];
+
   return (
-    <div className="overflow-hidden">
+    <div className="w-full overflow-hidden">
       <div
-        className={`flex w-max gap-4 ${dir === "left" ? "marquee-left" : "marquee-right"}`}
-        style={{ ["--marquee-duration" as string]: `${speed}s` }}
+        className={`flex w-max shrink-0 items-center gap-4 ${
+          dir === "left" ? "marquee-left" : "marquee-right"
+        }`}
+        style={
+          {
+            "--marquee-duration": `${speed}s`,
+          } as React.CSSProperties
+        }
       >
-        {row.map((s, i) => (
+        {items.map((sponsor, index) => (
           <div
-            key={`${s}-${i}`}
-            className="grid h-20 w-44 shrink-0 place-items-center rounded-2xl border border-brand-light/50 bg-background px-4 opacity-45 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+            key={`${sponsor.name}-${index}`}
+            className="flex h-24 w-52 shrink-0 items-center justify-center rounded-2xl border border-white/60 bg-white px-8 py-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:h-28 sm:w-60"
           >
-            <span className="text-center font-display text-sm tracking-wide text-brand-deep uppercase">
-              {s}
-            </span>
+            <img
+              src={sponsor.logo}
+              alt={`Logo ${sponsor.name}`}
+              className="max-h-16 max-w-full object-contain"
+              loading="lazy"
+            />
           </div>
         ))}
       </div>
@@ -1519,7 +1551,10 @@ function MarqueeRow({ dir, speed }: { dir: "left" | "right"; speed: number }) {
 
 export function Sponsors() {
   return (
-    <section id="sponsor" className="overflow-hidden bg-brand-sky py-20 lg:py-28">
+    <section
+      id="sponsor"
+      className="overflow-hidden bg-brand-sky py-20 lg:py-28"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <h2 className="text-center font-display text-4xl text-navy uppercase sm:text-5xl lg:text-6xl">
@@ -1529,6 +1564,7 @@ export function Sponsors() {
           </h2>
         </Reveal>
       </div>
+
       <div className="mt-12 space-y-4">
         <MarqueeRow dir="left" speed={38} />
         <MarqueeRow dir="right" speed={46} />

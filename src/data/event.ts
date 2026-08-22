@@ -259,18 +259,46 @@ export const steps = [
 // ============================================================
 
 export const sponsors = [
-  "SEHAT CARE",
-  "AQUAPURE",
-  "SUKOHARJO SPORT",
-  "MUHAMMADIYAH MEDIA",
-  "BANK SYARIAH",
-  "RUN LAB",
-  "VITA GO",
-  "PKU PHARMA",
-  "KOPI LANGKAH",
-  "FIT GEAR",
-  "SOLO RAYA",
-  "AMANAH GROUP",
+  {
+    name: "JAPFA",
+    logo: "src/assets/japfa.png",
+  },
+  {
+    name: "MANDIRI",
+    logo: "src/assets/mandiri.png",
+  },
+  {
+    name: "ASTRA",
+    logo: "src/assets/astra.png",
+  },
+  {
+    name: "SMARTFREN",
+    logo: "src/assets/smartfren.png",
+  },
+  {
+    name: "TELKOMSEL",
+    logo: "src/assets/telkomsel.png",
+  },
+  {
+    name: "DANA",
+    logo: "src/assets/dana.png",
+  },
+  {
+    name: "ERAFONE",
+    logo: "src/assets/erafone.png",
+  },
+    {
+    name: "VIVO",
+    logo: "src/assets/vivo.png",
+  },
+  {
+    name: "XIAOMI",
+    logo: "src/assets/xiaomi.png",
+  },
+  {
+    name: "SAMSUNG",
+    logo: "src/assets/samsung.png",
+  },
 ];
 
 // ============================================================
