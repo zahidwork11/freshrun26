@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { CalendarDays, Clock, MapPin, Sparkles, Trophy, Flag } from "lucide-react";
+import { CalendarDays, Clock, MapPin, Sparkles, Trophy, Flag, Clock3 } from "lucide-react";
 import prizeAsset from "@/assets/doorprice.png";
 import { Reveal } from "./Reveal";
 import { Countdown } from "./Countdown";
 import { categories, eventInfo, podium } from "@/data/event";
-import { Clock3 } from "lucide-react";
 import hero9 from "@/assets/hero9.png";
 import hero10 from "@/assets/hero10.png";
 import hero11 from "@/assets/hero11.png";
 import hero12 from "@/assets/hero12.webp";
+import hero14 from "@/assets/hero14.png";
+
 
 
 export function Hero() {
@@ -34,7 +35,7 @@ export function Hero() {
       ===================================================== */}
       <div className="absolute inset-0 -z-30 overflow-hidden">
         <img
-          src={hero12}
+          src={hero14}
           alt="Peserta fun run PKU Muhammadiyah Sukoharjo"
           width={1920}
           height={1280}
@@ -425,8 +426,16 @@ export function Hero() {
 
 export function RaceInfo() {
   const info = [
-    { label: "Start", value: eventInfo.startTime },
-    { label: "Lokasi", value: eventInfo.location },
+    {
+      label: "Start",
+      value: eventInfo.startTime,
+      icon: Clock3,
+    },
+    {
+      label: "Lokasi",
+      value: eventInfo.location,
+      icon: MapPin,
+    },
   ];
 
   return (
@@ -436,6 +445,7 @@ export function RaceInfo() {
           <p className="text-center text-xs font-bold tracking-[0.25em] text-brand uppercase">
             Race Info
           </p>
+
           <h2 className="mx-auto mt-3 max-w-3xl text-center font-display text-4xl text-navy uppercase sm:text-5xl lg:text-6xl">
             Waktunya Tinggal Menghitung Hari!
           </h2>
@@ -446,25 +456,39 @@ export function RaceInfo() {
         </Reveal>
 
         <Reveal delay={180}>
-          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-2">
-            {info.map((i) => (
-              <div
-                key={i.label}
-                className="rounded-3xl border border-brand-light/60 bg-background p-6 shadow-soft transition-transform hover:-translate-y-1"
-              >
-                <div className="text-[11px] font-bold tracking-[0.2em] text-brand uppercase">
-                  {i.label}
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            {info.map((i) => {
+              const Icon = i.icon;
+
+              return (
+                <div
+                  key={i.label}
+                  className="group flex items-center gap-5 rounded-3xl border border-brand-light/60 bg-background p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                >
+                  {/* Icon */}
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+                    <Icon size={28} strokeWidth={2.2} />
+                  </div>
+
+                  {/* Content */}
+                  <div className="min-w-0">
+                    <div className="text-[11px] font-bold tracking-[0.2em] text-brand uppercase">
+                      {i.label}
+                    </div>
+
+                    <div className="mt-1 font-display text-xl text-navy uppercase sm:text-2xl">
+                      {i.value}
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-2 font-display text-2xl text-navy uppercase">{i.value}</div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </Reveal>
       </div>
     </section>
   );
 }
-
 
 export function TotalPrize() {
   const chips = [
