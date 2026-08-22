@@ -1013,152 +1013,55 @@ export function Categories() {
   return (
     <section
       id="kategori"
-      className="
-        relative
-        overflow-hidden
-        bg-background
-        py-20
-        sm:py-24
-        lg:py-28
-      "
+      className="relative overflow-hidden bg-background py-20 sm:py-24 lg:py-28"
     >
       {/* =====================================================
           DECORATIVE BACKGROUND
       ===================================================== */}
       <div
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          overflow-hidden
-        "
+        className="pointer-events-none absolute inset-0 overflow-hidden"
         aria-hidden="true"
       >
         {/* Orange Glow */}
-        <div
-          className="
-            absolute
-            -left-32
-            -top-32
-            h-72
-            w-72
-            rounded-full
-            bg-[#F18B1F]/10
-            blur-3xl
-            sm:h-96
-            sm:w-96
-          "
-        />
+        <div className="absolute -left-32 -top-32 h-72 w-72 rounded-full bg-[#F18B1F]/10 blur-3xl sm:h-96 sm:w-96" />
 
         {/* Green Glow */}
-        <div
-          className="
-            absolute
-            left-1/2
-            top-1/3
-            h-72
-            w-72
-            -translate-x-1/2
-            rounded-full
-            bg-[#97D91B]/10
-            blur-3xl
-            sm:h-96
-            sm:w-96
-          "
-        />
+        <div className="absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-[#97D91B]/10 blur-3xl sm:h-96 sm:w-96" />
 
         {/* Blue Glow */}
-        <div
-          className="
-            absolute
-            -bottom-40
-            -right-32
-            h-80
-            w-80
-            rounded-full
-            bg-[#1492FA]/10
-            blur-3xl
-            sm:h-96
-            sm:w-96
-          "
-        />
+        <div className="absolute -bottom-40 -right-32 h-80 w-80 rounded-full bg-[#1492FA]/10 blur-3xl sm:h-96 sm:w-96" />
       </div>
 
       {/* =====================================================
           MAIN CONTENT
       ===================================================== */}
-      <div
-        className="
-          relative
-          z-10
-          mx-auto
-          max-w-7xl
-          px-4
-          sm:px-6
-          lg:px-8
-        "
-      >
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
         {/* ===================================================
             HEADING
         =================================================== */}
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-
-            <h2
-              className="
-                font-display
-                text-4xl
-                leading-[1.05]
-                text-navy
-                uppercase
-                sm:text-5xl
-                lg:text-6xl
-              "
-            >
+            <h2 className="font-display text-4xl leading-[1.05] text-navy uppercase sm:text-5xl lg:text-6xl">
               Pilih Kategori,
               <br />
-
               <span className="text-navy">
                 Siapkan Langkahmu.
               </span>
             </h2>
 
-            <p
-              className="
-                mx-auto
-                mt-4
-                max-w-xl
-                text-sm
-                font-medium
-                leading-relaxed
-                text-navy/60
-                sm:text-base
-              "
-            >
-              Pilih kategori yang sesuai dan bersiap menjadi
-              bagian dari PKU Muhammadiyah Sukoharjo Fun Run.
+            <p className="mx-auto mt-4 max-w-xl text-sm font-medium leading-relaxed text-navy/60 sm:text-base">
+              Pilih kategori yang sesuai dan bersiap menjadi bagian dari PKU
+              Muhammadiyah Sukoharjo Fun Run.
             </p>
-
           </div>
         </Reveal>
 
         {/* ===================================================
             CATEGORY CARDS
         =================================================== */}
-        <div
-          className="
-            mx-auto
-            mt-10
-            grid
-            max-w-6xl
-            gap-5
-            sm:mt-12
-            sm:grid-cols-2
-            lg:grid-cols-3
-          "
-        >
+        <div className="mx-auto mt-10 grid max-w-6xl gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((c, i) => {
-
             /* =================================================
                COLOR PER CATEGORY
             ================================================= */
@@ -1168,10 +1071,7 @@ export function Categories() {
             let softColor = "#FFF3E8";
             let textColor = "#8A3D06";
 
-            // =================================================
             // 5K UMUM
-            // ORANGE
-            // =================================================
             if (c.slug === "5k-umum") {
               headerColor = "#F18B1F";
               accentColor = "#DA630E";
@@ -1179,10 +1079,7 @@ export function Categories() {
               textColor = "#8A3D06";
             }
 
-            // =================================================
             // 2.5K UMUM
-            // GREEN
-            // =================================================
             else if (c.slug === "2-5k-umum") {
               headerColor = "#97D91B";
               accentColor = "#468519";
@@ -1190,10 +1087,7 @@ export function Categories() {
               textColor = "#468519";
             }
 
-            // =================================================
             // PELAJAR / MAHASISWA
-            // BLUE
-            // =================================================
             else if (c.slug === "pelajar-mahasiswa") {
               headerColor = "#1492FA";
               accentColor = "#0A5490";
@@ -1219,7 +1113,6 @@ export function Categories() {
             const quota = c.quota ?? 0;
             const registered = c.registered ?? 0;
 
-            // Batasi agar tidak lebih dari 100%
             const percentage =
               quota > 0
                 ? Math.min(
@@ -1233,109 +1126,33 @@ export function Categories() {
                 key={c.slug}
                 delay={i * 80}
               >
-                <article
-                  className="
-                    group
-                    flex
-                    h-full
-                    flex-col
-                    overflow-hidden
-                    rounded-[1.75rem]
-                    border
-                    border-slate-200
-                    bg-white
-                    shadow-[0_10px_30px_rgba(20,43,77,0.08)]
-                    transition-all
-                    duration-300
-                    hover:-translate-y-2
-                    hover:shadow-[0_20px_45px_rgba(20,43,77,0.14)]
-                  "
-                >
+                <article className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_10px_30px_rgba(20,43,77,0.08)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(20,43,77,0.14)]">
 
                   {/* =================================================
                       CARD HEADER
                   ================================================= */}
                   <header
-                    className="
-                      relative
-                      overflow-hidden
-                      px-6
-                      py-5
-                      sm:px-7
-                      sm:py-6
-                    "
+                    className="relative overflow-hidden px-6 py-5 sm:px-7 sm:py-6"
                     style={{
                       backgroundColor: headerColor,
                     }}
                   >
-
                     {/* Decorative Circle */}
-                    <div
-                      className="
-                        pointer-events-none
-                        absolute
-                        -right-8
-                        -top-8
-                        h-24
-                        w-24
-                        rounded-full
-                        bg-white/10
-                      "
-                    />
+                    <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-white/10" />
 
-                    <div
-                      className="
-                        pointer-events-none
-                        absolute
-                        -bottom-12
-                        right-10
-                        h-20
-                        w-20
-                        rounded-full
-                        bg-black/5
-                      "
-                    />
+                    <div className="pointer-events-none absolute -bottom-12 right-10 h-20 w-20 rounded-full bg-black/5" />
 
-                    <div
-                      className="
-                        relative
-                        grid
-                        grid-cols-[minmax(0,1fr)_auto]
-                        items-center
-                        gap-2
-                      "
-                    >
+                    <div className="relative grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2">
 
                       {/* Category Name */}
-                      <h3
-                        className="
-                          min-w-0
-                          font-display
-                          text-xl
-                          leading-tight
-                          text-white
-                          uppercase
-                          sm:text-2xl
-                        "
-                      >
+                      <h3 className="min-w-0 font-display text-xl leading-tight text-white uppercase sm:text-2xl">
                         {c.name}
                       </h3>
 
                       {/* PRESALE */}
                       {c.note && (
                         <span
-                          className="
-                            shrink-0
-                            rounded-full
-                            bg-white
-                            px-3
-                            py-1
-                            text-[9px]
-                            font-extrabold
-                            tracking-widest
-                            uppercase
-                            shadow-sm
-                          "
+                          className="shrink-0 rounded-full bg-white px-3 py-1 text-[9px] font-extrabold tracking-widest uppercase shadow-sm"
                           style={{
                             color: accentColor,
                           }}
@@ -1350,53 +1167,23 @@ export function Categories() {
                   {/* =================================================
                       CARD BODY
                   ================================================= */}
-                  <div
-                    className="
-                      flex
-                      flex-1
-                      flex-col
-                      p-6
-                      sm:p-7
-                    "
-                  >
+                  <div className="flex flex-1 flex-col p-6 sm:p-7">
 
                     {/* =================================================
                         PRICE
                     ================================================= */}
-                    <div
-                      className="
-                        flex
-                        flex-wrap
-                        items-baseline
-                        gap-2
-                      "
-                    >
+                    <div className="flex flex-wrap items-baseline gap-2">
 
                       {/* Harga Coret */}
                       {originalPrice && (
-                        <span
-                          className="
-                            font-display
-                            text-base
-                            font-medium
-                            text-slate-400
-                            line-through
-                            decoration-2
-                            sm:text-lg
-                          "
-                        >
+                        <span className="font-display text-base font-medium text-slate-400 line-through decoration-2 sm:text-lg">
                           {originalPrice}
                         </span>
                       )}
 
                       {/* Harga Aktif */}
                       <span
-                        className="
-                          font-display
-                          text-3xl
-                          tracking-tight
-                          sm:text-4xl
-                        "
+                        className="font-display text-3xl tracking-tight sm:text-4xl"
                         style={{
                           color: textColor,
                         }}
@@ -1406,38 +1193,30 @@ export function Categories() {
 
                     </div>
 
+{/* =================================================
+    REGISTRATION DATE
+================================================= */}
+{c.registrationPeriod && (
+  <div className="mt-3 rounded-xl border border-slate-200 px-4 py-2.5">
+    <p className="text-sm font-medium tracking-tight text-navy/60 sm:text-base">
+      {c.registrationPeriod}
+    </p>
+  </div>
+)}
+
                     {/* =================================================
                         QUOTA
-                        GARIS + JUMLAH PESERTA
                     ================================================= */}
                     <div className="mt-5">
 
                       {/* Header Kuota */}
-                      <div
-                        className="
-                          flex
-                          items-center
-                          justify-between
-                          gap-3
-                        "
-                      >
-                        <span
-                          className="
-                            text-[10px]
-                            font-extrabold
-                            tracking-[0.16em]
-                            text-navy/50
-                            uppercase
-                          "
-                        >
+                      <div className="flex items-center justify-between gap-3">
+                        <span className="text-[10px] font-extrabold tracking-[0.16em] text-navy/50 uppercase">
                           Kuota Peserta
                         </span>
 
                         <span
-                          className="
-                            text-xs
-                            font-bold
-                          "
+                          className="text-xs font-bold"
                           style={{
                             color: accentColor,
                           }}
@@ -1448,97 +1227,40 @@ export function Categories() {
 
                       {/* Progress Track */}
                       <div
-                        className="
-                          mt-2
-                          h-2
-                          w-full
-                          overflow-hidden
-                          rounded-full
-                        "
+                        className="mt-2 h-2 w-full overflow-hidden rounded-full"
                         style={{
                           backgroundColor: softColor,
                         }}
                       >
                         {/* Progress */}
                         <div
-                          className="
-                            h-full
-                            rounded-full
-                            transition-all
-                            duration-700
-                          "
+                          className="h-full rounded-full transition-all duration-700"
                           style={{
                             width: `${percentage}%`,
                             backgroundColor: headerColor,
                           }}
                         />
                       </div>
-
-                      {/* Participant Text */}
-                      <div
-                        className="
-                          mt-2
-                          flex
-                          items-center
-                          justify-between
-                          gap-2
-                          text-[10px]
-                          font-medium
-                          text-navy/50
-                        "
-                      >
-                        <span>
-                          {registered} peserta terdaftar
-                        </span>
-
-                        <span>
-                          {quota} kuota
-                        </span>
-                      </div>
-
                     </div>
 
                     {/* =================================================
                         BENEFITS
                     ================================================= */}
-                    <ul
-                      className="
-                        mt-5
-                        space-y-3
-                        text-sm
-                        text-navy/75
-                      "
-                    >
+                    <ul className="mt-5 space-y-3 text-sm text-navy/75">
                       {c.benefits.map((b) => (
                         <li
                           key={b}
-                          className="
-                            flex
-                            items-center
-                            gap-3
-                          "
+                          className="flex items-center gap-3"
                         >
-
                           {/* Bullet */}
                           <span
-                            className="
-                              grid
-                              h-5
-                              w-5
-                              shrink-0
-                              place-items-center
-                              rounded-full
-                            "
+                            className="grid h-5 w-5 shrink-0 place-items-center rounded-full"
                             style={{
                               backgroundColor: softColor,
                             }}
                           >
                             <span
-                              className="
-                                h-1.5
-                                w-1.5
-                                rounded-full
-                              "
+                              className="h-1.5 w-1.5 rounded-full"
                               style={{
                                 backgroundColor: headerColor,
                               }}
@@ -1548,7 +1270,6 @@ export function Categories() {
                           <span>
                             {b}
                           </span>
-
                         </li>
                       ))}
                     </ul>
@@ -1558,14 +1279,7 @@ export function Categories() {
                     ================================================= */}
                     {c.requirement && (
                       <p
-                        className="
-                          mt-5
-                          rounded-xl
-                          px-3
-                          py-2.5
-                          text-xs
-                          font-semibold
-                        "
+                        className="mt-5 rounded-xl px-3 py-2.5 text-xs font-semibold"
                         style={{
                           backgroundColor: softColor,
                           color: textColor,
@@ -1580,30 +1294,13 @@ export function Categories() {
                     ================================================= */}
                     <a
                       href={`${eventInfo.registerUrl}?category=${c.slug}`}
-                      className="
-                        mt-6
-                        rounded-full
-                        px-5
-                        py-3.5
-                        text-center
-                        font-display
-                        text-sm
-                        tracking-wide
-                        text-white
-                        uppercase
-                        shadow-sm
-                        transition-all
-                        duration-300
-                        hover:scale-[1.03]
-                        hover:shadow-md
-                      "
+                      className="mt-6 rounded-full px-5 py-3.5 text-center font-display text-sm tracking-wide text-white uppercase shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-md"
                       style={{
                         backgroundColor: headerColor,
                       }}
                     >
                       Daftar
                     </a>
-
                   </div>
                 </article>
               </Reveal>
