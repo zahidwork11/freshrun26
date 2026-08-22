@@ -1,3 +1,14 @@
+import japfaLogo from "@/assets/japfa.png";
+import mandiriLogo from "@/assets/mandiri.png";
+import astraLogo from "@/assets/astra.png";
+import smartfrenLogo from "@/assets/smartfren.png";
+import telkomselLogo from "@/assets/telkomsel.png";
+import danaLogo from "@/assets/dana.png";
+import erafoneLogo from "@/assets/erafone.png";
+import vivoLogo from "@/assets/vivo.png";
+import xiaomiLogo from "@/assets/xiaomi.png";
+import samsungLogo from "@/assets/samsung.png";
+
 // ============================================================
 // SEMUA DATA EVENT ADA DI SINI
 // Mudah diedit / dipindah ke Blade
@@ -261,43 +272,43 @@ export const steps = [
 export const sponsors = [
   {
     name: "JAPFA",
-    logo: "src/assets/japfa.png",
+    logo: japfaLogo,
   },
   {
     name: "MANDIRI",
-    logo: "src/assets/mandiri.png",
+    logo: mandiriLogo,
   },
   {
     name: "ASTRA",
-    logo: "src/assets/astra.png",
+    logo: astraLogo,
   },
   {
     name: "SMARTFREN",
-    logo: "src/assets/smartfren.png",
+    logo: smartfrenLogo,
   },
   {
     name: "TELKOMSEL",
-    logo: "src/assets/telkomsel.png",
+    logo: telkomselLogo,
   },
   {
     name: "DANA",
-    logo: "src/assets/dana.png",
+    logo: danaLogo,
   },
   {
     name: "ERAFONE",
-    logo: "src/assets/erafone.png",
+    logo: erafoneLogo,
   },
-    {
+  {
     name: "VIVO",
-    logo: "src/assets/vivo.png",
+    logo: vivoLogo,
   },
   {
     name: "XIAOMI",
-    logo: "src/assets/xiaomi.png",
+    logo: xiaomiLogo,
   },
   {
     name: "SAMSUNG",
-    logo: "src/assets/samsung.png",
+    logo: samsungLogo,
   },
 ];
 
