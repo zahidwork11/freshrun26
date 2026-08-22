@@ -867,7 +867,7 @@ export function Categories() {
                COLOR PER CATEGORY
             ================================================= */
 
-            let headerColor = "#F18B1F";
+            let headerColor = "#b76e20";
             let accentColor = "#DA630E";
             let softColor = "#FFF3E8";
             let textColor = "#8A3D06";
@@ -882,7 +882,7 @@ export function Categories() {
 
             // 2.5K UMUM
             else if (c.slug === "2-5k-umum") {
-              headerColor = "#719d20";
+              headerColor = "#6e9722";
               accentColor = "#468519";
               softColor = "#F2FBDD";
               textColor = "#468519";
@@ -890,7 +890,7 @@ export function Categories() {
 
             // PELAJAR / MAHASISWA
             else if (c.slug === "pelajar-mahasiswa") {
-              headerColor = "#1492FA";
+              headerColor = "#1b72b9";
               accentColor = "#0A5490";
               softColor = "#EAF6FF";
               textColor = "#0A5490";
