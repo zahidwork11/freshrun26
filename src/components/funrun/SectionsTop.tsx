@@ -8,7 +8,7 @@ import hero9 from "@/assets/hero9.png";
 import hero10 from "@/assets/hero10.png";
 import hero11 from "@/assets/hero11.png";
 import hero12 from "@/assets/hero12.webp";
-import hero14 from "@/assets/hero14.png";
+import hero16 from "@/assets/hero16.png";
 
 
 
@@ -26,20 +26,18 @@ export function Hero() {
   }, []);
 
   return (
-    <section
-      id="top"
-      className="relative isolate overflow-hidden"
-    >
+    <section id="top" className="relative isolate overflow-hidden">
+
       {/* =====================================================
-          HERO IMAGE
+          HERO BACKGROUND
       ===================================================== */}
       <div className="absolute inset-0 -z-30 overflow-hidden">
         <img
-          src={hero14}
+          src={hero16}
           alt="Peserta fun run PKU Muhammadiyah Sukoharjo"
           width={1920}
           height={1280}
-          className="h-[115%] w-full object-cover"
+          className="h-[115%] w-full scale-105 object-cover blur-[0.5px]"
           style={{
             transform: `translateY(-${offset}px)`,
           }}
@@ -47,158 +45,82 @@ export function Hero() {
       </div>
 
       {/* =====================================================
-          BASE BLUE TINT
-          Membuat gambar sedikit lebih gelap secara merata
+          DOMINANT BLUE OVERLAY
       ===================================================== */}
       <div
-        className="
-          absolute
-          inset-0
-          -z-20
-          bg-[#062D50]/35
-        "
+        className="absolute inset-0 -z-20 bg-[#0A5490]/55"
         aria-hidden="true"
       />
 
       {/* =====================================================
-          SOFT NAVY TOP
-          Memberikan sedikit kedalaman di bagian atas
+          TOP BLUE GRADIENT
       ===================================================== */}
       <div
-        className="
-          absolute
-          inset-x-0
-          top-0
-          -z-10
-          h-[45%]
-          bg-gradient-to-b
-          from-[#062D50]/60
-          via-[#062D50]/25
-          to-transparent
-        "
+        className="absolute inset-x-0 top-0 -z-10 h-[55%] bg-gradient-to-b from-[#062D50]/75 via-[#0A5490]/45 to-transparent"
         aria-hidden="true"
       />
 
       {/* =====================================================
-          SOFT NAVY BOTTOM
-          Tetap lembut agar tidak menjadi blok biru pekat
+          BOTTOM BLUE GRADIENT
       ===================================================== */}
       <div
-        className="
-          absolute
-          inset-x-0
-          bottom-0
-          -z-10
-          h-[45%]
-          bg-gradient-to-t
-          from-[#062D50]/55
-          via-[#062D50]/25
-          to-transparent
-        "
+        className="absolute inset-x-0 bottom-0 -z-10 h-[55%] bg-gradient-to-t from-[#062D50]/70 via-[#0A5490]/35 to-transparent"
+        aria-hidden="true"
+      />
+
+      {/* =====================================================
+          SOFT BLUE LIGHT
+      ===================================================== */}
+      <div
+        className="absolute left-[-10%] top-[20%] -z-10 h-72 w-72 rounded-full bg-[#1492FA]/15 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div
+        className="absolute bottom-[5%] right-[-10%] -z-10 h-80 w-80 rounded-full bg-[#1492FA]/12 blur-3xl"
+        aria-hidden="true"
+      />
+
+      {/* =====================================================
+          SOFT BLUE BLEND
+      ===================================================== */}
+      <div
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0A5490]/20 via-transparent to-[#1492FA]/10"
         aria-hidden="true"
       />
 
       {/* =====================================================
           CONTENT
       ===================================================== */}
-      <div
-        className="
-          relative
-          mx-auto
-          max-w-7xl
-          px-4
-          pt-32
-          pb-20
-          sm:px-6
-          lg:pt-44
-          lg:pb-28
-        "
-      >
+      <div className="relative mx-auto max-w-7xl px-4 pt-32 pb-20 sm:px-6 lg:pt-44 lg:pb-28">
 
-        {/* ===================================================
-            BADGE
-        =================================================== */}
-        <Reveal>
-          <span
-            className="
-              inline-flex
-              max-w-full
-              items-center
-              gap-2
-              rounded-full
-              border
-              border-brand-cyan/30
-              bg-[#062D50]/55
-              px-4
-              py-2.5
-              text-[11px]
-              font-extrabold
-              tracking-[0.16em]
-              uppercase
-              text-white
-              shadow-[0_8px_25px_rgba(0,20,45,0.25)]
-              backdrop-blur-md
-              sm:px-5
-              sm:py-3
-              sm:text-xs
-            "
-          >
-            <Sparkles
-              className="
-                h-3.5
-                w-3.5
-                shrink-0
-                text-brand-cyan
-                drop-shadow-[0_2px_5px_rgba(0,20,45,0.8)]
-                sm:h-4
-                sm:w-4
-              "
-            />
-
-            <span
-              className="
-                text-brand-cyan
-                drop-shadow-[0_2px_5px_rgba(0,20,45,0.9)]
-              "
-            >
-              Milad RS PKU Muhammadiyah Sukoharjo
-            </span>
+      {/* ===================================================
+          BADGE
+      =================================================== */}
+      <Reveal>
+        <div className="mx-auto flex w-fit max-w-full items-center justify-center rounded-full border border-white/35 bg-[#0A5490]/75 px-4 py-2.5 text-center shadow-[0_8px_30px_rgba(6,45,80,0.3)] backdrop-blur-md sm:mx-0 sm:px-5 sm:py-3">
+          <span className="text-center text-[10px] font-bold tracking-[0.12em] text-white sm:text-xs sm:tracking-[0.15em]">
+            Milad RS PKU Muhammadiyah Sukoharjo
           </span>
-        </Reveal>
+        </div>
+      </Reveal>
 
         {/* ===================================================
             HEADING
         =================================================== */}
         <Reveal delay={100}>
-          <h1
-            className="
-              mt-6
-              max-w-4xl
-              font-display
-              text-5xl
-              leading-[0.95]
-              text-primary-foreground
-              uppercase
-              drop-shadow-[0_3px_12px_rgba(0,20,45,0.75)]
-              sm:text-7xl
-              lg:text-8xl
-            "
-          >
+          <h1 className="mx-auto mt-6 max-w-4xl text-center font-display text-5xl leading-[0.95] tracking-tight text-white uppercase drop-shadow-[0_4px_14px_rgba(6,45,80,0.65)] sm:mx-0 sm:text-left sm:text-7xl lg:text-8xl">
             <span className="text-white">
               Rayakan
             </span>{" "}
-
-            <span className="text-brand-cyan">
+            <span className="text-[#1492FA]">
               Milad,
             </span>
-
             <br />
-
             <span className="text-white">
               Langkahkan
             </span>{" "}
-
-            <span className="text-brand-cyan">
+            <span className="text-[#1492FA]">
               Semangat!
             </span>
           </h1>
@@ -208,39 +130,9 @@ export function Hero() {
             DESCRIPTION
         =================================================== */}
         <Reveal delay={180}>
-          <p
-            className="
-              mt-5
-              max-w-xl
-              text-base
-              font-semibold
-              leading-relaxed
-              text-white
-              drop-shadow-[0_2px_7px_rgba(0,20,45,0.75)]
-              sm:text-lg
-            "
-          >
-            PKU Muhammadiyah Sukoharjo Fun Run — Satu langkah untuk{" "}
-            <span
-              className="
-                font-bold
-                text-brand-cyan
-                drop-shadow-[0_2px_5px_rgba(0,20,45,0.75)]
-              "
-            >
-              sehat
-            </span>
-            , satu langkah untuk{" "}
-            <span
-              className="
-                font-bold
-                text-brand-cyan
-                drop-shadow-[0_2px_5px_rgba(0,20,45,0.75)]
-              "
-            >
-              kebersamaan
-            </span>
-            .
+          <p className="mx-auto mt-5 max-w-xl text-center text-base font-medium leading-relaxed text-white/90 drop-shadow-[0_2px_7px_rgba(6,45,80,0.65)] sm:mx-0 sm:text-left sm:text-lg">
+            PKU Muhammadiyah Sukoharjo RUN FRESH, Satu langkah untuk sehat satu
+            langkah untuk kebersamaan.
           </p>
         </Reveal>
 
@@ -248,116 +140,54 @@ export function Hero() {
             EVENT INFO
         =================================================== */}
         <Reveal delay={260}>
-          <div
-            className="
-              mt-8
-              grid
-              gap-3
-              sm:grid-cols-2
-              lg:max-w-4xl
-              lg:grid-cols-4
-            "
-          >
-            {[
-              {
-                icon: Flag,
-                cap: "Kategori",
-                label: eventInfo.distances,
-                hot: true,
-              },
-              {
-                icon: CalendarDays,
-                cap: "Tanggal",
-                label: eventInfo.dateLabel,
-              },
-            ].map(({ icon: Icon, cap, label, hot }) => (
-              <div
-                key={label}
-                className={`
-                  flex
-                  min-w-0
-                  items-center
-                  gap-3
-                  rounded-2xl
-                  border
-                  px-4
-                  py-3
-                  shadow-lift
-                  backdrop-blur
-                  transition-transform
-                  hover:-translate-y-1
-                  ${
-                    hot
-                      ? "border-brand-cyan/60 bg-brand-cyan/20 text-white"
-                      : "border-white/50 bg-white/10 text-white"
-                  }
-                `}
-              >
-                {/* Icon */}
-                <span
-                  className={`
-                    grid
-                    h-9
-                    w-9
-                    shrink-0
-                    place-items-center
-                    rounded-xl
-                    ${
-                      hot
-                        ? "bg-brand-cyan text-navy"
-                        : "bg-white/20 text-white"
-                    }
-                  `}
-                >
-                  <Icon
-                    className={`
-                      h-4.5
-                      w-4.5
-                      ${
-                        hot
-                          ? "text-navy"
-                          : "text-white"
-                      }
-                    `}
-                  />
-                </span>
+          <div className="mx-auto mt-7 grid max-w-3xl gap-3 sm:mx-0 sm:mt-8 sm:grid-cols-2 sm:gap-4">
 
-                {/* Text */}
-                <span className="min-w-0">
-                  <span
-                    className={`
-                      block
-                      text-[10px]
-                      font-bold
-                      tracking-[0.2em]
-                      uppercase
-                      ${
-                        hot
-                          ? "text-brand-cyan"
-                          : "text-white/80"
-                      }
-                    `}
-                  >
-                    {cap}
-                  </span>
+            {/* =================================================
+                KATEGORI
+            ================================================= */}
+            <div className="group rounded-2xl border border-white/35 bg-white/5 p-3.5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:bg-white/10 sm:rounded-3xl sm:p-5">
+              <div className="flex items-center gap-3 sm:gap-4">
 
-                  <span
-                    className="
-                      block
-                      truncate
-                      font-display
-                      text-sm
-                      tracking-wide
-                      uppercase
-                      text-white
-                      drop-shadow-[0_2px_5px_rgba(0,20,45,0.7)]
-                    "
-                  >
-                    {label}
-                  </span>
-                </span>
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/30 bg-white/10 sm:h-12 sm:w-12 sm:rounded-2xl">
+                  <Flag className="h-4 w-4 text-white sm:h-5 sm:w-5" />
+                </div>
+
+                <div className="min-w-0 text-left">
+                  <p className="text-[9px] font-bold tracking-[0.18em] text-white/70 uppercase sm:text-[10px] sm:tracking-[0.22em]">
+                    Kategori
+                  </p>
+
+                  <p className="mt-0.5 font-display text-base tracking-wide text-white uppercase sm:mt-1 sm:text-xl">
+                    {eventInfo.distances}
+                  </p>
+                </div>
+
               </div>
-            ))}
+            </div>
+
+            {/* =================================================
+                TANGGAL
+            ================================================= */}
+            <div className="group rounded-2xl border border-white/35 bg-white/5 p-3.5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:bg-white/10 sm:rounded-3xl sm:p-5">
+              <div className="flex items-center gap-3 sm:gap-4">
+
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/30 bg-white/10 sm:h-12 sm:w-12 sm:rounded-2xl">
+                  <CalendarDays className="h-4 w-4 text-white sm:h-5 sm:w-5" />
+                </div>
+
+                <div className="min-w-0 text-left">
+                  <p className="text-[9px] font-bold tracking-[0.18em] text-white/70 uppercase sm:text-[10px] sm:tracking-[0.22em]">
+                    Tanggal
+                  </p>
+
+                  <p className="mt-0.5 font-display text-base tracking-wide text-white uppercase sm:mt-1 sm:text-xl">
+                    {eventInfo.dateLabel}
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
           </div>
         </Reveal>
 
@@ -365,57 +195,28 @@ export function Hero() {
             CTA
         =================================================== */}
         <Reveal delay={340}>
-          <div
-            className="
-              mt-10
-              flex
-              flex-wrap
-              gap-3
-            "
-          >
-            {/* Primary CTA */}
+          <div className="mt-9 flex flex-wrap justify-center gap-3 sm:mt-10 sm:justify-start">
+
+            {/* =================================================
+                PRIMARY CTA
+            ================================================= */}
             <a
               href={eventInfo.registerUrl}
-              className="
-                rounded-full
-                bg-background
-                px-8
-                py-4
-                font-display
-                text-sm
-                tracking-wide
-                text-brand-deep
-                uppercase
-                shadow-lift
-                transition-transform
-                hover:scale-105
-              "
+              className="rounded-full bg-[#1492FA] px-7 py-3.5 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(20,146,250,0.3)] transition-all duration-300 hover:scale-105 hover:bg-[#0A82E0] sm:px-8 sm:py-4"
             >
               Cara Daftar
             </a>
 
-            {/* Secondary CTA */}
+            {/* =================================================
+                SECONDARY CTA
+            ================================================= */}
             <a
               href="#kategori"
-              className="
-                rounded-full
-                border-2
-                border-white/70
-                bg-white/5
-                px-8
-                py-4
-                font-display
-                text-sm
-                tracking-wide
-                text-primary-foreground
-                uppercase
-                backdrop-blur-sm
-                transition-colors
-                hover:bg-white/15
-              "
+              className="rounded-full border border-white/50 bg-[#0A5490]/60 px-7 py-3.5 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(6,45,80,0.2)] backdrop-blur-md transition-all duration-300 hover:border-white/80 hover:bg-[#0A5490]/80 sm:px-8 sm:py-4"
             >
               Lihat Kategori
             </a>
+
           </div>
         </Reveal>
 
@@ -1081,7 +882,7 @@ export function Categories() {
 
             // 2.5K UMUM
             else if (c.slug === "2-5k-umum") {
-              headerColor = "#81b71e";
+              headerColor = "#719d20";
               accentColor = "#468519";
               softColor = "#F2FBDD";
               textColor = "#468519";

@@ -107,7 +107,7 @@ export const categories: Category[] = [
     requirement: "NIK",
     tone: "bright",
     quota: 300,
-    registered: 30,
+    registered: 100,
   },
 
   // ==========================================================
