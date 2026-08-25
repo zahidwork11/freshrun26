@@ -200,7 +200,7 @@ export function Hero() {
 
             {/* PRIMARY CTA */}
             <a
-              href={eventInfo.registerUrl}
+              href= "#cara-daftar" 
               className="rounded-full bg-[#1492FA] px-7 py-3.5 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(20,146,250,0.3)] transition-all duration-300 hover:scale-105 hover:bg-[#0A82E0] sm:px-8 sm:py-4"
             >
               Cara Daftar
