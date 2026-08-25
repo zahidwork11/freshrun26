@@ -11,26 +11,25 @@ import hero12 from "@/assets/hero12.webp";
 import hero16 from "@/assets/hero16.png";
 
 
-
 export function Hero() {
   const [offset, setOffset] = useState(0);
 
+  const presaleCategories = categories.filter((c) => c.note === "PRESALE");
+  const presaleRegistered = presaleCategories.reduce((sum, c) => sum + (c.registered ?? 0), 0);
+  const presaleQuota = presaleCategories.reduce((sum, c) => sum + (c.quota ?? 0), 0);
+  const presaleRemaining = Math.max(presaleQuota - presaleRegistered, 0);
+  const presaleProgress = presaleQuota > 0 ? Math.min((presaleRegistered / presaleQuota) * 100, 100) : 0;
+
   useEffect(() => {
-    const onScroll = () => {
-      setOffset(Math.min(window.scrollY * 0.18, 120));
-    };
-
+    const onScroll = () => setOffset(Math.min(window.scrollY * 0.18, 120));
     window.addEventListener("scroll", onScroll, { passive: true });
-
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <section id="top" className="relative isolate overflow-hidden">
 
-      {/* =====================================================
-          HERO BACKGROUND
-      ===================================================== */}
+      {/* HERO BACKGROUND */}
       <div className="absolute inset-0 -z-30 overflow-hidden">
         <img
           src={hero16}
@@ -38,97 +37,65 @@ export function Hero() {
           width={1920}
           height={1280}
           className="h-[115%] w-full scale-105 object-cover blur-[0.5px]"
-          style={{
-            transform: `translateY(-${offset}px)`,
-          }}
+          style={{ transform: `translateY(-${offset}px)` }}
         />
       </div>
 
-      {/* =====================================================
-          DOMINANT BLUE OVERLAY
-      ===================================================== */}
-      <div
-        className="absolute inset-0 -z-20 bg-[#0A5490]/55"
-        aria-hidden="true"
-      />
+      {/* BLUE OVERLAY */}
+      <div className="absolute inset-0 -z-20 bg-[#0A5490]/55" aria-hidden="true" />
 
-      {/* =====================================================
-          TOP BLUE GRADIENT
-      ===================================================== */}
+      {/* TOP GRADIENT */}
       <div
         className="absolute inset-x-0 top-0 -z-10 h-[55%] bg-gradient-to-b from-[#062D50]/75 via-[#0A5490]/45 to-transparent"
         aria-hidden="true"
       />
 
-      {/* =====================================================
-          BOTTOM BLUE GRADIENT
-      ===================================================== */}
+      {/* BOTTOM GRADIENT */}
       <div
         className="absolute inset-x-0 bottom-0 -z-10 h-[55%] bg-gradient-to-t from-[#062D50]/70 via-[#0A5490]/35 to-transparent"
         aria-hidden="true"
       />
 
-      {/* =====================================================
-          SOFT BLUE LIGHT
-      ===================================================== */}
+      {/* SOFT BLUE LIGHT */}
       <div
         className="absolute left-[-10%] top-[20%] -z-10 h-72 w-72 rounded-full bg-[#1492FA]/15 blur-3xl"
         aria-hidden="true"
       />
-
       <div
         className="absolute bottom-[5%] right-[-10%] -z-10 h-80 w-80 rounded-full bg-[#1492FA]/12 blur-3xl"
         aria-hidden="true"
       />
 
-      {/* =====================================================
-          SOFT BLUE BLEND
-      ===================================================== */}
+      {/* BLUE BLEND */}
       <div
         className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0A5490]/20 via-transparent to-[#1492FA]/10"
         aria-hidden="true"
       />
 
-      {/* =====================================================
-          CONTENT
-      ===================================================== */}
-      <div className="relative mx-auto max-w-7xl px-4 pt-32 pb-20 sm:px-6 lg:pt-44 lg:pb-28">
+      {/* CONTENT */}
+      <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-32 sm:px-6 lg:pb-28 lg:pt-44">
 
-      {/* ===================================================
-          BADGE
-      =================================================== */}
-      <Reveal>
-        <div className="mx-auto flex w-fit max-w-full items-center justify-center rounded-full border border-white/35 bg-[#0A5490]/75 px-4 py-2.5 text-center shadow-[0_8px_30px_rgba(6,45,80,0.3)] backdrop-blur-md sm:mx-0 sm:px-5 sm:py-3">
-          <span className="text-center text-[10px] font-bold tracking-[0.12em] text-white sm:text-xs sm:tracking-[0.15em]">
-            Milad RS PKU Muhammadiyah Sukoharjo
-          </span>
-        </div>
-      </Reveal>
+        {/* BADGE */}
+        <Reveal>
+          <div className="mx-auto flex w-fit max-w-full items-center justify-center rounded-full border border-white/35 bg-[#0A5490]/75 px-4 py-2.5 text-center shadow-[0_8px_30px_rgba(6,45,80,0.3)] backdrop-blur-md sm:mx-0 sm:px-5 sm:py-3">
+            <span className="text-center text-[10px] font-bold tracking-[0.12em] text-white sm:text-xs sm:tracking-[0.15em]">
+              Milad RS PKU Muhammadiyah Sukoharjo
+            </span>
+          </div>
+        </Reveal>
 
-        {/* ===================================================
-            HEADING
-        =================================================== */}
+        {/* HEADING */}
         <Reveal delay={100}>
           <h1 className="mx-auto mt-6 max-w-4xl text-center font-display text-5xl leading-[0.95] tracking-tight text-white uppercase drop-shadow-[0_4px_14px_rgba(6,45,80,0.65)] sm:mx-0 sm:text-left sm:text-7xl lg:text-8xl">
-            <span className="text-white">
-              Rayakan
-            </span>{" "}
-            <span className="text-[#1492FA]">
-              Milad,
-            </span>
+            <span className="text-white">Rayakan</span>{" "}
+            <span className="text-[#1492FA]">Milad,</span>
             <br />
-            <span className="text-white">
-              Langkahkan
-            </span>{" "}
-            <span className="text-[#1492FA]">
-              Semangat!
-            </span>
+            <span className="text-white">Langkahkan</span>{" "}
+            <span className="text-[#1492FA]">Semangat!</span>
           </h1>
         </Reveal>
 
-        {/* ===================================================
-            DESCRIPTION
-        =================================================== */}
+        {/* DESCRIPTION */}
         <Reveal delay={180}>
           <p className="mx-auto mt-5 max-w-xl text-center text-base font-medium leading-relaxed text-white/90 drop-shadow-[0_2px_7px_rgba(6,45,80,0.65)] sm:mx-0 sm:text-left sm:text-lg">
             PKU Muhammadiyah Sukoharjo RUN FRESH, Satu langkah untuk sehat satu
@@ -136,18 +103,13 @@ export function Hero() {
           </p>
         </Reveal>
 
-        {/* ===================================================
-            EVENT INFO
-        =================================================== */}
+        {/* EVENT INFO */}
         <Reveal delay={260}>
           <div className="mx-auto mt-7 grid max-w-3xl gap-3 sm:mx-0 sm:mt-8 sm:grid-cols-2 sm:gap-4">
 
-            {/* =================================================
-                KATEGORI
-            ================================================= */}
+            {/* KATEGORI */}
             <div className="group rounded-2xl border border-white/35 bg-white/5 p-3.5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:bg-white/10 sm:rounded-3xl sm:p-5">
               <div className="flex items-center gap-3 sm:gap-4">
-
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/30 bg-white/10 sm:h-12 sm:w-12 sm:rounded-2xl">
                   <Flag className="h-4 w-4 text-white sm:h-5 sm:w-5" />
                 </div>
@@ -156,21 +118,16 @@ export function Hero() {
                   <p className="text-[9px] font-bold tracking-[0.18em] text-white/70 uppercase sm:text-[10px] sm:tracking-[0.22em]">
                     Kategori
                   </p>
-
                   <p className="mt-0.5 font-display text-base tracking-wide text-white uppercase sm:mt-1 sm:text-xl">
                     {eventInfo.distances}
                   </p>
                 </div>
-
               </div>
             </div>
 
-            {/* =================================================
-                TANGGAL
-            ================================================= */}
+            {/* TANGGAL */}
             <div className="group rounded-2xl border border-white/35 bg-white/5 p-3.5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:bg-white/10 sm:rounded-3xl sm:p-5">
               <div className="flex items-center gap-3 sm:gap-4">
-
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/30 bg-white/10 sm:h-12 sm:w-12 sm:rounded-2xl">
                   <CalendarDays className="h-4 w-4 text-white sm:h-5 sm:w-5" />
                 </div>
@@ -179,27 +136,80 @@ export function Hero() {
                   <p className="text-[9px] font-bold tracking-[0.18em] text-white/70 uppercase sm:text-[10px] sm:tracking-[0.22em]">
                     Tanggal
                   </p>
-
                   <p className="mt-0.5 font-display text-base tracking-wide text-white uppercase sm:mt-1 sm:text-xl">
                     {eventInfo.dateLabel}
                   </p>
                 </div>
-
               </div>
             </div>
 
           </div>
         </Reveal>
 
-        {/* ===================================================
-            CTA
-        =================================================== */}
+{/* PRESALE REGISTRATION */}
+<Reveal delay={300}>
+  <div className="mx-auto mt-4 max-w-3xl rounded-2xl border border-[#1492FA]/25 bg-[#EAF6FF]/95 p-4 shadow-[0_8px_28px_rgba(6,45,80,0.12)] backdrop-blur-sm sm:mx-0 sm:mt-5 sm:rounded-3xl sm:p-5">
+
+    <div className="flex items-center justify-between gap-4">
+
+      {/* INFO */}
+      <div className="min-w-0">
+        <div className="flex flex-wrap items-center gap-2">
+          <p className="text-[9px] font-extrabold tracking-[0.18em] text-[#0A5490] uppercase sm:text-[10px] sm:tracking-[0.22em]">
+            Kategori 5K & 2.5K 
+          </p>
+
+          <span className="rounded-full bg-[#F18B1F] px-2 py-0.5 text-[8px] font-extrabold tracking-wider text-white uppercase sm:text-[9px]">
+            Presale
+          </span>
+        </div>
+
+        <p className="mt-1 font-display text-lg tracking-wide text-[#0A5490] uppercase sm:text-xl">
+          {presaleRegistered}
+          <span className="ml-1.5 font-sans text-xs font-medium text-[#0A5490]/55 normal-case sm:text-sm">
+            dari {presaleQuota} peserta
+          </span>
+        </p>
+      </div>
+
+      {/* PERCENTAGE */}
+      <div className="shrink-0 text-right">
+        <span className="font-display text-lg text-[#1492FA] sm:text-xl">
+          {presaleProgress.toFixed(1)}%
+        </span>
+        <p className="text-[8px] font-bold tracking-wider text-[#0A5490]/45 uppercase">
+          Terisi
+        </p>
+      </div>
+    </div>
+
+    {/* PROGRESS */}
+    <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-[#0A5490]/10">
+      <div
+        className="h-full rounded-full bg-[#1492FA] shadow-[0_0_10px_rgba(20,146,250,0.3)] transition-all duration-700"
+        style={{ width: `${presaleProgress}%` }}
+      />
+    </div>
+
+    {/* PRESALE PERIOD */}
+    <div className="mt-4 flex items-center justify-between gap-3 rounded-xl border border-[#97D91B]/25 bg-[#97D91B]/10 px-3 py-2.5">
+      <span className="text-[8px] font-bold tracking-[0.15em] text-[#468519] uppercase sm:text-[9px]">
+        Periode Terbatas
+      </span>
+
+      <span className="text-[9px] font-extrabold text-[#468519] sm:text-[10px]">
+        1 September – 10 September 2026
+      </span>
+    </div>
+
+  </div>
+</Reveal>
+
+        {/* CTA */}
         <Reveal delay={340}>
           <div className="mt-9 flex flex-wrap justify-center gap-3 sm:mt-10 sm:justify-start">
 
-            {/* =================================================
-                PRIMARY CTA
-            ================================================= */}
+            {/* PRIMARY CTA */}
             <a
               href={eventInfo.registerUrl}
               className="rounded-full bg-[#1492FA] px-7 py-3.5 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(20,146,250,0.3)] transition-all duration-300 hover:scale-105 hover:bg-[#0A82E0] sm:px-8 sm:py-4"
@@ -207,9 +217,7 @@ export function Hero() {
               Cara Daftar
             </a>
 
-            {/* =================================================
-                SECONDARY CTA
-            ================================================= */}
+            {/* SECONDARY CTA */}
             <a
               href="#kategori"
               className="rounded-full border border-white/50 bg-[#0A5490]/60 px-7 py-3.5 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(6,45,80,0.2)] backdrop-blur-md transition-all duration-300 hover:border-white/80 hover:bg-[#0A5490]/80 sm:px-8 sm:py-4"
@@ -292,275 +300,50 @@ export function RaceInfo() {
 }
 
 export function TotalPrize() {
-  const chips = [
-    "1 Sepeda Listrik",
-    "2 Jam Tangan Running",
-    "2 Sepeda Gunung",
-    "1 Televisi 43 Inch",
-    "1 Kulkas 2 Pintu",
-  ];
+  const chips = ["1 Sepeda Listrik", "2 Jam Tangan Running", "2 Sepeda Gunung", "1 Televisi 43 Inch", "1 Kulkas 2 Pintu",];
 
   return (
-    <section
-      id="hadiah"
-      className="
-        relative
-        isolate
-        overflow-hidden
-        bg-[#F5FBDD]
-        py-20
-        sm:py-24
-        lg:py-28
-      "
-    >
-      {/* =====================================================
-          DECORATIVE BACKGROUND
-      ===================================================== */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          overflow-hidden
-        "
-        aria-hidden="true"
-      >
-        {/* Top right lime glow */}
-        <div
-          className="
-            absolute
-            -right-32
-            -top-32
-            h-72
-            w-72
-            rounded-full
-            bg-[#97D91B]/15
-            blur-3xl
-            sm:h-96
-            sm:w-96
-          "
-        />
+    <section id="hadiah" className="relative isolate overflow-hidden bg-[#468519] py-20 sm:py-24 lg:py-28">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
 
-        {/* Bottom left lime glow */}
-        <div
-          className="
-            absolute
-            -bottom-40
-            -left-32
-            h-80
-            w-80
-            rounded-full
-            bg-[#97D91B]/12
-            blur-3xl
-            sm:h-96
-            sm:w-96
-          "
-        />
-
-        {/* Orange accent */}
-        <div
-          className="
-            absolute
-            right-[8%]
-            top-[20%]
-            hidden
-            h-20
-            w-20
-            rounded-full
-            border-[10px]
-            border-[#F18B1F]/10
-            lg:block
-          "
-        />
-
-        <div
-          className="
-            absolute
-            bottom-[15%]
-            left-[8%]
-            hidden
-            h-14
-            w-14
-            rounded-full
-            bg-[#F18B1F]/10
-            lg:block
-          "
-        />
-      </div>
-
-      {/* =====================================================
-          CONTENT
-      ===================================================== */}
-      <div
-        className="
-          relative
-          z-10
-          mx-auto
-          max-w-6xl
-          px-4
-          sm:px-6
-        "
-      >
-
-        {/* ===================================================
-            HEADING
-        =================================================== */}
+        {/* HEADING */}
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-
-            {/* Label */}
-            <span
-              className="
-                inline-flex
-                items-center
-                rounded-full
-                border
-                border-[#97D91B]/30
-                bg-[#97D91B]/15
-                px-4
-                py-2
-                text-[10px]
-                font-extrabold
-                tracking-[0.22em]
-                text-[#468519]
-                uppercase
-                sm:text-xs
-              "
-            >
+            <span className="inline-flex items-center rounded-full border border-[#97D91B]/30 bg-[#97D91B]/15 px-4 py-2 text-[10px] font-extrabold tracking-[0.22em] text-[#D9F0B8] uppercase sm:text-xs">
               Hadiah & Penghargaan
             </span>
 
-            {/* Heading */}
-            <h2
-              className="
-                mt-4
-                font-display
-                text-4xl
-                leading-[1.05]
-                text-navy
-                uppercase
-                sm:text-5xl
-                lg:text-6xl
-              "
-            >
+            <h2 className="mt-4 font-display text-4xl leading-[1.05] text-white uppercase sm:text-5xl lg:text-6xl">
               Lari Dapat Sehat,
               <br />
-
-              <span className="text-[#468519]">
-                Pulang Bawa Hadiah!
-              </span>
+              <span className="text-[#D9F0B8]">Pulang Bawa Hadiah!</span>
             </h2>
-
           </div>
         </Reveal>
 
-        {/* ===================================================
-            TOTAL PRIZE
-        =================================================== */}
+        {/* TOTAL PRIZE */}
         <Reveal delay={100}>
-          <div
-            className="
-              mx-auto
-              mt-10
-              max-w-md
-              rounded-[2rem]
-              border
-              border-[#97D91B]/25
-              bg-white
-              px-8
-              py-8
-              text-center
-              shadow-[0_18px_50px_rgba(40,70,0,0.10)]
-              transition-transform
-              duration-300
-              hover:-translate-y-1
-              hover:shadow-[0_22px_55px_rgba(40,70,0,0.14)]
-              sm:px-10
-              sm:py-9
-            "
-          >
-            {/* Accent */}
-            <div
-              className="
-                mx-auto
-                mb-4
-                h-1
-                w-12
-                rounded-full
-                bg-[#97D91B]
-              "
-            />
+          <div className="mx-auto mt-10 max-w-md rounded-[2rem] border border-[#97D91B]/25 bg-white px-8 py-8 text-center shadow-[0_18px_50px_rgba(0,0,0,0.15)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(0,0,0,0.2)] sm:px-10 sm:py-9">
+            <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-[#97D91B]" />
 
-            {/* Label */}
-            <div
-              className="
-                text-xs
-                font-extrabold
-                tracking-[0.25em]
-                text-[#468519]
-                uppercase
-              "
-            >
+            <div className="text-xs font-extrabold tracking-[0.25em] text-[#468519] uppercase">
               Total Hadiah
             </div>
 
-            {/* Total Prize */}
-            <div
-              className="
-                mt-2
-                font-display
-                text-4xl
-                text-[#468519]
-                sm:text-5xl
-              "
-            >
+            <div className="mt-2 font-display text-4xl text-[#468519] sm:text-5xl">
               {eventInfo.totalPrize}
             </div>
 
-            {/* Description */}
-            <p
-              className="
-                mt-2
-                text-xs
-                font-semibold
-                text-[#468519]/65
-              "
-            >
+            <p className="mt-2 text-xs font-semibold text-[#468519]/65">
               Siapkan langkah terbaikmu!
             </p>
           </div>
         </Reveal>
 
-        {/* ===================================================
-            PRIZE IMAGE
-        =================================================== */}
+        {/* PRIZE IMAGE */}
         <Reveal delay={160}>
-          <div
-            className="
-              relative
-              mt-10
-              overflow-hidden
-              rounded-[2rem]
-              border
-              border-[#97D91B]/30
-              bg-white
-              p-1
-              shadow-[0_18px_50px_rgba(40,70,0,0.10)]
-              sm:mt-12
-              sm:p-1.5
-            "
-          >
-            {/* Lime accent */}
-            <div
-              className="
-                absolute
-                inset-x-0
-                top-0
-                z-10
-                h-1
-                bg-[#97D91B]
-              "
-            />
+          <div className="relative mt-10 overflow-hidden rounded-[2rem] border border-[#97D91B]/30 bg-white p-1 shadow-[0_18px_50px_rgba(0,0,0,0.15)] sm:mt-12 sm:p-1.5">
+            <div className="absolute inset-x-0 top-0 z-10 h-1 bg-[#97D91B]" />
 
             <div className="overflow-hidden rounded-[1.75rem] bg-white">
               <img
@@ -569,169 +352,49 @@ export function TotalPrize() {
                 width={1280}
                 height={860}
                 loading="lazy"
-                className="
-                  w-full
-                  transition-transform
-                  duration-700
-                  hover:scale-105
-                "
+                className="w-full transition-transform duration-700 hover:scale-105"
               />
             </div>
           </div>
         </Reveal>
 
-        {/* ===================================================
-            MESSAGE
-        =================================================== */}
+        {/* MESSAGE */}
         <Reveal delay={200}>
-          <div
-            className="
-              mx-auto
-              mt-8
-              max-w-3xl
-              text-center
-              sm:mt-10
-            "
-          >
-
-            {/* Message */}
-            <p
-              className="
-                mx-auto
-                max-w-md
-                px-2
-                font-display
-                text-lg
-                leading-snug
-                text-[#468519]
-                sm:max-w-xl
-                sm:px-0
-                sm:text-2xl
-              "
-            >
+          <div className="mx-auto mt-8 max-w-3xl text-center sm:mt-10">
+            <p className="mx-auto max-w-md px-2 font-display text-lg leading-snug text-[#D9F0B8] sm:max-w-xl sm:px-0 sm:text-2xl">
               Dan masih banyak kejutan menarik lainnya!
             </p>
 
-            {/* =================================================
-                CHIPS
-            ================================================= */}
-            <div
-              className="
-                mx-auto
-                mt-5
-                flex
-                max-w-2xl
-                flex-wrap
-                items-center
-                justify-center
-                gap-2
-                px-2
-                sm:mt-6
-                sm:gap-2.5
-                sm:px-0
-              "
-            >
-              {chips.map((c, index) => (
+          {/* CHIPS */}
+          <div className="mx-auto mt-5 max-w-2xl px-2 sm:mt-6 sm:px-0">
+            {/* HADIAH UTAMA */}
+            <div className="mb-3 flex justify-center">
+              <span className="inline-flex min-h-[42px] items-center justify-center rounded-full bg-[#97D91B] px-5 py-2.5 text-center text-[10px] font-extrabold leading-tight tracking-wide text-[#193000] uppercase shadow-[0_4px_14px_rgba(151,217,27,0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#8BCF13] sm:min-h-[44px] sm:px-6 sm:text-xs">
+                {chips[0]}
+              </span>
+            </div>
+
+            {/* HADIAH LAINNYA */}
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-2.5">
+              {chips.slice(1).map((c) => (
                 <span
                   key={c}
-                  className={`
-                    inline-flex
-                    min-h-[34px]
-                    items-center
-                    justify-center
-                    rounded-full
-                    px-3
-                    py-2
-                    text-center
-                    text-[10px]
-                    font-bold
-                    leading-tight
-                    tracking-wide
-                    uppercase
-                    transition-all
-                    duration-200
-                    hover:-translate-y-0.5
-
-                    sm:min-h-[38px]
-                    sm:px-4
-                    sm:py-2
-                    sm:text-xs
-
-                    ${
-                      index === 0 || index === 1
-                        ? `
-                          bg-[#97D91B]
-                          text-[#193000]
-                          shadow-sm
-                          hover:bg-[#8BCF13]
-                        `
-                        : `
-                          border
-                          border-[#97D91B]/30
-                          bg-white
-                          text-[#468519]
-                          shadow-sm
-                          hover:border-[#97D91B]/50
-                          hover:bg-[#F5FBDD]
-                        `
-                    }
-                  `}
+                  className="inline-flex min-h-[38px] items-center justify-center rounded-full border border-[#97D91B]/30 bg-white px-2.5 py-2 text-center text-[9px] font-bold leading-tight tracking-wide text-[#468519] uppercase shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#97D91B]/50 hover:bg-[#F5FBDD] sm:min-h-[40px] sm:px-4 sm:text-xs"
                 >
                   {c}
                 </span>
               ))}
             </div>
-
+          </div>
           </div>
         </Reveal>
 
-        {/* ===================================================
-            BOTTOM ACCENT
-        =================================================== */}
+        {/* BOTTOM ACCENT */}
         <Reveal delay={240}>
-          <div
-            className="
-              mx-auto
-              mt-8
-              flex
-              w-full
-              max-w-xs
-              items-center
-              justify-center
-              gap-3
-              px-4
-              sm:mt-10
-              sm:max-w-xl
-              sm:px-0
-            "
-          >
-            <span
-              className="
-                h-px
-                flex-1
-                bg-[#97D91B]/30
-              "
-            />
-
-            <span
-              className="
-                h-1.5
-                w-1.5
-                shrink-0
-                rounded-full
-                bg-[#97D91B]
-                sm:h-2
-                sm:w-2
-              "
-            />
-
-            <span
-              className="
-                h-px
-                flex-1
-                bg-[#97D91B]/30
-              "
-            />
+          <div className="mx-auto mt-8 flex w-full max-w-xs items-center justify-center gap-3 px-4 sm:mt-10 sm:max-w-xl sm:px-0">
+            <span className="h-px flex-1 bg-[#97D91B]/30" />
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#97D91B] sm:h-2 sm:w-2" />
+            <span className="h-px flex-1 bg-[#97D91B]/30" />
           </div>
         </Reveal>
 

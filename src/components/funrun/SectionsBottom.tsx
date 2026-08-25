@@ -16,265 +16,42 @@ import { eventInfo, faqs, navItems, rundown, sponsors, steps } from "@/data/even
 
 export function RacePack() {
   const items = [
-    {
-      img: jersey2,
-      label: "Jersey",
-      desc: "Bahan dry-fit ringan dengan desain Milad.",
-    },
-    {
-      img: medal,
-      label: "Medal",
-      desc: "Medali finisher eksklusif edisi khusus.",
-    },
+    { img: jersey2, label: "Jersey", desc: "Bahan dry-fit ringan dengan desain Milad." },
+    { img: medal, label: "Medal", desc: "Medali finisher eksklusif edisi khusus." },
   ];
 
   return (
-    <section
-      id="racepack"
-      className="
-        relative
-        overflow-hidden
-        bg-[#F5FBDD]
-        py-20
-        sm:py-24
-        lg:py-28
-      "
-    >
-      {/* =====================================================
-          DECORATIVE BACKGROUND
-      ===================================================== */}
-      <div
-        className="pointer-events-none absolute inset-0 overflow-hidden"
-        aria-hidden="true"
-      >
-        {/* Top left glow */}
-        <div
-          className="
-            absolute
-            -left-32
-            -top-32
-            h-72
-            w-72
-            rounded-full
-            bg-[#97D91B]/15
-            blur-3xl
-            sm:h-96
-            sm:w-96
-          "
-        />
+    <section id="racepack" className="relative overflow-hidden bg-[#468519] py-20 sm:py-24 lg:py-28">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
 
-        {/* Bottom right glow */}
-        <div
-          className="
-            absolute
-            -bottom-40
-            -right-32
-            h-80
-            w-80
-            rounded-full
-            bg-[#97D91B]/15
-            blur-3xl
-            sm:h-96
-            sm:w-96
-          "
-        />
-
-        {/* Decorative circles */}
-        <div
-          className="
-            absolute
-            right-[8%]
-            top-[15%]
-            hidden
-            h-24
-            w-24
-            rounded-full
-            border-[10px]
-            border-[#97D91B]/10
-            lg:block
-          "
-        />
-
-        <div
-          className="
-            absolute
-            bottom-[15%]
-            left-[7%]
-            hidden
-            h-14
-            w-14
-            rounded-full
-            bg-[#97D91B]/10
-            lg:block
-          "
-        />
-      </div>
-
-      {/* =====================================================
-          CONTENT
-      ===================================================== */}
-      <div
-        className="
-          relative
-          z-10
-          mx-auto
-          max-w-6xl
-          px-4
-          sm:px-6
-        "
-      >
-
-        {/* ===================================================
-            HEADING
-        =================================================== */}
+        {/* HEADING */}
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-
-            {/* Label */}
-            <span
-              className="
-                inline-flex
-                items-center
-                rounded-full
-                border
-                border-[#97D91B]/30
-                bg-[#97D91B]/10
-                px-4
-                py-2
-                text-[10px]
-                font-extrabold
-                tracking-[0.22em]
-                text-[#5B850B]
-                uppercase
-                sm:text-xs
-              "
-            >
+            <span className="inline-flex items-center rounded-full border border-[#97D91B]/30 bg-[#97D91B]/15 px-4 py-2 text-[10px] font-extrabold tracking-[0.22em] text-[#D9F0B8] uppercase sm:text-xs">
               Race Pack
             </span>
 
-            {/* Heading */}
-            <h2
-              className="
-                mt-4
-                font-display
-                text-4xl
-                leading-[1.05]
-                text-navy
-                uppercase
-                sm:text-5xl
-                lg:text-6xl
-              "
-            >
+            <h2 className="mt-4 font-display text-4xl leading-[1.05] text-white uppercase sm:text-5xl lg:text-6xl">
               Sudah Kebayang
               <br />
-              <span className="text-[#70A916]">
-                Tampil di Garis Start?
-              </span>
+              <span className="text-[#D9F0B8]">Tampil di Garis Start?</span>
             </h2>
 
-            {/* Description */}
-            <p
-              className="
-                mx-auto
-                mt-4
-                max-w-xl
-                text-sm
-                leading-relaxed
-                text-navy/65
-                sm:text-base
-              "
-            >
-              Lengkapi persiapanmu dan nikmati race pack eksklusif
-              untuk menemani langkahmu sampai garis finish.
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
+              Lengkapi persiapanmu dan nikmati race pack eksklusif untuk menemani langkahmu sampai garis finish.
             </p>
-
           </div>
         </Reveal>
 
-        {/* ===================================================
-            RACE PACK ITEMS
-        =================================================== */}
-        <div
-          className="
-            mt-10
-            grid
-            gap-5
-            sm:mt-12
-            sm:grid-cols-2
-            sm:gap-6
-          "
-        >
+        {/* RACE PACK ITEMS */}
+        <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6">
           {items.map((it, i) => (
-            <Reveal
-              key={it.label}
-              delay={i * 100}
-            >
-              <div
-                className="
-                  group
-                  h-full
-                  overflow-hidden
-                  rounded-[2rem]
-                  border
-                  border-[#97D91B]/20
-                  bg-white
-                  p-4
-                  shadow-[0_12px_35px_rgba(20,50,0,0.07)]
-                  transition-all
-                  duration-300
-                  hover:-translate-y-2
-                  hover:border-[#97D91B]/45
-                  hover:shadow-[0_20px_45px_rgba(80,120,0,0.14)]
-                  sm:p-6
-                "
-              >
+            <Reveal key={it.label} delay={i * 100}>
+              <div className="group h-full overflow-hidden rounded-[2rem] border border-[#97D91B]/25 bg-white p-4 shadow-[0_12px_35px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-2 hover:border-[#97D91B]/50 hover:shadow-[0_20px_45px_rgba(0,0,0,0.18)] sm:p-6">
 
-                {/* =================================================
-                    IMAGE AREA
-                ================================================= */}
-                <div
-                  className="
-                    relative
-                    overflow-hidden
-                    rounded-[1.5rem]
-                    border
-                    border-[#97D91B]/15
-                    bg-[#EEF8D5]
-                    p-5
-                    sm:rounded-3xl
-                    sm:p-6
-                  "
-                >
-                  {/* Lime glow */}
-                  <div
-                    className="
-                      pointer-events-none
-                      absolute
-                      left-1/2
-                      top-1/2
-                      h-40
-                      w-40
-                      -translate-x-1/2
-                      -translate-y-1/2
-                      rounded-full
-                      bg-[#97D91B]/20
-                      blur-3xl
-                      transition-all
-                      duration-500
-                      group-hover:bg-[#97D91B]/30
-                    "
-                  />
-
-                  {/* Top accent */}
-                  <div
-                    className="
-                      absolute
-                      inset-x-0
-                      top-0
-                      h-1
-                      bg-[#97D91B]
-                    "
-                  />
+                {/* IMAGE AREA */}
+                <div className="relative overflow-hidden rounded-[1.5rem] border border-[#97D91B]/15 bg-[#F5FBDD] p-5 sm:rounded-3xl sm:p-6">
+                  <div className="absolute inset-x-0 top-0 h-1 bg-[#97D91B]" />
 
                   <img
                     src={it.img}
@@ -282,128 +59,38 @@ export function RacePack() {
                     width={900}
                     height={900}
                     loading="lazy"
-                    className="
-                      relative
-                      z-10
-                      mx-auto
-                      h-60
-                      w-auto
-                      max-w-full
-                      object-contain
-                      transition-transform
-                      duration-500
-                      group-hover:scale-105
-                      sm:h-72
-                      lg:h-80
-                    "
+                    className="relative z-10 mx-auto h-60 w-auto max-w-full object-contain transition-transform duration-500 group-hover:scale-105 sm:h-72 lg:h-80"
                   />
                 </div>
 
-                {/* =================================================
-                    CONTENT
-                ================================================= */}
+                {/* CONTENT */}
                 <div className="px-2 pb-2 text-center sm:px-2 sm:pb-1">
-
-                  <h3
-                    className="
-                      mt-6
-                      font-display
-                      text-2xl
-                      text-navy
-                      uppercase
-                      transition-colors
-                      duration-300
-                      group-hover:text-[#70A916]
-                      sm:text-3xl
-                    "
-                  >
+                  <h3 className="mt-6 font-display text-2xl text-[#468519] uppercase transition-colors duration-300 group-hover:text-[#70A916] sm:text-3xl">
                     {it.label}
                   </h3>
 
-                  <p
-                    className="
-                      mx-auto
-                      mt-2
-                      max-w-sm
-                      text-sm
-                      leading-relaxed
-                      text-navy/65
-                    "
-                  >
+                  <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-[#468519]/65">
                     {it.desc}
                   </p>
 
-                  {/* Small accent */}
-                  <div
-                    className="
-                      mx-auto
-                      mt-5
-                      h-1
-                      w-8
-                      rounded-full
-                      bg-[#97D91B]
-                      transition-all
-                      duration-300
-                      group-hover:w-14
-                    "
-                  />
-
+                  <div className="mx-auto mt-5 h-1 w-8 rounded-full bg-[#97D91B] transition-all duration-300 group-hover:w-14" />
                 </div>
               </div>
             </Reveal>
           ))}
         </div>
 
-        {/* ===================================================
-            BOTTOM MESSAGE
-        =================================================== */}
+        {/* BOTTOM MESSAGE */}
         <Reveal delay={180}>
-          <div
-            className="
-              mx-auto
-              mt-10
-              max-w-2xl
-              text-center
-              sm:mt-12
-            "
-          >
-            <p
-              className="
-                font-display
-                text-xl
-                text-[#5B850B]
-                uppercase
-                sm:text-2xl
-                lg:text-3xl
-              "
-            >
+          <div className="mx-auto mt-10 max-w-2xl text-center sm:mt-12">
+            <p className="font-display text-xl text-[#D9F0B8] uppercase sm:text-2xl lg:text-3xl">
               Finish Strong.
-              <span className="text-navy">
-                {" "}Wear Your Story.
-              </span>
+              <span className="text-white">{" "}Wear Your Story.</span>
             </p>
 
-            <div
-              className="
-                mx-auto
-                mt-4
-                flex
-                max-w-xs
-                items-center
-                gap-3
-              "
-            >
+            <div className="mx-auto mt-4 flex max-w-xs items-center gap-3">
               <span className="h-px flex-1 bg-[#97D91B]/30" />
-
-              <span
-                className="
-                  h-2
-                  w-2
-                  rounded-full
-                  bg-[#97D91B]
-                "
-              />
-
+              <span className="h-2 w-2 rounded-full bg-[#97D91B]" />
               <span className="h-px flex-1 bg-[#97D91B]/30" />
             </div>
           </div>
@@ -418,205 +105,39 @@ export function RouteMap() {
   const [tab, setTab] = useState<"5k" | "2.5k">("5k");
 
   const tabs = [
-    {
-      id: "5k" as const,
-      label: "5 KM",
-      img: route5k,
-    },
-    {
-      id: "2.5k" as const,
-      label: "2.5 KM",
-      img: route25k,
-    },
+    { id: "5k" as const, label: "5 KM", img: route5k },
+    { id: "2.5k" as const, label: "2.5 KM", img: route25k },
   ];
 
   return (
-    <section
-      id="rute"
-      className="
-        relative
-        overflow-hidden
-        bg-brand-sky
-        py-20
-        sm:py-24
-        lg:py-28
-      "
-    >
-      {/* =====================================================
-          DECORATIVE BACKGROUND
-      ===================================================== */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          overflow-hidden
-        "
-        aria-hidden="true"
-      >
-        {/* Top right glow */}
-        <div
-          className="
-            absolute
-            -right-32
-            -top-32
-            h-72
-            w-72
-            rounded-full
-            bg-white/30
-            blur-3xl
-            sm:h-96
-            sm:w-96
-          "
-        />
+    <section id="rute" className="relative overflow-hidden bg-brand-sky pb-8 pt-20 sm:pb-10 sm:pt-24 lg:pb-12 lg:pt-28">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
 
-        {/* Bottom left glow */}
-        <div
-          className="
-            absolute
-            -bottom-40
-            -left-32
-            h-80
-            w-80
-            rounded-full
-            bg-brand-light/40
-            blur-3xl
-            sm:h-96
-            sm:w-96
-          "
-        />
-
-        {/* Decorative circle */}
-        <div
-          className="
-            absolute
-            right-[8%]
-            top-[24%]
-            hidden
-            h-20
-            w-20
-            rounded-full
-            border-[10px]
-            border-brand/20
-            lg:block
-          "
-        />
-
-        {/* Small decorative circle */}
-        <div
-          className="
-            absolute
-            bottom-[18%]
-            left-[8%]
-            hidden
-            h-12
-            w-12
-            rounded-full
-            bg-brand/15
-            lg:block
-          "
-        />
-      </div>
-
-      {/* =====================================================
-          CONTENT
-      ===================================================== */}
-      <div
-        className="
-          relative
-          z-10
-          mx-auto
-          max-w-6xl
-          px-4
-          sm:px-6
-        "
-      >
-
-        {/* ===================================================
-            HEADING
-        =================================================== */}
+        {/* HEADING */}
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-
-            {/* Label */}
-            <span
-              className="
-                inline-flex
-                items-center
-                rounded-full
-                bg-background
-                px-4
-                py-2
-                text-[10px]
-                font-extrabold
-                tracking-[0.22em]
-                text-brand-deep
-                uppercase
-                shadow-soft
-                sm:text-xs
-              "
-            >
+            <span className="inline-flex items-center rounded-full bg-background px-4 py-2 text-[10px] font-extrabold tracking-[0.22em] text-brand-deep uppercase shadow-soft sm:text-xs">
               Race Route
             </span>
 
-            {/* Heading */}
-            <h2
-              className="
-                mt-5
-                font-display
-                text-4xl
-                leading-[1.05]
-                text-navy
-                uppercase
-                sm:text-5xl
-                lg:text-6xl
-              "
-            >
+            <h2 className="mt-5 font-display text-4xl leading-[1.05] text-navy uppercase sm:text-5xl lg:text-6xl">
               Kenali Jalurmu,
               <br />
-
-              <span className="text-brand-deep">
-                Nikmati Setiap Langkah.
-              </span>
+              <span className="text-brand-deep">Nikmati Setiap Langkah.</span>
             </h2>
 
-            {/* Description */}
-            <p
-              className="
-                mx-auto
-                mt-4
-                max-w-xl
-                text-sm
-                leading-relaxed
-                text-navy/65
-                sm:text-base
-              "
-            >
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-navy/65 sm:text-base">
               Kenali rute yang akan kamu lewati sebelum race dimulai.
               Pilih jarak dan siapkan langkah terbaikmu menuju garis finish.
             </p>
-
           </div>
         </Reveal>
 
-        {/* ===================================================
-            ROUTE SELECTOR
-        =================================================== */}
+        {/* ROUTE SELECTOR */}
         <Reveal delay={100}>
           <div className="mx-auto mt-9 max-w-sm">
-
-            <div
-              className="
-                rounded-2xl
-                border
-                border-brand-light/50
-                bg-background
-                p-1.5
-                shadow-soft
-              "
-            >
+            <div className="rounded-2xl border border-brand-light/50 bg-background p-1.5 shadow-soft">
               <div className="grid grid-cols-2 gap-1.5">
-
                 {tabs.map((t) => {
                   const isActive = tab === t.id;
 
@@ -625,171 +146,49 @@ export function RouteMap() {
                       key={t.id}
                       type="button"
                       onClick={() => setTab(t.id)}
-                      className={`
-                        relative
-                        rounded-xl
-                        px-4
-                        py-3
-                        font-display
-                        text-sm
-                        tracking-wide
-                        uppercase
-                        transition-all
-                        duration-300
-                        sm:py-3.5
-
-                        ${
-                          isActive
-                            ? `
-                              gradient-brand
-                              text-primary-foreground
-                              shadow-soft
-                            `
-                            : `
-                              text-navy/55
-                              hover:bg-brand-sky
-                              hover:text-brand-deep
-                            `
-                        }
-                      `}
+                      className={`relative rounded-xl px-4 py-3 font-display text-sm tracking-wide uppercase transition-all duration-300 sm:py-3.5 ${
+                        isActive
+                          ? "bg-brand text-primary-foreground shadow-soft"
+                          : "text-navy/55 hover:bg-brand-sky hover:text-brand-deep"
+                      }`}
                     >
                       {t.label}
 
-                      {/* Active indicator */}
                       {isActive && (
-                        <span
-                          className="
-                            absolute
-                            bottom-1
-                            left-1/2
-                            h-0.5
-                            w-6
-                            -translate-x-1/2
-                            rounded-full
-                            bg-white/80
-                          "
-                        />
+                        <span className="absolute bottom-1 left-1/2 h-0.5 w-6 -translate-x-1/2 rounded-full bg-white/80" />
                       )}
                     </button>
                   );
                 })}
-
               </div>
             </div>
-
           </div>
         </Reveal>
 
-        {/* ===================================================
-            ROUTE MAP CARD
-        =================================================== */}
+        {/* ROUTE MAP CARD */}
         <Reveal delay={160}>
-          <div
-            className="
-              mx-auto
-              mt-8
-              max-w-5xl
-              overflow-hidden
-              rounded-[2rem]
-              border
-              border-brand-light/50
-              bg-background
-              shadow-soft
-              transition-shadow
-              duration-300
-              hover:shadow-lift
-              sm:mt-10
-            "
-          >
+          <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[2rem] border border-brand-light/50 bg-background shadow-soft transition-shadow duration-300 hover:shadow-lift sm:mt-10">
 
-            {/* =================================================
-                CARD HEADER
-            ================================================= */}
-            <div
-              className="
-                flex
-                items-center
-                justify-between
-                gap-4
-                border-b
-                border-brand-light/40
-                px-5
-                py-4
-                sm:px-7
-                sm:py-5
-              "
-            >
-
-              {/* Left */}
+            {/* CARD HEADER */}
+            <div className="flex items-center justify-between gap-4 border-b border-brand-light/40 px-5 py-4 sm:px-7 sm:py-5">
               <div className="min-w-0">
-
-                <span
-                  className="
-                    block
-                    text-[9px]
-                    font-extrabold
-                    tracking-[0.2em]
-                    text-brand-deep
-                    uppercase
-                    sm:text-[10px]
-                  "
-                >
+                <span className="block text-[9px] font-extrabold tracking-[0.2em] text-brand-deep uppercase sm:text-[10px]">
                   Route Map
                 </span>
 
-                <h3
-                  className="
-                    mt-1
-                    font-display
-                    text-lg
-                    text-navy
-                    uppercase
-                    sm:text-xl
-                  "
-                >
+                <h3 className="mt-1 font-display text-lg text-navy uppercase sm:text-xl">
                   Peta Rute Lari
                 </h3>
-
               </div>
 
-              {/* Status */}
-              <span
-                className="
-                  shrink-0
-                  rounded-full
-                  bg-brand-sky
-                  px-3
-                  py-1.5
-                  text-[9px]
-                  font-extrabold
-                  tracking-wider
-                  text-brand-deep
-                  uppercase
-                  sm:px-4
-                  sm:py-2
-                  sm:text-[10px]
-                "
-              >
+              <span className="shrink-0 rounded-full bg-brand-sky px-3 py-1.5 text-[9px] font-extrabold tracking-wider text-brand-deep uppercase sm:px-4 sm:py-2 sm:text-[10px]">
                 Rute Resmi
               </span>
-
             </div>
 
-            {/* =================================================
-                ROUTE IMAGE
-            ================================================= */}
+            {/* ROUTE IMAGE */}
             <div className="bg-background p-2 sm:p-3">
-
-              <div
-                className="
-                  relative
-                  overflow-hidden
-                  rounded-[1.5rem]
-                  bg-brand-sky
-                  sm:rounded-[1.75rem]
-                "
-              >
-
+              <div className="relative overflow-hidden rounded-[1.5rem] bg-brand-sky sm:rounded-[1.75rem]">
                 {tabs.map((t) => (
                   <img
                     key={t.id}
@@ -798,107 +197,38 @@ export function RouteMap() {
                     width={1200}
                     height={800}
                     loading="lazy"
-                    className={`
-                      block
-                      w-full
-                      transition-opacity
-                      duration-500
-
-                      ${
-                        tab === t.id
-                          ? "relative opacity-100"
-                          : "absolute inset-0 opacity-0"
-                      }
-                    `}
+                    className={`block w-full transition-opacity duration-500 ${
+                      tab === t.id
+                        ? "relative opacity-100"
+                        : "absolute inset-0 opacity-0"
+                    }`}
                   />
                 ))}
-
               </div>
-
             </div>
 
-            {/* =================================================
-                ROUTE FACILITIES
-                Masih di dalam card yang sama
-            ================================================= */}
-            <div
-              className="
-                border-t
-                border-brand-light/40
-                px-5
-                py-5
-                sm:px-7
-                sm:py-6
-              "
-            >
-
-              {/* Title */}
+            {/* ROUTE FACILITIES */}
+            <div className="border-t border-brand-light/40 px-5 py-5 sm:px-7 sm:py-6">
               <div className="mb-4 text-center sm:text-left">
-
-                <span
-                  className="
-                    text-[9px]
-                    font-extrabold
-                    tracking-[0.2em]
-                    text-brand-deep
-                    uppercase
-                    sm:text-[10px]
-                  "
-                >
+                <span className="text-[9px] font-extrabold tracking-[0.2em] text-brand-deep uppercase sm:text-[10px]">
                   Fasilitas Rute
                 </span>
 
-                <p
-                  className="
-                    mt-1
-                    text-xs
-                    text-navy/55
-                    sm:text-sm
-                  "
-                >
+                <p className="mt-1 text-xs text-navy/55 sm:text-sm">
                   Fasilitas yang tersedia selama perjalanan.
                 </p>
-
               </div>
 
-              {/* Facilities */}
-              <div
-                className="
-                  grid
-                  grid-cols-2
-                  gap-x-4
-                  gap-y-4
-                  sm:grid-cols-5
-                "
-              >
+              <div className="grid grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-5">
 
                 {/* Water Station */}
                 <div className="flex items-center gap-3 sm:flex-col sm:justify-center sm:text-center">
-                  <div
-                    className="
-                      grid
-                      h-10
-                      w-10
-                      shrink-0
-                      place-items-center
-                      rounded-xl
-                      bg-brand-sky
-                      text-lg
-                    "
-                  >
+                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-sky text-lg">
                     💧
                   </div>
 
                   <div className="min-w-0">
-                    <div
-                      className="
-                        text-[10px]
-                        font-extrabold
-                        text-navy
-                        uppercase
-                        sm:text-xs
-                      "
-                    >
+                    <div className="text-[10px] font-extrabold text-navy uppercase sm:text-xs">
                       Water Station
                     </div>
 
@@ -910,31 +240,12 @@ export function RouteMap() {
 
                 {/* Ambulance */}
                 <div className="flex items-center gap-3 sm:flex-col sm:justify-center sm:text-center">
-                  <div
-                    className="
-                      grid
-                      h-10
-                      w-10
-                      shrink-0
-                      place-items-center
-                      rounded-xl
-                      bg-[#F18B1F]/10
-                      text-lg
-                    "
-                  >
+                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-sky text-lg">
                     🚑
                   </div>
 
                   <div className="min-w-0">
-                    <div
-                      className="
-                        text-[10px]
-                        font-extrabold
-                        text-navy
-                        uppercase
-                        sm:text-xs
-                      "
-                    >
+                    <div className="text-[10px] font-extrabold text-navy uppercase sm:text-xs">
                       Ambulance
                     </div>
 
@@ -946,31 +257,12 @@ export function RouteMap() {
 
                 {/* Medical Point */}
                 <div className="flex items-center gap-3 sm:flex-col sm:justify-center sm:text-center">
-                  <div
-                    className="
-                      grid
-                      h-10
-                      w-10
-                      shrink-0
-                      place-items-center
-                      rounded-xl
-                      bg-[#97D91B]/15
-                      text-lg
-                    "
-                  >
+                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-light/20 text-lg">
                     🏥
                   </div>
 
                   <div className="min-w-0">
-                    <div
-                      className="
-                        text-[10px]
-                        font-extrabold
-                        text-navy
-                        uppercase
-                        sm:text-xs
-                      "
-                    >
+                    <div className="text-[10px] font-extrabold text-navy uppercase sm:text-xs">
                       Medical Point
                     </div>
 
@@ -982,31 +274,12 @@ export function RouteMap() {
 
                 {/* Toilet */}
                 <div className="flex items-center gap-3 sm:flex-col sm:justify-center sm:text-center">
-                  <div
-                    className="
-                      grid
-                      h-10
-                      w-10
-                      shrink-0
-                      place-items-center
-                      rounded-xl
-                      bg-brand-sky
-                      text-lg
-                    "
-                  >
+                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-sky text-lg">
                     🚻
                   </div>
 
                   <div className="min-w-0">
-                    <div
-                      className="
-                        text-[10px]
-                        font-extrabold
-                        text-navy
-                        uppercase
-                        sm:text-xs
-                      "
-                    >
+                    <div className="text-[10px] font-extrabold text-navy uppercase sm:text-xs">
                       Toilet
                     </div>
 
@@ -1018,31 +291,12 @@ export function RouteMap() {
 
                 {/* Finish Area */}
                 <div className="flex items-center gap-3 sm:flex-col sm:justify-center sm:text-center">
-                  <div
-                    className="
-                      grid
-                      h-10
-                      w-10
-                      shrink-0
-                      place-items-center
-                      rounded-xl
-                      bg-brand/15
-                      text-lg
-                    "
-                  >
+                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand/15 text-lg">
                     🏁
                   </div>
 
                   <div className="min-w-0">
-                    <div
-                      className="
-                        text-[10px]
-                        font-extrabold
-                        text-navy
-                        uppercase
-                        sm:text-xs
-                      "
-                    >
+                    <div className="text-[10px] font-extrabold text-navy uppercase sm:text-xs">
                       Finish Area
                     </div>
 
@@ -1053,38 +307,7 @@ export function RouteMap() {
                 </div>
 
               </div>
-
             </div>
-          </div>
-        </Reveal>
-
-        {/* ===================================================
-            BOTTOM ACCENT
-        =================================================== */}
-        <Reveal delay={240}>
-          <div
-            className="
-              mx-auto
-              mt-10
-              flex
-              max-w-md
-              items-center
-              gap-3
-            "
-          >
-            <span className="h-px flex-1 bg-brand-light" />
-
-            <span
-              className="
-                h-2
-                w-2
-                shrink-0
-                rounded-full
-                bg-brand
-              "
-            />
-
-            <span className="h-px flex-1 bg-brand-light" />
           </div>
         </Reveal>
 
@@ -1095,320 +318,114 @@ export function RouteMap() {
 
 export function Rundown() {
   return (
-    <section
-      id="rundown"
-      className="relative overflow-hidden bg-brand-sky py-20 sm:py-24 lg:py-28"
-    >
+    <section id="rundown" className="relative overflow-hidden bg-brand-sky pb-20 pt-8 sm:pb-24 sm:pt-10 lg:pb-28 lg:pt-12">
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
 
-        {/* =====================================================
-            HEADING
-        ===================================================== */}
+        {/* HEADING */}
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-
-            {/* Heading */}
-            <h2
-              className="
-                mt-5
-                font-display
-                text-4xl
-                leading-[1.05]
-                text-navy
-                uppercase
-                sm:text-5xl
-                lg:text-6xl
-              "
-            >
+            <h2 className="mt-5 font-display text-4xl leading-[1.05] text-navy uppercase sm:text-5xl lg:text-6xl">
               RUNDOWN
               <br />
-              <span className="text-brand-deep">
-                PKU RUN FRESH
-              </span>
+              <span className="text-brand-deep">PKU RUN FRESH</span>
             </h2>
           </div>
         </Reveal>
 
-        {/* =====================================================
-            TIMELINE
-        ===================================================== */}
+        {/* TIMELINE */}
         <div className="relative mt-12 sm:mt-14">
 
           {/* Timeline line */}
-          <span
-            className="
-              absolute
-              bottom-6
-              left-[18px]
-              top-6
-              w-0.5
-              bg-brand-light
-              sm:left-[27px]
-            "
-          />
+          <span className="absolute bottom-6 left-[18px] top-6 w-0.5 bg-brand-light sm:left-[27px]" />
 
           <div className="space-y-4 sm:space-y-5">
-
             {rundown.map((r, i) => {
               const isStart = r.title.toLowerCase().includes("start");
 
               return (
-                <Reveal
-                  key={`${r.time}-${r.title}`}
-                  delay={i * 60}
-                >
+                <Reveal key={`${r.time}-${r.title}`} delay={i * 60}>
                   <div className="relative pl-12 sm:pl-16">
 
-                    {/* =================================================
-                        TIMELINE DOT
-                    ================================================= */}
+                    {/* TIMELINE DOT */}
                     <span
-                      className={`
-                        absolute
-                        left-[9px]
-                        top-1/2
-                        z-10
-                        flex
-                        h-5
-                        w-5
-                        -translate-y-1/2
-                        items-center
-                        justify-center
-                        rounded-full
-                        border-4
-                        border-brand-sky
-                        sm:left-[18px]
-                        sm:h-5
-                        sm:w-5
-                        ${
-                          isStart
-                            ? "bg-brand shadow-[0_0_0_5px_rgba(151,217,27,0.15)]"
-                            : "bg-brand-light"
-                        }
-                      `}
+                      className={`absolute left-[9px] top-1/2 z-10 flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full border-4 border-brand-sky sm:left-[18px] ${
+                        isStart
+                          ? "bg-brand shadow-[0_0_0_5px_rgba(151,217,27,0.15)]"
+                          : "bg-brand-light"
+                      }`}
                     />
 
-                    {/* =================================================
-                        CARD
-                    ================================================= */}
+                    {/* CARD */}
                     <div
-                      className={`
-                        group
-                        relative
-                        overflow-hidden
-                        rounded-2xl
-                        bg-background
-                        shadow-soft
-                        transition-all
-                        duration-300
-                        hover:-translate-y-0.5
-                        hover:shadow-lift
-                        sm:rounded-3xl
-
-                        ${
-                          isStart
-                            ? "ring-2 ring-brand/25"
-                            : ""
-                        }
-                      `}
+                      className={`group relative overflow-hidden rounded-2xl bg-background shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lift sm:rounded-3xl ${
+                        isStart ? "ring-2 ring-brand/25" : ""
+                      }`}
                     >
-
                       {/* Start accent */}
                       {isStart && (
-                        <div
-                          className="
-                            absolute
-                            inset-y-0
-                            left-0
-                            w-1
-                            bg-brand
-                          "
-                        />
+                        <div className="absolute inset-y-0 left-0 w-1 bg-brand" />
                       )}
 
-                      <div
-                        className="
-                          grid
-                          grid-cols-[auto_minmax(0,1fr)]
-                          items-center
-                          gap-4
-                          p-4
-                          sm:gap-5
-                          sm:p-5
-                          lg:p-6
-                        "
-                      >
+                      <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 p-4 sm:gap-5 sm:p-5 lg:p-6">
 
-                        {/* =================================================
-                            TIME
-                        ================================================= */}
+                        {/* TIME */}
                         <div
-                          className={`
-                            flex
-                            min-w-[68px]
-                            flex-col
-                            items-center
-                            justify-center
-                            rounded-xl
-                            px-3
-                            py-2.5
-                            sm:min-w-[82px]
-                            sm:rounded-2xl
-                            sm:px-4
-                            sm:py-3
-
-                            ${
-                              isStart
-                                ? "bg-brand text-primary-foreground"
-                                : "bg-brand-sky"
-                            }
-                          `}
+                          className={`flex min-w-[68px] flex-col items-center justify-center rounded-xl px-3 py-2.5 sm:min-w-[82px] sm:rounded-2xl sm:px-4 sm:py-3 ${
+                            isStart
+                              ? "bg-brand text-primary-foreground"
+                              : "bg-brand-sky"
+                          }`}
                         >
                           <span
-                            className={`
-                              font-display
-                              text-lg
-                              leading-none
-                              tabular-nums
-                              sm:text-xl
-                              ${
-                                isStart
-                                  ? "text-primary-foreground"
-                                  : "text-brand-deep"
-                              }
-                            `}
+                            className={`font-display text-lg leading-none tabular-nums sm:text-xl ${
+                              isStart
+                                ? "text-primary-foreground"
+                                : "text-brand-deep"
+                            }`}
                           >
                             {r.time}
                           </span>
 
                           <span
-                            className={`
-                              mt-1
-                              text-[8px]
-                              font-bold
-                              tracking-wider
-                              uppercase
-                              ${
-                                isStart
-                                  ? "text-primary-foreground/75"
-                                  : "text-navy/45"
-                              }
-                            `}
+                            className={`mt-1 text-[8px] font-bold tracking-wider uppercase ${
+                              isStart
+                                ? "text-primary-foreground/75"
+                                : "text-navy/45"
+                            }`}
                           >
                             WIB
                           </span>
                         </div>
 
-                        {/* =================================================
-                            CONTENT
-                        ================================================= */}
+                        {/* CONTENT */}
                         <div className="min-w-0">
-
                           <div className="flex flex-wrap items-center gap-2">
-
-                            <h3
-                              className="
-                                min-w-0
-                                font-bold
-                                text-navy
-                                uppercase
-                                sm:text-base
-                              "
-                            >
+                            <h3 className="min-w-0 font-bold text-navy uppercase sm:text-base">
                               {r.title}
                             </h3>
 
                             {isStart && (
-                              <span
-                                className="
-                                  shrink-0
-                                  rounded-full
-                                  bg-brand
-                                  px-2.5
-                                  py-1
-                                  text-[8px]
-                                  font-extrabold
-                                  tracking-wider
-                                  text-primary-foreground
-                                  uppercase
-                                "
-                              >
+                              <span className="shrink-0 rounded-full bg-brand px-2.5 py-1 text-[8px] font-extrabold tracking-wider text-primary-foreground uppercase">
                                 Start
                               </span>
                             )}
-
                           </div>
 
-                          <p
-                            className="
-                              mt-1
-                              text-xs
-                              leading-relaxed
-                              text-navy/60
-                              sm:text-sm
-                            "
-                          >
+                          <p className="mt-1 text-xs leading-relaxed text-navy/60 sm:text-sm">
                             {r.desc}
                           </p>
-
                         </div>
-
                       </div>
 
                       {/* Hover accent */}
-                      <div
-                        className="
-                          absolute
-                          bottom-0
-                          left-0
-                          h-0.5
-                          w-0
-                          bg-brand
-                          transition-all
-                          duration-300
-                          group-hover:w-full
-                        "
-                      />
-
+                      <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
                     </div>
                   </div>
                 </Reveal>
               );
             })}
-
           </div>
         </div>
-
-        {/* =====================================================
-            BOTTOM ACCENT
-        ===================================================== */}
-        <Reveal delay={260}>
-          <div
-            className="
-              mx-auto
-              mt-10
-              flex
-              max-w-md
-              items-center
-              gap-3
-              sm:mt-12
-            "
-          >
-            <span className="h-px flex-1 bg-brand-light" />
-
-            <span
-              className="
-                h-2
-                w-2
-                shrink-0
-                rounded-full
-                bg-brand
-              "
-            />
-
-            <span className="h-px flex-1 bg-brand-light" />
-          </div>
-        </Reveal>
 
       </div>
     </section>
@@ -1587,29 +604,7 @@ export function Sponsors() {
 }
 
 export function FinalCTA() {
-  return (
-    <section className="relative overflow-hidden gradient-brand py-24 lg:py-32">
-      <svg className="pointer-events-none absolute inset-0 h-full w-full opacity-20" viewBox="0 0 1200 400" fill="none" aria-hidden>
-        <path d="M-50 300 C 250 200, 450 380, 750 260 S 1150 140, 1300 220" stroke="white" strokeWidth="3" />
-        <path d="M-50 340 C 300 260, 500 410, 800 310 S 1150 200, 1300 280" stroke="white" strokeWidth="2" />
-      </svg>
-      <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
-        <Reveal>
-          <h2 className="font-display text-4xl text-primary-foreground uppercase sm:text-5xl lg:text-6xl">
-            Bukan Sekadar Berlari.
-            <br />
-            Kita Rayakan Milad Bersama.
-          </h2>
-          <a
-            href={eventInfo.registerUrl}
-            className="mt-10 inline-block rounded-full bg-background px-10 py-4 font-display text-sm tracking-wide text-brand-deep uppercase shadow-lift transition-transform hover:scale-105"
-          >
-            Daftar Sekarang
-          </a>
-        </Reveal>
-      </div>
-    </section>
-  );
+  return null;
 }
 
 export function Faq() {
