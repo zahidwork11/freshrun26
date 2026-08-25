@@ -5,6 +5,7 @@ import jersey2 from "@/assets/jersey2.png";
 import medal from "@/assets/medal.png";
 import route5k from "@/assets/maps/route-5k.png";
 import route25k from "@/assets/maps/route-2-5k.png";
+import pkuLogo from "@/assets/pkulogo.png";
 import { Reveal } from "./Reveal";
 import {
   Accordion,
@@ -609,25 +610,35 @@ export function FinalCTA() {
 
 export function Faq() {
   return (
-    <section id="faq" className="bg-background py-20 lg:py-28">
+    <section id="faq" className="bg-[#F18B1F]/90 py-20 lg:py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <Reveal>
-          <h2 className="text-center font-display text-4xl text-navy uppercase sm:text-5xl lg:text-6xl">
-            Masih Punya Pertanyaan?
-          </h2>
+          <div className="text-center">
+            <span className="inline-flex items-center rounded-full border border-white/30 bg-white/15 px-4 py-2 text-[10px] font-extrabold tracking-[0.22em] text-white uppercase sm:text-xs">
+              FAQ
+            </span>
+
+            <h2 className="mt-4 font-display text-4xl text-white uppercase sm:text-5xl lg:text-6xl">
+              Masih Punya Pertanyaan?
+            </h2>
+          </div>
         </Reveal>
+
         <Reveal delay={100}>
           <Accordion type="single" collapsible className="mt-10 space-y-3">
             {faqs.map((f, i) => (
               <AccordionItem
                 key={f.q}
                 value={`item-${i}`}
-                className="overflow-hidden rounded-2xl border border-brand-light/60 bg-brand-sky/50 px-5"
+                className="overflow-hidden rounded-2xl border border-white/20 bg-white px-5 shadow-[0_8px_25px_rgba(120,55,0,0.15)] transition-all duration-300 data-[state=open]:border-white/50"
               >
-                <AccordionTrigger className="text-left text-sm font-bold text-navy hover:no-underline sm:text-base">
+                <AccordionTrigger className="text-left text-sm font-bold text-[#8A3D06] hover:no-underline sm:text-base">
                   {f.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-sm text-navy/70">{f.a}</AccordionContent>
+
+                <AccordionContent className="text-sm leading-relaxed text-[#8A3D06]/70">
+                  {f.a}
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
@@ -640,50 +651,72 @@ export function Faq() {
 export function Footer() {
   return (
     <footer className="bg-navy py-16 text-primary-foreground">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
-          <div className="min-w-0">
-            <div className="flex min-w-0 items-center gap-3">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl gradient-brand font-display text-lg">
-                PKU
-              </span>
-              <span className="min-w-0 font-display text-lg uppercase">
-                PKU Muhammadiyah Sukoharjo
-              </span>
-            </div>
-            <p className="mt-4 max-w-md text-sm text-primary-foreground/70">
-              Sehat Bersama, Bergerak Bersama, Menginspirasi Sesama.
-            </p>
-            <div className="mt-6 flex gap-3">
-              <a
-                href={eventInfo.instagram}
-                className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-bold uppercase transition-colors hover:bg-white/20"
-              >
-                <Instagram className="h-4 w-4" /> Instagram
-              </a>
-              <a
-                href={eventInfo.whatsapp}
-                className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-bold uppercase transition-colors hover:bg-white/20"
-              >
-                <MessageCircle className="h-4 w-4" /> WhatsApp
-              </a>
-            </div>
+      <div className="mx-auto max-w-7xl px-4 text-center sm:px-6">
+
+        {/* BRAND */}
+        <div className="flex flex-col items-center">
+          <div className="flex items-center justify-center gap-3">
+            <img
+              src={pkuLogo}
+              alt="Logo PKU Muhammadiyah Sukoharjo"
+              className="h-11 w-auto shrink-0 object-contain"
+            />
+
+            <span className="font-display text-lg uppercase">
+              PKU Muhammadiyah Sukoharjo
+            </span>
           </div>
-          <nav className="grid grid-cols-2 gap-2 text-sm">
-            {navItems.map((n) => (
-              <a
-                key={n.href}
-                href={n.href}
-                className="truncate text-primary-foreground/70 transition-colors hover:text-primary-foreground"
-              >
-                {n.label}
-              </a>
-            ))}
-          </nav>
+
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-primary-foreground/70">
+            Menjadi Rumah Sakit Bernuansa Islami, Dengan Pelayanan Cepat Dan Ramah.
+          </p>
+
+          {/* SOCIAL BUTTONS */}
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+
+            {/* INSTAGRAM */}
+            <a
+              href={eventInfo.instagram}
+              className="group inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/10 px-4 py-2.5 text-xs font-bold text-white uppercase shadow-[0_6px_20px_rgba(0,0,0,0.12)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-transparent hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF] hover:shadow-[0_8px_24px_rgba(221,42,123,0.3)]"
+            >
+              <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 transition-colors duration-300 group-hover:bg-white/20">
+                <Instagram className="h-4 w-4" />
+              </span>
+              Instagram
+            </a>
+
+            {/* WHATSAPP */}
+            <a
+              href={eventInfo.whatsapp}
+              className="group inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/10 px-4 py-2.5 text-xs font-bold text-white uppercase shadow-[0_6px_20px_rgba(0,0,0,0.12)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-transparent hover:bg-[#25D366] hover:shadow-[0_8px_24px_rgba(37,211,102,0.3)]"
+            >
+              <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 transition-colors duration-300 group-hover:bg-white/20">
+                <MessageCircle className="h-4 w-4" />
+              </span>
+              WhatsApp
+            </a>
+
+          </div>
         </div>
+
+        {/* NAVIGATION */}
+        <nav className="mx-auto mt-10 flex max-w-2xl flex-wrap justify-center gap-x-6 gap-y-3 text-sm">
+          {navItems.map((n) => (
+            <a
+              key={n.href}
+              href={n.href}
+              className="text-primary-foreground/70 transition-colors hover:text-primary-foreground"
+            >
+              {n.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* COPYRIGHT */}
         <p className="mt-12 border-t border-white/10 pt-6 text-xs text-primary-foreground/60">
           © 2026 RS PKU Muhammadiyah Sukoharjo Fun Run.
         </p>
+
       </div>
     </footer>
   );

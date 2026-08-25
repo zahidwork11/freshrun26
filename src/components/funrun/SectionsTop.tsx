@@ -356,12 +356,12 @@ export function TotalPrize() {
 
           {/* CHIPS */}
           <div className="mx-auto mt-5 max-w-2xl px-2 sm:mt-6 sm:px-0">
-            {/* HADIAH UTAMA */}
-            <div className="mb-3 flex justify-center">
-              <span className="inline-flex min-h-[42px] items-center justify-center rounded-full bg-[#97D91B] px-5 py-2.5 text-center text-[10px] font-extrabold leading-tight tracking-wide text-[#193000] uppercase shadow-[0_4px_14px_rgba(151,217,27,0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#8BCF13] sm:min-h-[44px] sm:px-6 sm:text-xs">
-                {chips[0]}
-              </span>
-            </div>
+          {/* HADIAH UTAMA */}
+          <div className="mb-3 flex w-full justify-center">
+            <span className="inline-flex min-h-[50px] w-full max-w-xl items-center justify-center rounded-full bg-[#97D91B] px-6 py-3 text-center text-sm font-extrabold leading-tight tracking-wide text-[#193000] uppercase shadow-[0_6px_18px_rgba(151,217,27,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#8BCF13] sm:min-h-[56px] sm:px-8 sm:py-3.5 sm:text-base lg:min-h-[60px] lg:text-lg">
+              {chips[0]}
+            </span>
+          </div>
 
             {/* HADIAH LAINNYA */}
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-2.5">
