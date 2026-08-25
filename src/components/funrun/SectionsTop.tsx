@@ -21,15 +21,7 @@ export function Hero() {
   const presaleProgress = presaleQuota > 0 ? Math.min((presaleRegistered / presaleQuota) * 100, 100) : 0;
 
   useEffect(() => {
-    const onScroll = () => {
-      if (window.innerWidth >= 1024) {
-        setOffset(Math.min(window.scrollY * 0.18, 120));
-      } else {
-        setOffset(0);
-      }
-    };
-
-    onScroll();
+    const onScroll = () => setOffset(Math.min(window.scrollY * 0.18, 120));
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -50,39 +42,20 @@ export function Hero() {
       </div>
 
       {/* BLUE OVERLAY */}
-      <div
-        className="absolute inset-0 -z-20 bg-[#0A5490]/55"
-        aria-hidden="true"
-      />
+      <div className="absolute inset-0 -z-20 bg-[#0A5490]/55" aria-hidden="true" />
 
       {/* TOP GRADIENT */}
-      <div
-        className="absolute inset-x-0 top-0 -z-10 h-[55%] bg-gradient-to-b from-[#062D50]/75 via-[#0A5490]/45 to-transparent"
-        aria-hidden="true"
-      />
+      <div className="absolute inset-x-0 top-0 -z-10 h-[55%] bg-gradient-to-b from-[#062D50]/75 via-[#0A5490]/45 to-transparent" aria-hidden="true" />
 
       {/* BOTTOM GRADIENT */}
-      <div
-        className="absolute inset-x-0 bottom-0 -z-10 h-[55%] bg-gradient-to-t from-[#062D50]/70 via-[#0A5490]/35 to-transparent"
-        aria-hidden="true"
-      />
+      <div className="absolute inset-x-0 bottom-0 -z-10 h-[55%] bg-gradient-to-t from-[#062D50]/70 via-[#0A5490]/35 to-transparent" aria-hidden="true" />
 
       {/* SOFT BLUE LIGHT */}
-      <div
-        className="absolute left-[-10%] top-[20%] -z-10 h-72 w-72 rounded-full bg-[#1492FA]/15 blur-3xl"
-        aria-hidden="true"
-      />
-
-      <div
-        className="absolute bottom-[5%] right-[-10%] -z-10 h-80 w-80 rounded-full bg-[#1492FA]/12 blur-3xl"
-        aria-hidden="true"
-      />
+      <div className="absolute left-[-10%] top-[20%] -z-10 h-72 w-72 rounded-full bg-[#1492FA]/15 blur-3xl" aria-hidden="true" />
+      <div className="absolute bottom-[5%] right-[-10%] -z-10 h-80 w-80 rounded-full bg-[#1492FA]/12 blur-3xl" aria-hidden="true" />
 
       {/* BLUE BLEND */}
-      <div
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0A5490]/20 via-transparent to-[#1492FA]/10"
-        aria-hidden="true"
-      />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0A5490]/20 via-transparent to-[#1492FA]/10" aria-hidden="true" />
 
       {/* CONTENT */}
       <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-32 sm:px-6 lg:pb-28 lg:pt-44">
@@ -122,7 +95,6 @@ export function Hero() {
             {/* KATEGORI */}
             <div className="group rounded-2xl border border-white/35 bg-white/5 p-3.5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:bg-white/10 sm:rounded-3xl sm:p-5">
               <div className="flex items-center gap-3 sm:gap-4">
-
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/30 bg-white/10 sm:h-12 sm:w-12 sm:rounded-2xl">
                   <Flag className="h-4 w-4 text-white sm:h-5 sm:w-5" />
                 </div>
@@ -136,14 +108,12 @@ export function Hero() {
                     {eventInfo.distances}
                   </p>
                 </div>
-
               </div>
             </div>
 
             {/* TANGGAL */}
             <div className="group rounded-2xl border border-white/35 bg-white/5 p-3.5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:bg-white/10 sm:rounded-3xl sm:p-5">
               <div className="flex items-center gap-3 sm:gap-4">
-
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/30 bg-white/10 sm:h-12 sm:w-12 sm:rounded-2xl">
                   <CalendarDays className="h-4 w-4 text-white sm:h-5 sm:w-5" />
                 </div>
@@ -157,7 +127,6 @@ export function Hero() {
                     {eventInfo.dateLabel}
                   </p>
                 </div>
-
               </div>
             </div>
 
@@ -173,7 +142,6 @@ export function Hero() {
               {/* INFO */}
               <div className="min-w-0 text-left">
                 <div className="flex flex-wrap items-center gap-2">
-
                   <p className="text-[9px] font-extrabold tracking-[0.18em] text-[#0A5490] uppercase sm:text-[10px] sm:tracking-[0.22em]">
                     Kategori 5K & 2.5K
                   </p>
@@ -181,12 +149,10 @@ export function Hero() {
                   <span className="rounded-full bg-[#F18B1F] px-2 py-0.5 text-[8px] font-extrabold tracking-wider text-white uppercase sm:text-[9px]">
                     Presale
                   </span>
-
                 </div>
 
                 <p className="mt-1 font-display text-lg tracking-wide text-[#0A5490] uppercase sm:text-xl">
                   {presaleRegistered}
-
                   <span className="ml-1.5 font-sans text-xs font-medium text-[#0A5490]/55 normal-case sm:text-sm">
                     dari {presaleQuota} peserta
                   </span>
@@ -195,7 +161,6 @@ export function Hero() {
 
               {/* PERCENTAGE */}
               <div className="shrink-0 text-right">
-
                 <span className="font-display text-lg text-[#1492FA] sm:text-xl">
                   {presaleProgress.toFixed(1)}%
                 </span>
@@ -203,7 +168,6 @@ export function Hero() {
                 <p className="text-[8px] font-bold tracking-wider text-[#0A5490]/45 uppercase">
                   Terisi
                 </p>
-
               </div>
 
             </div>
@@ -218,7 +182,6 @@ export function Hero() {
 
             {/* PRESALE PERIOD */}
             <div className="mt-4 rounded-xl border border-[#97D91B]/35 bg-[#97D91B]/10 px-4 py-3.5 text-center sm:mt-5 sm:rounded-2xl sm:px-5 sm:py-4">
-
               <p className="text-[8px] font-extrabold tracking-[0.2em] text-[#468519]/70 uppercase sm:text-[9px]">
                 Periode Presale Terbatas
               </p>
@@ -226,7 +189,6 @@ export function Hero() {
               <p className="mt-1 font-display text-lg leading-tight tracking-wide text-[#468519] uppercase sm:text-xl lg:text-2xl">
                 1 September – 10 September 2026
               </p>
-
             </div>
 
           </div>
@@ -238,7 +200,7 @@ export function Hero() {
 
             {/* PRIMARY CTA */}
             <a
-              href="#cara-daftar"
+              href= "#cara-daftar" 
               className="rounded-full bg-[#1492FA] px-7 py-3.5 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(20,146,250,0.3)] transition-all duration-300 hover:scale-105 hover:bg-[#0A82E0] sm:px-8 sm:py-4"
             >
               Cara Daftar
