@@ -45,39 +45,24 @@ export function Hero() {
       <div className="absolute inset-0 -z-20 bg-[#0A5490]/55" aria-hidden="true" />
 
       {/* TOP GRADIENT */}
-      <div
-        className="absolute inset-x-0 top-0 -z-10 h-[55%] bg-gradient-to-b from-[#062D50]/75 via-[#0A5490]/45 to-transparent"
-        aria-hidden="true"
-      />
+      <div className="absolute inset-x-0 top-0 -z-10 h-[55%] bg-gradient-to-b from-[#062D50]/75 via-[#0A5490]/45 to-transparent" aria-hidden="true" />
 
       {/* BOTTOM GRADIENT */}
-      <div
-        className="absolute inset-x-0 bottom-0 -z-10 h-[55%] bg-gradient-to-t from-[#062D50]/70 via-[#0A5490]/35 to-transparent"
-        aria-hidden="true"
-      />
+      <div className="absolute inset-x-0 bottom-0 -z-10 h-[55%] bg-gradient-to-t from-[#062D50]/70 via-[#0A5490]/35 to-transparent" aria-hidden="true" />
 
       {/* SOFT BLUE LIGHT */}
-      <div
-        className="absolute left-[-10%] top-[20%] -z-10 h-72 w-72 rounded-full bg-[#1492FA]/15 blur-3xl"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-[5%] right-[-10%] -z-10 h-80 w-80 rounded-full bg-[#1492FA]/12 blur-3xl"
-        aria-hidden="true"
-      />
+      <div className="absolute left-[-10%] top-[20%] -z-10 h-72 w-72 rounded-full bg-[#1492FA]/15 blur-3xl" aria-hidden="true" />
+      <div className="absolute bottom-[5%] right-[-10%] -z-10 h-80 w-80 rounded-full bg-[#1492FA]/12 blur-3xl" aria-hidden="true" />
 
       {/* BLUE BLEND */}
-      <div
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0A5490]/20 via-transparent to-[#1492FA]/10"
-        aria-hidden="true"
-      />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0A5490]/20 via-transparent to-[#1492FA]/10" aria-hidden="true" />
 
       {/* CONTENT */}
       <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-32 sm:px-6 lg:pb-28 lg:pt-44">
 
         {/* BADGE */}
         <Reveal>
-          <div className="mx-auto flex w-fit max-w-full items-center justify-center rounded-full border border-white/35 bg-[#0A5490]/75 px-4 py-2.5 text-center shadow-[0_8px_30px_rgba(6,45,80,0.3)] backdrop-blur-md sm:mx-0 sm:px-5 sm:py-3">
+          <div className="mx-auto flex w-fit max-w-full items-center justify-center rounded-full border border-white/35 bg-[#0A5490]/75 px-4 py-2.5 text-center shadow-[0_8px_30px_rgba(6,45,80,0.3)] backdrop-blur-md sm:mx-0 sm:px-5 sm:py-3 lg:mx-auto">
             <span className="text-center text-[10px] font-bold tracking-[0.12em] text-white sm:text-xs sm:tracking-[0.15em]">
               Milad RS PKU Muhammadiyah Sukoharjo
             </span>
@@ -86,7 +71,7 @@ export function Hero() {
 
         {/* HEADING */}
         <Reveal delay={100}>
-          <h1 className="mx-auto mt-6 max-w-4xl text-center font-display text-5xl leading-[0.95] tracking-tight text-white uppercase drop-shadow-[0_4px_14px_rgba(6,45,80,0.65)] sm:mx-0 sm:text-left sm:text-7xl lg:text-8xl">
+          <h1 className="mx-auto mt-6 max-w-4xl text-center font-display text-5xl leading-[0.95] tracking-tight text-white uppercase drop-shadow-[0_1px_4px_rgba(255,255,255,0.22)] sm:mx-0 sm:text-left sm:text-7xl lg:mx-auto lg:text-center lg:text-8xl">
             <span className="text-white">Rayakan</span>{" "}
             <span className="text-[#1492FA]">Milad,</span>
             <br />
@@ -97,7 +82,7 @@ export function Hero() {
 
         {/* DESCRIPTION */}
         <Reveal delay={180}>
-          <p className="mx-auto mt-5 max-w-xl text-center text-base font-medium leading-relaxed text-white/90 drop-shadow-[0_2px_7px_rgba(6,45,80,0.65)] sm:mx-0 sm:text-left sm:text-lg">
+          <p className="mx-auto mt-5 max-w-xl text-center text-base font-medium leading-relaxed text-white/90 drop-shadow-[0_2px_7px_rgba(6,45,80,0.65)] sm:mx-0 sm:text-left lg:mx-auto lg:text-center sm:text-lg">
             PKU Muhammadiyah Sukoharjo RUN FRESH, Satu langkah untuk sehat satu
             langkah untuk kebersamaan.
           </p>
@@ -105,7 +90,7 @@ export function Hero() {
 
         {/* EVENT INFO */}
         <Reveal delay={260}>
-          <div className="mx-auto mt-7 grid max-w-3xl gap-3 sm:mx-0 sm:mt-8 sm:grid-cols-2 sm:gap-4">
+          <div className="mx-auto mt-7 grid max-w-3xl gap-3 sm:mx-0 sm:mt-8 sm:grid-cols-2 sm:gap-4 lg:mx-auto">
 
             {/* KATEGORI */}
             <div className="group rounded-2xl border border-white/35 bg-white/5 p-3.5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:bg-white/10 sm:rounded-3xl sm:p-5">
@@ -118,6 +103,7 @@ export function Hero() {
                   <p className="text-[9px] font-bold tracking-[0.18em] text-white/70 uppercase sm:text-[10px] sm:tracking-[0.22em]">
                     Kategori
                   </p>
+
                   <p className="mt-0.5 font-display text-base tracking-wide text-white uppercase sm:mt-1 sm:text-xl">
                     {eventInfo.distances}
                   </p>
@@ -136,6 +122,7 @@ export function Hero() {
                   <p className="text-[9px] font-bold tracking-[0.18em] text-white/70 uppercase sm:text-[10px] sm:tracking-[0.22em]">
                     Tanggal
                   </p>
+
                   <p className="mt-0.5 font-display text-base tracking-wide text-white uppercase sm:mt-1 sm:text-xl">
                     {eventInfo.dateLabel}
                   </p>
@@ -146,68 +133,70 @@ export function Hero() {
           </div>
         </Reveal>
 
-{/* PRESALE REGISTRATION */}
-<Reveal delay={300}>
-  <div className="mx-auto mt-4 max-w-3xl rounded-2xl border border-[#1492FA]/25 bg-[#EAF6FF]/95 p-4 shadow-[0_8px_28px_rgba(6,45,80,0.12)] backdrop-blur-sm sm:mx-0 sm:mt-5 sm:rounded-3xl sm:p-5">
+        {/* PRESALE REGISTRATION */}
+        <Reveal delay={300}>
+          <div className="mx-auto mt-4 max-w-3xl rounded-2xl border border-[#1492FA]/25 bg-[#EAF6FF]/95 p-4 shadow-[0_8px_28px_rgba(6,45,80,0.12)] backdrop-blur-sm sm:mx-0 sm:mt-5 sm:rounded-3xl sm:p-5 lg:mx-auto">
 
-    <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center justify-between gap-4">
 
-      {/* INFO */}
-      <div className="min-w-0">
-        <div className="flex flex-wrap items-center gap-2">
-          <p className="text-[9px] font-extrabold tracking-[0.18em] text-[#0A5490] uppercase sm:text-[10px] sm:tracking-[0.22em]">
-            Kategori 5K & 2.5K 
-          </p>
+              {/* INFO */}
+              <div className="min-w-0 text-left">
+                <div className="flex flex-wrap items-center gap-2">
+                  <p className="text-[9px] font-extrabold tracking-[0.18em] text-[#0A5490] uppercase sm:text-[10px] sm:tracking-[0.22em]">
+                    Kategori 5K & 2.5K
+                  </p>
 
-          <span className="rounded-full bg-[#F18B1F] px-2 py-0.5 text-[8px] font-extrabold tracking-wider text-white uppercase sm:text-[9px]">
-            Presale
-          </span>
-        </div>
+                  <span className="rounded-full bg-[#F18B1F] px-2 py-0.5 text-[8px] font-extrabold tracking-wider text-white uppercase sm:text-[9px]">
+                    Presale
+                  </span>
+                </div>
 
-        <p className="mt-1 font-display text-lg tracking-wide text-[#0A5490] uppercase sm:text-xl">
-          {presaleRegistered}
-          <span className="ml-1.5 font-sans text-xs font-medium text-[#0A5490]/55 normal-case sm:text-sm">
-            dari {presaleQuota} peserta
-          </span>
-        </p>
-      </div>
+                <p className="mt-1 font-display text-lg tracking-wide text-[#0A5490] uppercase sm:text-xl">
+                  {presaleRegistered}
+                  <span className="ml-1.5 font-sans text-xs font-medium text-[#0A5490]/55 normal-case sm:text-sm">
+                    dari {presaleQuota} peserta
+                  </span>
+                </p>
+              </div>
 
-      {/* PERCENTAGE */}
-      <div className="shrink-0 text-right">
-        <span className="font-display text-lg text-[#1492FA] sm:text-xl">
-          {presaleProgress.toFixed(1)}%
-        </span>
-        <p className="text-[8px] font-bold tracking-wider text-[#0A5490]/45 uppercase">
-          Terisi
-        </p>
-      </div>
-    </div>
+              {/* PERCENTAGE */}
+              <div className="shrink-0 text-right">
+                <span className="font-display text-lg text-[#1492FA] sm:text-xl">
+                  {presaleProgress.toFixed(1)}%
+                </span>
 
-    {/* PROGRESS */}
-    <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-[#0A5490]/10">
-      <div
-        className="h-full rounded-full bg-[#1492FA] shadow-[0_0_10px_rgba(20,146,250,0.3)] transition-all duration-700"
-        style={{ width: `${presaleProgress}%` }}
-      />
-    </div>
+                <p className="text-[8px] font-bold tracking-wider text-[#0A5490]/45 uppercase">
+                  Terisi
+                </p>
+              </div>
 
-    {/* PRESALE PERIOD */}
-    <div className="mt-4 flex items-center justify-between gap-3 rounded-xl border border-[#97D91B]/25 bg-[#97D91B]/10 px-3 py-2.5">
-      <span className="text-[8px] font-bold tracking-[0.15em] text-[#468519] uppercase sm:text-[9px]">
-        Periode Terbatas
-      </span>
+            </div>
 
-      <span className="text-[9px] font-extrabold text-[#468519] sm:text-[10px]">
-        1 September – 10 September 2026
-      </span>
-    </div>
+            {/* PROGRESS */}
+            <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-[#0A5490]/10">
+              <div
+                className="h-full rounded-full bg-[#1492FA] shadow-[0_0_10px_rgba(20,146,250,0.3)] transition-all duration-700"
+                style={{ width: `${presaleProgress}%` }}
+              />
+            </div>
 
-  </div>
-</Reveal>
+            {/* PRESALE PERIOD */}
+            <div className="mt-4 rounded-xl border border-[#97D91B]/35 bg-[#97D91B]/10 px-4 py-3.5 text-center sm:mt-5 sm:rounded-2xl sm:px-5 sm:py-4">
+              <p className="text-[8px] font-extrabold tracking-[0.2em] text-[#468519]/70 uppercase sm:text-[9px]">
+                Periode Presale Terbatas
+              </p>
+
+              <p className="mt-1 font-display text-lg leading-tight tracking-wide text-[#468519] uppercase sm:text-xl lg:text-2xl">
+                1 September – 10 September 2026
+              </p>
+            </div>
+
+          </div>
+        </Reveal>
 
         {/* CTA */}
         <Reveal delay={340}>
-          <div className="mt-9 flex flex-wrap justify-center gap-3 sm:mt-10 sm:justify-start">
+          <div className="mt-9 flex flex-wrap justify-center gap-3 sm:mt-10 sm:justify-start lg:justify-center">
 
             {/* PRIMARY CTA */}
             <a
@@ -475,94 +464,47 @@ const toneClass: Record<string, string> = {
 
 export function Categories() {
   return (
-    <section
-      id="kategori"
-      className="relative overflow-hidden bg-background py-20 sm:py-24 lg:py-28"
-    >
-      {/* =====================================================
-          DECORATIVE BACKGROUND
-      ===================================================== */}
-      <div
-        className="pointer-events-none absolute inset-0 overflow-hidden"
-        aria-hidden="true"
-      >
-        {/* Orange Glow */}
-        <div className="absolute -left-32 -top-32 h-72 w-72 rounded-full bg-[#F18B1F]/10 blur-3xl sm:h-96 sm:w-96" />
-
-        {/* Green Glow */}
-        <div className="absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-[#97D91B]/10 blur-3xl sm:h-96 sm:w-96" />
-
-        {/* Blue Glow */}
-        <div className="absolute -bottom-40 -right-32 h-80 w-80 rounded-full bg-[#1492FA]/10 blur-3xl sm:h-96 sm:w-96" />
-      </div>
-
-      {/* =====================================================
-          MAIN CONTENT
-      ===================================================== */}
+    <section id="kategori" className="relative overflow-hidden bg-brand-sky py-20 sm:py-24 lg:py-28">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        {/* ===================================================
-            HEADING
-        =================================================== */}
+        {/* HEADING */}
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-display text-4xl leading-[1.05] text-navy uppercase sm:text-5xl lg:text-6xl">
+            <h2 className="mt-4 font-display text-4xl leading-[1.05] text-navy uppercase sm:text-5xl lg:text-6xl">
               Pilih Kategori,
               <br />
-              <span className="text-navy">
-                Siapkan Langkahmu.
-              </span>
+              <span className="text-[#F18B1F]">Siapkan Langkahmu.</span>
             </h2>
-
-            <p className="mx-auto mt-4 max-w-xl text-sm font-medium leading-relaxed text-navy/60 sm:text-base">
-              Pilih kategori yang sesuai dan bersiap menjadi bagian dari PKU
-              Muhammadiyah Sukoharjo Fun Run.
-            </p>
           </div>
         </Reveal>
 
-        {/* ===================================================
-            CATEGORY CARDS
-        =================================================== */}
+        {/* CATEGORY CARDS */}
         <div className="mx-auto mt-10 grid max-w-6xl gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((c, i) => {
-            /* =================================================
-               COLOR PER CATEGORY
-            ================================================= */
-
+            /* COLOR PER CATEGORY */
             let headerColor = "#b76e20";
             let accentColor = "#DA630E";
             let softColor = "#FFF3E8";
             let textColor = "#8A3D06";
 
-            // 5K UMUM
             if (c.slug === "5k-umum") {
               headerColor = "#F18B1F";
               accentColor = "#DA630E";
               softColor = "#FFF3E8";
               textColor = "#8A3D06";
-            }
-
-            // 2.5K UMUM
-            else if (c.slug === "2-5k-umum") {
+            } else if (c.slug === "2-5k-umum") {
               headerColor = "#6e9722";
               accentColor = "#468519";
               softColor = "#F2FBDD";
               textColor = "#468519";
-            }
-
-            // PELAJAR / MAHASISWA
-            else if (c.slug === "pelajar-mahasiswa") {
+            } else if (c.slug === "pelajar-mahasiswa") {
               headerColor = "#1b72b9";
               accentColor = "#0A5490";
               softColor = "#EAF6FF";
               textColor = "#0A5490";
             }
 
-            /* =================================================
-               HARGA NORMAL / HARGA CORET
-            ================================================= */
-
+            /* HARGA NORMAL */
             const originalPrice =
               c.slug === "5k-umum"
                 ? "Rp 175.000"
@@ -570,198 +512,124 @@ export function Categories() {
                   ? "Rp 75.000"
                   : null;
 
-            /* =================================================
-               KUOTA
-            ================================================= */
-
+            /* KUOTA */
             const quota = c.quota ?? 0;
             const registered = c.registered ?? 0;
-
-            const percentage =
-              quota > 0
-                ? Math.min(
-                    Math.round((registered / quota) * 100),
-                    100
-                  )
-                : 0;
+            const percentage = quota > 0 ? Math.min(Math.round((registered / quota) * 100), 100) : 0;
 
             return (
-              <Reveal
-                key={c.slug}
-                delay={i * 80}
-              >
+              <Reveal key={c.slug} delay={i * 80}>
                 <article className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_10px_30px_rgba(20,43,77,0.08)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(20,43,77,0.14)]">
 
-                  {/* =================================================
-                      CARD HEADER
-                  ================================================= */}
+                  {/* CARD HEADER */}
                   <header
                     className="relative overflow-hidden px-6 py-5 sm:px-7 sm:py-6"
-                    style={{
-                      backgroundColor: headerColor,
-                    }}
+                    style={{ backgroundColor: headerColor }}
                   >
-                    {/* Decorative Circle */}
                     <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-white/10" />
-
                     <div className="pointer-events-none absolute -bottom-12 right-10 h-20 w-20 rounded-full bg-black/5" />
 
                     <div className="relative grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2">
-
-                      {/* Category Name */}
                       <h3 className="min-w-0 font-display text-xl leading-tight text-white uppercase sm:text-2xl">
                         {c.name}
                       </h3>
 
-                      {/* PRESALE */}
                       {c.note && (
                         <span
                           className="shrink-0 rounded-full bg-white px-3 py-1 text-[9px] font-extrabold tracking-widest uppercase shadow-sm"
-                          style={{
-                            color: accentColor,
-                          }}
+                          style={{ color: accentColor }}
                         >
                           {c.note}
                         </span>
                       )}
-
                     </div>
                   </header>
 
-                  {/* =================================================
-                      CARD BODY
-                  ================================================= */}
+                  {/* CARD BODY */}
                   <div className="flex flex-1 flex-col p-6 sm:p-7">
 
-                    {/* =================================================
-                        PRICE
-                    ================================================= */}
+                    {/* PRICE */}
                     <div className="flex flex-wrap items-baseline gap-2">
-
-                      {/* Harga Coret */}
                       {originalPrice && (
                         <span className="font-display text-base font-medium text-slate-400 line-through decoration-2 sm:text-lg">
                           {originalPrice}
                         </span>
                       )}
 
-                      {/* Harga Aktif */}
                       <span
                         className="font-display text-3xl tracking-tight sm:text-4xl"
-                        style={{
-                          color: textColor,
-                        }}
+                        style={{ color: textColor }}
                       >
                         {c.price}
                       </span>
-
                     </div>
 
-{/* =================================================
-    REGISTRATION DATE
-================================================= */}
-{c.registrationPeriod && (
-  <div className="mt-3 rounded-xl border border-slate-200 px-4 py-2.5">
-    <p className="text-sm font-medium tracking-tight text-navy/60 sm:text-base">
-      {c.registrationPeriod}
-    </p>
-  </div>
-)}
+                    {/* REGISTRATION DATE */}
+                    {c.registrationPeriod && (
+                      <div className="mt-3 rounded-xl border border-slate-200 px-4 py-2.5">
+                        <p className="text-sm font-medium tracking-tight text-navy/60 sm:text-base">
+                          {c.registrationPeriod}
+                        </p>
+                      </div>
+                    )}
 
-                    {/* =================================================
-                        QUOTA
-                    ================================================= */}
+                    {/* QUOTA */}
                     <div className="mt-5">
-
-                      {/* Header Kuota */}
                       <div className="flex items-center justify-between gap-3">
                         <span className="text-[10px] font-extrabold tracking-[0.16em] text-navy/50 uppercase">
                           Kuota Peserta
                         </span>
 
-                        <span
-                          className="text-xs font-bold"
-                          style={{
-                            color: accentColor,
-                          }}
-                        >
+                        <span className="text-xs font-bold" style={{ color: accentColor }}>
                           {registered}/{quota}
                         </span>
                       </div>
 
-                      {/* Progress Track */}
                       <div
                         className="mt-2 h-2 w-full overflow-hidden rounded-full"
-                        style={{
-                          backgroundColor: softColor,
-                        }}
+                        style={{ backgroundColor: softColor }}
                       >
-                        {/* Progress */}
                         <div
                           className="h-full rounded-full transition-all duration-700"
-                          style={{
-                            width: `${percentage}%`,
-                            backgroundColor: headerColor,
-                          }}
+                          style={{ width: `${percentage}%`, backgroundColor: headerColor }}
                         />
                       </div>
                     </div>
 
-                    {/* =================================================
-                        BENEFITS
-                    ================================================= */}
+                    {/* BENEFITS */}
                     <ul className="mt-5 space-y-3 text-sm text-navy/75">
                       {c.benefits.map((b) => (
-                        <li
-                          key={b}
-                          className="flex items-center gap-3"
-                        >
-                          {/* Bullet */}
+                        <li key={b} className="flex items-center gap-3">
                           <span
                             className="grid h-5 w-5 shrink-0 place-items-center rounded-full"
-                            style={{
-                              backgroundColor: softColor,
-                            }}
+                            style={{ backgroundColor: softColor }}
                           >
                             <span
                               className="h-1.5 w-1.5 rounded-full"
-                              style={{
-                                backgroundColor: headerColor,
-                              }}
+                              style={{ backgroundColor: headerColor }}
                             />
                           </span>
 
-                          <span>
-                            {b}
-                          </span>
+                          <span>{b}</span>
                         </li>
                       ))}
                     </ul>
 
-                    {/* =================================================
-                        REQUIREMENT
-                    ================================================= */}
+                    {/* REQUIREMENT */}
                     {c.requirement && (
                       <p
                         className="mt-5 rounded-xl px-3 py-2.5 text-xs font-semibold"
-                        style={{
-                          backgroundColor: softColor,
-                          color: textColor,
-                        }}
+                        style={{ backgroundColor: softColor, color: textColor }}
                       >
                         Persyaratan: {c.requirement}
                       </p>
                     )}
 
-                    {/* =================================================
-                        REGISTER BUTTON
-                    ================================================= */}
+                    {/* REGISTER BUTTON */}
                     <a
                       href={`${eventInfo.registerUrl}?category=${c.slug}`}
                       className="mt-6 rounded-full px-5 py-3.5 text-center font-display text-sm tracking-wide text-white uppercase shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-md"
-                      style={{
-                        backgroundColor: headerColor,
-                      }}
+                      style={{ backgroundColor: headerColor }}
                     >
                       Daftar
                     </a>
@@ -771,6 +639,7 @@ export function Categories() {
             );
           })}
         </div>
+
       </div>
     </section>
   );
