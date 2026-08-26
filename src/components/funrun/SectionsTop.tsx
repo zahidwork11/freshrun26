@@ -660,7 +660,9 @@ export function Categories() {
 
                     {/* REGISTER BUTTON */}
                     <a
-                      href={`${eventInfo.registerUrl}?category=${c.slug}`}
+                      href={c.registerUrl || eventInfo.registerUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="mt-6 rounded-full px-5 py-3.5 text-center font-display text-sm tracking-wide text-white uppercase shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-md"
                       style={{ backgroundColor: headerColor }}
                     >

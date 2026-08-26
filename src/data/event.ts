@@ -85,6 +85,7 @@ export type Category = {
     | "navy";
   quota: number;
   registered: number;
+  registerUrl?: string;
 };
 
 // ============================================================
@@ -107,6 +108,7 @@ export const categories: Category[] = [
     tone: "bright",
     quota: 300,
     registered: 100,
+    registerUrl: "https://forms.gle/rgjuf9SwYQtpN89ZA"
   },
 
   // ==========================================================
@@ -124,6 +126,7 @@ export const categories: Category[] = [
     tone: "cyan",
     quota: 300,
     registered: 30,
+    registerUrl: "https://forms.gle/rgjuf9SwYQtpN89ZA"
   },
 
   // ==========================================================
@@ -140,6 +143,7 @@ export const categories: Category[] = [
     tone: "light",
     quota: 500,
     registered: 0,
+    registerUrl: "https://forms.gle/rgjuf9SwYQtpN89ZA"
   },
 
   // ==========================================================
