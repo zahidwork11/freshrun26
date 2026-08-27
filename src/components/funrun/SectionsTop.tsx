@@ -341,7 +341,7 @@ export function TotalPrize() {
 
       {/* GREEN OVERLAY */}
       <div
-        className="absolute inset-0 -z-20 bg-[#468519]/80"
+        className="absolute inset-0 -z-20 bg-[#468519]/90"
         aria-hidden="true"
       />
 
@@ -547,7 +547,10 @@ const toneClass: Record<string, string> = {
 
 export function Categories() {
   return (
-    <section id="kategori" className="relative overflow-hidden bg-brand-sky py-20 sm:py-24 lg:py-28">
+    <section
+      id="kategori"
+      className="relative overflow-hidden bg-brand-sky py-20 sm:py-24 lg:py-28"
+    >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* HEADING */}
@@ -598,7 +601,17 @@ export function Categories() {
             /* KUOTA */
             const quota = c.quota ?? 0;
             const registered = c.registered ?? 0;
-            const percentage = quota > 0 ? Math.min(Math.round((registered / quota) * 100), 100) : 0;
+            const percentage =
+              quota > 0
+                ? Math.min(
+                    Math.round((registered / quota) * 100),
+                    100
+                  )
+                : 0;
+
+            /* STATUS PENDAFTARAN */
+            const isStudentCategory =
+              c.slug === "pelajar-mahasiswa";
 
             return (
               <Reveal key={c.slug} delay={i * 80}>
@@ -663,7 +676,10 @@ export function Categories() {
                           Kuota Peserta
                         </span>
 
-                        <span className="text-xs font-bold" style={{ color: accentColor }}>
+                        <span
+                          className="text-xs font-bold"
+                          style={{ color: accentColor }}
+                        >
                           {registered}/{quota}
                         </span>
                       </div>
@@ -674,7 +690,10 @@ export function Categories() {
                       >
                         <div
                           className="h-full rounded-full transition-all duration-700"
-                          style={{ width: `${percentage}%`, backgroundColor: headerColor }}
+                          style={{
+                            width: `${percentage}%`,
+                            backgroundColor: headerColor,
+                          }}
                         />
                       </div>
                     </div>
@@ -682,14 +701,19 @@ export function Categories() {
                     {/* BENEFITS */}
                     <ul className="mt-5 space-y-3 text-sm text-navy/75">
                       {c.benefits.map((b) => (
-                        <li key={b} className="flex items-center gap-3">
+                        <li
+                          key={b}
+                          className="flex items-center gap-3"
+                        >
                           <span
                             className="grid h-5 w-5 shrink-0 place-items-center rounded-full"
                             style={{ backgroundColor: softColor }}
                           >
                             <span
                               className="h-1.5 w-1.5 rounded-full"
-                              style={{ backgroundColor: headerColor }}
+                              style={{
+                                backgroundColor: headerColor,
+                              }}
                             />
                           </span>
 
@@ -702,22 +726,35 @@ export function Categories() {
                     {c.requirement && (
                       <p
                         className="mt-5 rounded-xl px-3 py-2.5 text-xs font-semibold"
-                        style={{ backgroundColor: softColor, color: textColor }}
+                        style={{
+                          backgroundColor: softColor,
+                          color: textColor,
+                        }}
                       >
                         Persyaratan: {c.requirement}
                       </p>
                     )}
 
                     {/* REGISTER BUTTON */}
-                    <a
-                      href={c.registerUrl || eventInfo.registerUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-6 rounded-full px-5 py-3.5 text-center font-display text-sm tracking-wide text-white uppercase shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-md"
-                      style={{ backgroundColor: headerColor }}
-                    >
-                      Daftar
-                    </a>
+                    {isStudentCategory ? (
+                      <button
+                        type="button"
+                        disabled
+                        className="mt-6 cursor-not-allowed rounded-full bg-[#0A5490]/10 px-5 py-3.5 text-center font-display text-sm tracking-wide text-[#0A5490]/40 uppercase"
+                      >
+                        Belum Dibuka
+                      </button>
+                    ) : (
+                      <a
+                        href={c.registerUrl || eventInfo.registerUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-6 rounded-full px-5 py-3.5 text-center font-display text-sm tracking-wide text-white uppercase shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-md"
+                        style={{ backgroundColor: headerColor }}
+                      >
+                        Daftar
+                      </a>
+                    )}
                   </div>
                 </article>
               </Reveal>
