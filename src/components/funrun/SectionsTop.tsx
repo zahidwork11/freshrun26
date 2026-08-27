@@ -161,67 +161,59 @@ export function Hero() {
 
         {/* PRESALE REGISTRATION */}
         <Reveal delay={300}>
-          <div className="mx-auto mt-4 max-w-3xl rounded-2xl border border-[#1492FA]/25 bg-[#EAF6FF]/95 p-4 shadow-[0_8px_28px_rgba(6,45,80,0.12)] backdrop-blur-sm sm:mx-0 sm:mt-5 sm:rounded-3xl sm:p-5 lg:mx-auto">
+          <div className="mx-auto mt-4 max-w-3xl rounded-2xl border-2 border-[#F18B1F]/35 bg-white p-4 shadow-[0_10px_30px_rgba(6,45,80,0.16)] sm:mt-5 sm:rounded-3xl sm:p-5">
 
-            <div className="flex items-center justify-between gap-4">
+            {/* HEADER */}
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-[#F18B1F]" />
 
-              {/* INFO */}
-              <div className="min-w-0 text-left">
-                <div className="flex flex-wrap items-center gap-2">
-
-                  <p className="text-[9px] font-extrabold tracking-[0.18em] text-[#0A5490] uppercase sm:text-[10px] sm:tracking-[0.22em]">
-                    Kategori 5K & 2.5K
-                  </p>
-
-                  <span className="rounded-full bg-[#F18B1F] px-2 py-0.5 text-[8px] font-extrabold tracking-wider text-white uppercase sm:text-[9px]">
-                    Presale
-                  </span>
-
-                </div>
-
-                <p className="mt-1 font-display text-lg tracking-wide text-[#0A5490] uppercase sm:text-xl">
-                  {presaleRegistered}
-
-                  <span className="ml-1.5 font-sans text-xs font-medium text-[#0A5490]/55 normal-case sm:text-sm">
-                    dari {presaleQuota} peserta
-                  </span>
-                </p>
+                <span className="text-[9px] font-extrabold tracking-[0.16em] text-[#0A5490] uppercase sm:text-[10px]">
+                  Presale 5K & 2.5K
+                </span>
               </div>
 
-              {/* PERCENTAGE */}
-              <div className="shrink-0 text-right">
+              <span className="rounded-full bg-[#F18B1F] px-2.5 py-1 text-[8px] font-extrabold tracking-wider text-white uppercase">
+                Terbatas
+              </span>
+            </div>
 
-                <span className="font-display text-lg text-[#1492FA] sm:text-xl">
-                  {presaleProgress.toFixed(1)}%
+            {/* SLOT */}
+            <div className="mt-3 flex items-center justify-between gap-3">
+              <div className="flex items-baseline gap-1.5">
+                <span className="font-display text-2xl leading-none text-[#0A5490] sm:text-3xl">
+                  {presaleRegistered}
                 </span>
 
-                <p className="text-[8px] font-bold tracking-wider text-[#0A5490]/45 uppercase">
-                  Terisi
-                </p>
-
+                <span className="text-xs font-semibold text-[#0A5490]/45">
+                  / {presaleQuota} terdaftar
+                </span>
               </div>
 
+              <p className="shrink-0 font-display text-base text-[#1492FA] sm:text-lg">
+                <span className="font-sans text-[9px] font-bold uppercase">
+                  Sisa {presaleRemaining} Slot
+                </span>
+              </p>
             </div>
 
             {/* PROGRESS */}
-            <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-[#0A5490]/10">
+            <div className="mt-3 h-2 overflow-hidden rounded-full bg-[#0A5490]/10">
               <div
-                className="h-full rounded-full bg-[#1492FA] shadow-[0_0_10px_rgba(20,146,250,0.3)] transition-all duration-700"
+                className="h-full rounded-full bg-[#1492FA] transition-all duration-700"
                 style={{ width: `${presaleProgress}%` }}
               />
             </div>
 
-            {/* PRESALE PERIOD */}
-            <div className="mt-4 rounded-xl border border-[#97D91B]/35 bg-[#97D91B]/10 px-4 py-3.5 text-center sm:mt-5 sm:rounded-2xl sm:px-5 sm:py-4">
+            {/* DEADLINE */}
+            <div className="mt-3 flex items-center justify-between rounded-xl bg-[#F2FBDD] px-3 py-2.5">
+              <span className="text-[8px] font-bold tracking-wider text-[#468519]/60 uppercase">
+                Berakhir
+              </span>
 
-              <p className="text-[8px] font-extrabold tracking-[0.2em] text-[#468519]/70 uppercase sm:text-[9px]">
-                Periode Presale Terbatas
-              </p>
-
-              <p className="mt-1 font-display text-lg leading-tight tracking-wide text-[#468519] uppercase sm:text-xl lg:text-2xl">
-                1 September – 10 September 2026
-              </p>
-
+              <span className="font-display text-sm tracking-wide text-[#468519] uppercase sm:text-base">
+                10 September 2026
+              </span>
             </div>
 
           </div>
@@ -322,10 +314,47 @@ export function RaceInfo() {
 }
 
 export function TotalPrize() {
-  const chips = ["1 Sepeda Listrik", "2 Jam Tangan Running", "2 Sepeda Gunung", "1 Televisi 43 Inch", "1 Kulkas 2 Pintu",];
+  const chips = [
+    "1 Sepeda Listrik",
+    "2 Jam Tangan Running",
+    "2 Sepeda Gunung",
+    "1 Televisi 43 Inch",
+    "1 Kulkas 2 Pintu",
+  ];
 
   return (
-    <section id="hadiah" className="relative isolate overflow-hidden bg-[#468519] py-20 sm:py-24 lg:py-28">
+    <section
+      id="hadiah"
+      className="relative isolate overflow-hidden py-20 sm:py-24 lg:py-28"
+    >
+      {/* BACKGROUND IMAGE */}
+      <div className="absolute inset-0 -z-30 overflow-hidden">
+        <img
+          src={hero16}
+          alt=""
+          width={1920}
+          height={1280}
+          className="h-full w-full scale-105 object-cover"
+        />
+      </div>
+
+      {/* GREEN OVERLAY */}
+      <div
+        className="absolute inset-0 -z-20 bg-[#468519]/90"
+        aria-hidden="true"
+      />
+
+      {/* SOFT LIGHT */}
+      <div
+        className="absolute left-[-10%] top-[10%] -z-10 h-72 w-72 rounded-full bg-[#97D91B]/10 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div
+        className="absolute bottom-[-10%] right-[-10%] -z-10 h-80 w-80 rounded-full bg-[#97D91B]/10 blur-3xl"
+        aria-hidden="true"
+      />
+
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
 
         {/* HEADING */}
@@ -345,7 +374,7 @@ export function TotalPrize() {
 
         {/* TOTAL PRIZE */}
         <Reveal delay={100}>
-          <div className="mx-auto mt-10 max-w-md rounded-[2rem] border border-[#97D91B]/25 bg-white px-8 py-8 text-center shadow-[0_18px_50px_rgba(0,0,0,0.15)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(0,0,0,0.2)] sm:px-10 sm:py-9">
+          <div className="mx-auto mt-10 max-w-md rounded-[2rem] border border-white/20 bg-white/95 px-8 py-8 text-center shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1 sm:px-10 sm:py-9">
             <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-[#97D91B]" />
 
             <div className="text-xs font-extrabold tracking-[0.25em] text-[#468519] uppercase">
@@ -364,7 +393,7 @@ export function TotalPrize() {
 
         {/* PRIZE IMAGE */}
         <Reveal delay={160}>
-          <div className="relative mt-10 overflow-hidden rounded-[2rem] border border-[#97D91B]/30 bg-white p-1 shadow-[0_18px_50px_rgba(0,0,0,0.15)] sm:mt-12 sm:p-1.5">
+          <div className="relative mt-10 overflow-hidden rounded-[2rem] border border-white/20 bg-white/95 p-1 shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-sm sm:mt-12 sm:p-1.5">
             <div className="absolute inset-x-0 top-0 z-10 h-1 bg-[#97D91B]" />
 
             <div className="overflow-hidden rounded-[1.75rem] bg-white">
@@ -387,27 +416,29 @@ export function TotalPrize() {
               Dan masih banyak kejutan menarik lainnya!
             </p>
 
-          {/* CHIPS */}
-          <div className="mx-auto mt-5 max-w-2xl px-2 sm:mt-6 sm:px-0">
-          {/* HADIAH UTAMA */}
-          <div className="mb-3 flex w-full justify-center">
-            <span className="inline-flex min-h-[50px] w-full max-w-xl items-center justify-center rounded-full bg-[#97D91B] px-6 py-3 text-center text-sm font-extrabold leading-tight tracking-wide text-[#193000] uppercase shadow-[0_6px_18px_rgba(151,217,27,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#8BCF13] sm:min-h-[56px] sm:px-8 sm:py-3.5 sm:text-base lg:min-h-[60px] lg:text-lg">
-              {chips[0]}
-            </span>
-          </div>
+            {/* CHIPS */}
+            <div className="mx-auto mt-5 max-w-2xl px-2 sm:mt-6 sm:px-0">
 
-            {/* HADIAH LAINNYA */}
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-2.5">
-              {chips.slice(1).map((c) => (
-                <span
-                  key={c}
-                  className="inline-flex min-h-[38px] items-center justify-center rounded-full border border-[#97D91B]/30 bg-white px-2.5 py-2 text-center text-[9px] font-bold leading-tight tracking-wide text-[#468519] uppercase shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#97D91B]/50 hover:bg-[#F5FBDD] sm:min-h-[40px] sm:px-4 sm:text-xs"
-                >
-                  {c}
+              {/* HADIAH UTAMA */}
+              <div className="mb-3 flex w-full justify-center">
+                <span className="inline-flex min-h-[50px] w-full max-w-xl items-center justify-center rounded-full bg-[#97D91B] px-6 py-3 text-center text-sm font-extrabold leading-tight tracking-wide text-[#193000] uppercase shadow-[0_6px_18px_rgba(151,217,27,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#8BCF13] sm:min-h-[56px] sm:px-8 sm:py-3.5 sm:text-base lg:min-h-[60px] lg:text-lg">
+                  {chips[0]}
                 </span>
-              ))}
+              </div>
+
+              {/* HADIAH LAINNYA */}
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-2.5">
+                {chips.slice(1).map((c) => (
+                  <span
+                    key={c}
+                    className="inline-flex min-h-[38px] items-center justify-center rounded-full border border-[#97D91B]/30 bg-white px-2.5 py-2 text-center text-[9px] font-bold leading-tight tracking-wide text-[#468519] uppercase shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#97D91B]/50 hover:bg-[#F5FBDD] sm:min-h-[40px] sm:px-4 sm:text-xs"
+                  >
+                    {c}
+                  </span>
+                ))}
+              </div>
+
             </div>
-          </div>
           </div>
         </Reveal>
 
