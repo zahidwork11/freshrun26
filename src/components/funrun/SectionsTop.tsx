@@ -5,6 +5,7 @@ import { Reveal } from "./Reveal";
 import { Countdown } from "./Countdown";
 import { categories, eventInfo, podium } from "@/data/event";
 import hero16 from "@/assets/hero16.png";
+import hero10 from "@/assets/hero10.png";
 
 export function Hero() {
   const [offset, setOffset] = useState(0);
@@ -330,7 +331,7 @@ export function TotalPrize() {
       {/* BACKGROUND IMAGE */}
       <div className="absolute inset-0 -z-30 overflow-hidden">
         <img
-          src={hero16}
+          src={hero10}
           alt=""
           width={1920}
           height={1280}
@@ -340,7 +341,7 @@ export function TotalPrize() {
 
       {/* GREEN OVERLAY */}
       <div
-        className="absolute inset-0 -z-20 bg-[#468519]/90"
+        className="absolute inset-0 -z-20 bg-[#468519]/80"
         aria-hidden="true"
       />
 
@@ -372,39 +373,57 @@ export function TotalPrize() {
           </div>
         </Reveal>
 
-        {/* TOTAL PRIZE */}
+        {/* TOTAL PRIZE + PRIZE IMAGE */}
         <Reveal delay={100}>
-          <div className="mx-auto mt-10 max-w-md rounded-[2rem] border border-white/20 bg-white/95 px-8 py-8 text-center shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1 sm:px-10 sm:py-9">
-            <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-[#97D91B]" />
+          <div className="relative mx-auto mt-10 max-w-2xl overflow-hidden rounded-[2rem] border border-[#97D91B]/30 bg-white shadow-[0_18px_50px_rgba(0,0,0,0.18)] sm:rounded-[2.5rem]">
 
-            <div className="text-xs font-extrabold tracking-[0.25em] text-[#468519] uppercase">
-              Total Hadiah
-            </div>
-
-            <div className="mt-2 font-display text-4xl text-[#468519] sm:text-5xl">
-              {eventInfo.totalPrize}
-            </div>
-
-            <p className="mt-2 text-xs font-semibold text-[#468519]/65">
-              Siapkan langkah terbaikmu!
-            </p>
-          </div>
-        </Reveal>
-
-        {/* PRIZE IMAGE */}
-        <Reveal delay={160}>
-          <div className="relative mt-10 overflow-hidden rounded-[2rem] border border-white/20 bg-white/95 p-1 shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-sm sm:mt-12 sm:p-1.5">
-            <div className="absolute inset-x-0 top-0 z-10 h-1 bg-[#97D91B]" />
-
-            <div className="overflow-hidden rounded-[1.75rem] bg-white">
+            {/* PRIZE IMAGE BACKGROUND */}
+            <div className="pointer-events-none absolute inset-0 flex items-end justify-center overflow-hidden">
               <img
                 src={prizeAsset}
-                alt="Koleksi hadiah fun run: sepeda, jam tangan, kulkas, elektronik, dan doorprize"
+                alt=""
                 width={1280}
                 height={860}
                 loading="lazy"
-                className="w-full transition-transform duration-700 hover:scale-105"
+                className="h-full w-full object-cover object-center opacity-[0.10] mix-blend-multiply"
               />
+            </div>
+
+            {/* SOFT WHITE OVERLAY */}
+            <div className="pointer-events-none absolute inset-0 bg-white/65" />
+
+            {/* GREEN ACCENT */}
+            <div className="absolute inset-x-0 top-0 z-20 h-1 bg-[#97D91B]" />
+
+            {/* CONTENT */}
+            <div className="relative z-10 px-6 py-8 text-center sm:px-10 sm:py-10">
+
+              <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-[#97D91B]" />
+
+              <div className="text-xs font-extrabold tracking-[0.25em] text-[#468519] uppercase sm:text-sm">
+                Total Hadiah
+              </div>
+
+              <div className="mt-2 font-display text-4xl leading-none text-[#468519] sm:text-5xl lg:text-6xl">
+                {eventInfo.totalPrize}
+              </div>
+
+              <p className="mt-3 text-xs font-semibold text-[#468519]/65 sm:text-sm">
+                Siapkan langkah terbaikmu!
+              </p>
+
+              {/* PRIZE PREVIEW */}
+              <div className="mx-auto mt-5 max-w-md overflow-hidden rounded-2xl border border-[#97D91B]/20 bg-white/40 p-1.5">
+                <img
+                  src={prizeAsset}
+                  alt="Koleksi hadiah fun run"
+                  width={1280}
+                  height={860}
+                  loading="lazy"
+                  className="w-full rounded-xl opacity-80"
+                />
+              </div>
+
             </div>
           </div>
         </Reveal>

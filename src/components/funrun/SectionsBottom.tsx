@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Download, Instagram, MessageCircle } from "lucide-react";
 import jersey from "@/assets/jersey.png";
 import jersey2 from "@/assets/jersey2.png";
+import hero17 from "@/assets/hero17.png";
 import medal from "@/assets/medal.png";
 import route5k from "@/assets/maps/route-5k.png";
 import route25k from "@/assets/maps/route-2-5k.png";
@@ -17,12 +18,52 @@ import { eventInfo, faqs, navItems, rundown, sponsors, steps } from "@/data/even
 
 export function RacePack() {
   const items = [
-    { img: jersey2, label: "Jersey", desc: "Bahan dry-fit ringan dengan desain Milad." },
-    { img: medal, label: "Medal", desc: "Medali finisher eksklusif edisi khusus." },
+    {
+      img: jersey2,
+      label: "Jersey",
+      desc: "Bahan dry-fit ringan dengan desain Milad.",
+    },
+    {
+      img: medal,
+      label: "Medal",
+      desc: "Medali finisher eksklusif edisi khusus.",
+    },
   ];
 
   return (
-    <section id="racepack" className="relative overflow-hidden bg-[#468519] py-20 sm:py-24 lg:py-28">
+    <section
+      id="racepack"
+      className="relative isolate overflow-hidden bg-[#468519] py-20 sm:py-24 lg:py-28"
+    >
+      {/* HERO 17 BACKGROUND */}
+      <div className="absolute inset-0 -z-30 overflow-hidden">
+        <img
+          src={hero17}
+          alt=""
+          width={1920}
+          height={1280}
+          loading="lazy"
+          className="h-full w-full scale-105 object-cover opacity-40"
+        />
+      </div>
+
+      {/* GREEN OVERLAY */}
+      <div
+        className="absolute inset-0 -z-20 bg-[#468519]/65"
+        aria-hidden="true"
+      />
+
+      {/* SOFT GREEN LIGHT */}
+      <div
+        className="absolute left-[-10%] top-[15%] -z-10 h-72 w-72 rounded-full bg-[#97D91B]/10 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div
+        className="absolute bottom-[-10%] right-[-10%] -z-10 h-80 w-80 rounded-full bg-[#97D91B]/10 blur-3xl"
+        aria-hidden="true"
+      />
+
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
 
         {/* HEADING */}
@@ -35,7 +76,9 @@ export function RacePack() {
             <h2 className="mt-4 font-display text-4xl leading-[1.05] text-white uppercase sm:text-5xl lg:text-6xl">
               Sudah Kebayang
               <br />
-              <span className="text-[#D9F0B8]">Tampil di Garis Start?</span>
+              <span className="text-[#D9F0B8]">
+                Tampil di Garis Start?
+              </span>
             </h2>
 
             <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
