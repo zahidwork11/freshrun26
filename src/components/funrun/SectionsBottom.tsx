@@ -3,7 +3,9 @@ import { Download, Instagram, MessageCircle } from "lucide-react";
 import jersey from "@/assets/jersey.png";
 import jersey2 from "@/assets/jersey2.png";
 import hero17 from "@/assets/hero17.png";
-import medal from "@/assets/medal.png";
+import medal from "@/assets/medal2.png";
+import totebag from "@/assets/totebag.png";
+import bib from "@/assets/bib.png";
 import route5k from "@/assets/maps/route-5k.png";
 import route25k from "@/assets/maps/route-2-5k.png";
 import pkuLogo from "@/assets/pkulogo.png";
@@ -28,57 +30,44 @@ export function RacePack() {
       label: "Medal",
       desc: "Medali finisher eksklusif edisi khusus.",
     },
+    {
+      img: totebag,
+      label: "Tote Bag",
+      desc: "Tote bag praktis untuk melengkapi race pack.",
+    },
+    {
+      img: bib,
+      label: "BIB",
+      desc: "Nomor peserta resmi untuk digunakan saat race.",
+    },
   ];
 
   return (
-    <section
-      id="racepack"
-      className="relative isolate overflow-hidden bg-[#468519] py-20 sm:py-24 lg:py-28"
-    >
+    <section id="racepack" className="relative isolate overflow-hidden bg-[#468519] py-20 sm:py-24 lg:py-28">
       {/* HERO 17 BACKGROUND */}
       <div className="absolute inset-0 -z-30 overflow-hidden">
-        <img
-          src={hero17}
-          alt=""
-          width={1920}
-          height={1280}
-          loading="lazy"
-          className="h-full w-full scale-105 object-cover opacity-40"
-        />
+        <img src={hero17} alt="" width={1920} height={1280} loading="lazy" className="h-full w-full scale-105 object-cover opacity-40" />
       </div>
 
       {/* GREEN OVERLAY */}
-      <div
-        className="absolute inset-0 -z-20 bg-[#468519]/65"
-        aria-hidden="true"
-      />
+      <div className="absolute inset-0 -z-20 bg-[#468519]/65" aria-hidden="true" />
 
       {/* SOFT GREEN LIGHT */}
-      <div
-        className="absolute left-[-10%] top-[15%] -z-10 h-72 w-72 rounded-full bg-[#97D91B]/10 blur-3xl"
-        aria-hidden="true"
-      />
+      <div className="absolute left-[-10%] top-[15%] -z-10 h-72 w-72 rounded-full bg-[#97D91B]/10 blur-3xl" aria-hidden="true" />
+      <div className="absolute bottom-[-10%] right-[-10%] -z-10 h-80 w-80 rounded-full bg-[#97D91B]/10 blur-3xl" aria-hidden="true" />
 
-      <div
-        className="absolute bottom-[-10%] right-[-10%] -z-10 h-80 w-80 rounded-full bg-[#97D91B]/10 blur-3xl"
-        aria-hidden="true"
-      />
-
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
-
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
         {/* HEADING */}
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <span className="inline-flex items-center rounded-full border border-[#97D91B]/30 bg-[#97D91B]/15 px-4 py-2 text-[10px] font-extrabold tracking-[0.22em] text-[#D9F0B8] uppercase sm:text-xs">
+            <span className="inline-flex items-center rounded-full border border-[#97D91B]/30 bg-[#97D91B]/15 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#D9F0B8] sm:text-xs">
               Race Pack
             </span>
 
-            <h2 className="mt-4 font-display text-4xl leading-[1.05] text-white uppercase sm:text-5xl lg:text-6xl">
+            <h2 className="mt-4 font-display text-4xl uppercase leading-[1.05] text-white sm:text-5xl lg:text-6xl">
               Sudah Kebayang
               <br />
-              <span className="text-[#D9F0B8]">
-                Tampil di Garis Start?
-              </span>
+              <span className="text-[#D9F0B8]">Tampil di Garis Start?</span>
             </h2>
 
             <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
@@ -88,13 +77,12 @@ export function RacePack() {
         </Reveal>
 
         {/* RACE PACK ITEMS */}
-        <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6">
+        <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
           {items.map((it, i) => (
             <Reveal key={it.label} delay={i * 100}>
-              <div className="group h-full overflow-hidden rounded-[2rem] border border-[#97D91B]/25 bg-white p-4 shadow-[0_12px_35px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-2 hover:border-[#97D91B]/50 hover:shadow-[0_20px_45px_rgba(0,0,0,0.18)] sm:p-6">
-
+              <div className="group h-full overflow-hidden rounded-[2rem] border border-[#97D91B]/25 bg-white p-4 shadow-[0_12px_35px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-2 hover:border-[#97D91B]/50 hover:shadow-[0_20px_45px_rgba(0,0,0,0.18)] sm:p-5">
                 {/* IMAGE AREA */}
-                <div className="relative overflow-hidden rounded-[1.5rem] border border-[#97D91B]/15 bg-[#F5FBDD] p-5 sm:rounded-3xl sm:p-6">
+                <div className="relative flex min-h-[250px] items-center justify-center overflow-hidden rounded-[1.5rem] border border-[#97D91B]/15 bg-[#F5FBDD] p-4 sm:min-h-[280px] sm:rounded-3xl sm:p-5">
                   <div className="absolute inset-x-0 top-0 h-1 bg-[#97D91B]" />
 
                   <img
@@ -103,17 +91,17 @@ export function RacePack() {
                     width={900}
                     height={900}
                     loading="lazy"
-                    className="relative z-10 mx-auto h-60 w-auto max-w-full object-contain transition-transform duration-500 group-hover:scale-105 sm:h-72 lg:h-80"
+                    className="relative z-10 mx-auto h-52 w-auto max-w-full object-contain transition-transform duration-500 group-hover:scale-105 sm:h-60 lg:h-64"
                   />
                 </div>
 
                 {/* CONTENT */}
-                <div className="px-2 pb-2 text-center sm:px-2 sm:pb-1">
-                  <h3 className="mt-6 font-display text-2xl text-[#468519] uppercase transition-colors duration-300 group-hover:text-[#70A916] sm:text-3xl">
+                <div className="px-1 pb-1 text-center">
+                  <h3 className="mt-5 font-display text-2xl uppercase text-[#468519] transition-colors duration-300 group-hover:text-[#70A916] sm:text-3xl">
                     {it.label}
                   </h3>
 
-                  <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-[#468519]/65">
+                  <p className="mx-auto mt-2 min-h-[48px] max-w-xs text-sm leading-relaxed text-[#468519]/65">
                     {it.desc}
                   </p>
 
@@ -125,9 +113,9 @@ export function RacePack() {
         </div>
 
         {/* BOTTOM MESSAGE */}
-        <Reveal delay={180}>
+        <Reveal delay={400}>
           <div className="mx-auto mt-10 max-w-2xl text-center sm:mt-12">
-            <p className="font-display text-xl text-[#D9F0B8] uppercase sm:text-2xl lg:text-3xl">
+            <p className="font-display text-xl uppercase text-[#D9F0B8] sm:text-2xl lg:text-3xl">
               Finish Strong.
               <span className="text-white">{" "}Wear Your Story.</span>
             </p>
@@ -139,11 +127,11 @@ export function RacePack() {
             </div>
           </div>
         </Reveal>
-
       </div>
     </section>
   );
 }
+
 
 export function RouteMap() {
   const [tab, setTab] = useState<"5k" | "2.5k">("5k");
