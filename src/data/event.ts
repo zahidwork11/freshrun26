@@ -8,6 +8,7 @@ import erafoneLogo from "@/assets/erafone.png";
 import vivoLogo from "@/assets/vivo.png";
 import xiaomiLogo from "@/assets/xiaomi.png";
 import samsungLogo from "@/assets/samsung.png";
+import kbsyariahLogo from "@/assets/kbsyariah.png";
 
 // ============================================================
 // SEMUA DATA EVENT ADA DI SINI
@@ -21,11 +22,11 @@ import samsungLogo from "@/assets/samsung.png";
 export const eventInfo = {
   name: "PKU Muhammadiyah Sukoharjo Fun Run",
   subtitle: "Dalam rangka Milad RS PKU Muhammadiyah Sukoharjo",
-  dateISO: "2026-11-08T05:30:00+07:00",
-  dateLabel: "08 November 2026",
-  location: "RS PKU Muhammadiyah Sukoharjo",
-  startTime: "05.30 WIB",
-  distances: "5K & 2.5K FUN RUN",
+  dateISO: "2026-11-29T05:30:00+07:00",
+  dateLabel: "29 November 2026",
+  location: "Alun Alun Satya Negara Sukoharjo",
+  startTime: "06.00 WIB",
+  distances: "5K & 2.5K FRESH RUN",
   totalPrize: "Rp 25.000.000",
   instagram: "https://www.instagram.com/pkurun26/",
   whatsapp: "https://wa.me/6281234567890",
@@ -136,7 +137,7 @@ export const categories: Category[] = [
   {
     slug: "pelajar-mahasiswa",
     name: "PELAJAR / MAHASISWA 5K",
-    price: "Rp 125.000",
+    price: "Rp 135.000",
     registrationPeriod: "11 September – 11 Oktober 2026",
     benefits: ["BIB","Jersey", "Medal", "Race Pack", "Snack"],
     requirement: "NISN / NPM / NIM",
@@ -190,32 +191,32 @@ export const categories: Category[] = [
 
 export const rundown = [
   {
-    time: "04.30",
+    time: "05.00",
     title: "Registrasi",
     desc: "Peserta hadir & penukaran BIB terakhir",
   },
   {
-    time: "05.00",
+    time: "05.30",
     title: "Warm Up",
     desc: "Senam bersama instruktur",
   },
   {
-    time: "05.20",
+    time: "05.45",
     title: "Race Briefing",
     desc: "Penjelasan rute & aturan lomba",
   },
   {
-    time: "05.30",
+    time: "06.00",
     title: "Start 5K",
     desc: "Flag off kategori 5 kilometer",
   },
   {
-    time: "05.45",
+    time: "06.10",
     title: "Start 2.5K",
     desc: "Flag off kategori 2.5 kilometer",
   },
   {
-    time: "07.00",
+    time: "07.30",
     title: "Finish & Refreshment",
     desc: "Finisher menerima medali & snack",
   },
@@ -271,6 +272,10 @@ export const steps = [
 // ============================================================
 // SPONSORS
 // ============================================================
+export const mainSponsor = {
+  name: "KB SYARIAH",
+  logo: kbsyariahLogo,
+};
 
 export const sponsors = [
   {

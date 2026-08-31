@@ -16,7 +16,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { eventInfo, faqs, navItems, rundown, sponsors, steps } from "@/data/event";
+import { eventInfo, faqs, navItems, rundown, mainSponsor,  sponsors, steps } from "@/data/event";
 
 export function RacePack() {
   const items = [
@@ -359,7 +359,7 @@ export function Rundown() {
             <h2 className="mt-5 font-display text-4xl leading-[1.05] text-navy uppercase sm:text-5xl lg:text-6xl">
               RUNDOWN
               <br />
-              <span className="text-brand-deep">PKU RUN FRESH</span>
+              <span className="text-brand-deep">PKU FRESH RUN</span>
             </h2>
           </div>
         </Reveal>
@@ -618,18 +618,67 @@ export function Sponsors() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
-          <h2 className="text-center font-display text-4xl text-navy uppercase sm:text-5xl lg:text-6xl">
+          <h2 className="text-center font-display text-4xl uppercase text-navy sm:text-5xl lg:text-6xl">
             Bersama Mereka,
             <br />
             Langkah Kita Lebih Berarti.
           </h2>
         </Reveal>
+
+        {/* MAIN SPONSOR */}
+        <Reveal>
+          <div className="mt-12 flex flex-col items-center">
+            <p className="mb-4 text-center text-xs font-bold uppercase tracking-[0.25em] text-navy/60">
+              Main Sponsor
+            </p>
+
+            <div
+              className="
+                flex
+                h-36 w-80
+                items-center justify-center
+                rounded-2xl
+                border-2 border-white
+                bg-white
+                px-8 py-6
+                shadow-lg
+                transition-all duration-300
+                hover:-translate-y-1
+                hover:shadow-xl
+                sm:h-44 sm:w-[28rem]
+              "
+            >
+              <img
+                src={mainSponsor.logo}
+                alt={`Main Sponsor ${mainSponsor.name}`}
+                className="
+                  max-h-28
+                  max-w-[90%]
+                  object-contain
+                  sm:max-h-32
+                "
+              />
+            </div>
+          </div>
+        </Reveal>
       </div>
 
-      <div className="mt-12 space-y-4">
-        <MarqueeRow dir="left" speed={38} />
-        <MarqueeRow dir="right" speed={46} />
-        <MarqueeRow dir="left" speed={54} />
+      {/* SPONSOR LAINNYA */}
+      <div className="mt-16 space-y-4">
+        <MarqueeRow
+          dir="left"
+          speed={38}
+        />
+
+        <MarqueeRow
+          dir="right"
+          speed={46}
+        />
+
+        <MarqueeRow
+          dir="left"
+          speed={54}
+        />
       </div>
     </section>
   );
@@ -694,12 +743,12 @@ export function Footer() {
             />
 
             <span className="font-display text-lg uppercase">
-              PKU Muhammadiyah Sukoharjo
+              PKU FRESH RUN
             </span>
           </div>
 
           <p className="mt-4 max-w-md text-sm leading-relaxed text-primary-foreground/70">
-            Menjadi Rumah Sakit Bernuansa Islami, Dengan Pelayanan Cepat Dan Ramah.
+            PKU FRESH RUN, Your Run, Your Health Start.
           </p>
 
           {/* SOCIAL BUTTONS */}

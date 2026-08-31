@@ -106,8 +106,7 @@ export function Hero() {
         {/* DESCRIPTION */}
         <Reveal delay={180}>
           <p className="mx-auto mt-5 max-w-xl text-center text-base font-medium leading-relaxed text-white/90 drop-shadow-[0_2px_7px_rgba(6,45,80,0.65)] sm:mx-0 sm:text-left lg:mx-auto lg:text-center sm:text-lg">
-            PKU Muhammadiyah Sukoharjo RUN FRESH, Satu langkah untuk sehat satu
-            langkah untuk kebersamaan.
+            PKU FRESH RUN, Your Run, Your Health Start.
           </p>
         </Reveal>
 
@@ -251,7 +250,7 @@ export function Hero() {
 export function RaceInfo() {
   const info = [
     {
-      label: "Start",
+      label: "Flag Start",
       value: eventInfo.startTime,
       icon: Clock3,
     },
@@ -523,8 +522,8 @@ export function Podium() {
               <div className="font-display text-2xl text-primary-foreground uppercase sm:text-3xl">
                 20 Finisher Berikutnya
               </div>
-              <p className="mt-1 text-sm text-primary-foreground/85">Finisher 4–13 Putra</p>
-              <p className="mt-1 text-sm text-primary-foreground/85">Finisher 4–13 Putri</p>
+              <p className="mt-1 text-sm text-primary-foreground/85">Finisher 5K 4–13 Putra</p>
+              <p className="mt-1 text-sm text-primary-foreground/85">Finisher 5K 4–13 Putri</p>
             </div>
             <div className="shrink-0 rounded-2xl bg-background/95 px-5 py-3 text-center font-display text-lg text-brand-deep">
               Rp100.000<span className="text-xs">/orang</span>

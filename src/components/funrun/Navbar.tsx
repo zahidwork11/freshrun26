@@ -54,7 +54,7 @@ export function Navbar() {
 
           <span className="min-w-0 leading-tight">
           <span className="block truncate font-display text-sm tracking-wide text-[#0A5490] uppercase sm:text-base">
-            PKU RUN FRESH
+            PKU FRESH RUN
           </span>
 
           <span className="block truncate text-[11px] font-semibold text-[#000000] uppercase">
@@ -80,7 +80,7 @@ export function Navbar() {
             href={eventInfo.registerUrl}
             className="ml-2 rounded-full gradient-brand px-5 py-2.5 text-[13px] font-bold tracking-wide text-primary-foreground uppercase shadow-soft transition-all duration-200 hover:scale-105 hover:shadow-lg"
           >
-            Daftar Sekarang
+            Cek Pendaftaran
           </a>
         </nav>
 
