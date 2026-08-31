@@ -47,7 +47,7 @@ export function Hero() {
 
       {/* BLUE OVERLAY */}
       <div
-        className="absolute inset-0 -z-20 bg-[#0A5490]/55"
+        className="absolute inset-0 -z-20 bg-[#0A5490]/25"
         aria-hidden="true"
       />
 
@@ -85,7 +85,7 @@ export function Hero() {
 
         {/* BADGE */}
         <Reveal>
-          <div className="mx-auto flex w-fit max-w-full items-center justify-center rounded-full border border-white/35 bg-[#0A5490]/75 px-4 py-2.5 text-center shadow-[0_8px_30px_rgba(6,45,80,0.3)] backdrop-blur-md sm:mx-0 sm:px-5 sm:py-3 lg:mx-auto">
+          <div className="mx-auto flex w-fit max-w-full items-center justify-center rounded-full border border-white/35 bg-[#F18B1F]/90 px-4 py-2.5 text-center shadow-[0_8px_30px_rgba(6,45,80,0.3)] backdrop-blur-md sm:mx-0 sm:px-5 sm:py-3 lg:mx-auto">
             <span className="text-center text-[10px] font-bold tracking-[0.12em] text-white sm:text-xs sm:tracking-[0.15em]">
               Milad RS PKU Muhammadiyah Sukoharjo
             </span>
@@ -96,17 +96,19 @@ export function Hero() {
         <Reveal delay={100}>
           <h1 className="mx-auto mt-6 max-w-4xl text-center font-display text-5xl leading-[0.95] tracking-tight text-white uppercase drop-shadow-[0_1px_4px_rgba(255,255,255,0.22)] sm:mx-0 sm:text-left sm:text-7xl lg:mx-auto lg:text-center lg:text-8xl">
             <span className="text-white">Rayakan</span>{" "}
-            <span className="text-[#1492FA]">Milad,</span>
+            <span className="text-[#97D91B]">Milad,</span>
             <br />
             <span className="text-white">Langkahkan</span>{" "}
-            <span className="text-[#1492FA]">Semangat!</span>
+            <span className="text-[#97D91B]">Semangat!</span>
           </h1>
         </Reveal>
 
         {/* DESCRIPTION */}
         <Reveal delay={180}>
-          <p className="mx-auto mt-5 max-w-xl text-center text-base font-medium leading-relaxed text-white/90 drop-shadow-[0_2px_7px_rgba(6,45,80,0.65)] sm:mx-0 sm:text-left lg:mx-auto lg:text-center sm:text-lg">
-            PKU FRESH RUN, Your Run, Your Health Start.
+          <p className="mx-auto mt-5 max-w-xl text-center text-base font-bold leading-relaxed text-white drop-shadow-[0_0_3px_rgba(255,255,255,1)] drop-shadow-[0_2px_10px_rgba(255,255,255,0.9)] sm:mx-0 sm:text-left lg:mx-auto lg:text-center sm:text-lg">
+            PKU FRESH RUN,
+            <br />
+            Your Run, Your Health Start
           </p>
         </Reveal>
 
@@ -226,7 +228,7 @@ export function Hero() {
             {/* PRIMARY CTA */}
             <a
               href="#cara-daftar"
-              className="rounded-full bg-[#1492FA] px-7 py-3.5 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(20,146,250,0.3)] transition-all duration-300 hover:scale-105 hover:bg-[#0A82E0] sm:px-8 sm:py-4"
+              className="rounded-full bg-[#F18B1F] px-7 py-3.5 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(241,139,31,0.3)] transition-all duration-300 hover:scale-105 hover:bg-[#D97706] sm:px-8 sm:py-4"
             >
               Cara Daftar
             </a>
@@ -234,7 +236,7 @@ export function Hero() {
             {/* SECONDARY CTA */}
             <a
               href="#kategori"
-              className="rounded-full border border-white/50 bg-[#0A5490]/60 px-7 py-3.5 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(6,45,80,0.2)] backdrop-blur-md transition-all duration-300 hover:border-white/80 hover:bg-[#0A5490]/80 sm:px-8 sm:py-4"
+              className="rounded-full bg-[#97D91B] px-7 py-3.5 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(151,217,27,0.3)] transition-all duration-300 hover:scale-105 hover:bg-[#7DB817] sm:px-8 sm:py-4"
             >
               Lihat Kategori
             </a>
