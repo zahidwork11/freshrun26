@@ -6,6 +6,7 @@ import { Countdown } from "./Countdown";
 import { categories, eventInfo, podium } from "@/data/event";
 import hero16 from "@/assets/hero16.png";
 import hero10 from "@/assets/hero10.png";
+import hero11 from "@/assets/hero17.png";
 
 export function Hero() {
   const [offset, setOffset] = useState(0);
@@ -260,6 +261,7 @@ export function RaceInfo() {
       label: "Lokasi",
       value: eventInfo.location,
       icon: MapPin,
+      mapsUrl: "https://maps.app.goo.gl/5fPUKkWnujbFhgij9",
     },
   ];
 
@@ -285,18 +287,18 @@ export function RaceInfo() {
             {info.map((i) => {
               const Icon = i.icon;
 
-              return (
-                <div
-                  key={i.label}
-                  className="group flex items-center gap-5 rounded-3xl border border-brand-light/60 bg-background p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                >
+              const cardClassName =
+                "group flex items-center gap-5 rounded-3xl border border-brand-light/60 bg-background p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lg";
+
+              const content = (
+                <>
                   {/* Icon */}
                   <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
                     <Icon size={28} strokeWidth={2.2} />
                   </div>
 
                   {/* Content */}
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <div className="text-[11px] font-bold tracking-[0.2em] text-brand uppercase">
                       {i.label}
                     </div>
@@ -304,7 +306,31 @@ export function RaceInfo() {
                     <div className="mt-1 font-display text-xl text-navy uppercase sm:text-2xl">
                       {i.value}
                     </div>
+
+                    {/* Google Maps button */}
+                    {i.mapsUrl && (
+                      <div className="mt-2 text-xs font-bold text-brand uppercase tracking-wide transition-colors group-hover:text-[#F18B1F]">
+                        Buka Google Maps →
+                      </div>
+                    )}
                   </div>
+                </>
+              );
+
+              return i.mapsUrl ? (
+                <a
+                  key={i.label}
+                  href={i.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cardClassName}
+                  aria-label={`Buka lokasi ${i.value} di Google Maps`}
+                >
+                  {content}
+                </a>
+              ) : (
+                <div key={i.label} className={cardClassName}>
+                  {content}
                 </div>
               );
             })}
@@ -342,7 +368,7 @@ export function TotalPrize() {
 
       {/* GREEN OVERLAY */}
       <div
-        className="absolute inset-0 -z-20 bg-[#468519]/90"
+        className="absolute inset-0 -z-20 bg-[#0A5490]/70"
         aria-hidden="true"
       />
 
@@ -369,7 +395,7 @@ export function TotalPrize() {
             <h2 className="mt-4 font-display text-4xl leading-[1.05] text-white uppercase sm:text-5xl lg:text-6xl">
               Lari Dapat Sehat,
               <br />
-              <span className="text-[#D9F0B8]">Pulang Bawa Hadiah!</span>
+              <span className="text-[#97D91B]">Pulang Bawa Hadiah!</span>
             </h2>
           </div>
         </Reveal>
@@ -432,9 +458,6 @@ export function TotalPrize() {
         {/* MESSAGE */}
         <Reveal delay={200}>
           <div className="mx-auto mt-8 max-w-3xl text-center sm:mt-10">
-            <p className="mx-auto max-w-md px-2 font-display text-lg leading-snug text-[#D9F0B8] sm:max-w-xl sm:px-0 sm:text-2xl">
-              Dan masih banyak kejutan menarik lainnya!
-            </p>
 
             {/* CHIPS */}
             <div className="mx-auto mt-5 max-w-2xl px-2 sm:mt-6 sm:px-0">
@@ -457,7 +480,6 @@ export function TotalPrize() {
                   </span>
                 ))}
               </div>
-
             </div>
           </div>
         </Reveal>
@@ -505,46 +527,51 @@ export function Podium() {
   return (
     <section className="bg-brand-sky py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
+
         <Reveal>
           <h2 className="text-center font-display text-4xl text-navy uppercase sm:text-5xl lg:text-6xl">
             Siap Jadi yang Tercepat?
           </h2>
         </Reveal>
+
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
           <Reveal delay={80}>
             <PodiumCard title="Putra 5K" list={podium.putra} />
           </Reveal>
+
           <Reveal delay={160}>
             <PodiumCard title="Putri 5K" list={podium.putri} />
           </Reveal>
         </div>
+
         <Reveal delay={220}>
-          <div className="mt-6 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-[2rem] gradient-brand px-6 py-7 shadow-lift sm:flex sm:justify-between sm:px-10">
+          <div className="mt-6 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-[2rem] bg-[#F18B1F] px-6 py-7 shadow-[0_10px_30px_rgba(241,139,31,0.25)] sm:flex sm:justify-between sm:px-10">
+
             <div className="min-w-0">
-              <div className="font-display text-2xl text-primary-foreground uppercase sm:text-3xl">
+              <div className="font-display text-2xl text-white uppercase sm:text-3xl">
                 20 Finisher Berikutnya
               </div>
-              <p className="mt-1 text-sm text-primary-foreground/85">Finisher 5K 4–13 Putra</p>
-              <p className="mt-1 text-sm text-primary-foreground/85">Finisher 5K 4–13 Putri</p>
+
+              <p className="mt-1 text-sm text-white/90">
+                Finisher 5K 4–13 Putra
+              </p>
+
+              <p className="mt-1 text-sm text-white/90">
+                Finisher 5K 4–13 Putri
+              </p>
             </div>
-            <div className="shrink-0 rounded-2xl bg-background/95 px-5 py-3 text-center font-display text-lg text-brand-deep">
+
+            <div className="shrink-0 rounded-2xl bg-white px-5 py-3 text-center font-display text-lg text-[#F18B1F] shadow-sm">
               Rp100.000<span className="text-xs">/orang</span>
             </div>
+
           </div>
         </Reveal>
+
       </div>
     </section>
   );
 }
-
-const toneClass: Record<string, string> = {
-  bright: "bg-brand text-primary-foreground",
-  sky: "bg-brand-sky text-navy",
-  deep: "bg-brand-deep text-primary-foreground",
-  cyan: "bg-brand-cyan text-navy",
-  light: "bg-brand-light text-navy",
-  navy: "bg-navy text-primary-foreground",
-};
 
 export function Categories() {
   return (
