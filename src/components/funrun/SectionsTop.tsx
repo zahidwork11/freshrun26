@@ -224,12 +224,12 @@ export function Hero() {
 
         {/* CTA */}
         <Reveal delay={340}>
-          <div className="mt-9 flex flex-wrap justify-center gap-3 sm:mt-10 sm:justify-start lg:justify-center">
+          <div className="mx-auto mt-8 flex w-full max-w-md flex-row justify-center gap-2.5 sm:mt-10 sm:max-w-lg sm:gap-3">
 
             {/* PRIMARY CTA */}
             <a
               href="#cara-daftar"
-              className="rounded-full bg-[#F18B1F] px-7 py-3.5 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(241,139,31,0.3)] transition-all duration-300 hover:scale-105 hover:bg-[#D97706] sm:px-8 sm:py-4"
+              className="flex min-w-0 flex-1 items-center justify-center rounded-full bg-[#F18B1F] px-4 py-4 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(241,139,31,0.3)] transition-all duration-300 hover:scale-[1.03] hover:bg-[#D97706] sm:px-6 sm:py-4.5"
             >
               Cara Daftar
             </a>
@@ -237,7 +237,7 @@ export function Hero() {
             {/* SECONDARY CTA */}
             <a
               href="#kategori"
-              className="rounded-full bg-[#97D91B] px-7 py-3.5 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(151,217,27,0.3)] transition-all duration-300 hover:scale-105 hover:bg-[#7DB817] sm:px-8 sm:py-4"
+              className="flex min-w-0 flex-1 items-center justify-center rounded-full bg-[#97D91B] px-4 py-4 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(151,217,27,0.3)] transition-all duration-300 hover:scale-[1.03] hover:bg-[#7DB817] sm:px-6 sm:py-4.5"
             >
               Lihat Kategori
             </a>
@@ -420,24 +420,20 @@ export function TotalPrize() {
             <div className="pointer-events-none absolute inset-0 bg-white/65" />
 
             {/* GREEN ACCENT */}
-            <div className="absolute inset-x-0 top-0 z-20 h-1 bg-[#97D91B]" />
+            <div className="absolute inset-x-0 top-0 z-20 h-1 bg-[#F18B1F]" />
 
             {/* CONTENT */}
             <div className="relative z-10 px-6 py-8 text-center sm:px-10 sm:py-10">
 
-              <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-[#97D91B]" />
+              <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-[#F18B1F]" />
 
-              <div className="text-xs font-extrabold tracking-[0.25em] text-[#468519] uppercase sm:text-sm">
+              <div className="text-xs font-extrabold tracking-[0.25em] text-[#F18B1F] uppercase sm:text-sm">
                 Total Hadiah
               </div>
 
-              <div className="mt-2 font-display text-4xl leading-none text-[#468519] sm:text-5xl lg:text-6xl">
+              <div className="mt-2 font-display text-4xl leading-none text-[#F18B1F] sm:text-5xl lg:text-6xl">
                 {eventInfo.totalPrize}
               </div>
-
-              <p className="mt-3 text-xs font-semibold text-[#468519]/65 sm:text-sm">
-                Siapkan langkah terbaikmu!
-              </p>
 
               {/* PRIZE PREVIEW */}
               <div className="mx-auto mt-5 max-w-md overflow-hidden rounded-2xl border border-[#97D91B]/20 bg-white/40 p-1.5">
@@ -450,7 +446,6 @@ export function TotalPrize() {
                   className="w-full rounded-xl opacity-80"
                 />
               </div>
-
             </div>
           </div>
         </Reveal>
@@ -459,37 +454,29 @@ export function TotalPrize() {
         <Reveal delay={200}>
           <div className="mx-auto mt-8 max-w-3xl text-center sm:mt-10">
 
-            {/* CHIPS */}
-            <div className="mx-auto mt-5 max-w-2xl px-2 sm:mt-6 sm:px-0">
+        {/* CHIPS */}
+        <div className="mx-auto mt-5 max-w-2xl px-2 sm:mt-6 sm:px-0">
 
-              {/* HADIAH UTAMA */}
-              <div className="mb-3 flex w-full justify-center">
-                <span className="inline-flex min-h-[50px] w-full max-w-xl items-center justify-center rounded-full bg-[#97D91B] px-6 py-3 text-center text-sm font-extrabold leading-tight tracking-wide text-[#193000] uppercase shadow-[0_6px_18px_rgba(151,217,27,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#8BCF13] sm:min-h-[56px] sm:px-8 sm:py-3.5 sm:text-base lg:min-h-[60px] lg:text-lg">
-                  {chips[0]}
-                </span>
-              </div>
-
-              {/* HADIAH LAINNYA */}
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-2.5">
-                {chips.slice(1).map((c) => (
-                  <span
-                    key={c}
-                    className="inline-flex min-h-[38px] items-center justify-center rounded-full border border-[#97D91B]/30 bg-white px-2.5 py-2 text-center text-[9px] font-bold leading-tight tracking-wide text-[#468519] uppercase shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#97D91B]/50 hover:bg-[#F5FBDD] sm:min-h-[40px] sm:px-4 sm:text-xs"
-                  >
-                    {c}
-                  </span>
-                ))}
-              </div>
-            </div>
+          {/* HADIAH UTAMA — ORANGE */}
+          <div className="mb-3 flex w-full justify-center">
+            <span className="inline-flex min-h-[50px] w-full max-w-xl items-center justify-center rounded-full bg-[#F18B1F] px-6 py-3 text-center text-sm font-extrabold leading-tight tracking-wide text-white uppercase shadow-[0_6px_18px_rgba(241,139,31,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#E57D12] sm:min-h-[56px] sm:px-8 sm:py-3.5 sm:text-base lg:min-h-[60px] lg:text-lg">
+              {chips[0]}
+            </span>
           </div>
-        </Reveal>
 
-        {/* BOTTOM ACCENT */}
-        <Reveal delay={240}>
-          <div className="mx-auto mt-8 flex w-full max-w-xs items-center justify-center gap-3 px-4 sm:mt-10 sm:max-w-xl sm:px-0">
-            <span className="h-px flex-1 bg-[#97D91B]/30" />
-            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#97D91B] sm:h-2 sm:w-2" />
-            <span className="h-px flex-1 bg-[#97D91B]/30" />
+          {/* HADIAH LAINNYA — HIJAU */}
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-2.5">
+            {chips.slice(1).map((c) => (
+              <span
+                key={c}
+                className="inline-flex min-h-[38px] items-center justify-center rounded-full border border-[#97D91B]/30 bg-white px-2.5 py-2 text-center text-[9px] font-bold leading-tight tracking-wide text-[#468519] uppercase shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#97D91B]/50 hover:bg-[#F5FBDD] sm:min-h-[40px] sm:px-4 sm:text-xs"
+              >
+                {c}
+              </span>
+            ))}
+          </div>
+
+        </div>
           </div>
         </Reveal>
 
@@ -527,10 +514,10 @@ export function Podium() {
   return (
     <section className="bg-brand-sky py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-
         <Reveal>
           <h2 className="text-center font-display text-4xl text-navy uppercase sm:text-5xl lg:text-6xl">
-            Siap Jadi yang Tercepat?
+            Siap Jadi yang{" "}
+            <span className="text-[#F18B1F]">Tercepat?</span>
           </h2>
         </Reveal>
 

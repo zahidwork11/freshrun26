@@ -50,7 +50,7 @@ export function RacePack() {
       </div>
 
       {/* GREEN OVERLAY */}
-      <div className="absolute inset-0 -z-20 bg-[#468519]/65" aria-hidden="true" />
+      <div className="absolute inset-0 -z-20 bg-[#468519]/40" aria-hidden="true" />
 
       {/* SOFT GREEN LIGHT */}
       <div className="absolute left-[-10%] top-[15%] -z-10 h-72 w-72 rounded-full bg-[#97D91B]/10 blur-3xl" aria-hidden="true" />
@@ -141,54 +141,54 @@ export function RouteMap() {
     { id: "2.5k" as const, label: "2.5 KM", img: route25k },
   ];
 
+  const facilities = [
+    ["💧", "Water Station", "Air minum"],
+    ["🚑", "Ambulance", "Siaga medis"],
+    ["🏥", "Medical Point", "Pos kesehatan"],
+    ["🚻", "Toilet", "Fasilitas peserta"],
+    ["🏁", "Finish Area", "Area finish"],
+  ];
+
   return (
-    <section id="rute" className="relative overflow-hidden bg-brand-sky pb-8 pt-20 sm:pb-10 sm:pt-24 lg:pb-12 lg:pt-28">
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
+    <section id="rute" className="relative overflow-hidden bg-brand-sky py-20 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
 
         {/* HEADING */}
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <span className="inline-flex items-center rounded-full bg-background px-4 py-2 text-[10px] font-extrabold tracking-[0.22em] text-brand-deep uppercase shadow-soft sm:text-xs">
-              Race Route
-            </span>
 
-            <h2 className="mt-5 font-display text-4xl leading-[1.05] text-navy uppercase sm:text-5xl lg:text-6xl">
-              Kenali Jalurmu,
+            <h2 className="mt-5 font-display text-4xl leading-[1.02] text-navy uppercase sm:text-5xl lg:text-6xl">
+              Kenali Jalur,
               <br />
-              <span className="text-brand-deep">Nikmati Setiap Langkah.</span>
+              <span className="text-[#F18B1F]">Nikmati Langkahmu.</span>
             </h2>
 
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-navy/65 sm:text-base">
-              Kenali rute yang akan kamu lewati sebelum race dimulai.
-              Pilih jarak dan siapkan langkah terbaikmu menuju garis finish.
-            </p>
           </div>
         </Reveal>
 
-        {/* ROUTE SELECTOR */}
+        {/* DISTANCE TABS */}
         <Reveal delay={100}>
-          <div className="mx-auto mt-9 max-w-sm">
+          <div className="mx-auto mt-8 max-w-sm">
             <div className="rounded-2xl border border-brand-light/50 bg-background p-1.5 shadow-soft">
               <div className="grid grid-cols-2 gap-1.5">
                 {tabs.map((t) => {
-                  const isActive = tab === t.id;
+                  const active = tab === t.id;
+                  const orange = t.id === "5k";
 
                   return (
                     <button
                       key={t.id}
-                      type="button"
                       onClick={() => setTab(t.id)}
-                      className={`relative rounded-xl px-4 py-3 font-display text-sm tracking-wide uppercase transition-all duration-300 sm:py-3.5 ${
-                        isActive
-                          ? "bg-brand text-primary-foreground shadow-soft"
-                          : "text-navy/55 hover:bg-brand-sky hover:text-brand-deep"
+                      className={`relative rounded-xl px-4 py-2.5 font-display text-lg font-bold uppercase tracking-wide transition-all duration-300 sm:py-3 sm:text-xl ${
+                        active
+                          ? orange
+                            ? "bg-[#F18B1F] text-white shadow-[0_5px_15px_rgba(241,139,31,.25)]"
+                            : "bg-[#97D91B] text-white shadow-[0_5px_15px_rgba(151,217,27,.25)]"
+                          : "text-gray-500 hover:bg-gray-100"
                       }`}
                     >
                       {t.label}
-
-                      {isActive && (
-                        <span className="absolute bottom-1 left-1/2 h-0.5 w-6 -translate-x-1/2 rounded-full bg-white/80" />
-                      )}
+                      {active && <span className="absolute bottom-1 left-1/2 h-0.5 w-7 -translate-x-1/2 rounded-full bg-white/80" />}
                     </button>
                   );
                 })}
@@ -197,29 +197,28 @@ export function RouteMap() {
           </div>
         </Reveal>
 
-        {/* ROUTE MAP CARD */}
+        {/* MAIN CARD */}
         <Reveal delay={160}>
-          <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[2rem] border border-brand-light/50 bg-background shadow-soft transition-shadow duration-300 hover:shadow-lift sm:mt-10">
+          <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[2rem] border border-white/60 bg-background shadow-[0_20px_60px_rgba(10,84,144,.12)] sm:mt-10 sm:rounded-[2.5rem]">
 
             {/* CARD HEADER */}
-            <div className="flex items-center justify-between gap-4 border-b border-brand-light/40 px-5 py-4 sm:px-7 sm:py-5">
-              <div className="min-w-0">
-                <span className="block text-[9px] font-extrabold tracking-[0.2em] text-brand-deep uppercase sm:text-[10px]">
-                  Route Map
+            <div className="flex items-center justify-between border-b border-brand-light/40 px-5 py-4 sm:px-7 sm:py-5">
+              <div>
+                <span className="text-[9px] font-extrabold tracking-[.2em] text-brand-deep uppercase sm:text-[10px]">
+                  Official Race Route
                 </span>
-
-                <h3 className="mt-1 font-display text-lg text-navy uppercase sm:text-xl">
-                  Peta Rute Lari
+                <h3 className="mt-1 font-display text-xl text-navy uppercase sm:text-2xl">
+                  Peta & Rundown
                 </h3>
               </div>
 
-              <span className="shrink-0 rounded-full bg-brand-sky px-3 py-1.5 text-[9px] font-extrabold tracking-wider text-brand-deep uppercase sm:px-4 sm:py-2 sm:text-[10px]">
-                Rute Resmi
+              <span className="rounded-full bg-[#1492FA]/10 px-3 py-1.5 text-[9px] font-extrabold tracking-wider text-[#1492FA] uppercase sm:px-4 sm:py-2 sm:text-[10px]">
+                {tab === "5k" ? "5 KM Route" : "2.5 KM Route"}
               </span>
             </div>
 
-            {/* ROUTE IMAGE */}
-            <div className="bg-background p-2 sm:p-3">
+            {/* MAP */}
+            <div className="p-2 sm:p-3">
               <div className="relative overflow-hidden rounded-[1.5rem] bg-brand-sky sm:rounded-[1.75rem]">
                 {tabs.map((t) => (
                   <img
@@ -229,239 +228,158 @@ export function RouteMap() {
                     width={1200}
                     height={800}
                     loading="lazy"
-                    className={`block w-full transition-opacity duration-500 ${
-                      tab === t.id
-                        ? "relative opacity-100"
-                        : "absolute inset-0 opacity-0"
+                    className={`block w-full transition-all duration-500 ${
+                      tab === t.id ? "relative opacity-100" : "absolute inset-0 opacity-0"
                     }`}
                   />
                 ))}
               </div>
             </div>
 
-            {/* ROUTE FACILITIES */}
+            {/* FACILITIES */}
             <div className="border-t border-brand-light/40 px-5 py-5 sm:px-7 sm:py-6">
-              <div className="mb-4 text-center sm:text-left">
-                <span className="text-[9px] font-extrabold tracking-[0.2em] text-brand-deep uppercase sm:text-[10px]">
-                  Fasilitas Rute
+              <div className="mb-4 flex items-end justify-between gap-3">
+                <div>
+                  <span className="text-[9px] font-extrabold tracking-[.2em] text-brand-deep uppercase">
+                    Route Facilities
+                  </span>
+                  <p className="mt-1 text-xs text-navy/50 sm:text-sm">
+                    Fasilitas yang tersedia selama race.
+                  </p>
+                </div>
+                <span className="hidden rounded-full bg-[#97D91B]/15 px-3 py-1 text-[9px] font-bold text-[#468519] uppercase sm:block">
+                  Race Ready
                 </span>
+              </div>
 
-                <p className="mt-1 text-xs text-navy/55 sm:text-sm">
-                  Fasilitas yang tersedia selama perjalanan.
+              <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-5 sm:gap-3">
+                {facilities.map(([icon, title, desc], i) => (
+                  <div
+                    key={title}
+                    className="group flex items-center gap-2.5 rounded-xl border border-brand-light/30 bg-brand-sky/30 p-2.5 transition-all hover:-translate-y-0.5 hover:bg-[#97D91B]/10 sm:flex-col sm:p-3.5 sm:text-center"
+                  >
+                    <div className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl text-base ${
+                      i === 1 || i === 4 ? "bg-[#F18B1F]/10" : "bg-[#97D91B]/15"
+                    }`}>
+                      {icon}
+                    </div>
+
+                    <div className="min-w-0">
+                      <div className="truncate text-[9px] font-extrabold text-navy uppercase sm:text-[10px]">
+                        {title}
+                      </div>
+                      <p className="mt-0.5 text-[9px] text-navy/45 sm:text-[10px]">
+                        {desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* RUNDOWN */}
+            <div className="border-t border-brand-light/40 bg-[#1492FA]/[0.025] px-5 py-7 sm:px-7 sm:py-8">
+
+              {/* RUNDOWN HEADER */}
+              <div className="mb-7 flex flex-col gap-3 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+
+                  <h3 className="mt-1 font-display text-2xl text-navy uppercase sm:text-3xl">
+                    Rundown <span className="text-[#F18B1F]">Race Day</span>
+                  </h3>
+                </div>
+
+                <p className="max-w-sm text-xs leading-relaxed text-navy/50 sm:text-right sm:text-sm">
+                  Pastikan hadir tepat waktu dan ikuti setiap rangkaian kegiatan.
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-5">
+              {/* TIMELINE */}
+              <div className="relative">
+                <span className="absolute bottom-5 left-[17px] top-5 w-0.5 bg-gradient-to-b from-[#F18B1F] via-[#97D91B] to-[#1492FA] sm:left-[24px]" />
 
-                {/* Water Station */}
-                <div className="flex items-center gap-3 sm:flex-col sm:justify-center sm:text-center">
-                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-sky text-lg">
-                    💧
-                  </div>
+                <div className="space-y-3 sm:space-y-4">
+                  {rundown.map((r, i) => {
+                    const start = r.title.toLowerCase().includes("start");
 
-                  <div className="min-w-0">
-                    <div className="text-[10px] font-extrabold text-navy uppercase sm:text-xs">
-                      Water Station
-                    </div>
+                    return (
+                      <Reveal key={`${r.time}-${r.title}`} delay={i * 40}>
+                        <div className="relative pl-10 sm:pl-14">
 
-                    <p className="mt-0.5 text-[10px] text-navy/50 sm:text-xs">
-                      Air minum
-                    </p>
-                  </div>
+                          {/* DOT */}
+                          <span className={`absolute left-[9px] top-1/2 z-10 h-4 w-4 -translate-y-1/2 rounded-full border-[3px] border-background sm:left-[17px] ${
+                            start
+                              ? "bg-[#F18B1F] shadow-[0_0_0_4px_rgba(241,139,31,.15)]"
+                              : "bg-[#97D91B]"
+                          }`} />
+
+                          {/* ITEM */}
+                          <div className={`group relative overflow-hidden rounded-2xl border bg-background transition-all duration-300 hover:-translate-y-0.5 hover:shadow-soft ${
+                            start
+                              ? "border-[#F18B1F]/30 bg-[#FFF9F2]"
+                              : "border-brand-light/30"
+                          }`}>
+                            {start && <span className="absolute inset-y-0 left-0 w-1 bg-[#F18B1F]" />}
+
+                            <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 p-3 sm:gap-4 sm:p-4">
+
+                              {/* TIME */}
+                              <div className={`flex min-w-[64px] flex-col items-center rounded-xl px-2.5 py-2 sm:min-w-[76px] sm:rounded-2xl sm:px-3 sm:py-2.5 ${
+                                start ? "bg-[#F18B1F]" : "bg-[#97D91B]/15"
+                              }`}>
+                                <span className={`font-display text-base leading-none tabular-nums sm:text-lg ${
+                                  start ? "text-white" : "text-[#468519]"
+                                }`}>
+                                  {r.time}
+                                </span>
+                                <span className={`mt-1 text-[7px] font-bold tracking-wider uppercase ${
+                                  start ? "text-white/70" : "text-navy/40"
+                                }`}>
+                                  WIB
+                                </span>
+                              </div>
+
+                              {/* INFO */}
+                              <div className="min-w-0">
+                                <div className="flex flex-wrap items-center gap-2">
+                                  <h4 className="text-xs font-extrabold text-navy uppercase sm:text-sm">
+                                    {r.title}
+                                  </h4>
+
+                                  {start && (
+                                    <span className="rounded-full bg-[#F18B1F] px-2 py-0.5 text-[7px] font-extrabold tracking-wider text-white uppercase">
+                                      Start
+                                    </span>
+                                  )}
+                                </div>
+
+                                <p className="mt-1 text-[9px] leading-relaxed text-navy/50 sm:text-xs">
+                                  {r.desc}
+                                </p>
+                              </div>
+                            </div>
+
+                            <span className={`absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full ${
+                              start ? "bg-[#F18B1F]" : "bg-[#97D91B]"
+                            }`} />
+                          </div>
+                        </div>
+                      </Reveal>
+                    );
+                  })}
                 </div>
-
-                {/* Ambulance */}
-                <div className="flex items-center gap-3 sm:flex-col sm:justify-center sm:text-center">
-                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-sky text-lg">
-                    🚑
-                  </div>
-
-                  <div className="min-w-0">
-                    <div className="text-[10px] font-extrabold text-navy uppercase sm:text-xs">
-                      Ambulance
-                    </div>
-
-                    <p className="mt-0.5 text-[10px] text-navy/50 sm:text-xs">
-                      Siaga medis
-                    </p>
-                  </div>
-                </div>
-
-                {/* Medical Point */}
-                <div className="flex items-center gap-3 sm:flex-col sm:justify-center sm:text-center">
-                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-light/20 text-lg">
-                    🏥
-                  </div>
-
-                  <div className="min-w-0">
-                    <div className="text-[10px] font-extrabold text-navy uppercase sm:text-xs">
-                      Medical Point
-                    </div>
-
-                    <p className="mt-0.5 text-[10px] text-navy/50 sm:text-xs">
-                      Pos kesehatan
-                    </p>
-                  </div>
-                </div>
-
-                {/* Toilet */}
-                <div className="flex items-center gap-3 sm:flex-col sm:justify-center sm:text-center">
-                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-sky text-lg">
-                    🚻
-                  </div>
-
-                  <div className="min-w-0">
-                    <div className="text-[10px] font-extrabold text-navy uppercase sm:text-xs">
-                      Toilet
-                    </div>
-
-                    <p className="mt-0.5 text-[10px] text-navy/50 sm:text-xs">
-                      Fasilitas peserta
-                    </p>
-                  </div>
-                </div>
-
-                {/* Finish Area */}
-                <div className="flex items-center gap-3 sm:flex-col sm:justify-center sm:text-center">
-                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand/15 text-lg">
-                    🏁
-                  </div>
-
-                  <div className="min-w-0">
-                    <div className="text-[10px] font-extrabold text-navy uppercase sm:text-xs">
-                      Finish Area
-                    </div>
-
-                    <p className="mt-0.5 text-[10px] text-navy/50 sm:text-xs">
-                      Area finish
-                    </p>
-                  </div>
-                </div>
-
               </div>
             </div>
+
           </div>
         </Reveal>
-
       </div>
     </section>
   );
 }
 
 export function Rundown() {
-  return (
-    <section id="rundown" className="relative overflow-hidden bg-brand-sky pb-20 pt-8 sm:pb-24 sm:pt-10 lg:pb-28 lg:pt-12">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6">
-
-        {/* HEADING */}
-        <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="mt-5 font-display text-4xl leading-[1.05] text-navy uppercase sm:text-5xl lg:text-6xl">
-              RUNDOWN
-              <br />
-              <span className="text-brand-deep">PKU FRESH RUN</span>
-            </h2>
-          </div>
-        </Reveal>
-
-        {/* TIMELINE */}
-        <div className="relative mt-12 sm:mt-14">
-
-          {/* Timeline line */}
-          <span className="absolute bottom-6 left-[18px] top-6 w-0.5 bg-brand-light sm:left-[27px]" />
-
-          <div className="space-y-4 sm:space-y-5">
-            {rundown.map((r, i) => {
-              const isStart = r.title.toLowerCase().includes("start");
-
-              return (
-                <Reveal key={`${r.time}-${r.title}`} delay={i * 60}>
-                  <div className="relative pl-12 sm:pl-16">
-
-                    {/* TIMELINE DOT */}
-                    <span
-                      className={`absolute left-[9px] top-1/2 z-10 flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full border-4 border-brand-sky sm:left-[18px] ${
-                        isStart
-                          ? "bg-brand shadow-[0_0_0_5px_rgba(151,217,27,0.15)]"
-                          : "bg-brand-light"
-                      }`}
-                    />
-
-                    {/* CARD */}
-                    <div
-                      className={`group relative overflow-hidden rounded-2xl bg-background shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lift sm:rounded-3xl ${
-                        isStart ? "ring-2 ring-brand/25" : ""
-                      }`}
-                    >
-                      {/* Start accent */}
-                      {isStart && (
-                        <div className="absolute inset-y-0 left-0 w-1 bg-brand" />
-                      )}
-
-                      <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 p-4 sm:gap-5 sm:p-5 lg:p-6">
-
-                        {/* TIME */}
-                        <div
-                          className={`flex min-w-[68px] flex-col items-center justify-center rounded-xl px-3 py-2.5 sm:min-w-[82px] sm:rounded-2xl sm:px-4 sm:py-3 ${
-                            isStart
-                              ? "bg-brand text-primary-foreground"
-                              : "bg-brand-sky"
-                          }`}
-                        >
-                          <span
-                            className={`font-display text-lg leading-none tabular-nums sm:text-xl ${
-                              isStart
-                                ? "text-primary-foreground"
-                                : "text-brand-deep"
-                            }`}
-                          >
-                            {r.time}
-                          </span>
-
-                          <span
-                            className={`mt-1 text-[8px] font-bold tracking-wider uppercase ${
-                              isStart
-                                ? "text-primary-foreground/75"
-                                : "text-navy/45"
-                            }`}
-                          >
-                            WIB
-                          </span>
-                        </div>
-
-                        {/* CONTENT */}
-                        <div className="min-w-0">
-                          <div className="flex flex-wrap items-center gap-2">
-                            <h3 className="min-w-0 font-bold text-navy uppercase sm:text-base">
-                              {r.title}
-                            </h3>
-
-                            {isStart && (
-                              <span className="shrink-0 rounded-full bg-brand px-2.5 py-1 text-[8px] font-extrabold tracking-wider text-primary-foreground uppercase">
-                                Start
-                              </span>
-                            )}
-                          </div>
-
-                          <p className="mt-1 text-xs leading-relaxed text-navy/60 sm:text-sm">
-                            {r.desc}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Hover accent */}
-                      <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-
-      </div>
-    </section>
-  );
+  return null;
 }
 
 export function HowTo() {

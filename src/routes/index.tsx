@@ -44,8 +44,8 @@ function Index() {
         <Hero />
         <RaceInfo />
         <TotalPrize />
-        <Podium />
         <Categories />
+        <Podium />
         <RacePack />
         <RouteMap />
         <Rundown />
