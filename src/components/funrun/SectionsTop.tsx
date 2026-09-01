@@ -50,7 +50,7 @@ export function Hero() {
 
       {/* BLUE OVERLAY */}
       <div
-        className="absolute inset-0 -z-20 bg-[#0A5490]/25"
+        className="absolute inset-0 -z-20 bg-[#0A5490]/5"
         aria-hidden="true"
       />
 
