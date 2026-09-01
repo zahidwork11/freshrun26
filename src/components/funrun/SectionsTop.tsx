@@ -577,7 +577,7 @@ export function TotalPrize() {
 
             {/* 20 FINISHERS */}
             <Reveal delay={220}>
-              <div className="mt-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-[2rem] bg-[#97D91B] px-5 py-6 shadow-[0_10px_30px_rgba(241,139,31,.25)] sm:px-8 sm:py-7">
+              <div className="mt-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-[2rem] bg-[#76C457] px-5 py-6 shadow-[0_10px_30px_rgba(241,139,31,.25)] sm:px-8 sm:py-7">
 
                 <div className="min-w-0">
                   <div className="font-display text-xl text-white uppercase sm:text-2xl">
@@ -593,7 +593,7 @@ export function TotalPrize() {
                   </p>
                 </div>
 
-                <div className="shrink-0 rounded-2xl bg-white px-4 py-3 text-center font-display text-base text-[#97D91B] shadow-sm sm:px-5 sm:text-lg">
+                <div className="shrink-0 rounded-2xl bg-white px-4 py-3 text-center font-display text-base text-[#76C457] shadow-sm sm:px-5 sm:text-lg">
                   Rp100.000
                   <span className="text-xs">/orang</span>
                 </div>
