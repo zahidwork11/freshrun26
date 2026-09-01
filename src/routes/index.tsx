@@ -18,7 +18,7 @@ import {
   Sponsors,
 } from "@/components/funrun/SectionsBottom";
 
-const title = "Pku Run Fresh 2026";
+const title = "Pkufreshrun26";
 const description =
   "Fun Run 5K & 2.5K Milad RS PKU Muhammadiyah Sukoharjo, 18 November 2026. Total hadiah puluhan juta, jersey, medali, dan doorprize. Daftar sekarang!";
 

@@ -8,6 +8,7 @@ import hero20 from "@/assets/hero20.png";
 import hero21 from "@/assets/hero21.png";
 import hero10 from "@/assets/hero10.png";
 import hero11 from "@/assets/hero17.png";
+import hero30 from "@/assets/hero30.png";
 
 export function Hero() {
   const [offset, setOffset] = useState(0);
@@ -43,7 +44,7 @@ export function Hero() {
           width={1920}
           height={1280}
           className="h-[115%] w-full scale-105 object-cover blur-[0.5px]"
-          style={{ transform: `translateY(-130px)` }}
+          style={{ transform: `translateY(-70px)` }}
         />
       </div>
 
@@ -359,7 +360,7 @@ export function TotalPrize() {
       {/* BACKGROUND */}
       <div className="absolute inset-0 -z-30 overflow-hidden">
         <img
-          src={hero21}
+          src={hero30}
           alt=""
           width={1920}
           height={1280}
