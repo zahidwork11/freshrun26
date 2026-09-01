@@ -449,33 +449,33 @@ export function TotalPrize() {
           </div>
         </Reveal>
 
-{/* PRIZE CHIPS */}
-<Reveal delay={200}>
-  <div className="mx-auto mt-8 max-w-3xl text-center sm:mt-10">
-    <div className="mx-auto mt-5 max-w-2xl px-2 sm:mt-6 sm:px-0">
+        {/* PRIZE CHIPS */}
+        <Reveal delay={200}>
+          <div className="mx-auto mt-8 max-w-3xl text-center sm:mt-10">
+            <div className="mx-auto mt-5 max-w-2xl px-2 sm:mt-6 sm:px-0">
 
-      {/* HADIAH UTAMA */}
-      <div className="mb-3 flex w-full justify-center">
-        <span className="inline-flex min-h-[50px] w-full max-w-xl items-center justify-center rounded-full bg-gradient-to-r from-[#F18B1F] via-[#F59A38] to-[#F7B15F] px-6 py-3 text-center text-sm font-extrabold leading-tight tracking-wide text-white uppercase shadow-[0_6px_18px_rgba(241,139,31,.25)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 sm:min-h-[56px] sm:px-8 sm:py-3.5 sm:text-base lg:min-h-[60px] lg:text-lg">
-          {chips[0]}
-        </span>
-      </div>
+              {/* HADIAH UTAMA */}
+              <div className="mb-3 flex w-full justify-center">
+                <span className="inline-flex min-h-[50px] w-full max-w-xl items-center justify-center rounded-full bg-gradient-to-r from-[#F18B1F] via-[#F59A38] to-[#F7B15F] px-6 py-3 text-center text-sm font-extrabold leading-tight tracking-wide text-white uppercase shadow-[0_6px_18px_rgba(241,139,31,.25)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 sm:min-h-[56px] sm:px-8 sm:py-3.5 sm:text-base lg:min-h-[60px] lg:text-lg">
+                  {chips[0]}
+                </span>
+              </div>
 
-      {/* HADIAH LAINNYA */}
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-2.5">
-        {chips.slice(1).map((c) => (
-          <span
-            key={c}
-            className="inline-flex min-h-[38px] items-center justify-center rounded-full border border-[#97D91B]/30 bg-gradient-to-r from-[#97D91B] via-[#A8DF3B] to-[#C0E875] px-2.5 py-2 text-center text-[9px] font-bold leading-tight tracking-wide text-[#193000] uppercase shadow-[0_4px_12px_rgba(151,217,27,.16)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 sm:min-h-[40px] sm:px-4 sm:text-xs"
-          >
-            {c}
-          </span>
-        ))}
-      </div>
+              {/* HADIAH LAINNYA */}
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-2.5">
+                {chips.slice(1).map((c) => (
+                  <span
+                    key={c}
+                    className="inline-flex min-h-[38px] items-center justify-center rounded-full border border-[#97D91B]/30 bg-gradient-to-r from-[#97D91B] via-[#A8DF3B] to-[#C0E875] px-2.5 py-2 text-center text-[9px] font-bold leading-tight tracking-wide text-[#193000] uppercase shadow-[0_4px_12px_rgba(151,217,27,.16)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 sm:min-h-[40px] sm:px-4 sm:text-xs"
+                  >
+                    {c}
+                  </span>
+                ))}
+              </div>
 
-    </div>
-  </div>
-</Reveal>
+            </div>
+          </div>
+        </Reveal>
 
         {/* PODIUM */}
         <Reveal delay={260}>
@@ -577,7 +577,7 @@ export function TotalPrize() {
 
             {/* 20 FINISHERS */}
             <Reveal delay={220}>
-              <div className="mt-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-[2rem] bg-[#F18B1F] px-5 py-6 shadow-[0_10px_30px_rgba(241,139,31,.25)] sm:px-8 sm:py-7">
+              <div className="mt-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-[2rem] bg-[#97D91B] px-5 py-6 shadow-[0_10px_30px_rgba(241,139,31,.25)] sm:px-8 sm:py-7">
 
                 <div className="min-w-0">
                   <div className="font-display text-xl text-white uppercase sm:text-2xl">
@@ -593,7 +593,7 @@ export function TotalPrize() {
                   </p>
                 </div>
 
-                <div className="shrink-0 rounded-2xl bg-white px-4 py-3 text-center font-display text-base text-[#F18B1F] shadow-sm sm:px-5 sm:text-lg">
+                <div className="shrink-0 rounded-2xl bg-white px-4 py-3 text-center font-display text-base text-[#97D91B] shadow-sm sm:px-5 sm:text-lg">
                   Rp100.000
                   <span className="text-xs">/orang</span>
                 </div>
