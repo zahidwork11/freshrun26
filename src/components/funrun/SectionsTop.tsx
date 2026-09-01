@@ -50,7 +50,7 @@ export function Hero() {
 
       {/* BLUE OVERLAY */}
       <div
-        className="absolute inset-0 -z-20 bg-[#0A5490]/5"
+        className="absolute inset-0 -z-20 bg-[#0A5490]/15"
         aria-hidden="true"
       />
 
@@ -68,18 +68,18 @@ export function Hero() {
 
       {/* SOFT BLUE LIGHT */}
       <div
-        className="absolute left-[-10%] top-[20%] -z-10 h-72 w-72 rounded-full bg-[#1492FA]/15 blur-3xl"
+        className="absolute left-[-10%] top-[20%] -z-10 h-72 w-72 rounded-full bg-[#1492FA]/20 blur-3xl"
         aria-hidden="true"
       />
 
       <div
-        className="absolute bottom-[5%] right-[-10%] -z-10 h-80 w-80 rounded-full bg-[#1492FA]/12 blur-3xl"
+        className="absolute bottom-[5%] right-[-10%] -z-10 h-80 w-80 rounded-full bg-[#1492FA]/20 blur-3xl"
         aria-hidden="true"
       />
 
       {/* BLUE BLEND */}
       <div
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0A5490]/20 via-transparent to-[#1492FA]/10"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0A5490]/20 via-transparent to-[#1492FA]/20"
         aria-hidden="true"
       />
 
