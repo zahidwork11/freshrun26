@@ -5,6 +5,7 @@ import { Reveal } from "./Reveal";
 import { Countdown } from "./Countdown";
 import { categories, eventInfo, podium } from "@/data/event";
 import hero16 from "@/assets/hero16.png";
+import hero17 from "@/assets/hero17.png";
 import hero10 from "@/assets/hero10.png";
 import hero11 from "@/assets/hero17.png";
 
@@ -355,10 +356,10 @@ export function TotalPrize() {
       id="hadiah"
       className="relative isolate overflow-hidden py-20 sm:py-24 lg:py-28"
     >
-      {/* BACKGROUND IMAGE */}
+      {/* BACKGROUND */}
       <div className="absolute inset-0 -z-30 overflow-hidden">
         <img
-          src={hero10}
+          src={hero17}
           alt=""
           width={1920}
           height={1280}
@@ -366,7 +367,7 @@ export function TotalPrize() {
         />
       </div>
 
-      {/* GREEN OVERLAY */}
+      {/* BLUE OVERLAY */}
       <div
         className="absolute inset-0 -z-20 bg-[#0A5490]/70"
         aria-hidden="true"
@@ -388,7 +389,7 @@ export function TotalPrize() {
         {/* HEADING */}
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <span className="inline-flex items-center rounded-full border border-[#97D91B]/30 bg-[#97D91B]/15 px-4 py-2 text-[10px] font-extrabold tracking-[0.22em] text-[#D9F0B8] uppercase sm:text-xs">
+            <span className="inline-flex items-center rounded-full border border-[#97D91B]/30 bg-[#97D91B]/15 px-4 py-2 text-[10px] font-extrabold tracking-[.22em] text-[#D9F0B8] uppercase sm:text-xs">
               Hadiah & Penghargaan
             </span>
 
@@ -400,9 +401,9 @@ export function TotalPrize() {
           </div>
         </Reveal>
 
-        {/* TOTAL PRIZE + PRIZE IMAGE */}
+        {/* TOTAL PRIZE */}
         <Reveal delay={100}>
-          <div className="relative mx-auto mt-10 max-w-2xl overflow-hidden rounded-[2rem] border border-[#97D91B]/30 bg-white shadow-[0_18px_50px_rgba(0,0,0,0.18)] sm:rounded-[2.5rem]">
+          <div className="relative mx-auto mt-10 max-w-2xl overflow-hidden rounded-[2rem] border border-[#97D91B]/30 bg-white shadow-[0_18px_50px_rgba(0,0,0,.18)] sm:rounded-[2.5rem]">
 
             {/* PRIZE IMAGE BACKGROUND */}
             <div className="pointer-events-none absolute inset-0 flex items-end justify-center overflow-hidden">
@@ -412,22 +413,20 @@ export function TotalPrize() {
                 width={1280}
                 height={860}
                 loading="lazy"
-                className="h-full w-full object-cover object-center opacity-[0.10] mix-blend-multiply"
+                className="h-full w-full object-cover object-center opacity-[.10] mix-blend-multiply"
               />
             </div>
 
-            {/* SOFT WHITE OVERLAY */}
             <div className="pointer-events-none absolute inset-0 bg-white/65" />
 
-            {/* GREEN ACCENT */}
+            {/* ORANGE ACCENT */}
             <div className="absolute inset-x-0 top-0 z-20 h-1 bg-[#F18B1F]" />
 
             {/* CONTENT */}
             <div className="relative z-10 px-6 py-8 text-center sm:px-10 sm:py-10">
-
               <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-[#F18B1F]" />
 
-              <div className="text-xs font-extrabold tracking-[0.25em] text-[#F18B1F] uppercase sm:text-sm">
+              <div className="text-xs font-extrabold tracking-[.25em] text-[#F18B1F] uppercase sm:text-sm">
                 Total Hadiah
               </div>
 
@@ -450,33 +449,157 @@ export function TotalPrize() {
           </div>
         </Reveal>
 
-        {/* MESSAGE */}
-        <Reveal delay={200}>
-          <div className="mx-auto mt-8 max-w-3xl text-center sm:mt-10">
+{/* PRIZE CHIPS */}
+<Reveal delay={200}>
+  <div className="mx-auto mt-8 max-w-3xl text-center sm:mt-10">
+    <div className="mx-auto mt-5 max-w-2xl px-2 sm:mt-6 sm:px-0">
 
-        {/* CHIPS */}
-        <div className="mx-auto mt-5 max-w-2xl px-2 sm:mt-6 sm:px-0">
+      {/* HADIAH UTAMA */}
+      <div className="mb-3 flex w-full justify-center">
+        <span className="inline-flex min-h-[50px] w-full max-w-xl items-center justify-center rounded-full bg-gradient-to-r from-[#F18B1F] via-[#F59A38] to-[#F7B15F] px-6 py-3 text-center text-sm font-extrabold leading-tight tracking-wide text-white uppercase shadow-[0_6px_18px_rgba(241,139,31,.25)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 sm:min-h-[56px] sm:px-8 sm:py-3.5 sm:text-base lg:min-h-[60px] lg:text-lg">
+          {chips[0]}
+        </span>
+      </div>
 
-          {/* HADIAH UTAMA — ORANGE */}
-          <div className="mb-3 flex w-full justify-center">
-            <span className="inline-flex min-h-[50px] w-full max-w-xl items-center justify-center rounded-full bg-[#F18B1F] px-6 py-3 text-center text-sm font-extrabold leading-tight tracking-wide text-white uppercase shadow-[0_6px_18px_rgba(241,139,31,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#E57D12] sm:min-h-[56px] sm:px-8 sm:py-3.5 sm:text-base lg:min-h-[60px] lg:text-lg">
-              {chips[0]}
-            </span>
-          </div>
+      {/* HADIAH LAINNYA */}
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-2.5">
+        {chips.slice(1).map((c) => (
+          <span
+            key={c}
+            className="inline-flex min-h-[38px] items-center justify-center rounded-full border border-[#97D91B]/30 bg-gradient-to-r from-[#97D91B] via-[#A8DF3B] to-[#C0E875] px-2.5 py-2 text-center text-[9px] font-bold leading-tight tracking-wide text-[#193000] uppercase shadow-[0_4px_12px_rgba(151,217,27,.16)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 sm:min-h-[40px] sm:px-4 sm:text-xs"
+          >
+            {c}
+          </span>
+        ))}
+      </div>
 
-          {/* HADIAH LAINNYA — HIJAU */}
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-2.5">
-            {chips.slice(1).map((c) => (
-              <span
-                key={c}
-                className="inline-flex min-h-[38px] items-center justify-center rounded-full border border-[#97D91B]/30 bg-white px-2.5 py-2 text-center text-[9px] font-bold leading-tight tracking-wide text-[#468519] uppercase shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#97D91B]/50 hover:bg-[#F5FBDD] sm:min-h-[40px] sm:px-4 sm:text-xs"
-              >
-                {c}
-              </span>
-            ))}
-          </div>
+    </div>
+  </div>
+</Reveal>
 
-        </div>
+        {/* PODIUM */}
+        <Reveal delay={260}>
+          <div className="mx-auto mt-14 max-w-5xl sm:mt-16">
+
+            {/* PODIUM CARDS */}
+            <div className="mt-8 grid gap-4 lg:grid-cols-2 sm:mt-10">
+
+              {/* PUTRA */}
+              <Reveal delay={80}>
+                <div className="rounded-[2rem] border border-white/50 bg-white p-5 shadow-[0_15px_40px_rgba(0,0,0,.12)] sm:p-7">
+
+                  <div className="flex items-center gap-2">
+                    <Trophy className="h-5 w-5 shrink-0 text-[#F18B1F]" />
+
+                    <h3 className="font-display text-2xl text-navy uppercase">
+                      Putra 5K
+                    </h3>
+                  </div>
+
+                  <div className="mt-5 space-y-2.5">
+                    {podium.putra.map((p, i) => (
+                      <div
+                        key={p.place}
+                        className={`flex items-center justify-between gap-3 rounded-xl px-4 py-3 transition-all hover:translate-x-1 ${
+                          i === 0
+                            ? "bg-[#97D91B]/15 ring-1 ring-[#97D91B]/30"
+                            : "bg-brand-sky"
+                        }`}
+                      >
+                        <div className="flex min-w-0 items-center gap-3">
+                          <span className="text-xl">{p.medal}</span>
+
+                          <span className="truncate text-sm font-bold text-navy">
+                            {p.place}
+                          </span>
+                        </div>
+
+                        <span
+                          className={`shrink-0 font-display text-lg ${
+                            i === 0
+                              ? "text-[#468519]"
+                              : "text-brand-deep"
+                          }`}
+                        >
+                          {p.prize}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+
+              {/* PUTRI */}
+              <Reveal delay={160}>
+                <div className="rounded-[2rem] border border-white/50 bg-white p-5 shadow-[0_15px_40px_rgba(0,0,0,.12)] sm:p-7">
+
+                  <div className="flex items-center gap-2">
+                    <Trophy className="h-5 w-5 shrink-0 text-[#97D91B]" />
+
+                    <h3 className="font-display text-2xl text-navy uppercase">
+                      Putri 5K
+                    </h3>
+                  </div>
+
+                  <div className="mt-5 space-y-2.5">
+                    {podium.putri.map((p, i) => (
+                      <div
+                        key={p.place}
+                        className={`flex items-center justify-between gap-3 rounded-xl px-4 py-3 transition-all hover:translate-x-1 ${
+                          i === 0
+                            ? "bg-[#97D91B]/15 ring-1 ring-[#97D91B]/30"
+                            : "bg-brand-sky"
+                        }`}
+                      >
+                        <div className="flex min-w-0 items-center gap-3">
+                          <span className="text-xl">{p.medal}</span>
+
+                          <span className="truncate text-sm font-bold text-navy">
+                            {p.place}
+                          </span>
+                        </div>
+
+                        <span
+                          className={`shrink-0 font-display text-lg ${
+                            i === 0
+                              ? "text-[#468519]"
+                              : "text-brand-deep"
+                          }`}
+                        >
+                          {p.prize}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+
+            {/* 20 FINISHERS */}
+            <Reveal delay={220}>
+              <div className="mt-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-[2rem] bg-[#F18B1F] px-5 py-6 shadow-[0_10px_30px_rgba(241,139,31,.25)] sm:px-8 sm:py-7">
+
+                <div className="min-w-0">
+                  <div className="font-display text-xl text-white uppercase sm:text-2xl">
+                    20 Finisher Berikutnya
+                  </div>
+
+                  <p className="mt-1 text-xs text-white/90 sm:text-sm">
+                    Finisher 5K 4–13 Putra
+                  </p>
+
+                  <p className="mt-0.5 text-xs text-white/90 sm:text-sm">
+                    Finisher 5K 4–13 Putri
+                  </p>
+                </div>
+
+                <div className="shrink-0 rounded-2xl bg-white px-4 py-3 text-center font-display text-base text-[#F18B1F] shadow-sm sm:px-5 sm:text-lg">
+                  Rp100.000
+                  <span className="text-xs">/orang</span>
+                </div>
+              </div>
+            </Reveal>
+
           </div>
         </Reveal>
 
@@ -511,53 +634,7 @@ function PodiumCard({ title, list }: { title: string; list: typeof podium.putra 
 }
 
 export function Podium() {
-  return (
-    <section className="bg-brand-sky py-20 lg:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <Reveal>
-          <h2 className="text-center font-display text-4xl text-navy uppercase sm:text-5xl lg:text-6xl">
-            Siap Jadi yang{" "}
-            <span className="text-[#F18B1F]">Tercepat?</span>
-          </h2>
-        </Reveal>
-
-        <div className="mt-10 grid gap-5 lg:grid-cols-2">
-          <Reveal delay={80}>
-            <PodiumCard title="Putra 5K" list={podium.putra} />
-          </Reveal>
-
-          <Reveal delay={160}>
-            <PodiumCard title="Putri 5K" list={podium.putri} />
-          </Reveal>
-        </div>
-
-        <Reveal delay={220}>
-          <div className="mt-6 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-[2rem] bg-[#F18B1F] px-6 py-7 shadow-[0_10px_30px_rgba(241,139,31,0.25)] sm:flex sm:justify-between sm:px-10">
-
-            <div className="min-w-0">
-              <div className="font-display text-2xl text-white uppercase sm:text-3xl">
-                20 Finisher Berikutnya
-              </div>
-
-              <p className="mt-1 text-sm text-white/90">
-                Finisher 5K 4–13 Putra
-              </p>
-
-              <p className="mt-1 text-sm text-white/90">
-                Finisher 5K 4–13 Putri
-              </p>
-            </div>
-
-            <div className="shrink-0 rounded-2xl bg-white px-5 py-3 text-center font-display text-lg text-[#F18B1F] shadow-sm">
-              Rp100.000<span className="text-xs">/orang</span>
-            </div>
-
-          </div>
-        </Reveal>
-
-      </div>
-    </section>
-  );
+  return null;
 }
 
 export function Categories() {
