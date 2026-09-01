@@ -44,8 +44,9 @@ export const navItems = [
   { label: "Race Pack", href: "#racepack" },
   { label: "Rute & Rundown", href: "#rute" },
   { label: "Cara Daftar", href: "#cara-daftar" },
-  { label: "FAQ", href: "#faq" },
   { label: "Sponsor", href: "#sponsor" },
+  { label: "FAQ", href: "#faq" },
+  
 ];
 
 // ============================================================
