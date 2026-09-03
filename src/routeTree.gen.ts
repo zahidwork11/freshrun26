@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BayarRouteImport } from './routes/bayar'
+import { Route as DaftarRouteImport } from './routes/daftar'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BayarRoute = BayarRouteImport.update({
+  id: '/bayar',
+  path: '/bayar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DaftarRoute = DaftarRouteImport.update({
+  id: '/daftar',
+  path: '/daftar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bayar': typeof BayarRoute
+  '/daftar': typeof DaftarRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bayar': typeof BayarRoute
+  '/daftar': typeof DaftarRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bayar': typeof BayarRoute
+  '/daftar': typeof DaftarRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/bayar' | '/daftar'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/bayar' | '/daftar'
+  id: '__root__' | '/' | '/bayar' | '/daftar'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BayarRoute: typeof BayarRoute
+  DaftarRoute: typeof DaftarRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bayar': {
+      id: '/bayar'
+      path: '/bayar'
+      fullPath: '/bayar'
+      preLoaderRoute: typeof BayarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/daftar': {
+      id: '/daftar'
+      path: '/daftar'
+      fullPath: '/daftar'
+      preLoaderRoute: typeof DaftarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BayarRoute: BayarRoute,
+  DaftarRoute: DaftarRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

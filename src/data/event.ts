@@ -73,6 +73,7 @@ export const podium = {
 export type Category = {
   slug: string;
   name: string;
+  productKey: string;
   price: string;
   note?: string;
   registrationPeriod?: string;
@@ -95,95 +96,62 @@ export type Category = {
 // ============================================================
 
 export const categories: Category[] = [
-  // ==========================================================
-  // 5K UMUM
-  // ==========================================================
-
   {
     slug: "5k-umum",
     name: "5K UMUM",
+    productKey: "5K_PRESALE",
     price: "Rp 150.000",
     note: "PRESALE",
     registrationPeriod: "1 September – 10 September 2026",
-    benefits: ["BIB","Jersey", "Medal", "Race Pack", "Snack"],
+    benefits: [
+      "BIB",
+      "Jersey",
+      "Medal",
+      "Race Pack",
+      "Snack",
+    ],
     requirement: "NIK",
     tone: "bright",
     quota: 300,
     registered: 100,
-    registerUrl: "https://forms.gle/rgjuf9SwYQtpN89ZA"
   },
-
-  // ==========================================================
-  // 2.5K UMUM
-  // ==========================================================
 
   {
     slug: "2-5k-umum",
     name: "2.5K UMUM",
+    productKey: "2_5K_PRESALE",
     price: "Rp 50.000",
     note: "PRESALE",
     registrationPeriod: "1 September – 10 September 2026",
-    benefits: ["BIB", "Jersey", "Snack"],
+    benefits: [
+      "BIB",
+      "Jersey",
+      "Snack",
+    ],
     requirement: "NIK",
     tone: "cyan",
     quota: 300,
     registered: 30,
-    registerUrl: "https://forms.gle/rgjuf9SwYQtpN89ZA"
   },
-
-  // ==========================================================
-  // PELAJAR / MAHASISWA
-  // ==========================================================
 
   {
     slug: "pelajar-mahasiswa",
     name: "PELAJAR / MAHASISWA 5K",
-    price: "Rp 135.000",
+    productKey: "5K_MAHASISWA",
+    price: "Rp 125.000",
     registrationPeriod: "11 September – 11 Oktober 2026",
-    benefits: ["BIB","Jersey", "Medal", "Race Pack", "Snack"],
+    benefits: [
+      "BIB",
+      "Jersey",
+      "Medal",
+      "Race Pack",
+      "Snack",
+    ],
     requirement: "NISN / NPM / NIM",
     tone: "light",
     quota: 500,
     registered: 0,
-    registerUrl: "https://forms.gle/rgjuf9SwYQtpN89ZA"
   },
-
-  // ==========================================================
-  // STAFF RS PKU
-  // NONAKTIF
-  // ==========================================================
-
-  /*
-  {
-    slug: "staff-rs-pku",
-    name: "STAFF RS PKU 5K",
-    price: "Rp 125.000",
-    registrationPeriod: "1 September – 31 Oktober 2026",
-    benefits: ["Jersey", "Medal", "Race Bag", "Snack"],
-    tone: "navy",
-    quota: 300,
-    registered: 0,
-  },
-  */
-
-  // ==========================================================
-  // WARGA MUHAMMADIYAH
-  // NONAKTIF
-  // ==========================================================
-
-  /*
-  {
-    slug: "warga-muhammadiyah",
-    name: "WARGA MUHAMMADIYAH",
-    price: "Rp 75.000",
-    registrationPeriod: "1 September – 31 Oktober 2026",
-    benefits: ["BIB Only"],
-    requirement: "KTA Muhammadiyah",
-    tone: "sky",
-    quota: 300,
-    registered: 0,
-  },
-  */
 ];
 
 // ============================================================

@@ -9,6 +9,7 @@ import hero21 from "@/assets/hero21.png";
 import hero10 from "@/assets/hero10.png";
 import hero11 from "@/assets/hero17.png";
 import hero30 from "@/assets/hero30.png";
+import { Link } from "@tanstack/react-router";
 
 export function Hero() {
   const [offset, setOffset] = useState(0);
@@ -652,7 +653,9 @@ export function Categories() {
             <h2 className="mt-4 font-display text-4xl leading-[1.05] text-navy uppercase sm:text-5xl lg:text-6xl">
               Pilih Kategori,
               <br />
-              <span className="text-[#F18B1F]">Siapkan Langkahmu.</span>
+              <span className="text-[#F18B1F]">
+                Siapkan Langkahmu.
+              </span>
             </h2>
           </div>
         </Reveal>
@@ -660,6 +663,7 @@ export function Categories() {
         {/* CATEGORY CARDS */}
         <div className="mx-auto mt-10 grid max-w-6xl gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((c, i) => {
+
             /* COLOR PER CATEGORY */
             let headerColor = "#b76e20";
             let accentColor = "#DA630E";
@@ -694,6 +698,7 @@ export function Categories() {
             /* KUOTA */
             const quota = c.quota ?? 0;
             const registered = c.registered ?? 0;
+
             const percentage =
               quota > 0
                 ? Math.min(
@@ -716,6 +721,7 @@ export function Categories() {
                     style={{ backgroundColor: headerColor }}
                   >
                     <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-white/10" />
+
                     <div className="pointer-events-none absolute -bottom-12 right-10 h-20 w-20 rounded-full bg-black/5" />
 
                     <div className="relative grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2">
@@ -800,7 +806,9 @@ export function Categories() {
                         >
                           <span
                             className="grid h-5 w-5 shrink-0 place-items-center rounded-full"
-                            style={{ backgroundColor: softColor }}
+                            style={{
+                              backgroundColor: softColor,
+                            }}
                           >
                             <span
                               className="h-1.5 w-1.5 rounded-full"
@@ -829,25 +837,28 @@ export function Categories() {
                     )}
 
                     {/* REGISTER BUTTON */}
-                    {isStudentCategory ? (
-                      <button
-                        type="button"
-                        disabled
-                        className="mt-6 cursor-not-allowed rounded-full bg-[#0A5490]/10 px-5 py-3.5 text-center font-display text-sm tracking-wide text-[#0A5490]/40 uppercase"
-                      >
-                        Belum Dibuka
-                      </button>
-                    ) : (
-                      <a
-                        href={c.registerUrl || eventInfo.registerUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-6 rounded-full px-5 py-3.5 text-center font-display text-sm tracking-wide text-white uppercase shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-md"
-                        style={{ backgroundColor: headerColor }}
-                      >
-                        Daftar
-                      </a>
-                    )}
+                    <div className="mt-auto pt-6">
+                      {isStudentCategory ? (
+                        <button
+                          type="button"
+                          disabled
+                          className="w-full cursor-not-allowed rounded-full bg-[#0A5490]/10 px-5 py-3.5 text-center font-display text-sm tracking-wide text-[#0A5490]/40 uppercase"
+                        >
+                          Belum Dibuka
+                        </button>
+                      ) : (
+                        <Link
+                          to="/daftar"
+                          className="block w-full rounded-full px-5 py-3.5 text-center font-display text-sm tracking-wide text-white uppercase shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-md"
+                          style={{
+                            backgroundColor: headerColor,
+                          }}
+                        >
+                          Daftar
+                        </Link>
+                      )}
+                    </div>
+
                   </div>
                 </article>
               </Reveal>
