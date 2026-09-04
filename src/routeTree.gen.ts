@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BayarRouteImport } from './routes/bayar'
 import { Route as DaftarRouteImport } from './routes/daftar'
+import { Route as FormRouteImport } from './routes/form'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +29,44 @@ const DaftarRoute = DaftarRouteImport.update({
   path: '/daftar',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FormRoute = FormRouteImport.update({
+  id: '/form',
+  path: '/form',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bayar': typeof BayarRoute
   '/daftar': typeof DaftarRoute
+  '/form': typeof FormRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bayar': typeof BayarRoute
   '/daftar': typeof DaftarRoute
+  '/form': typeof FormRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/bayar': typeof BayarRoute
   '/daftar': typeof DaftarRoute
+  '/form': typeof FormRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/bayar' | '/daftar'
+  fullPaths: '/' | '/bayar' | '/daftar' | '/form'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/bayar' | '/daftar'
-  id: '__root__' | '/' | '/bayar' | '/daftar'
+  to: '/' | '/bayar' | '/daftar' | '/form'
+  id: '__root__' | '/' | '/bayar' | '/daftar' | '/form'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BayarRoute: typeof BayarRoute
   DaftarRoute: typeof DaftarRoute
+  FormRoute: typeof FormRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DaftarRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/form': {
+      id: '/form'
+      path: '/form'
+      fullPath: '/form'
+      preLoaderRoute: typeof FormRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BayarRoute: BayarRoute,
   DaftarRoute: DaftarRoute,
+  FormRoute: FormRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
