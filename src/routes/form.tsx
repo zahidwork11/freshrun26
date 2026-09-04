@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowLeft,
   ArrowRight,
@@ -13,6 +13,7 @@ import {
 import {
   ChangeEvent,
   FormEvent,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -92,8 +93,6 @@ export const Route = createFileRoute("/form")({
 });
 
 function FormPage() {
-  const navigate = useNavigate();
-
   const {
     code,
     email,
@@ -154,6 +153,121 @@ function FormPage() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [registrationId, setRegistrationId] = useState("");
+
+  const [alreadyRegistered, setAlreadyRegistered] = useState(false);
+  const [checkingRegistration, setCheckingRegistration] = useState(true);
+
+  /*
+   * ==========================================================
+   * CEK EMAIL SUDAH TERDAFTAR
+   * ==========================================================
+   */
+  useEffect(() => {
+    if (!email || !PARTICIPANT_API_URL) {
+      setCheckingRegistration(false);
+      return;
+    }
+
+    let cancelled = false;
+
+    async function checkRegistration() {
+      try {
+        const url = new URL(PARTICIPANT_API_URL);
+        url.searchParams.set("action", "checkParticipant");
+        url.searchParams.set("email", email.trim().toLowerCase());
+        if (code) url.searchParams.set("code", code);
+
+        const response = await fetch(url.toString(), { method: "GET", redirect: "follow" });
+        if (!response.ok) throw new Error("Gagal mengecek status pendaftaran.");
+
+        const result = (await response.json()) as {
+          success?: boolean;
+          registered?: boolean;
+          registrationId?: string;
+        };
+
+        if (cancelled) return;
+
+        if (result.success === true && result.registered === true) {
+          setAlreadyRegistered(true);
+          setRegistrationId(result.registrationId ?? "");
+        } else {
+          setAlreadyRegistered(false);
+        }
+      } catch (error) {
+        console.error("Gagal mengecek email peserta:", error);
+      } finally {
+        if (!cancelled) setCheckingRegistration(false);
+      }
+    }
+
+    setCheckingRegistration(true);
+    void checkRegistration();
+
+    return () => { cancelled = true; };
+  }, [email, code]);
+
+  /*
+   * ==========================================================
+   * PASTIKAN JUMLAH TRANSFER SELALU TERSEDIA
+   * ==========================================================
+   *
+   * Nilai utama berasal dari /bayar melalui query amount.
+   * Jika query amount tidak terbawa, ambil ulang dari Apps Script
+   * menggunakan payment code + email.
+   */
+  useEffect(() => {
+    if (!code || !email || !PARTICIPANT_API_URL) {
+      return;
+    }
+
+    if (amount && Number(amount) > 0) {
+      updateField("jumlahTransfer", amount);
+      return;
+    }
+
+    let cancelled = false;
+
+    async function loadPaymentAmount() {
+      try {
+        const url = new URL(PARTICIPANT_API_URL);
+        url.searchParams.set("action", "get");
+        url.searchParams.set("code", code);
+        url.searchParams.set("email", email);
+
+        const response = await fetch(url.toString(), {
+          method: "GET",
+        });
+
+        if (!response.ok) {
+          return;
+        }
+
+        const result = (await response.json()) as {
+          success?: boolean;
+          totalAmount?: number | string;
+        };
+
+        if (cancelled || result.success !== true) {
+          return;
+        }
+
+        const totalAmount = Number(result.totalAmount ?? 0);
+
+        if (totalAmount > 0) {
+          updateField("jumlahTransfer", String(totalAmount));
+        }
+      } catch (error) {
+        console.error("Gagal mengambil nominal pembayaran:", error);
+      }
+    }
+
+    loadPaymentAmount();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [amount, code, email]);
 
   const isPelajarMahasiswa =
     categorySlug === "pelajar-mahasiswa";
@@ -304,6 +418,10 @@ function FormPage() {
       !participantType
     ) {
       return "Silakan pilih status Anda sebagai pelajar atau mahasiswa.";
+    }
+
+    if (!form.jumlahTransfer || Number(form.jumlahTransfer) <= 0) {
+      return "Jumlah transfer wajib diisi.";
     }
 
     if (!form.buktiTransfer) {
@@ -512,6 +630,23 @@ function FormPage() {
       return;
     }
 
+    try {
+      const checkUrl = new URL(PARTICIPANT_API_URL);
+      checkUrl.searchParams.set("action", "checkParticipant");
+      checkUrl.searchParams.set("email", form.email.trim().toLowerCase());
+      const checkResponse = await fetch(checkUrl.toString(), { method: "GET", redirect: "follow" });
+      if (checkResponse.ok) {
+        const checkResult = (await checkResponse.json()) as { success?: boolean; registered?: boolean; registrationId?: string };
+        if (checkResult.success === true && checkResult.registered === true) {
+          setAlreadyRegistered(true);
+          setRegistrationId(checkResult.registrationId ?? "");
+          return;
+        }
+      }
+    } catch (error) {
+      console.error("Gagal memverifikasi email sebelum submit:", error);
+    }
+
     setSubmitting(true);
 
     try {
@@ -523,118 +658,74 @@ function FormPage() {
       /*
        * Data dikirim ke Apps Script.
        *
-       * Endpoint action=submit
-       * akan kita buat di kode.gs.
+       * Endpoint POST action=submitParticipant
+       * diproses oleh doPost() di kode.gs.
+       */
+      /*
+       * ======================================================
+       * PAYLOAD SESUAI KONTRAK DOPOST GOOGLE APPS SCRIPT
+       * ======================================================
+       *
+       * Apps Script menerima:
+       *
+       * {
+       *   action: "submitParticipant",
+       *   data: { ...FIELD_SHEET... },
+       *   proofFile: { fileName, mimeType, base64 }
+       * }
+       *
+       * Field data sengaja menggunakan nama kolom PARTICIPANTS
+       * (uppercase) agar sama persis dengan backend.
        */
       const payload = {
-        action: "submit",
+        action: "submitParticipant",
 
-        paymentCode:
-          form.paymentCode,
+        data: {
+          PAYMENT_CODE: form.paymentCode.trim(),
+          PAYMENT_STATUS: "PENDING",
+          NAMA_PENGIRIM: form.namaPengirim.trim(),
+          JUMLAH_TRANSFER: form.jumlahTransfer.trim(),
+          KATEGORI: categoryLabel,
 
-        email:
-          form.email.trim(),
+          NAMA_LENGKAP: form.namaLengkap.trim(),
+          NO_IDENTITAS: form.noIdentitas.trim(),
+          EMAIL: form.email.trim().toLowerCase(),
+          NO_WA: form.noWa.trim(),
+          TEMPAT_LAHIR: form.tempatLahir.trim(),
+          TANGGAL_LAHIR: form.tanggalLahir,
 
-        participantType:
-          form.participantType,
+          NAMA_IBU: form.namaIbu.trim(),
+          NAMA_SEKOLAH: form.namaSekolah.trim(),
+          KELAS: form.kelas.trim(),
 
-        buktiTransfer: {
-          name:
-            form.buktiTransfer.name,
-          type:
-            form.buktiTransfer.type,
-          size:
-            form.buktiTransfer.size,
-          base64:
-            buktiTransfer,
+          NAMA_KAMPUS: form.namaKampus.trim(),
+          PROGRAM_STUDI: form.programStudi.trim(),
+          ANGKATAN: form.angkatan.trim(),
+
+          DOMISILI_SAAT_INI: form.domisiliSaatIni.trim(),
+          JENIS_KELAMIN: form.jenisKelamin,
+          UKURAN_JERSEY: form.ukuranJersey,
+          GOLONGAN_DARAH: form.golonganDarah,
+          KOMUNITAS: form.komunitas.trim(),
+
+          KONTAK_DARURAT_NAMA: form.kontakDaruratNama.trim(),
+          KONTAK_DARURAT_STATUS: form.kontakDaruratStatus.trim(),
+          KONTAK_DARURAT_NOTELP: form.kontakDaruratNoTelp.trim(),
+
+          SETUJU_DATA_BENAR: form.setujuDataBenar,
+          BERSEDIA_MENGIKUTI_EVENT: form.bersediaMengikutiEvent,
+          BERSEDIA_HADIR_SESUAI_JADWAL: form.bersediaHadirSesuaiJadwal,
+          BERSEDIA_MENGIKUTI_SELURUH_RANGKAIAN: form.bersediaMengikutiSeluruhRangkaian,
+          BERSEDIA_MEMATUHI_PERATURAN: form.bersediaMematuhiPeraturan,
+          BERSEDIA_MENJAGA_KESELAMATAN: form.bersediaMenjagaKeselamatan,
+          SIAP_DAN_BERTANGGUNG_JAWAB: form.siapDanBertanggungJawab,
         },
 
-        namaPengirim:
-          form.namaPengirim.trim(),
-
-        jumlahTransfer:
-          form.jumlahTransfer,
-
-        kategori:
-          categoryLabel,
-
-        namaLengkap:
-          form.namaLengkap.trim(),
-
-        noIdentitas:
-          form.noIdentitas.trim(),
-
-        noWa:
-          form.noWa.trim(),
-
-        tempatLahir:
-          form.tempatLahir.trim(),
-
-        tanggalLahir:
-          form.tanggalLahir,
-
-        namaIbu:
-          form.namaIbu.trim(),
-
-        namaSekolah:
-          form.namaSekolah.trim(),
-
-        kelas:
-          form.kelas.trim(),
-
-        namaKampus:
-          form.namaKampus.trim(),
-
-        programStudi:
-          form.programStudi.trim(),
-
-        angkatan:
-          form.angkatan.trim(),
-
-        domisiliSaatIni:
-          form.domisiliSaatIni.trim(),
-
-        jenisKelamin:
-          form.jenisKelamin,
-
-        ukuranJersey:
-          form.ukuranJersey,
-
-        golonganDarah:
-          form.golonganDarah,
-
-        komunitas:
-          form.komunitas.trim(),
-
-        kontakDaruratNama:
-          form.kontakDaruratNama.trim(),
-
-        kontakDaruratStatus:
-          form.kontakDaruratStatus.trim(),
-
-        kontakDaruratNoTelp:
-          form.kontakDaruratNoTelp.trim(),
-
-        setujuDataBenar:
-          form.setujuDataBenar,
-
-        bersediaMengikutiEvent:
-          form.bersediaMengikutiEvent,
-
-        bersediaHadirSesuaiJadwal:
-          form.bersediaHadirSesuaiJadwal,
-
-        bersediaMengikutiSeluruhRangkaian:
-          form.bersediaMengikutiSeluruhRangkaian,
-
-        bersediaMematuhiPeraturan:
-          form.bersediaMematuhiPeraturan,
-
-        bersediaMenjagaKeselamatan:
-          form.bersediaMenjagaKeselamatan,
-
-        siapDanBertanggungJawab:
-          form.siapDanBertanggungJawab,
+        proofFile: {
+          fileName: form.buktiTransfer.name,
+          mimeType: form.buktiTransfer.type,
+          base64: buktiTransfer,
+        },
       };
 
       const response =
@@ -665,6 +756,7 @@ function FormPage() {
         (await response.json()) as {
           success?: boolean;
           registrationId?: string;
+          paymentCode?: string;
           message?: string;
         };
 
@@ -702,6 +794,47 @@ function FormPage() {
     } finally {
       setSubmitting(false);
     }
+  }
+
+  /*
+   * ==========================================================
+   * EMAIL SUDAH TERDAFTAR
+   * ==========================================================
+   */
+  if (alreadyRegistered) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-[#EAF6FF] px-4 py-10">
+        <section className="w-full max-w-xl overflow-hidden rounded-[2rem] bg-white shadow-[0_15px_45px_rgba(20,43,77,0.1)]">
+          <div className="bg-[#0A5490] px-6 py-10 text-center text-white sm:px-10">
+            <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-amber-100 text-3xl font-black text-amber-700">!</div>
+            <h1 className="mt-5 font-display text-3xl uppercase sm:text-4xl">Anda Sudah Mengisi Form</h1>
+            <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-white/75">Email yang Anda gunakan sudah terdaftar sebagai peserta PKU Fresh Run. Form pendaftaran tidak dapat diisi kembali menggunakan email yang sama.</p>
+          </div>
+          <div className="p-6 sm:p-8">
+            {registrationId && (
+              <div className="rounded-2xl bg-[#EAF6FF] p-5 text-center">
+                <p className="text-[9px] font-extrabold tracking-[0.18em] text-[#062D50]/40 uppercase">Registration ID</p>
+                <p className="mt-2 break-all font-mono text-sm font-bold text-[#062D50]">{registrationId}</p>
+              </div>
+            )}
+            <p className="mt-5 text-center text-xs leading-relaxed text-[#062D50]/55">Jika merasa terjadi kesalahan, silakan hubungi panitia PKU Fresh Run.</p>
+            <Link to="/" className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#F18B1F] px-6 py-4 font-display text-sm tracking-wide text-white uppercase transition hover:bg-[#D97706]">Kembali ke Beranda<ArrowRight className="h-4 w-4" /></Link>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  if (checkingRegistration) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-[#EAF6FF] px-4">
+        <div className="w-full max-w-md rounded-[2rem] bg-white p-8 text-center shadow-[0_15px_45px_rgba(20,43,77,0.1)]">
+          <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#0A5490]" />
+          <h1 className="mt-5 font-display text-2xl uppercase text-[#062D50]">Memeriksa Data Peserta</h1>
+          <p className="mt-2 text-sm text-[#062D50]/55">Mohon tunggu sebentar...</p>
+        </div>
+      </main>
+    );
   }
 
   /*

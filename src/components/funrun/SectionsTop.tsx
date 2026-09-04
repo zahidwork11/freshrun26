@@ -849,6 +849,7 @@ export function Categories() {
                       ) : (
                         <Link
                           to="/daftar"
+                          search={{ category: c.slug }}
                           className="block w-full rounded-full px-5 py-3.5 text-center font-display text-sm tracking-wide text-white uppercase shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-md"
                           style={{
                             backgroundColor: headerColor,

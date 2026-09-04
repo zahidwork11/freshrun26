@@ -96,6 +96,11 @@ export type Category = {
 // ============================================================
 
 export const categories: Category[] = [
+
+  // ==========================================================
+  // 1. 5K UMUM PRESALE
+  // AKTIF / TAMPIL DI UI
+  // ==========================================================
   {
     slug: "5k-umum",
     name: "5K UMUM",
@@ -116,6 +121,10 @@ export const categories: Category[] = [
     registered: 100,
   },
 
+  // ==========================================================
+  // 2. 2.5K UMUM PRESALE
+  // AKTIF / TAMPIL DI UI
+  // ==========================================================
   {
     slug: "2-5k-umum",
     name: "2.5K UMUM",
@@ -134,6 +143,11 @@ export const categories: Category[] = [
     registered: 30,
   },
 
+  // ==========================================================
+  // 3. PELAJAR / MAHASISWA 5K
+  // AKTIF / TAMPIL DI UI
+  // TETAPI BELUM DIBUKA
+  // ==========================================================
   {
     slug: "pelajar-mahasiswa",
     name: "PELAJAR / MAHASISWA 5K",
@@ -152,6 +166,54 @@ export const categories: Category[] = [
     quota: 500,
     registered: 0,
   },
+
+  // ==========================================================
+  // 4. 5K UMUM REGULER
+  // BELUM DITAMPILKAN DI UI PESERTA
+  // ==========================================================
+  /*
+  {
+    slug: "5k-umum-reguler",
+    name: "5K UMUM",
+    productKey: "5K_UMUM",
+    price: "Rp 170.000",
+    registrationPeriod: "Setelah periode presale",
+    benefits: [
+      "BIB",
+      "Jersey",
+      "Medal",
+      "Race Pack",
+      "Snack",
+    ],
+    requirement: "NIK",
+    tone: "bright",
+    quota: 300,
+    registered: 0,
+  },
+  */
+
+  // ==========================================================
+  // 5. 2.5K UMUM REGULER
+  // BELUM DITAMPILKAN DI UI PESERTA
+  // ==========================================================
+  /*
+  {
+    slug: "2-5k-umum-reguler",
+    name: "2.5K UMUM",
+    productKey: "2_5K_UMUM",
+    price: "Rp 75.000",
+    registrationPeriod: "Setelah periode presale",
+    benefits: [
+      "BIB",
+      "Jersey",
+      "Snack",
+    ],
+    requirement: "NIK",
+    tone: "cyan",
+    quota: 300,
+    registered: 0,
+  },
+  */
 ];
 
 // ============================================================
