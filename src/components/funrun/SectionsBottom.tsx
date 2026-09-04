@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Download, Instagram, MessageCircle } from "lucide-react";
 import jersey from "@/assets/jersey.png";
 import jersey2 from "@/assets/jersey2.png";
+import jersey3 from "@/assets/jersey3.png";
 import hero17 from "@/assets/hero17.png";
 import medal from "@/assets/medal2.png";
 import totebag from "@/assets/totebag.png";
+import totebag2 from "@/assets/totebag2.png";
 import bib from "@/assets/bib.png";
 import route5k from "@/assets/maps/route-5k.png";
 import route25k from "@/assets/maps/route-2-5k.png";
@@ -21,7 +23,7 @@ import { eventInfo, faqs, navItems, rundown, mainSponsor,  sponsors, steps } fro
 export function RacePack() {
   const items = [
     {
-      img: jersey2,
+      img: jersey3,
       label: "Jersey",
       desc: "Bahan dry-fit ringan dengan desain Milad.",
     },
@@ -31,7 +33,7 @@ export function RacePack() {
       desc: "Medali finisher eksklusif edisi khusus.",
     },
     {
-      img: totebag,
+      img: totebag2,
       label: "Tote Bag",
       desc: "Tote bag praktis untuk melengkapi race pack.",
     },

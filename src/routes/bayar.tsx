@@ -9,7 +9,6 @@ import {
   useState,
 } from "react";
 
-
 // ============================================================
 // ROUTE SEARCH
 // ============================================================
@@ -18,51 +17,63 @@ type BayarSearch = {
   category: string;
 };
 
-
 export const Route =
   createFileRoute("/bayar")({
-
     validateSearch: (
       search: Record<string, unknown>,
     ): BayarSearch => {
-
       return {
-
         category:
-          typeof search["category"] ===
-          "string"
+          typeof search["category"] === "string"
             ? search["category"]
             : "",
-
       };
-
     },
 
     head: () => ({
-
       meta: [
-
         {
           title:
             "Pembayaran | PKU Fresh Run",
         },
-
         {
-          name:
-            "description",
-
+          name: "description",
           content:
             "Buat kode pembayaran PKU Muhammadiyah Sukoharjo Fresh Run.",
         },
-
       ],
-
     }),
 
-    component:
-      Bayar,
-
+    component: Bayar,
   });
+
+
+// ============================================================
+// GOOGLE APPS SCRIPT URL
+// ============================================================
+
+const PAYMENT_API_URL =
+  import.meta.env[
+    "VITE_PAYMENT_API_URL"
+  ] as string | undefined;
+
+
+// ============================================================
+// REKENING PEMBAYARAN
+// ============================================================
+//
+// GANTI 3 DATA INI DENGAN REKENING RESMI EVENT
+//
+// ============================================================
+
+const BANK_NAME =
+  "BANK BSI";
+
+const BANK_ACCOUNT_NUMBER =
+  "0000000000";
+
+const BANK_ACCOUNT_HOLDER =
+  "RS PKU MUHAMMADIYAH SUKOHARJO";
 
 
 // ============================================================
@@ -70,55 +81,66 @@ export const Route =
 // ============================================================
 
 type PaymentResult = {
+  success: true;
 
-  success:
-    true;
+  existing: boolean;
 
-  existing:
-    boolean;
+  alreadyPaid: boolean;
 
-  alreadyPaid:
-    boolean;
+  alreadyRegistered: boolean;
 
-  alreadyRegistered:
-    boolean;
+  registrationId: string;
 
-  registrationId:
-    string;
+  registrationStatus: string;
 
-  id:
-    string;
+  registeredEmail: string;
 
-  code:
-    string;
+  id: string;
 
-  category:
-    string;
+  code: string;
 
-  productKey:
-    string;
+  category: string;
 
-  basePrice:
-    number;
+  productKey: string;
 
-  totalAmount:
-    number;
+  basePrice: number;
 
-  status:
-    string;
+  totalAmount: number;
 
-  email:
-    string;
+  status: string;
 
-  createdAt:
-    string | null;
+  email: string;
 
-  expiredAt:
-    string | null;
+  createdAt: string | null;
 
-  message:
-    string;
+  expiredAt: string | null;
 
+  message: string;
+};
+
+
+// ============================================================
+// PARTICIPANT RESULT
+// ============================================================
+
+type ParticipantCheckResult = {
+  success?: boolean;
+
+  registered?: boolean;
+
+  alreadyRegistered?: boolean;
+
+  registrationId?: string;
+
+  registrationStatus?: string;
+
+  paymentStatus?: string;
+
+  email?: string;
+
+  registeredEmail?: string;
+
+  message?: string;
 };
 
 
@@ -127,13 +149,9 @@ type PaymentResult = {
 // ============================================================
 
 type ApiErrorResponse = {
+  success: false;
 
-  success:
-    false;
-
-  message?:
-    string;
-
+  message?: string;
 };
 
 
@@ -142,22 +160,15 @@ type ApiErrorResponse = {
 // ============================================================
 
 type ProductInfo = {
+  slug: string;
 
-  slug:
-    string;
+  key: string;
 
-  key:
-    string;
+  name: string;
 
-  name:
-    string;
+  price: number;
 
-  price:
-    number;
-
-  description:
-    string;
-
+  description: string;
 };
 
 
@@ -166,21 +177,22 @@ type ProductInfo = {
 // ============================================================
 
 const PRODUCTS:
-  Record<
-    string,
-    ProductInfo
-  > = {
+  Record<string, ProductInfo> = {
 
-  "5k-umum": {
+  // ==========================================================
+  // 5K PRESALE
+  // ==========================================================
+
+  "5k-presale": {
 
     slug:
-      "5k-umum",
+      "5k-presale",
 
     key:
       "5K_PRESALE",
 
     name:
-      "5K UMUM",
+      "5K PRESALE",
 
     price:
       150000,
@@ -190,16 +202,45 @@ const PRODUCTS:
 
   },
 
-  "2-5k-umum": {
+
+  // ==========================================================
+  // 5K UMUM
+  // ==========================================================
+
+  "5k-umum": {
 
     slug:
-      "2-5k-umum",
+      "5k-umum",
+
+    key:
+      "5K_UMUM",
+
+    name:
+      "5K UMUM",
+
+    price:
+      170000,
+
+    description:
+      "BIB, Jersey, Medal, Race Pack & Snack",
+
+  },
+
+
+  // ==========================================================
+  // 2.5K PRESALE
+  // ==========================================================
+
+  "2-5k-presale": {
+
+    slug:
+      "2-5k-presale",
 
     key:
       "2_5K_PRESALE",
 
     name:
-      "2.5K UMUM",
+      "2.5K PRESALE",
 
     price:
       50000,
@@ -208,6 +249,35 @@ const PRODUCTS:
       "BIB, Jersey & Snack",
 
   },
+
+
+  // ==========================================================
+  // 2.5K UMUM
+  // ==========================================================
+
+  "2-5k-umum": {
+
+    slug:
+      "2-5k-umum",
+
+    key:
+      "2_5K_UMUM",
+
+    name:
+      "2.5K UMUM",
+
+    price:
+      75000,
+
+    description:
+      "BIB, Jersey & Snack",
+
+  },
+
+
+  // ==========================================================
+  // PELAJAR / MAHASISWA
+  // ==========================================================
 
   "pelajar-mahasiswa": {
 
@@ -232,18 +302,6 @@ const PRODUCTS:
 
 
 // ============================================================
-// GOOGLE APPS SCRIPT URL
-// ============================================================
-
-const PAYMENT_API_URL =
-  import.meta.env[
-    "VITE_PAYMENT_API_URL"
-  ] as
-    | string
-    | undefined;
-
-
-// ============================================================
 // FORMAT RUPIAH
 // ============================================================
 
@@ -254,7 +312,6 @@ function formatRupiah(
   return new Intl.NumberFormat(
     "id-ID",
     {
-
       style:
         "currency",
 
@@ -263,7 +320,6 @@ function formatRupiah(
 
       maximumFractionDigits:
         0,
-
     },
   ).format(
     value,
@@ -305,7 +361,6 @@ function formatDate(
   return new Intl.DateTimeFormat(
     "id-ID",
     {
-
       day:
         "2-digit",
 
@@ -320,7 +375,6 @@ function formatDate(
 
       minute:
         "2-digit",
-
     },
   ).format(
     date,
@@ -330,7 +384,7 @@ function formatDate(
 
 
 // ============================================================
-// GET ERROR MESSAGE
+// ERROR MESSAGE
 // ============================================================
 
 function getErrorMessage(
@@ -409,9 +463,7 @@ function Bayar() {
   const [
     email,
     setEmail,
-  ] = useState(
-    "",
-  );
+  ] = useState("");
 
 
   // ==========================================================
@@ -430,51 +482,28 @@ function Bayar() {
 
 
   // ==========================================================
+  // REGISTERED PARTICIPANT
+  // ==========================================================
+
+  const [
+    registeredParticipant,
+    setRegisteredParticipant,
+  ] =
+    useState<
+      ParticipantCheckResult | null
+    >(
+      null,
+    );
+
+
+  // ==========================================================
   // LOADING
   // ==========================================================
 
   const [
     loading,
     setLoading,
-  ] = useState(
-    false,
-  );
-
-
-  // ==========================================================
-  // ERROR
-  // ==========================================================
-
-  const [
-    error,
-    setError,
-  ] = useState(
-    "",
-  );
-
-
-  // ==========================================================
-  // API ERROR
-  // ==========================================================
-
-  const [
-    apiError,
-    setApiError,
-  ] = useState(
-    "",
-  );
-
-
-  // ==========================================================
-  // ALREADY REGISTERED
-  // ==========================================================
-
-  const [
-    alreadyRegistered,
-    setAlreadyRegistered,
-  ] = useState(
-    false,
-  );
+  ] = useState(false);
 
 
   // ==========================================================
@@ -484,9 +513,47 @@ function Bayar() {
   const [
     checkingRegistration,
     setCheckingRegistration,
-  ] = useState(
-    false,
-  );
+  ] = useState(false);
+
+
+  // ==========================================================
+  // ALREADY REGISTERED
+  // ==========================================================
+
+  const [
+    alreadyRegistered,
+    setAlreadyRegistered,
+  ] = useState(false);
+
+
+  // ==========================================================
+  // ERROR
+  // ==========================================================
+
+  const [
+    error,
+    setError,
+  ] = useState("");
+
+
+  // ==========================================================
+  // API ERROR
+  // ==========================================================
+
+  const [
+    apiError,
+    setApiError,
+  ] = useState("");
+
+
+  // ==========================================================
+  // COPY STATE
+  // ==========================================================
+
+  const [
+    copiedAccount,
+    setCopiedAccount,
+  ] = useState(false);
 
 
   // ==========================================================
@@ -512,29 +579,32 @@ function Bayar() {
 
 
   // ==========================================================
-  // CHECK EMAIL SUDAH TERDAFTAR
+  // CHECK PARTICIPANT BY EMAIL
   // ==========================================================
 
   async function checkParticipantByEmail(
     value: string,
-  ): Promise<boolean> {
+  ): Promise<ParticipantCheckResult | null> {
 
     const normalizedEmail =
       value
         .trim()
         .toLowerCase();
 
+
     if (
       !PAYMENT_API_URL ||
       !normalizedEmail
     ) {
 
-      return false;
+      return null;
 
     }
 
+
     const emailRegex =
       /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 
     if (
       !emailRegex.test(
@@ -542,13 +612,15 @@ function Bayar() {
       )
     ) {
 
-      return false;
+      return null;
 
     }
+
 
     setCheckingRegistration(
       true,
     );
+
 
     try {
 
@@ -557,29 +629,31 @@ function Bayar() {
           PAYMENT_API_URL,
         );
 
+
       url.searchParams.set(
         "action",
         "checkParticipant",
       );
+
 
       url.searchParams.set(
         "email",
         normalizedEmail,
       );
 
+
       const response =
         await fetch(
           url.toString(),
           {
-
             method:
               "GET",
 
             redirect:
               "follow",
-
           },
         );
+
 
       if (
         !response.ok
@@ -591,63 +665,89 @@ function Bayar() {
 
       }
 
+
       const result =
-        (await response.json()) as {
-
-          success?:
-            boolean;
-
-          registered?:
-            boolean;
-
-          alreadyRegistered?:
-            boolean;
-
-          registrationId?:
-            string;
-
-          message?:
-            string;
-
-        };
+        (await response.json()) as
+          ParticipantCheckResult;
 
 
       const registered =
-        result.success ===
-          true &&
+        result.success === true &&
         (
-          result.registered ===
-            true ||
-          result.alreadyRegistered ===
-            true
+          result.registered === true ||
+          result.alreadyRegistered === true
         );
 
 
-      setAlreadyRegistered(
-        registered,
+      if (
+        registered
+      ) {
+
+        const participant =
+          {
+            ...result,
+
+            registered:
+              true,
+
+            alreadyRegistered:
+              true,
+
+            registeredEmail:
+              result.registeredEmail ||
+              result.email ||
+              normalizedEmail,
+
+          };
+
+
+        setRegisteredParticipant(
+          participant,
+        );
+
+
+        setAlreadyRegistered(
+          true,
+        );
+
+
+        return participant;
+
+      }
+
+
+      setRegisteredParticipant(
+        null,
       );
 
 
-      return registered;
+      setAlreadyRegistered(
+        false,
+      );
+
+
+      return null;
 
     } catch (
       error
     ) {
 
       console.error(
-        "Gagal mengecek email peserta:",
+        "Gagal mengecek peserta:",
         error,
       );
 
+
       /*
-       * Jangan menganggap email belum terdaftar
-       * jika server gagal.
+       * Jangan menampilkan
+       * "belum terdaftar" ketika
+       * pengecekan server gagal.
        *
-       * Pengecekan kedua tetap dilakukan
-       * oleh createPaymentCode di backend.
+       * Backend create tetap menjadi
+       * pengecekan terakhir.
        */
 
-      return false;
+      return null;
 
     } finally {
 
@@ -672,17 +772,17 @@ function Bayar() {
     event.preventDefault();
 
 
-    setError(
-      "",
-    );
+    setError("");
 
-    setPaymentResult(
-      null,
-    );
+    setPaymentResult(null);
+
+    setRegisteredParticipant(null);
+
+    setCopiedAccount(false);
 
 
     // ========================================================
-    // VALIDASI CATEGORY
+    // CATEGORY
     // ========================================================
 
     if (!category) {
@@ -697,7 +797,7 @@ function Bayar() {
 
 
     // ========================================================
-    // VALIDASI PRODUCT
+    // PRODUCT
     // ========================================================
 
     if (!product) {
@@ -712,7 +812,7 @@ function Bayar() {
 
 
     // ========================================================
-    // VALIDASI API
+    // API
     // ========================================================
 
     if (
@@ -729,13 +829,14 @@ function Bayar() {
 
 
     // ========================================================
-    // VALIDASI EMAIL
+    // EMAIL
     // ========================================================
 
     const normalizedEmail =
       email
         .trim()
         .toLowerCase();
+
 
     if (
       !normalizedEmail
@@ -751,11 +852,12 @@ function Bayar() {
 
 
     // ========================================================
-    // VALIDASI FORMAT EMAIL
+    // EMAIL FORMAT
     // ========================================================
 
     const emailRegex =
       /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 
     if (
       !emailRegex.test(
@@ -773,25 +875,33 @@ function Bayar() {
 
 
     // ========================================================
-    // CEK EMAIL SUDAH TERDAFTAR
+    // CEK PENDAFTARAN
     // ========================================================
 
-    const isRegistered =
+    const participant =
       await checkParticipantByEmail(
         normalizedEmail,
       );
 
+
     if (
-      isRegistered
+      participant
     ) {
 
       setAlreadyRegistered(
         true,
       );
 
-      setError(
-        "Email ini sudah digunakan untuk pendaftaran peserta. Anda sudah mengisi form sebelumnya.",
+
+      setRegisteredParticipant(
+        participant,
       );
+
+
+      setEmail(
+        normalizedEmail,
+      );
+
 
       return;
 
@@ -818,15 +928,18 @@ function Bayar() {
           PAYMENT_API_URL,
         );
 
+
       url.searchParams.set(
         "action",
         "create",
       );
 
+
       url.searchParams.set(
         "product",
         product.key,
       );
+
 
       url.searchParams.set(
         "email",
@@ -842,20 +955,14 @@ function Bayar() {
         await fetch(
           url.toString(),
           {
-
             method:
               "GET",
 
             redirect:
               "follow",
-
           },
         );
 
-
-      // ======================================================
-      // HTTP ERROR
-      // ======================================================
 
       if (
         !response.ok
@@ -898,30 +1005,64 @@ function Bayar() {
       // ======================================================
       // CEK ALREADY REGISTERED
       // ======================================================
-      //
-      // INI SANGAT PENTING.
-      //
-      // Backend adalah sumber kebenaran terakhir.
-      //
-      // ======================================================
 
       if (
         data.alreadyRegistered ===
         true
       ) {
 
+        const participantData =
+          {
+            success:
+              true,
+
+            registered:
+              true,
+
+            alreadyRegistered:
+              true,
+
+            registrationId:
+              data.registrationId,
+
+            registrationStatus:
+              data.registrationStatus,
+
+            paymentStatus:
+              data.status,
+
+            email:
+              data.email,
+
+            registeredEmail:
+              data.registeredEmail ||
+              data.email ||
+              normalizedEmail,
+
+            message:
+              data.message,
+          };
+
+
         setAlreadyRegistered(
           true,
         );
+
+
+        setRegisteredParticipant(
+          participantData,
+        );
+
 
         setPaymentResult(
           null,
         );
 
-        setError(
-          data.message ||
-            "Anda sudah mengisi form pendaftaran. Email ini sudah terdaftar sebagai peserta PKU Fresh Run.",
+
+        setEmail(
+          normalizedEmail,
         );
+
 
         return;
 
@@ -958,6 +1099,19 @@ function Bayar() {
             String(
               data.registrationId ??
                 "",
+            ),
+
+          registrationStatus:
+            String(
+              data.registrationStatus ??
+                "",
+            ),
+
+          registeredEmail:
+            String(
+              data.registeredEmail ??
+                data.email ??
+                normalizedEmail,
             ),
 
           id:
@@ -1043,13 +1197,10 @@ function Bayar() {
       );
 
 
-      // ======================================================
-      // SAVE NORMALIZED EMAIL
-      // ======================================================
-
       setEmail(
         normalizedEmail,
       );
+
 
     } catch (
       err
@@ -1059,6 +1210,7 @@ function Bayar() {
         "Payment error:",
         err,
       );
+
 
       setError(
         getErrorMessage(
@@ -1070,6 +1222,49 @@ function Bayar() {
 
       setLoading(
         false,
+      );
+
+    }
+
+  }
+
+
+  // ==========================================================
+  // COPY REKENING
+  // ==========================================================
+
+  async function copyAccountNumber() {
+
+    try {
+
+      await navigator.clipboard.writeText(
+        BANK_ACCOUNT_NUMBER,
+      );
+
+
+      setCopiedAccount(
+        true,
+      );
+
+
+      window.setTimeout(
+        () => {
+
+          setCopiedAccount(
+            false,
+          );
+
+        },
+        2000,
+      );
+
+    } catch (
+      error
+    ) {
+
+      console.error(
+        "Gagal menyalin rekening:",
+        error,
       );
 
     }
@@ -1092,19 +1287,10 @@ function Bayar() {
     }
 
 
-    /*
-     * JANGAN BOLEH lanjut jika
-     * sudah terdaftar.
-     */
-
     if (
-      paymentResult.alreadyRegistered ||
-      alreadyRegistered
+      alreadyRegistered ||
+      paymentResult.alreadyRegistered
     ) {
-
-      setError(
-        "Anda sudah mengisi form pendaftaran. Email ini sudah terdaftar sebagai peserta PKU Fresh Run.",
-      );
 
       return;
 
@@ -1120,15 +1306,18 @@ function Bayar() {
       paymentResult.code,
     );
 
+
     params.set(
       "email",
       paymentResult.email,
     );
 
+
     params.set(
       "category",
       category,
     );
+
 
     params.set(
       "amount",
@@ -1145,13 +1334,21 @@ function Bayar() {
 
 
   // ==========================================================
-  // USE EMAIL LAIN
+  // RESET
   // ==========================================================
 
   function resetPayment() {
 
     setPaymentResult(
       null,
+    );
+
+    setRegisteredParticipant(
+      null,
+    );
+
+    setAlreadyRegistered(
+      false,
     );
 
     setError(
@@ -1162,7 +1359,7 @@ function Bayar() {
       "",
     );
 
-    setAlreadyRegistered(
+    setCopiedAccount(
       false,
     );
 
@@ -1176,7 +1373,6 @@ function Bayar() {
   if (!category) {
 
     return (
-
       <div className="min-h-screen bg-[#f4f8fb] px-4 py-10">
 
         <div className="mx-auto max-w-xl">
@@ -1220,7 +1416,6 @@ function Bayar() {
         </div>
 
       </div>
-
     );
 
   }
@@ -1233,7 +1428,6 @@ function Bayar() {
   if (!product) {
 
     return (
-
       <div className="min-h-screen bg-[#f4f8fb] px-4 py-10">
 
         <div className="mx-auto max-w-xl">
@@ -1265,7 +1459,6 @@ function Bayar() {
         </div>
 
       </div>
-
     );
 
   }
@@ -1276,7 +1469,6 @@ function Bayar() {
   // ==========================================================
 
   return (
-
     <div className="min-h-screen bg-[#f4f8fb] px-4 py-8 sm:px-6 sm:py-12">
 
       <div className="mx-auto max-w-3xl">
@@ -1374,31 +1566,110 @@ function Bayar() {
                 ALREADY REGISTERED
             ================================================== */}
 
-            {alreadyRegistered && (
+            {alreadyRegistered &&
+              registeredParticipant && (
 
-              <div className="mb-6 rounded-[1.5rem] border-2 border-amber-300 bg-amber-50 p-5 sm:p-6">
+              <div className="mb-6 overflow-hidden rounded-[1.5rem] border-2 border-emerald-200 bg-white">
 
-                <div className="flex gap-4">
+                {/* HEADER */}
 
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-200 font-black text-amber-800">
-                    !
+                <div className="bg-[#f0fdf4] px-5 py-5 sm:px-6">
+
+                  <div className="flex items-start gap-4">
+
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-xl font-black text-white">
+                      ✓
+                    </div>
+
+                    <div className="min-w-0">
+
+                      <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-600">
+                        Data Pembayaran Ditemukan
+                      </p>
+
+                      <h3 className="mt-1 text-lg font-black text-[#123456] sm:text-xl">
+                        Email ini sudah digunakan untuk pendaftaran.
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                        Email ini sudah digunakan
+                        untuk pendaftaran peserta
+                        PKU Fresh Run.
+                      </p>
+
+                    </div>
+
                   </div>
 
-                  <div>
+                </div>
 
-                    <p className="text-base font-black uppercase text-amber-900">
-                      Anda Sudah Mengisi Form
-                    </p>
 
-                    <p className="mt-2 text-sm leading-relaxed text-amber-800">
-                      Email ini sudah terdaftar
-                      sebagai peserta PKU Fresh Run.
-                      Anda tidak dapat membuat
-                      pendaftaran baru menggunakan
-                      email yang sama.
-                    </p>
+                {/* PARTICIPANT DETAIL */}
+
+                <div className="divide-y divide-slate-100">
+
+                  {/* REGISTRATION ID */}
+
+                  <div className="flex items-center justify-between gap-4 px-5 py-4 sm:px-6">
+
+                    <span className="text-sm text-slate-500">
+                      No. Registrasi
+                    </span>
+
+                    <span className="text-right font-mono text-sm font-black text-[#0A5490]">
+                      {registeredParticipant.registrationId ||
+                        "-"}
+                    </span>
 
                   </div>
+
+
+                  {/* STATUS PENDAFTARAN */}
+
+                  <div className="flex items-center justify-between gap-4 px-5 py-4 sm:px-6">
+
+                    <span className="text-sm text-slate-500">
+                      Status Pendaftaran
+                    </span>
+
+                    <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-black uppercase text-amber-700">
+                      {registeredParticipant.registrationStatus ||
+                        "TERDAFTAR"}
+                    </span>
+
+                  </div>
+
+
+                  {/* EMAIL */}
+
+                  <div className="flex items-start justify-between gap-4 px-5 py-4 sm:px-6">
+
+                    <span className="text-sm text-slate-500">
+                      Email Terdaftar
+                    </span>
+
+                    <span className="max-w-[65%] break-all text-right text-sm font-bold text-[#123456]">
+                      {registeredParticipant.registeredEmail ||
+                        registeredParticipant.email ||
+                        email}
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                {/* BUTTON */}
+
+                <div className="border-t border-slate-100 p-5 sm:p-6">
+
+                  <button
+                    type="button"
+                    disabled
+                    className="w-full cursor-not-allowed rounded-2xl bg-slate-300 px-6 py-4 text-sm font-black uppercase tracking-wide text-slate-500"
+                  >
+                    Anda Sudah Mengisi Form
+                  </button>
 
                 </div>
 
@@ -1411,7 +1682,7 @@ function Bayar() {
                 ERROR
             ================================================== */}
 
-            {error && (
+            {error && !alreadyRegistered && (
 
               <div className="mb-6 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
 
@@ -1432,7 +1703,7 @@ function Bayar() {
                 PAYMENT RESULT
             ================================================== */}
 
-            {paymentResult ? (
+            {paymentResult && !alreadyRegistered ? (
 
               <div>
 
@@ -1456,11 +1727,175 @@ function Bayar() {
                       </h3>
 
                       <p className="mt-1 text-sm leading-relaxed text-slate-600">
-                        {paymentResult.message ||
-                          "Kode pembayaran berhasil dibuat."}
+                        Silakan lakukan transfer
+                        sesuai nominal berikut
+                        sebelum melanjutkan
+                        ke form pendaftaran.
                       </p>
 
                     </div>
+
+                  </div>
+
+                </div>
+
+
+                {/* ==================================================
+                    BANK ACCOUNT
+                ================================================== */}
+
+                <div className="mt-6 overflow-hidden rounded-[1.5rem] border-2 border-[#0A5490]/10">
+
+                  <div className="bg-[#0A5490] px-5 py-4 text-white">
+
+                    <h3 className="text-sm font-black uppercase tracking-wide">
+                      Rekening Pembayaran
+                    </h3>
+
+                    <p className="mt-1 text-xs text-white/70">
+                      Transfer sesuai nominal total
+                      pembayaran di bawah.
+                    </p>
+
+                  </div>
+
+
+                  <div className="bg-white p-5 sm:p-6">
+
+
+                    {/* BANK */}
+
+                    <div className="flex items-center justify-between gap-4">
+
+                      <span className="text-sm text-slate-500">
+                        Bank
+                      </span>
+
+                      <span className="text-right text-sm font-black text-[#123456]">
+                        {BANK_NAME}
+                      </span>
+
+                    </div>
+
+
+                    {/* ACCOUNT */}
+
+                    <div className="mt-4 rounded-2xl bg-[#f4f8fb] p-4">
+
+                      <div className="flex items-center justify-between gap-3">
+
+                        <div className="min-w-0">
+
+                          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-400">
+                            No. Rekening
+                          </p>
+
+                          <p className="mt-1 break-all font-mono text-lg font-black tracking-wide text-[#0A5490]">
+                            {BANK_ACCOUNT_NUMBER}
+                          </p>
+
+                        </div>
+
+
+                        {/* COPY ICON ONLY */}
+
+                        <button
+                          type="button"
+                          onClick={
+                            copyAccountNumber
+                          }
+                          title={
+                            copiedAccount
+                              ? "Berhasil disalin"
+                              : "Salin nomor rekening"
+                          }
+                          aria-label={
+                            copiedAccount
+                              ? "Berhasil disalin"
+                              : "Salin nomor rekening"
+                          }
+                          className={[
+                            "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition",
+                            copiedAccount
+                              ? "bg-emerald-100 text-emerald-600"
+                              : "bg-[#0A5490] text-white hover:bg-[#084575]",
+                          ].join(" ")}
+                        >
+
+                          {copiedAccount ? (
+
+                            /* CHECK ICON */
+
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2.5"
+                              className="h-5 w-5"
+                            >
+
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M5 12.5l4 4L19 7"
+                              />
+
+                            </svg>
+
+                          ) : (
+
+                            /* COPY ICON */
+
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              className="h-5 w-5"
+                            >
+
+                              <rect
+                                x="9"
+                                y="9"
+                                width="11"
+                                height="11"
+                                rx="2"
+                                ry="2"
+                              />
+
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"
+                              />
+
+                            </svg>
+
+                          )}
+
+                        </button>
+
+                      </div>
+
+                    </div>
+
+
+                    {/* HOLDER */}
+
+                    <div className="mt-4 flex items-center justify-between gap-4">
+
+                      <span className="text-sm text-slate-500">
+                        Atas Nama
+                      </span>
+
+                      <span className="max-w-[65%] text-right text-sm font-black text-[#123456]">
+                        {BANK_ACCOUNT_HOLDER}
+                      </span>
+
+                    </div>
+
 
                   </div>
 
@@ -1482,9 +1917,8 @@ function Bayar() {
                   </div>
 
                   <p className="mt-3 text-xs text-slate-500">
-                    Simpan kode ini dan
-                    gunakan pada proses
-                    pendaftaran berikutnya.
+                    Simpan kode ini untuk
+                    proses pendaftaran.
                   </p>
 
                 </div>
@@ -1538,7 +1972,7 @@ function Bayar() {
                     </div>
 
 
-                    {/* BASE PRICE */}
+                    {/* PRICE */}
 
                     <div className="flex items-center justify-between gap-4 px-5 py-4">
 
@@ -1601,17 +2035,11 @@ function Bayar() {
                       <span
                         className={[
                           "rounded-full px-3 py-1 text-xs font-black uppercase",
-
                           paymentResult.status ===
                           "PAID"
-
                             ? "bg-emerald-100 text-emerald-700"
-
                             : "bg-amber-100 text-amber-700",
-
-                        ].join(
-                          " ",
-                        )}
+                        ].join(" ")}
                       >
                         {paymentResult.status}
                       </span>
@@ -1653,54 +2081,43 @@ function Bayar() {
                   <ol className="mt-3 space-y-2 text-sm leading-relaxed text-slate-600">
 
                     <li>
-
                       <span className="font-bold text-[#0A5490]">
                         1.
                       </span>{" "}
-
                       Catat kode pembayaran{" "}
-
                       <span className="font-bold">
                         {paymentResult.code}
                       </span>.
-
                     </li>
 
-
                     <li>
-
                       <span className="font-bold text-[#0A5490]">
                         2.
                       </span>{" "}
-
-                      Lakukan transfer sesuai
-                      total yang tertera.
-
+                      Transfer ke rekening
+                      pembayaran di atas sesuai
+                      nominal{" "}
+                      <span className="font-bold">
+                        {formatRupiah(
+                          paymentResult.totalAmount,
+                        )}
+                      </span>.
                     </li>
 
-
                     <li>
-
                       <span className="font-bold text-[#0A5490]">
                         3.
                       </span>{" "}
-
-                      Lanjutkan ke form
-                      pendaftaran dan
-                      lengkapi data peserta.
-
+                      Setelah transfer, lanjutkan
+                      ke form pendaftaran.
                     </li>
 
-
                     <li>
-
                       <span className="font-bold text-[#0A5490]">
                         4.
                       </span>{" "}
-
-                      Upload bukti transfer
-                      pada form pendaftaran.
-
+                      Upload bukti transfer pada
+                      form pendaftaran.
                     </li>
 
                   </ol>
@@ -1709,43 +2126,30 @@ function Bayar() {
 
 
                 {/* ==================================================
-                    CONTINUE
+                    CONTINUE TO FORM
                 ================================================== */}
 
                 <button
                   type="button"
-
                   onClick={
                     goToForm
                   }
-
                   disabled={
                     paymentResult.alreadyRegistered ||
                     alreadyRegistered
                   }
-
                   className={[
                     "mt-6 w-full rounded-2xl px-6 py-4 text-sm font-black uppercase tracking-wide transition",
-
                     paymentResult.alreadyRegistered ||
                     alreadyRegistered
-
                       ? "cursor-not-allowed bg-slate-300 text-slate-500"
-
                       : "bg-[#97D91B] text-[#123456] shadow-[0_10px_30px_rgba(151,217,27,.2)] hover:brightness-95 active:scale-[.99]",
-
-                  ].join(
-                    " ",
-                  )}
+                  ].join(" ")}
                 >
-
                   {paymentResult.alreadyRegistered ||
                   alreadyRegistered
-
                     ? "Anda Sudah Mengisi Form"
-
                     : "Lanjutkan ke Form Pendaftaran"}
-
                 </button>
 
 
@@ -1755,25 +2159,24 @@ function Bayar() {
 
                 <button
                   type="button"
-
                   onClick={
                     resetPayment
                   }
-
                   disabled={
                     loading
                   }
-
                   className="mt-3 w-full rounded-2xl border border-slate-200 bg-white px-6 py-4 text-sm font-bold text-slate-600 transition hover:bg-slate-50 disabled:opacity-50"
                 >
-
                   Gunakan Email Lain
-
                 </button>
 
               </div>
 
-            ) : (
+            ) : !alreadyRegistered ? (
+
+              /* ==================================================
+                 FORM EMAIL
+              ================================================== */
 
               <form
                 onSubmit={
@@ -1823,7 +2226,6 @@ function Bayar() {
                     htmlFor="email"
                     className="block text-sm font-black text-[#123456]"
                   >
-
                     Email Anda
 
                     <span className="ml-1 text-red-500">
@@ -1834,12 +2236,10 @@ function Bayar() {
 
 
                   <p className="mt-1 text-xs leading-relaxed text-slate-500">
-
                     Gunakan email aktif.
                     Email ini akan dikaitkan
                     dengan kode pembayaran dan
                     data peserta Anda.
-
                   </p>
 
 
@@ -1862,20 +2262,26 @@ function Bayar() {
                       const value =
                         event.target.value;
 
+
                       setEmail(
                         value,
                       );
 
-                      /*
-                       * Jangan langsung menganggap
-                       * email aman ketika user mengetik.
-                       * Status hanya di-reset agar
-                       * pengecekan dilakukan kembali.
-                       */
 
                       setAlreadyRegistered(
                         false,
                       );
+
+
+                      setRegisteredParticipant(
+                        null,
+                      );
+
+
+                      setPaymentResult(
+                        null,
+                      );
+
 
                       if (
                         error
@@ -1894,20 +2300,7 @@ function Bayar() {
                       checkingRegistration
                     }
 
-                    className={[
-                      "mt-3 w-full rounded-2xl border px-4 py-4 text-base text-[#123456] outline-none transition placeholder:text-slate-300 focus:border-[#0A5490] focus:ring-4 focus:ring-[#0A5490]/10",
-
-                      alreadyRegistered
-
-                        ? "border-amber-400 bg-amber-50"
-
-                        : "border-slate-200 bg-white",
-
-                      "disabled:cursor-not-allowed disabled:bg-slate-50",
-
-                    ].join(
-                      " ",
-                    )}
+                    className="mt-3 w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 text-base text-[#123456] outline-none transition placeholder:text-slate-300 focus:border-[#0A5490] focus:ring-4 focus:ring-[#0A5490]/10 disabled:cursor-not-allowed disabled:bg-slate-50"
                   />
 
                 </div>
@@ -1932,7 +2325,6 @@ function Bayar() {
                       </h3>
 
                       <p className="mt-1 text-xs leading-relaxed text-amber-800">
-
                         Satu email hanya dapat
                         digunakan untuk satu
                         pendaftaran peserta.
@@ -1940,7 +2332,6 @@ function Bayar() {
                         terdaftar, sistem tidak
                         akan membuat pendaftaran
                         baru.
-
                       </p>
 
                     </div>
@@ -1990,10 +2381,6 @@ function Bayar() {
 
                     </>
 
-                  ) : alreadyRegistered ? (
-
-                    "Anda Sudah Mengisi Form"
-
                   ) : (
 
                     "Lanjutkan Pembayaran"
@@ -2024,14 +2411,12 @@ function Bayar() {
 
                   className="mt-3 w-full rounded-2xl border border-slate-200 bg-white px-6 py-4 text-sm font-bold text-slate-600 transition hover:bg-slate-50 disabled:opacity-50"
                 >
-
                   Kembali
-
                 </button>
 
               </form>
 
-            )}
+            ) : null}
 
           </div>
 
@@ -2043,16 +2428,13 @@ function Bayar() {
         ================================================== */}
 
         <p className="mt-6 text-center text-xs leading-relaxed text-slate-400">
-
           PKU Muhammadiyah Sukoharjo
           Fun Run • 29 November 2026
-
         </p>
 
       </div>
 
     </div>
-
   );
 
 }
