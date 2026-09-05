@@ -89,20 +89,41 @@ export type Category = {
   quota: number;
   registered: number;
   registerUrl?: string;
+
+  // true  = kategori tampil di halaman /daftar
+  // false = kategori tidak tampil sama sekali
+  enabled: boolean;
+
+  // true  = tombol bisa dipilih dan menuju /bayar
+  // false = kategori tampil tetapi tombol "Belum Dibuka"
+  registrationOpen: boolean;
 };
 
 // ============================================================
-// CATEGORIES
+// CATEGORY CONFIGURATION
+// ============================================================
+//
+// SATU-SATUNYA TEMPAT UNTUK MENGATUR KATEGORI YANG TAMPIL.
+//
+// enabled: true  -> tampil di /daftar
+// enabled: false -> tidak tampil di /daftar
+// registrationOpen: true  -> bisa dipilih
+// registrationOpen: false -> tampil "Belum Dibuka"
+//
+// Contoh membuka kategori reguler:
+// enabled: true, registrationOpen: true
+//
+// Contoh menutup kategori presale sepenuhnya:
+// enabled: false, registrationOpen: false
+//
 // ============================================================
 
 export const categories: Category[] = [
-
   // ==========================================================
-  // 1. 5K UMUM PRESALE
-  // AKTIF / TAMPIL DI UI
+  // 1. 5K PRESALE
   // ==========================================================
   {
-    slug: "5k-umum",
+    slug: "5k-presale",
     name: "5K UMUM",
     productKey: "5K_PRESALE",
     price: "Rp 150.000",
@@ -119,14 +140,41 @@ export const categories: Category[] = [
     tone: "bright",
     quota: 300,
     registered: 10,
+    enabled: true,
+    registrationOpen: true,
   },
 
   // ==========================================================
-  // 2. 2.5K UMUM PRESALE
-  // AKTIF / TAMPIL DI UI
+  // 2. 5K UMUM
+  // ==========================================================
+  // Ubah enabled menjadi true dan registrationOpen menjadi true
+  // ketika periode 5K Umum dibuka.
+  {
+    slug: "5k-umum",
+    name: "5K UMUM",
+    productKey: "5K_UMUM",
+    price: "Rp 170.000",
+    registrationPeriod: "Setelah periode presale",
+    benefits: [
+      "BIB",
+      "Jersey",
+      "Medal",
+      "Race Pack",
+      "Snack",
+    ],
+    requirement: "NIK",
+    tone: "bright",
+    quota: 300,
+    registered: 0,
+    enabled: false,
+    registrationOpen: false,
+  },
+
+  // ==========================================================
+  // 3. 2.5K PRESALE
   // ==========================================================
   {
-    slug: "2-5k-umum",
+    slug: "2-5k-presale",
     name: "2.5K UMUM",
     productKey: "2_5K_PRESALE",
     price: "Rp 50.000",
@@ -141,13 +189,38 @@ export const categories: Category[] = [
     tone: "cyan",
     quota: 300,
     registered: 30,
+    enabled: true,
+    registrationOpen: true,
   },
 
   // ==========================================================
-  // 3. PELAJAR / MAHASISWA 5K
-  // AKTIF / TAMPIL DI UI
-  // TETAPI BELUM DIBUKA
+  // 4. 2.5K UMUM
   // ==========================================================
+  // Ubah enabled menjadi true dan registrationOpen menjadi true
+  // ketika periode 2.5K Umum dibuka.
+  {
+    slug: "2-5k-umum",
+    name: "2.5K UMUM",
+    productKey: "2_5K_UMUM",
+    price: "Rp 75.000",
+    registrationPeriod: "Setelah periode presale",
+    benefits: [
+      "BIB",
+      "Jersey",
+      "Snack",
+    ],
+    requirement: "NIK",
+    tone: "cyan",
+    quota: 300,
+    registered: 0,
+    enabled: false,
+    registrationOpen: false,
+  },
+
+  // ==========================================================
+  // 5. PELAJAR / MAHASISWA 5K
+  // ==========================================================
+  // Tampil tetapi belum dibuka.
   {
     slug: "pelajar-mahasiswa",
     name: "PELAJAR / MAHASISWA 5K",
@@ -165,55 +238,9 @@ export const categories: Category[] = [
     tone: "light",
     quota: 500,
     registered: 0,
+    enabled: true,
+    registrationOpen: false,
   },
-
-  // ==========================================================
-  // 4. 5K UMUM REGULER
-  // BELUM DITAMPILKAN DI UI PESERTA
-  // ==========================================================
-  /*
-  {
-    slug: "5k-umum-reguler",
-    name: "5K UMUM",
-    productKey: "5K_UMUM",
-    price: "Rp 170.000",
-    registrationPeriod: "Setelah periode presale",
-    benefits: [
-      "BIB",
-      "Jersey",
-      "Medal",
-      "Race Pack",
-      "Snack",
-    ],
-    requirement: "NIK",
-    tone: "bright",
-    quota: 300,
-    registered: 0,
-  },
-  */
-
-  // ==========================================================
-  // 5. 2.5K UMUM REGULER
-  // BELUM DITAMPILKAN DI UI PESERTA
-  // ==========================================================
-  /*
-  {
-    slug: "2-5k-umum-reguler",
-    name: "2.5K UMUM",
-    productKey: "2_5K_UMUM",
-    price: "Rp 75.000",
-    registrationPeriod: "Setelah periode presale",
-    benefits: [
-      "BIB",
-      "Jersey",
-      "Snack",
-    ],
-    requirement: "NIK",
-    tone: "cyan",
-    quota: 300,
-    registered: 0,
-  },
-  */
 ];
 
 // ============================================================

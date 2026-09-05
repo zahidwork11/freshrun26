@@ -658,72 +658,76 @@ function FormPage() {
       /*
        * Data dikirim ke Apps Script.
        *
-       * Endpoint POST action=submitParticipant
-       * diproses oleh doPost() di kode.gs.
+       * Endpoint POST action=submit
+       * diproses oleh doPost() di Google Apps Script.
        */
       /*
        * ======================================================
        * PAYLOAD SESUAI KONTRAK DOPOST GOOGLE APPS SCRIPT
        * ======================================================
        *
-       * Apps Script menerima:
+       * Apps Script menerima payload langsung:
        *
        * {
-       *   action: "submitParticipant",
-       *   data: { ...FIELD_SHEET... },
-       *   proofFile: { fileName, mimeType, base64 }
+       *   action: "submit",
+       *   paymentCode: "0001",
+       *   email: "...",
+       *   ...field peserta...,
+       *   buktiTransfer: { name, type, size, base64 }
        * }
        *
        * Field data sengaja menggunakan nama kolom PARTICIPANTS
        * (uppercase) agar sama persis dengan backend.
        */
       const payload = {
-        action: "submitParticipant",
+        // Apps Script doPost() saat ini mengharapkan action = "submit"
+        // dan submitParticipant() menerima field langsung di payload.
+        action: "submit",
 
-        data: {
-          PAYMENT_CODE: form.paymentCode.trim(),
-          PAYMENT_STATUS: "PENDING",
-          NAMA_PENGIRIM: form.namaPengirim.trim(),
-          JUMLAH_TRANSFER: form.jumlahTransfer.trim(),
-          KATEGORI: categoryLabel,
+        paymentCode: form.paymentCode.trim(),
+        email: form.email.trim().toLowerCase(),
 
-          NAMA_LENGKAP: form.namaLengkap.trim(),
-          NO_IDENTITAS: form.noIdentitas.trim(),
-          EMAIL: form.email.trim().toLowerCase(),
-          NO_WA: form.noWa.trim(),
-          TEMPAT_LAHIR: form.tempatLahir.trim(),
-          TANGGAL_LAHIR: form.tanggalLahir,
+        namaPengirim: form.namaPengirim.trim(),
+        jumlahTransfer: form.jumlahTransfer.trim(),
 
-          NAMA_IBU: form.namaIbu.trim(),
-          NAMA_SEKOLAH: form.namaSekolah.trim(),
-          KELAS: form.kelas.trim(),
+        namaLengkap: form.namaLengkap.trim(),
+        noIdentitas: form.noIdentitas.trim(),
+        noWa: form.noWa.trim(),
+        tempatLahir: form.tempatLahir.trim(),
+        tanggalLahir: form.tanggalLahir,
 
-          NAMA_KAMPUS: form.namaKampus.trim(),
-          PROGRAM_STUDI: form.programStudi.trim(),
-          ANGKATAN: form.angkatan.trim(),
+        namaIbu: form.namaIbu.trim(),
+        namaSekolah: form.namaSekolah.trim(),
+        kelas: form.kelas.trim(),
 
-          DOMISILI_SAAT_INI: form.domisiliSaatIni.trim(),
-          JENIS_KELAMIN: form.jenisKelamin,
-          UKURAN_JERSEY: form.ukuranJersey,
-          GOLONGAN_DARAH: form.golonganDarah,
-          KOMUNITAS: form.komunitas.trim(),
+        namaKampus: form.namaKampus.trim(),
+        programStudi: form.programStudi.trim(),
+        angkatan: form.angkatan.trim(),
 
-          KONTAK_DARURAT_NAMA: form.kontakDaruratNama.trim(),
-          KONTAK_DARURAT_STATUS: form.kontakDaruratStatus.trim(),
-          KONTAK_DARURAT_NOTELP: form.kontakDaruratNoTelp.trim(),
+        domisiliSaatIni: form.domisiliSaatIni.trim(),
+        jenisKelamin: form.jenisKelamin,
+        ukuranJersey: form.ukuranJersey,
+        golonganDarah: form.golonganDarah,
+        komunitas: form.komunitas.trim(),
 
-          SETUJU_DATA_BENAR: form.setujuDataBenar,
-          BERSEDIA_MENGIKUTI_EVENT: form.bersediaMengikutiEvent,
-          BERSEDIA_HADIR_SESUAI_JADWAL: form.bersediaHadirSesuaiJadwal,
-          BERSEDIA_MENGIKUTI_SELURUH_RANGKAIAN: form.bersediaMengikutiSeluruhRangkaian,
-          BERSEDIA_MEMATUHI_PERATURAN: form.bersediaMematuhiPeraturan,
-          BERSEDIA_MENJAGA_KESELAMATAN: form.bersediaMenjagaKeselamatan,
-          SIAP_DAN_BERTANGGUNG_JAWAB: form.siapDanBertanggungJawab,
-        },
+        kontakDaruratNama: form.kontakDaruratNama.trim(),
+        kontakDaruratStatus: form.kontakDaruratStatus.trim(),
+        kontakDaruratNoTelp: form.kontakDaruratNoTelp.trim(),
 
-        proofFile: {
-          fileName: form.buktiTransfer.name,
-          mimeType: form.buktiTransfer.type,
+        setujuDataBenar: form.setujuDataBenar,
+        bersediaMengikutiEvent: form.bersediaMengikutiEvent,
+        bersediaHadirSesuaiJadwal: form.bersediaHadirSesuaiJadwal,
+        bersediaMengikutiSeluruhRangkaian: form.bersediaMengikutiSeluruhRangkaian,
+        bersediaMematuhiPeraturan: form.bersediaMematuhiPeraturan,
+        bersediaMenjagaKeselamatan: form.bersediaMenjagaKeselamatan,
+        siapDanBertanggungJawab: form.siapDanBertanggungJawab,
+
+        // Nama property harus "buktiTransfer" karena
+        // saveProofFile_() dipanggil dengan data.buktiTransfer.
+        buktiTransfer: {
+          name: form.buktiTransfer.name,
+          type: form.buktiTransfer.type,
+          size: form.buktiTransfer.size,
           base64: buktiTransfer,
         },
       };

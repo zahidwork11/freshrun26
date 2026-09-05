@@ -7,10 +7,13 @@ export const Route = createFileRoute("/daftar")({
 });
 
 function DaftarPage() {
+  const visibleCategories = categories.filter(
+    (category) => category.enabled,
+  );
+
   return (
     <main className="min-h-screen bg-[#EAF6FF] px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-
         {/* HEADER */}
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-[#0A5490] px-4 py-2 text-[10px] font-extrabold tracking-[0.2em] text-white uppercase shadow-sm">
@@ -54,42 +57,98 @@ function DaftarPage() {
 
         {/* CATEGORY */}
         <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-2 lg:grid-cols-3">
-
-          {categories.map((category) => {
-            const isStudent =
-              category.slug === "pelajar-mahasiswa";
+          {visibleCategories.map((category) => {
+            // =================================================
+            // WARNA DEFAULT
+            // =================================================
 
             let headerColor = "#F18B1F";
             let accentColor = "#DA630E";
             let softColor = "#FFF3E8";
             let textColor = "#8A3D06";
 
-            if (category.slug === "2-5k-umum") {
+            // =================================================
+            // 5K PRESALE
+            // ORANGE
+            // =================================================
+
+            if (category.slug === "5k-presale") {
+              headerColor = "#F18B1F";
+              accentColor = "#DA630E";
+              softColor = "#FFF3E8";
+              textColor = "#8A3D06";
+            }
+
+            // =================================================
+            // 5K UMUM
+            // ORANGE
+            // =================================================
+
+            else if (category.slug === "5k-umum") {
+              headerColor = "#F18B1F";
+              accentColor = "#DA630E";
+              softColor = "#FFF3E8";
+              textColor = "#8A3D06";
+            }
+
+            // =================================================
+            // 2.5K PRESALE
+            // HIJAU
+            // =================================================
+
+            else if (category.slug === "2-5k-presale") {
               headerColor = "#6E9722";
               accentColor = "#468519";
               softColor = "#F2FBDD";
               textColor = "#468519";
             }
 
-            if (category.slug === "pelajar-mahasiswa") {
+            // =================================================
+            // 2.5K UMUM
+            // HIJAU
+            // =================================================
+
+            else if (category.slug === "2-5k-umum") {
+              headerColor = "#6E9722";
+              accentColor = "#468519";
+              softColor = "#F2FBDD";
+              textColor = "#468519";
+            }
+
+            // =================================================
+            // PELAJAR / MAHASISWA
+            // BIRU
+            // =================================================
+
+            else if (category.slug === "pelajar-mahasiswa") {
               headerColor = "#1B72B9";
               accentColor = "#0A5490";
               softColor = "#EAF6FF";
               textColor = "#0A5490";
             }
 
+            // =================================================
+            // STATUS PENDAFTARAN
+            // SEMUA DIAMBIL DARI event.ts
+            // =================================================
+
+            const isRegistrationOpen =
+              category.registrationOpen === true;
+
             return (
               <article
                 key={category.slug}
                 className="flex flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_12px_35px_rgba(20,43,77,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(20,43,77,0.13)]"
               >
-
                 {/* HEADER */}
                 <div
                   className="relative overflow-hidden px-6 py-6"
-                  style={{ backgroundColor: headerColor }}
+                  style={{
+                    backgroundColor: headerColor,
+                  }}
                 >
                   <div className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/10" />
+
                   <div className="pointer-events-none absolute -bottom-10 right-12 h-20 w-20 rounded-full bg-black/5" />
 
                   <div className="relative flex items-start justify-between gap-3">
@@ -106,7 +165,9 @@ function DaftarPage() {
                     {category.note && (
                       <span
                         className="shrink-0 rounded-full bg-white px-3 py-1.5 text-[9px] font-extrabold tracking-widest uppercase"
-                        style={{ color: accentColor }}
+                        style={{
+                          color: accentColor,
+                        }}
                       >
                         {category.note}
                       </span>
@@ -116,7 +177,6 @@ function DaftarPage() {
 
                 {/* BODY */}
                 <div className="flex flex-1 flex-col p-6">
-
                   {/* PRICE */}
                   <div>
                     <p className="text-[10px] font-extrabold tracking-[0.18em] text-[#062D50]/40 uppercase">
@@ -125,7 +185,9 @@ function DaftarPage() {
 
                     <p
                       className="mt-1 font-display text-4xl tracking-tight"
-                      style={{ color: textColor }}
+                      style={{
+                        color: textColor,
+                      }}
                     >
                       {category.price}
                     </p>
@@ -158,12 +220,16 @@ function DaftarPage() {
                         >
                           <span
                             className="grid h-5 w-5 shrink-0 place-items-center rounded-full"
-                            style={{ backgroundColor: softColor }}
+                            style={{
+                              backgroundColor: softColor,
+                            }}
                           >
                             <Check
                               className="h-3 w-3"
                               strokeWidth={3}
-                              style={{ color: accentColor }}
+                              style={{
+                                color: accentColor,
+                              }}
                             />
                           </span>
 
@@ -177,11 +243,15 @@ function DaftarPage() {
                   {category.requirement && (
                     <div
                       className="mt-5 rounded-xl px-4 py-3"
-                      style={{ backgroundColor: softColor }}
+                      style={{
+                        backgroundColor: softColor,
+                      }}
                     >
                       <p
                         className="text-xs font-semibold"
-                        style={{ color: textColor }}
+                        style={{
+                          color: textColor,
+                        }}
                       >
                         Persyaratan: {category.requirement}
                       </p>
@@ -190,15 +260,7 @@ function DaftarPage() {
 
                   {/* BUTTON */}
                   <div className="mt-auto pt-6">
-                    {isStudent ? (
-                      <button
-                        type="button"
-                        disabled
-                        className="flex w-full cursor-not-allowed items-center justify-center rounded-full bg-[#0A5490]/10 px-5 py-3.5 font-display text-sm tracking-wide text-[#0A5490]/40 uppercase"
-                      >
-                        Belum Dibuka
-                      </button>
-                    ) : (
+                    {isRegistrationOpen ? (
                       <Link
                         to="/bayar"
                         search={{
@@ -215,6 +277,14 @@ function DaftarPage() {
                           className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                         />
                       </Link>
+                    ) : (
+                      <button
+                        type="button"
+                        disabled
+                        className="flex w-full cursor-not-allowed items-center justify-center rounded-full bg-[#0A5490]/10 px-5 py-3.5 font-display text-sm tracking-wide text-[#0A5490]/40 uppercase"
+                      >
+                        Belum Dibuka
+                      </button>
                     )}
                   </div>
                 </div>
