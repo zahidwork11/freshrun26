@@ -1129,24 +1129,6 @@ function Bayar() {
 
             <div className="absolute -bottom-20 -left-10 h-40 w-40 rounded-full bg-white/10" />
 
-            <div className="relative">
-              <div
-                className="inline-flex rounded-full bg-white px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em]"
-                style={{
-                  color: theme.accent,
-                }}
-              >
-                Kategori
-              </div>
-
-              <h2 className="mt-3 text-3xl font-black uppercase tracking-tight sm:text-4xl">
-                {product.name}
-              </h2>
-
-              <p className="mt-2 max-w-xl text-sm text-white/80">
-                {product.description}
-              </p>
-            </div>
           </div>
 
           {/* CONTENT */}
