@@ -87,6 +87,7 @@ type ParticipantCheckResult = {
   registrationId?: string;
   registrationStatus?: string;
   paymentStatus?: string;
+  category?: string;
   email?: string;
   registeredEmail?: string;
   message?: string;
@@ -698,6 +699,8 @@ function Bayar() {
               data.registrationStatus,
             paymentStatus:
               data.status,
+            category:
+              data.category || "",
             email: data.email,
             registeredEmail:
               data.registeredEmail ||
@@ -1151,85 +1154,103 @@ function Bayar() {
 
             {/* ALREADY REGISTERED */}
 
-            {alreadyRegistered &&
-              registeredParticipant && (
-                <div className="mb-6 overflow-hidden rounded-[1.5rem] border-2 border-emerald-200 bg-white">
+            {alreadyRegistered && registeredParticipant && (
+              <div className="mb-6 overflow-hidden rounded-[1.5rem] border-2 border-emerald-200 bg-white">
 
-                  <div className="bg-[#f0fdf4] px-5 py-5 sm:px-6">
-                    <div className="flex items-start gap-4">
+                {/* HEADER */}
 
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-xl font-black text-white">
-                        ✓
-                      </div>
+                <div className="bg-[#F0FDF4] px-5 py-5 sm:px-6">
+                  <div className="flex items-start gap-4">
 
-                      <div className="min-w-0">
-                        <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-600">
-                          Data Pembayaran Ditemukan
-                        </p>
-
-                        <h3 className="mt-1 text-lg font-black text-[#123456] sm:text-xl">
-                          Email ini sudah digunakan untuk pendaftaran.
-                        </h3>
-
-                        <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                          Email ini sudah digunakan
-                          untuk pendaftaran peserta
-                          PKU Fresh Run.
-                        </p>
-                      </div>
-
-                    </div>
-                  </div>
-
-                  <div className="divide-y divide-slate-100">
-
-                    <div className="flex items-center justify-between gap-4 px-5 py-4 sm:px-6">
-                      <span className="text-sm text-slate-500">
-                        No. Registrasi
-                      </span>
-
-                      <span className="text-right font-mono text-sm font-black text-[#0A5490]">
-                        {registeredParticipant.registrationId ||
-                          "-"}
-                      </span>
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-xl font-black text-white">
+                      ✓
                     </div>
 
-                    <div className="flex items-center justify-between gap-4 px-5 py-4 sm:px-6">
-                      <span className="text-sm text-slate-500">
-                        Status Pendaftaran
-                      </span>
+                    <div className="min-w-0">
+                      <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-600">
+                        Data Pendaftaran Ditemukan
+                      </p>
 
-                      <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-black uppercase text-amber-700">
-                        {registeredParticipant.registrationStatus ||
-                          "TERDAFTAR"}
-                      </span>
+                      <h3 className="mt-1 text-lg font-black text-[#123456] sm:text-xl">
+                        Email ini sudah digunakan untuk pendaftaran.
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                        Sistem menemukan data peserta PKU Fresh Run dengan email ini.
+                      </p>
                     </div>
 
-                    <div className="flex items-start justify-between gap-4 px-5 py-4 sm:px-6">
-                      <span className="text-sm text-slate-500">
-                        Email Terdaftar
-                      </span>
-
-                      <span className="max-w-[65%] break-all text-right text-sm font-bold text-[#123456]">
-                        {registeredParticipant.registeredEmail ||
-                          registeredParticipant.email ||
-                          email}
-                      </span>
-                    </div>
-
-                  </div>
-
-                  <div className="border-t border-slate-100 p-5 sm:p-6">
-                    <button
-                      type="button"
-                      disabled
-                      className="w-full cursor-not-allowed rounded-2xl bg-slate-300 px-6 py-4 text-sm font-black uppercase tracking-wide text-slate-500"
-                    >
-                      Anda Sudah Mengisi Form
-                    </button>
                   </div>
                 </div>
-              )}
+
+                {/* DETAIL */}
+
+                <div className="divide-y divide-slate-100">
+
+                  <div className="flex items-center justify-between px-5 py-4 sm:px-6">
+                    <span className="text-sm text-slate-500">
+                      No. Registrasi
+                    </span>
+
+                    <span className="font-mono text-sm font-black text-[#0A5490]">
+                      {registeredParticipant.registrationId || "-"}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between px-5 py-4 sm:px-6">
+                    <span className="text-sm text-slate-500">
+                      Kategori
+                    </span>
+
+                    <span className="text-right text-sm font-black uppercase text-[#123456]">
+                      {registeredParticipant.category || "-"}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between px-5 py-4 sm:px-6">
+                    <span className="text-sm text-slate-500">
+                      Status
+                    </span>
+
+                    <span
+                      className={[
+                        "rounded-full px-3 py-1 text-xs font-black uppercase",
+                        registeredParticipant.registrationStatus?.toUpperCase() === "SUCCESS"
+                          ? "bg-emerald-100 text-emerald-700"
+                          : "bg-amber-100 text-amber-700",
+                      ].join(" ")}
+                    >
+                      {registeredParticipant.registrationStatus || "PENDING"}
+                    </span>
+                  </div>
+
+                  <div className="flex items-start justify-between gap-4 px-5 py-4 sm:px-6">
+                    <span className="text-sm text-slate-500">
+                      Email
+                    </span>
+
+                    <span className="max-w-[65%] break-all text-right text-sm font-bold text-[#123456]">
+                      {registeredParticipant.registeredEmail ||
+                        registeredParticipant.email ||
+                        email}
+                    </span>
+                  </div>
+
+                </div>
+
+                {/* BUTTON */}
+
+                <div className="border-t border-slate-100 p-5 sm:p-6">
+                  <button
+                    disabled
+                    className="w-full cursor-not-allowed rounded-2xl bg-slate-300 px-6 py-4 text-sm font-black uppercase tracking-wide text-slate-500"
+                  >
+                    Anda Sudah Mengisi Form
+                  </button>
+                </div>
+
+              </div>
+            )}
 
             {/* ERROR */}
 

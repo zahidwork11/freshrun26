@@ -4,10 +4,10 @@ import jersey from "@/assets/jersey.png";
 import jersey2 from "@/assets/jersey2.png";
 import jersey3 from "@/assets/jersey3.png";
 import hero17 from "@/assets/hero17.png";
-import medal from "@/assets/medal2.png";
+import medal3 from "@/assets/medal3.png";
 import totebag from "@/assets/totebag.png";
 import totebag2 from "@/assets/totebag2.png";
-import bib from "@/assets/bib.png";
+import bibs2 from "@/assets/bibs2.png";
 import route5k from "@/assets/maps/route-5k.png";
 import route25k from "@/assets/maps/route-2-5k.png";
 import pkuLogo from "@/assets/pkulogo.png";
@@ -28,7 +28,7 @@ export function RacePack() {
       desc: "Bahan dry-fit ringan dengan desain Milad.",
     },
     {
-      img: medal,
+      img: medal3,
       label: "Medal",
       desc: "Medali finisher eksklusif edisi khusus.",
     },
@@ -38,7 +38,7 @@ export function RacePack() {
       desc: "Tote bag praktis untuk melengkapi race pack.",
     },
     {
-      img: bib,
+      img: bibs2,
       label: "BIB",
       desc: "Nomor peserta resmi untuk digunakan saat race.",
     },

@@ -12,7 +12,7 @@ import { Reveal } from "./Reveal";
 import { Countdown } from "./Countdown";
 import { categories, eventInfo, podium } from "@/data/event";
 
-import hero21 from "@/assets/hero21.png";
+import hero22 from "@/assets/hero22.png";
 import hero30 from "@/assets/hero30.png";
 
 import { Link } from "@tanstack/react-router";
@@ -88,7 +88,7 @@ export function Hero() {
 
       <div className="absolute inset-0 -z-30 overflow-hidden">
         <img
-          src={hero21}
+          src={hero22}
           alt="Peserta fun run PKU Muhammadiyah Sukoharjo"
           width={1920}
           height={1280}
