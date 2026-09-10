@@ -22,6 +22,19 @@ import {
 const PARTICIPANT_API_URL =
   import.meta.env["VITE_PAYMENT_API_URL"] ?? "";
 
+/*
+ * Product key harus sama persis dengan PRODUCTS di Code.gs.
+ * Category slug dari route tidak boleh dikirim mentah sebagai
+ * productKey karena formatnya berbeda.
+ */
+const PRODUCT_KEY_BY_CATEGORY: Record<string, string> = {
+  "5k-presale": "5K_PRESALE",
+  "5k-umum": "5K_UMUM",
+  "2-5k-presale": "2_5K_PRESALE",
+  "2-5k-umum": "2_5K_UMUM",
+  "pelajar-mahasiswa": "5K_MAHASISWA",
+};
+
 type ParticipantType = "umum" | "pelajar" | "mahasiswa" | "";
 
 type FormDataState = {
@@ -100,6 +113,9 @@ function FormPage() {
     amount,
   } = Route.useSearch();
 
+  const productKey =
+    PRODUCT_KEY_BY_CATEGORY[categorySlug] ?? "";
+
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [participantType, setParticipantType] =
@@ -176,6 +192,7 @@ function FormPage() {
         url.searchParams.set("action", "checkParticipant");
         url.searchParams.set("email", email.trim().toLowerCase());
         if (code) url.searchParams.set("code", code);
+        if (productKey) url.searchParams.set("product", productKey);
 
         const response = await fetch(url.toString(), { method: "GET", redirect: "follow" });
         if (!response.ok) throw new Error("Gagal mengecek status pendaftaran.");
@@ -205,7 +222,7 @@ function FormPage() {
     void checkRegistration();
 
     return () => { cancelled = true; };
-  }, [email, code]);
+  }, [email, code, productKey]);
 
   /*
    * ==========================================================
@@ -234,6 +251,7 @@ function FormPage() {
         url.searchParams.set("action", "get");
         url.searchParams.set("code", code);
         url.searchParams.set("email", email);
+        if (productKey) url.searchParams.set("product", productKey);
 
         const response = await fetch(url.toString(), {
           method: "GET",
@@ -267,7 +285,7 @@ function FormPage() {
     return () => {
       cancelled = true;
     };
-  }, [amount, code, email]);
+  }, [amount, code, email, productKey]);
 
   const isPelajarMahasiswa =
     categorySlug === "pelajar-mahasiswa";
@@ -411,6 +429,10 @@ function FormPage() {
 
     if (!email) {
       return "Email pembayaran tidak ditemukan.";
+    }
+
+    if (!productKey) {
+      return "Kategori pembayaran tidak valid.";
     }
 
     if (
@@ -634,6 +656,12 @@ function FormPage() {
       const checkUrl = new URL(PARTICIPANT_API_URL);
       checkUrl.searchParams.set("action", "checkParticipant");
       checkUrl.searchParams.set("email", form.email.trim().toLowerCase());
+      if (form.paymentCode) {
+        checkUrl.searchParams.set("code", form.paymentCode.trim());
+      }
+      if (productKey) {
+        checkUrl.searchParams.set("product", productKey);
+      }
       const checkResponse = await fetch(checkUrl.toString(), { method: "GET", redirect: "follow" });
       if (checkResponse.ok) {
         const checkResult = (await checkResponse.json()) as { success?: boolean; registered?: boolean; registrationId?: string };
@@ -686,6 +714,7 @@ function FormPage() {
 
         paymentCode: form.paymentCode.trim(),
         email: form.email.trim().toLowerCase(),
+        productKey,
 
         namaPengirim: form.namaPengirim.trim(),
         jumlahTransfer: form.jumlahTransfer.trim(),
@@ -1083,7 +1112,7 @@ function FormPage() {
                     pastikan data Anda sesuai dan
                     dalam status pelajar aktif di{" "}
                     <span className="font-semibold text-[#0A5490]">
-                      NISN
+                      nisn.data.kemendikdasmen.go.id
                     </span>
                     . Kami akan memeriksa kesesuaian
                     data Anda.

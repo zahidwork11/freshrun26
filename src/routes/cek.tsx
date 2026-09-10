@@ -512,65 +512,101 @@ function CekPesertaPage() {
 
       `}</style>
 
-      <main className="min-h-screen bg-[#F3F6F9]">
+      <main className="relative min-h-screen overflow-hidden bg-[#F5F8FB]">
 
-        {/* ===================================================
-            HERO
-        =================================================== */}
+{/* ===================================================
+    HERO
+=================================================== */}
 
-        <section className="no-print relative overflow-hidden bg-[#0A5490]">
+<section className="no-print relative overflow-hidden bg-[#0A5490]">
 
-          {/* Background decoration */}
+  {/* =================================================
+      CLEAN BACKGROUND
+  ================================================= */}
 
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "linear-gradient(135deg, rgba(255,255,255,.04) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.04) 50%, rgba(255,255,255,.04) 75%, transparent 75%)",
-              backgroundSize:
-                "44px 44px",
-            }}
-          />
+  {/* Soft light glow */}
+  <div
+    className="pointer-events-none absolute -right-32 -top-32 h-[420px] w-[420px] rounded-full blur-3xl"
+    style={{
+      background:
+        "radial-gradient(circle, rgba(255,255,255,.12) 0%, rgba(255,255,255,.04) 38%, transparent 72%)",
+    }}
+  />
 
-          <div className="absolute -right-24 -top-32 h-80 w-80 rounded-full border-[55px] border-[#F18B1F]/20" />
+  <div
+    className="pointer-events-none absolute -bottom-40 -left-40 h-[430px] w-[430px] rounded-full blur-3xl"
+    style={{
+      background:
+        "radial-gradient(circle, rgba(70,133,25,.12) 0%, rgba(70,133,25,.04) 42%, transparent 72%)",
+    }}
+  />
 
-          <div className="absolute -bottom-36 -left-28 h-80 w-80 rounded-full border-[45px] border-[#468519]/20" />
+  {/* Very subtle grid */}
+  <div
+    className="pointer-events-none absolute inset-0 opacity-[0.035]"
+    style={{
+      backgroundImage:
+        "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
+      backgroundSize: "48px 48px",
+    }}
+  />
 
-          <div className="relative mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16">
+  {/* Minimal race line */}
+  <div className="pointer-events-none absolute bottom-0 left-0 h-px w-full bg-white/10" />
 
-            <div className="max-w-2xl">
+  <div
+    className="pointer-events-none absolute bottom-0 left-0 h-[3px] w-[42%]"
+    style={{
+      background:
+        "linear-gradient(90deg, transparent, #468519, #F18B1F)",
+    }}
+  />
 
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.22em] text-white backdrop-blur-md">
+    {/* =================================================
+        CONTENT
+    ================================================= */}
 
-                <Ticket className="h-4 w-4" />
+    <div className="relative mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16">
 
-                Official Participant Portal
+        <div className="max-w-2xl">
 
-              </div>
+        {/* Badge */}
 
-              <h1 className="text-4xl font-black uppercase leading-[0.95] tracking-[-0.04em] text-white sm:text-6xl">
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.08] px-4 py-2 text-[10px] font-black uppercase tracking-[0.22em] text-white">
 
-                Cek
-                <br />
+            <Ticket className="h-4 w-4" />
 
-                Peserta.
+            Official Participant Portal
 
-              </h1>
+        </div>
 
-              <p className="mt-5 max-w-xl text-sm leading-6 text-white/70 sm:text-base">
+        {/* Heading */}
 
-                Temukan data peserta dan
-                e-ticket PKU Fresh Run 2026
-                menggunakan nomor registrasi
-                dan nomor identitas.
+        <h1 className="text-4xl font-black uppercase leading-[0.95] tracking-[-0.04em] text-white sm:text-6xl">
 
-              </p>
+            Cek
+            <br />
 
-            </div>
+            Peserta.
 
-          </div>
+        </h1>
 
-        </section>
+        {/* Description */}
+
+        <p className="mt-5 max-w-xl text-sm leading-6 text-white/65 sm:text-base">
+
+            Temukan data peserta dan
+            e-ticket PKU Fresh Run 2026
+            menggunakan nomor registrasi
+            dan nomor identitas.
+
+        </p>
+
+        </div>
+
+    </div>
+
+    </section>
 
         {/* ===================================================
             CONTENT

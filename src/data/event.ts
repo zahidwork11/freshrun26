@@ -166,8 +166,8 @@ export const categories: Category[] = [
     tone: "bright",
     quota: 300,
     registered: 0,
-    enabled: false,
-    registrationOpen: false,
+    enabled: true,
+    registrationOpen: true,
   },
 
   // ==========================================================
@@ -213,8 +213,8 @@ export const categories: Category[] = [
     tone: "cyan",
     quota: 300,
     registered: 0,
-    enabled: false,
-    registrationOpen: false,
+    enabled: true,
+    registrationOpen: true,
   },
 
   // ==========================================================
@@ -239,7 +239,7 @@ export const categories: Category[] = [
     quota: 500,
     registered: 0,
     enabled: true,
-    registrationOpen: false,
+    registrationOpen: true,
   },
 ];
 

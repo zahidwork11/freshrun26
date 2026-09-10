@@ -14,6 +14,7 @@ import { Route as BayarRouteImport } from './routes/bayar'
 import { Route as CekRouteImport } from './routes/cek'
 import { Route as DaftarRouteImport } from './routes/daftar'
 import { Route as FormRouteImport } from './routes/form'
+import { Route as StatusRouteImport } from './routes/status'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +41,11 @@ const FormRoute = FormRouteImport.update({
   path: '/form',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StatusRoute = StatusRouteImport.update({
+  id: '/status',
+  path: '/status',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/cek': typeof CekRoute
   '/daftar': typeof DaftarRoute
   '/form': typeof FormRoute
+  '/status': typeof StatusRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/cek': typeof CekRoute
   '/daftar': typeof DaftarRoute
   '/form': typeof FormRoute
+  '/status': typeof StatusRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,14 @@ export interface FileRoutesById {
   '/cek': typeof CekRoute
   '/daftar': typeof DaftarRoute
   '/form': typeof FormRoute
+  '/status': typeof StatusRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/bayar' | '/cek' | '/daftar' | '/form'
+  fullPaths: '/' | '/bayar' | '/cek' | '/daftar' | '/form' | '/status'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/bayar' | '/cek' | '/daftar' | '/form'
-  id: '__root__' | '/' | '/bayar' | '/cek' | '/daftar' | '/form'
+  to: '/' | '/bayar' | '/cek' | '/daftar' | '/form' | '/status'
+  id: '__root__' | '/' | '/bayar' | '/cek' | '/daftar' | '/form' | '/status'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +86,7 @@ export interface RootRouteChildren {
   CekRoute: typeof CekRoute
   DaftarRoute: typeof DaftarRoute
   FormRoute: typeof FormRoute
+  StatusRoute: typeof StatusRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,6 +126,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FormRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/status': {
+      id: '/status'
+      path: '/status'
+      fullPath: '/status'
+      preLoaderRoute: typeof StatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,6 +142,7 @@ const rootRouteChildren: RootRouteChildren = {
   CekRoute: CekRoute,
   DaftarRoute: DaftarRoute,
   FormRoute: FormRoute,
+  StatusRoute: StatusRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

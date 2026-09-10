@@ -13,7 +13,7 @@ import { Countdown } from "./Countdown";
 import { categories, eventInfo, podium } from "@/data/event";
 
 import hero22 from "@/assets/hero22.png";
-import hero30 from "@/assets/hero30.png";
+import hero31 from "@/assets/hero31.png";
 
 import { Link } from "@tanstack/react-router";
 
@@ -472,7 +472,7 @@ export function TotalPrize() {
 
       <div className="absolute inset-0 -z-30 overflow-hidden">
         <img
-          src={hero30}
+          src={hero31}
           alt=""
           width={1920}
           height={1280}
@@ -1414,6 +1414,43 @@ export function Categories() {
           })}
 
         </div>
+
+        {/* ======================================================
+            CEK STATUS PENDAFTARAN
+        ====================================================== */}
+
+        <Reveal delay={120}>
+          <div className="mx-auto mt-8 flex max-w-md justify-center sm:mt-10">
+            <Link
+              to="/status"
+              className="
+                inline-flex
+                w-full
+                items-center
+                justify-center
+                rounded-full
+                bg-[#0A5490]
+                px-6
+                py-3.5
+                font-display
+                text-sm
+                tracking-wide
+                text-white
+                uppercase
+                shadow-[0_8px_25px_rgba(10,84,144,0.22)]
+                transition-all
+                duration-300
+                hover:-translate-y-0.5
+                hover:scale-[1.02]
+                hover:bg-[#084572]
+                hover:shadow-md
+                sm:px-8
+              "
+            >
+              Cek Status Pendaftaran
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

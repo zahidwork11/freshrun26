@@ -88,6 +88,7 @@ type ParticipantCheckResult = {
   registrationStatus?: string;
   paymentStatus?: string;
   category?: string;
+  productKey?: string;
   email?: string;
   registeredEmail?: string;
   message?: string;
@@ -488,9 +489,22 @@ function Bayar() {
         "checkParticipant",
       );
 
+      // Kirim identitas kategori juga. Backend versi baru
+      // membedakan payment berdasarkan EMAIL + PRODUCT_KEY.
+      // Ini mencegah pengecekan kategori lain ikut terbaca.
       url.searchParams.set(
         "email",
         normalizedEmail,
+      );
+
+      url.searchParams.set(
+        "product",
+        product?.key || "",
+      );
+
+      url.searchParams.set(
+        "category",
+        category,
       );
 
       const response = await fetch(
@@ -510,6 +524,14 @@ function Bayar() {
       const result =
         (await response.json()) as ParticipantCheckResult;
 
+      const returnedEmail = String(
+        result.registeredEmail ||
+          result.email ||
+          "",
+      )
+        .trim()
+        .toLowerCase();
+
       const registered =
         result.success === true &&
         (
@@ -517,15 +539,39 @@ function Bayar() {
           result.alreadyRegistered === true
         );
 
+      // PENTING:
+      // Jangan pernah menampilkan data peserta jika API
+      // mengembalikan email yang berbeda dari email yang
+      // sedang diketik pengguna. Ini adalah pengaman utama
+      // terhadap data peserta yang tertukar.
+      if (
+        registered &&
+        returnedEmail &&
+        returnedEmail !== normalizedEmail
+      ) {
+        console.warn(
+          "API mengembalikan peserta dengan email berbeda. Data diabaikan.",
+          {
+            requestedEmail: normalizedEmail,
+            returnedEmail,
+            requestedProduct: product?.key || "",
+            requestedCategory: category,
+          },
+        );
+
+        setRegisteredParticipant(null);
+        setAlreadyRegistered(false);
+
+        return null;
+      }
+
       if (registered) {
         const participant = {
           ...result,
           registered: true,
           alreadyRegistered: true,
           registeredEmail:
-            result.registeredEmail ||
-            result.email ||
-            normalizedEmail,
+            returnedEmail || normalizedEmail,
         };
 
         setRegisteredParticipant(
@@ -687,6 +733,40 @@ function Bayar() {
         );
       }
 
+      // Pastikan respons payment benar-benar milik email dan
+      // kategori yang sedang diminta. Jika backend mengembalikan
+      // data milik email/kategori lain, jangan pernah ditampilkan.
+      const returnedPaymentEmail = String(
+        data.email ??
+          data.registeredEmail ??
+          "",
+      )
+        .trim()
+        .toLowerCase();
+
+      const returnedProductKey = String(
+        data.productKey ??
+          "",
+      ).trim();
+
+      if (
+        returnedPaymentEmail &&
+        returnedPaymentEmail !== normalizedEmail
+      ) {
+        throw new Error(
+          "Data pembayaran yang diterima tidak sesuai dengan email yang dimasukkan. Silakan coba lagi.",
+        );
+      }
+
+      if (
+        returnedProductKey &&
+        returnedProductKey !== product.key
+      ) {
+        throw new Error(
+          "Data pembayaran yang diterima tidak sesuai dengan kategori yang dipilih. Silakan coba lagi.",
+        );
+      }
+
       if (data.alreadyRegistered === true) {
         const participantData: ParticipantCheckResult =
           {
@@ -701,10 +781,11 @@ function Bayar() {
               data.status,
             category:
               data.category || "",
-            email: data.email,
+            email:
+              returnedPaymentEmail ||
+              normalizedEmail,
             registeredEmail:
-              data.registeredEmail ||
-              data.email ||
+              returnedPaymentEmail ||
               normalizedEmail,
             message: data.message,
           };
@@ -768,10 +849,9 @@ function Bayar() {
             data.status ??
               "PENDING",
           ).toUpperCase(),
-          email: String(
-            data.email ??
-              normalizedEmail,
-          ),
+          email:
+            returnedPaymentEmail ||
+            normalizedEmail,
           createdAt: data.createdAt
             ? String(data.createdAt)
             : null,
