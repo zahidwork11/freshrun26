@@ -315,10 +315,7 @@ export function RouteMap() {
       id="rute"
       className="relative isolate overflow-hidden bg-[#468519] py-20 sm:py-24 lg:py-28"
     >
-      {/* ======================================================
-          HERO 17 BACKGROUND
-      ====================================================== */}
-
+      {/* BACKGROUND */}
       <div className="absolute inset-0 -z-30 overflow-hidden">
         <img
           src={hero17}
@@ -330,18 +327,7 @@ export function RouteMap() {
         />
       </div>
 
-      {/* ======================================================
-          GREEN OVERLAY
-      ====================================================== */}
-
-      <div
-        className="absolute inset-0 -z-20 bg-[#468519]/40"
-        aria-hidden="true"
-      />
-
-      {/* ======================================================
-          SOFT GREEN LIGHT
-      ====================================================== */}
+      <div className="absolute inset-0 -z-20 bg-[#468519]/40" />
 
       <div
         className="absolute left-[-10%] top-[15%] -z-10 h-72 w-72 rounded-full bg-[#97D91B]/10 blur-3xl"
@@ -353,28 +339,14 @@ export function RouteMap() {
         aria-hidden="true"
       />
 
-      {/* ======================================================
-          ADDITIONAL GREEN BLEND
-      ====================================================== */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#468519]/30 via-transparent to-[#97D91B]/10" />
 
-      <div
-        className="absolute inset-0 -z-10 bg-gradient-to-br from-[#468519]/30 via-transparent to-[#97D91B]/10"
-        aria-hidden="true"
-      />
-
-      {/* ======================================================
-          CONTENT
-      ====================================================== */}
-
+      {/* CONTENT */}
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
 
-        {/* ====================================================
-            HEADING
-        ==================================================== */}
-
+        {/* HEADER */}
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-
             <span className="inline-flex items-center rounded-full border border-[#97D91B]/30 bg-[#97D91B]/15 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#D9F0B8] sm:text-xs">
               Official Race Route
             </span>
@@ -391,21 +363,14 @@ export function RouteMap() {
               Kenali rute yang akan kamu lalui dan persiapkan langkah terbaikmu
               menuju garis finish.
             </p>
-
           </div>
         </Reveal>
 
-        {/* ====================================================
-            DISTANCE TABS
-        ==================================================== */}
-
+        {/* TABS */}
         <Reveal delay={100}>
           <div className="mx-auto mt-8 max-w-sm">
-
             <div className="rounded-2xl border border-white/20 bg-white/10 p-1.5 shadow-[0_10px_30px_rgba(0,0,0,0.12)] backdrop-blur-md">
-
               <div className="grid grid-cols-2 gap-1.5">
-
                 {tabs.map((t) => {
                   const active = tab === t.id;
                   const orange = t.id === "5k";
@@ -431,25 +396,17 @@ export function RouteMap() {
                     </button>
                   );
                 })}
-
               </div>
             </div>
           </div>
         </Reveal>
 
-        {/* ====================================================
-            MAIN CARD
-        ==================================================== */}
-
+        {/* MAIN CARD */}
         <Reveal delay={160}>
           <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[2rem] border border-white/60 bg-background shadow-[0_20px_60px_rgba(0,0,0,.16)] sm:mt-10 sm:rounded-[2.5rem]">
 
-            {/* ==================================================
-                CARD HEADER
-            ================================================== */}
-
+            {/* CARD HEADER */}
             <div className="flex items-center justify-between border-b border-brand-light/40 px-5 py-4 sm:px-7 sm:py-5">
-
               <div>
                 <span className="text-[9px] font-extrabold tracking-[.2em] text-brand-deep uppercase sm:text-[10px]">
                   Official Race Route
@@ -461,21 +418,13 @@ export function RouteMap() {
               </div>
 
               <span className="rounded-full bg-[#1492FA]/10 px-3 py-1.5 text-[9px] font-extrabold tracking-wider text-[#1492FA] uppercase sm:px-4 sm:py-2 sm:text-[10px]">
-                {tab === "5k"
-                  ? "5 KM Route"
-                  : "2.5 KM Route"}
+                {tab === "5k" ? "5 KM Route" : "2.5 KM Route"}
               </span>
-
             </div>
 
-            {/* ==================================================
-                MAP
-            ================================================== */}
-
+            {/* MAP */}
             <div className="p-2 sm:p-3">
-
               <div className="relative overflow-hidden rounded-[1.5rem] bg-brand-sky sm:rounded-[1.75rem]">
-
                 {tabs.map((t) => (
                   <img
                     key={t.id}
@@ -491,20 +440,13 @@ export function RouteMap() {
                     }`}
                   />
                 ))}
-
               </div>
             </div>
 
-            {/* ==================================================
-                FACILITIES
-            ================================================== */}
-
+            {/* FACILITIES */}
             <div className="border-t border-brand-light/40 px-5 py-5 sm:px-7 sm:py-6">
-
               <div className="mb-4 flex items-end justify-between gap-3">
-
                 <div>
-
                   <span className="text-[9px] font-extrabold tracking-[.2em] text-brand-deep uppercase">
                     Route Facilities
                   </span>
@@ -512,24 +454,19 @@ export function RouteMap() {
                   <p className="mt-1 text-xs text-navy/50 sm:text-sm">
                     Fasilitas yang tersedia selama race.
                   </p>
-
                 </div>
 
                 <span className="hidden rounded-full bg-[#97D91B]/15 px-3 py-1 text-[9px] font-bold text-[#468519] uppercase sm:block">
                   Race Ready
                 </span>
-
               </div>
 
               <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-5 sm:gap-3">
-
                 {facilities.map(([icon, title, desc], i) => (
-
                   <div
                     key={title}
                     className="group flex items-center gap-2.5 rounded-xl border border-brand-light/30 bg-brand-sky/30 p-2.5 transition-all hover:-translate-y-0.5 hover:bg-[#97D91B]/10 sm:flex-col sm:p-3.5 sm:text-center"
                   >
-
                     <div
                       className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl text-base ${
                         i === 1 || i === 4
@@ -541,7 +478,6 @@ export function RouteMap() {
                     </div>
 
                     <div className="min-w-0">
-
                       <div className="truncate text-[9px] font-extrabold text-navy uppercase sm:text-[10px]">
                         {title}
                       </div>
@@ -549,71 +485,35 @@ export function RouteMap() {
                       <p className="mt-0.5 text-[9px] text-navy/45 sm:text-[10px]">
                         {desc}
                       </p>
-
                     </div>
-
                   </div>
-
                 ))}
-
               </div>
             </div>
 
-            {/* ==================================================
-                RUNDOWN
-            ================================================== */}
-
+            {/* RUNDOWN */}
             <div className="border-t border-brand-light/40 bg-[#1492FA]/[0.025] px-5 py-7 sm:px-7 sm:py-8">
-
-              {/* RUNDOWN HEADER */}
-
               <div className="mb-7 flex flex-col gap-3 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
-
-                <div>
-
-                  <h3 className="mt-1 font-display text-2xl text-navy uppercase sm:text-3xl">
-                    Rundown{" "}
-                    <span className="text-[#F18B1F]">
-                      Race Day
-                    </span>
-                  </h3>
-
-                </div>
+                <h3 className="font-display text-2xl text-navy uppercase sm:text-3xl">
+                  Rundown{" "}
+                  <span className="text-[#F18B1F]">Race Day</span>
+                </h3>
 
                 <p className="max-w-sm text-xs leading-relaxed text-navy/50 sm:text-right sm:text-sm">
                   Pastikan hadir tepat waktu dan ikuti setiap rangkaian kegiatan.
                 </p>
-
               </div>
 
-              {/* ==================================================
-                  TIMELINE
-              ================================================== */}
-
               <div className="relative">
-
                 <span className="absolute bottom-5 left-[17px] top-5 w-0.5 bg-gradient-to-b from-[#F18B1F] via-[#97D91B] to-[#1492FA] sm:left-[24px]" />
 
                 <div className="space-y-3 sm:space-y-4">
-
                   {rundown.map((r, i) => {
-
-                    const start = r.title
-                      .toLowerCase()
-                      .includes("start");
+                    const start = r.title.toLowerCase().includes("start");
 
                     return (
-                      <Reveal
-                        key={`${r.time}-${r.title}`}
-                        delay={i * 40}
-                      >
-
+                      <Reveal key={`${r.time}-${r.title}`} delay={i * 40}>
                         <div className="relative pl-10 sm:pl-14">
-
-                          {/* ==================================================
-                              DOT
-                          ================================================== */}
-
                           <span
                             className={`absolute left-[9px] top-1/2 z-10 h-4 w-4 -translate-y-1/2 rounded-full border-[3px] border-background sm:left-[17px] ${
                               start
@@ -622,10 +522,6 @@ export function RouteMap() {
                             }`}
                           />
 
-                          {/* ==================================================
-                              ITEM
-                          ================================================== */}
-
                           <div
                             className={`group relative overflow-hidden rounded-2xl border bg-background transition-all duration-300 hover:-translate-y-0.5 hover:shadow-soft ${
                               start
@@ -633,15 +529,11 @@ export function RouteMap() {
                                 : "border-brand-light/30"
                             }`}
                           >
-
                             {start && (
                               <span className="absolute inset-y-0 left-0 w-1 bg-[#F18B1F]" />
                             )}
 
                             <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 p-3 sm:gap-4 sm:p-4">
-
-                              {/* TIME */}
-
                               <div
                                 className={`flex min-w-[64px] flex-col items-center rounded-xl px-2.5 py-2 sm:min-w-[76px] sm:rounded-2xl sm:px-3 sm:py-2.5 ${
                                   start
@@ -649,7 +541,6 @@ export function RouteMap() {
                                     : "bg-[#97D91B]/15"
                                 }`}
                               >
-
                                 <span
                                   className={`font-display text-base leading-none tabular-nums sm:text-lg ${
                                     start
@@ -669,15 +560,10 @@ export function RouteMap() {
                                 >
                                   WIB
                                 </span>
-
                               </div>
 
-                              {/* INFO */}
-
                               <div className="min-w-0">
-
                                 <div className="flex flex-wrap items-center gap-2">
-
                                   <h4 className="text-xs font-extrabold text-navy uppercase sm:text-sm">
                                     {r.title}
                                   </h4>
@@ -687,15 +573,12 @@ export function RouteMap() {
                                       Start
                                     </span>
                                   )}
-
                                 </div>
 
                                 <p className="mt-1 text-[9px] leading-relaxed text-navy/50 sm:text-xs">
                                   {r.desc}
                                 </p>
-
                               </div>
-
                             </div>
 
                             <span
@@ -705,18 +588,31 @@ export function RouteMap() {
                                   : "bg-[#97D91B]"
                               }`}
                             />
-
                           </div>
                         </div>
-
                       </Reveal>
                     );
                   })}
-
                 </div>
               </div>
             </div>
+          </div>
+        </Reveal>
 
+        {/* DAFTAR SEKARANG */}
+        <Reveal delay={220}>
+          <div className="mx-auto mt-8 w-full max-w-5xl px-1 sm:mt-10 sm:px-0">
+            <a
+              href={eventInfo.registerUrl?.trim() || "#kategori"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex w-full items-center justify-center rounded-full bg-[#F18B1F] px-6 py-4.5 font-display text-sm tracking-[0.08em] text-white uppercase shadow-[0_10px_30px_rgba(241,139,31,0.30)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#D97706] hover:shadow-[0_14px_35px_rgba(241,139,31,0.38)] sm:px-10 sm:py-5 sm:text-base"
+            >
+              <span>Daftar Sekarang</span>
+              <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </a>
           </div>
         </Reveal>
 
