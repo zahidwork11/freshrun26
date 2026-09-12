@@ -1447,7 +1447,7 @@ export function Categories() {
                 sm:px-8
               "
             >
-              Cek Status Pendaftaran
+              DAFTAR SEKARANG
             </Link>
           </div>
         </Reveal>

@@ -126,8 +126,8 @@ export const categories: Category[] = [
     slug: "5k-presale",
     name: "5K UMUM",
     productKey: "5K_PRESALE",
-    price: "Rp 150.000",
-    note: "PRESALE",
+    price: "Rp 123.456",
+    note: "EARLY BIRD",
     registrationPeriod: "1 September – 10 September 2026",
     benefits: [
       "BIB",
@@ -166,8 +166,8 @@ export const categories: Category[] = [
     tone: "bright",
     quota: 300,
     registered: 0,
-    enabled: true,
-    registrationOpen: true,
+    enabled: false,
+    registrationOpen: false,
   },
 
   // ==========================================================
@@ -177,8 +177,8 @@ export const categories: Category[] = [
     slug: "2-5k-presale",
     name: "2.5K UMUM",
     productKey: "2_5K_PRESALE",
-    price: "Rp 50.000",
-    note: "PRESALE",
+    price: "Rp 123.456",
+    note: "EARLY BIRD",
     registrationPeriod: "1 September – 10 September 2026",
     benefits: [
       "BIB",
@@ -213,8 +213,8 @@ export const categories: Category[] = [
     tone: "cyan",
     quota: 300,
     registered: 0,
-    enabled: true,
-    registrationOpen: true,
+    enabled: false,
+    registrationOpen: false,
   },
 
   // ==========================================================
