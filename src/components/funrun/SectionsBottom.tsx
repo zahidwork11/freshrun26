@@ -5,12 +5,11 @@ import jersey2 from "@/assets/jersey2.png";
 import jersey3 from "@/assets/jersey3.png";
 import hero17 from "@/assets/hero17.png";
 import medal3 from "@/assets/medal3.png";
-import totebag from "@/assets/totebag.png";
-import totebag2 from "@/assets/totebag2.png";
+import totebag from "@/assets/totebag3.png";
 import bibs2 from "@/assets/bibs2.png";
 import route5k from "@/assets/maps/route-5k.png";
 import route25k from "@/assets/maps/route-2-5k.png";
-import pkuLogo from "@/assets/pkulogo.png";
+import pkuLogo from "@/assets/faviconn.png";
 import { Reveal } from "./Reveal";
 import {
   Accordion,
@@ -33,7 +32,7 @@ export function RacePack() {
       desc: "Medali finisher eksklusif edisi khusus.",
     },
     {
-      img: totebag2,
+      img: totebag,
       label: "Tote Bag",
       desc: "Tote bag praktis untuk melengkapi race pack.",
     },
@@ -45,47 +44,140 @@ export function RacePack() {
   ];
 
   return (
-    <section id="racepack" className="relative isolate overflow-hidden bg-[#468519] py-20 sm:py-24 lg:py-28">
-      {/* HERO 17 BACKGROUND */}
-      <div className="absolute inset-0 -z-30 overflow-hidden">
-        <img src={hero17} alt="" width={1920} height={1280} loading="lazy" className="h-full w-full scale-105 object-cover opacity-40" />
-      </div>
+    <section
+      id="racepack"
+      className="relative bg-brand-sky py-20 sm:py-24 lg:py-28"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
 
-      {/* GREEN OVERLAY */}
-      <div className="absolute inset-0 -z-20 bg-[#468519]/40" aria-hidden="true" />
+        {/* ======================================================
+            HEADING
+        ====================================================== */}
 
-      {/* SOFT GREEN LIGHT */}
-      <div className="absolute left-[-10%] top-[15%] -z-10 h-72 w-72 rounded-full bg-[#97D91B]/10 blur-3xl" aria-hidden="true" />
-      <div className="absolute bottom-[-10%] right-[-10%] -z-10 h-80 w-80 rounded-full bg-[#97D91B]/10 blur-3xl" aria-hidden="true" />
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
-        {/* HEADING */}
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <span className="inline-flex items-center rounded-full border border-[#97D91B]/30 bg-[#97D91B]/15 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#D9F0B8] sm:text-xs">
-              Race Pack
-            </span>
 
-            <h2 className="mt-4 font-display text-4xl uppercase leading-[1.05] text-white sm:text-5xl lg:text-6xl">
+            <p className="text-xs font-bold tracking-[0.25em] text-brand uppercase">
+              Race Pack
+            </p>
+
+            <h2 className="mt-3 font-display text-4xl leading-[1.05] text-navy uppercase sm:text-5xl lg:text-6xl">
               Sudah Kebayang
               <br />
-              <span className="text-[#D9F0B8]">Tampil di Garis Start?</span>
+              <span className="text-[#F18B1F]">
+                Tampil di Garis Start?
+              </span>
             </h2>
 
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
-              Lengkapi persiapanmu dan nikmati race pack eksklusif untuk menemani langkahmu sampai garis finish.
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-navy/60 sm:text-base">
+              Lengkapi persiapanmu dan nikmati race pack eksklusif untuk
+              menemani langkahmu sampai garis finish.
             </p>
+
           </div>
         </Reveal>
 
-        {/* RACE PACK ITEMS */}
+        {/* ======================================================
+            RACE PACK ITEMS
+        ====================================================== */}
+
         <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+
           {items.map((it, i) => (
-            <Reveal key={it.label} delay={i * 100}>
-              <div className="group h-full overflow-hidden rounded-[2rem] border border-[#97D91B]/25 bg-white p-4 shadow-[0_12px_35px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-2 hover:border-[#97D91B]/50 hover:shadow-[0_20px_45px_rgba(0,0,0,0.18)] sm:p-5">
-                {/* IMAGE AREA */}
-                <div className="relative flex min-h-[250px] items-center justify-center overflow-hidden rounded-[1.5rem] border border-[#97D91B]/15 bg-[#F5FBDD] p-4 sm:min-h-[280px] sm:rounded-3xl sm:p-5">
-                  <div className="absolute inset-x-0 top-0 h-1 bg-[#97D91B]" />
+
+            <Reveal
+              key={it.label}
+              delay={i * 100}
+            >
+
+              <div
+                className="
+                  group
+                  h-full
+                  overflow-hidden
+                  rounded-[2rem]
+                  border
+                  border-brand-light/60
+                  bg-background
+                  p-4
+                  shadow-soft
+                  transition-all
+                  duration-300
+                  hover:-translate-y-2
+                  hover:border-brand-light
+                  hover:shadow-lg
+                  sm:p-5
+                "
+              >
+
+                {/* ==================================================
+                    IMAGE AREA
+                ================================================== */}
+
+                <div
+                  className="
+                    relative
+                    flex
+                    min-h-[250px]
+                    items-center
+                    justify-center
+                    overflow-hidden
+                    rounded-[1.5rem]
+                    border
+                    border-brand-light/40
+                    bg-[#F5FBDD]
+                    p-4
+                    sm:min-h-[280px]
+                    sm:rounded-3xl
+                    sm:p-5
+                  "
+                >
+
+                  {/* TOP ACCENT */}
+
+                  <div
+                    className="
+                      absolute
+                      inset-x-0
+                      top-0
+                      h-1
+                      bg-[#97D91B]
+                    "
+                  />
+
+                  {/* SOFT DECORATION */}
+
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      -right-10
+                      -top-10
+                      h-28
+                      w-28
+                      rounded-full
+                      bg-[#97D91B]/10
+                      blur-2xl
+                    "
+                    aria-hidden="true"
+                  />
+
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      -bottom-10
+                      -left-10
+                      h-24
+                      w-24
+                      rounded-full
+                      bg-[#F18B1F]/10
+                      blur-2xl
+                    "
+                    aria-hidden="true"
+                  />
+
+                  {/* IMAGE */}
 
                   <img
                     src={it.img}
@@ -93,42 +185,112 @@ export function RacePack() {
                     width={900}
                     height={900}
                     loading="lazy"
-                    className="relative z-10 mx-auto h-52 w-auto max-w-full object-contain transition-transform duration-500 group-hover:scale-105 sm:h-60 lg:h-64"
+                    className="
+                      relative
+                      z-10
+                      mx-auto
+                      h-52
+                      w-auto
+                      max-w-full
+                      object-contain
+                      transition-transform
+                      duration-500
+                      group-hover:scale-105
+                      sm:h-60
+                      lg:h-64
+                    "
                   />
+
                 </div>
 
-                {/* CONTENT */}
+                {/* ==================================================
+                    CONTENT
+                ================================================== */}
+
                 <div className="px-1 pb-1 text-center">
-                  <h3 className="mt-5 font-display text-2xl uppercase text-[#468519] transition-colors duration-300 group-hover:text-[#70A916] sm:text-3xl">
+
+                  <h3
+                    className="
+                      mt-5
+                      font-display
+                      text-2xl
+                      uppercase
+                      text-[#468519]
+                      transition-colors
+                      duration-300
+                      group-hover:text-[#70A916]
+                      sm:text-3xl
+                    "
+                  >
                     {it.label}
                   </h3>
 
-                  <p className="mx-auto mt-2 min-h-[48px] max-w-xs text-sm leading-relaxed text-[#468519]/65">
+                  <p
+                    className="
+                      mx-auto
+                      mt-2
+                      min-h-[48px]
+                      max-w-xs
+                      text-sm
+                      leading-relaxed
+                      text-navy/55
+                    "
+                  >
                     {it.desc}
                   </p>
 
-                  <div className="mx-auto mt-5 h-1 w-8 rounded-full bg-[#97D91B] transition-all duration-300 group-hover:w-14" />
+                  {/* ACCENT */}
+
+                  <div
+                    className="
+                      mx-auto
+                      mt-5
+                      h-1
+                      w-8
+                      rounded-full
+                      bg-[#97D91B]
+                      transition-all
+                      duration-300
+                      group-hover:w-14
+                    "
+                  />
+
                 </div>
+
               </div>
+
             </Reveal>
           ))}
+
         </div>
 
-        {/* BOTTOM MESSAGE */}
+        {/* ======================================================
+            BOTTOM MESSAGE
+        ====================================================== */}
+
         <Reveal delay={400}>
           <div className="mx-auto mt-10 max-w-2xl text-center sm:mt-12">
-            <p className="font-display text-xl uppercase text-[#D9F0B8] sm:text-2xl lg:text-3xl">
+
+            <p className="font-display text-xl uppercase text-[#468519] sm:text-2xl lg:text-3xl">
               Finish Strong.
-              <span className="text-white">{" "}Wear Your Story.</span>
+              <span className="text-navy">
+                {" "}Wear Your Story.
+              </span>
             </p>
 
             <div className="mx-auto mt-4 flex max-w-xs items-center gap-3">
-              <span className="h-px flex-1 bg-[#97D91B]/30" />
+
+              <span className="h-px flex-1 bg-[#97D91B]/40" />
+
               <span className="h-2 w-2 rounded-full bg-[#97D91B]" />
-              <span className="h-px flex-1 bg-[#97D91B]/30" />
+
+              <span className="h-px flex-1 bg-[#97D91B]/40" />
+
             </div>
+
           </div>
         </Reveal>
+
       </div>
     </section>
   );
@@ -152,27 +314,101 @@ export function RouteMap() {
   ];
 
   return (
-    <section id="rute" className="relative overflow-hidden bg-brand-sky py-20 sm:py-24 lg:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section
+      id="rute"
+      className="relative isolate overflow-hidden bg-[#468519] py-20 sm:py-24 lg:py-28"
+    >
+      {/* ======================================================
+          HERO 17 BACKGROUND
+      ====================================================== */}
 
-        {/* HEADING */}
+      <div className="absolute inset-0 -z-30 overflow-hidden">
+        <img
+          src={hero17}
+          alt=""
+          width={1920}
+          height={1280}
+          loading="lazy"
+          className="h-full w-full scale-105 object-cover opacity-40"
+        />
+      </div>
+
+      {/* ======================================================
+          GREEN OVERLAY
+      ====================================================== */}
+
+      <div
+        className="absolute inset-0 -z-20 bg-[#468519]/40"
+        aria-hidden="true"
+      />
+
+      {/* ======================================================
+          SOFT GREEN LIGHT
+      ====================================================== */}
+
+      <div
+        className="absolute left-[-10%] top-[15%] -z-10 h-72 w-72 rounded-full bg-[#97D91B]/10 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div
+        className="absolute bottom-[-10%] right-[-10%] -z-10 h-80 w-80 rounded-full bg-[#97D91B]/10 blur-3xl"
+        aria-hidden="true"
+      />
+
+      {/* ======================================================
+          ADDITIONAL GREEN BLEND
+      ====================================================== */}
+
+      <div
+        className="absolute inset-0 -z-10 bg-gradient-to-br from-[#468519]/30 via-transparent to-[#97D91B]/10"
+        aria-hidden="true"
+      />
+
+      {/* ======================================================
+          CONTENT
+      ====================================================== */}
+
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
+
+        {/* ====================================================
+            HEADING
+        ==================================================== */}
+
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
 
-            <h2 className="mt-5 font-display text-4xl leading-[1.02] text-navy uppercase sm:text-5xl lg:text-6xl">
+            <span className="inline-flex items-center rounded-full border border-[#97D91B]/30 bg-[#97D91B]/15 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#D9F0B8] sm:text-xs">
+              Official Race Route
+            </span>
+
+            <h2 className="mt-5 font-display text-4xl leading-[1.02] text-white uppercase sm:text-5xl lg:text-6xl">
               Kenali Jalur,
               <br />
-              <span className="text-[#F18B1F]">Nikmati Langkahmu.</span>
+              <span className="text-[#D9F0B8]">
+                Nikmati Langkahmu.
+              </span>
             </h2>
+
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
+              Kenali rute yang akan kamu lalui dan persiapkan langkah terbaikmu
+              menuju garis finish.
+            </p>
 
           </div>
         </Reveal>
 
-        {/* DISTANCE TABS */}
+        {/* ====================================================
+            DISTANCE TABS
+        ==================================================== */}
+
         <Reveal delay={100}>
           <div className="mx-auto mt-8 max-w-sm">
-            <div className="rounded-2xl border border-brand-light/50 bg-background p-1.5 shadow-soft">
+
+            <div className="rounded-2xl border border-white/20 bg-white/10 p-1.5 shadow-[0_10px_30px_rgba(0,0,0,0.12)] backdrop-blur-md">
+
               <div className="grid grid-cols-2 gap-1.5">
+
                 {tabs.map((t) => {
                   const active = tab === t.id;
                   const orange = t.id === "5k";
@@ -180,48 +416,69 @@ export function RouteMap() {
                   return (
                     <button
                       key={t.id}
+                      type="button"
                       onClick={() => setTab(t.id)}
                       className={`relative rounded-xl px-4 py-2.5 font-display text-lg font-bold uppercase tracking-wide transition-all duration-300 sm:py-3 sm:text-xl ${
                         active
                           ? orange
                             ? "bg-[#F18B1F] text-white shadow-[0_5px_15px_rgba(241,139,31,.25)]"
                             : "bg-[#97D91B] text-white shadow-[0_5px_15px_rgba(151,217,27,.25)]"
-                          : "text-gray-500 hover:bg-gray-100"
+                          : "text-white/65 hover:bg-white/10 hover:text-white"
                       }`}
                     >
                       {t.label}
-                      {active && <span className="absolute bottom-1 left-1/2 h-0.5 w-7 -translate-x-1/2 rounded-full bg-white/80" />}
+
+                      {active && (
+                        <span className="absolute bottom-1 left-1/2 h-0.5 w-7 -translate-x-1/2 rounded-full bg-white/80" />
+                      )}
                     </button>
                   );
                 })}
+
               </div>
             </div>
           </div>
         </Reveal>
 
-        {/* MAIN CARD */}
-        <Reveal delay={160}>
-          <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[2rem] border border-white/60 bg-background shadow-[0_20px_60px_rgba(10,84,144,.12)] sm:mt-10 sm:rounded-[2.5rem]">
+        {/* ====================================================
+            MAIN CARD
+        ==================================================== */}
 
-            {/* CARD HEADER */}
+        <Reveal delay={160}>
+          <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[2rem] border border-white/60 bg-background shadow-[0_20px_60px_rgba(0,0,0,.16)] sm:mt-10 sm:rounded-[2.5rem]">
+
+            {/* ==================================================
+                CARD HEADER
+            ================================================== */}
+
             <div className="flex items-center justify-between border-b border-brand-light/40 px-5 py-4 sm:px-7 sm:py-5">
+
               <div>
                 <span className="text-[9px] font-extrabold tracking-[.2em] text-brand-deep uppercase sm:text-[10px]">
                   Official Race Route
                 </span>
+
                 <h3 className="mt-1 font-display text-xl text-navy uppercase sm:text-2xl">
                   Peta & Rundown
                 </h3>
               </div>
 
               <span className="rounded-full bg-[#1492FA]/10 px-3 py-1.5 text-[9px] font-extrabold tracking-wider text-[#1492FA] uppercase sm:px-4 sm:py-2 sm:text-[10px]">
-                {tab === "5k" ? "5 KM Route" : "2.5 KM Route"}
+                {tab === "5k"
+                  ? "5 KM Route"
+                  : "2.5 KM Route"}
               </span>
+
             </div>
 
-            {/* MAP */}
+            {/* ==================================================
+                MAP
+            ================================================== */}
+
             <div className="p-2 sm:p-3">
+
               <div className="relative overflow-hidden rounded-[1.5rem] bg-brand-sky sm:rounded-[1.75rem]">
+
                 {tabs.map((t) => (
                   <img
                     key={t.id}
@@ -231,119 +488,199 @@ export function RouteMap() {
                     height={800}
                     loading="lazy"
                     className={`block w-full transition-all duration-500 ${
-                      tab === t.id ? "relative opacity-100" : "absolute inset-0 opacity-0"
+                      tab === t.id
+                        ? "relative opacity-100"
+                        : "absolute inset-0 opacity-0"
                     }`}
                   />
                 ))}
+
               </div>
             </div>
 
-            {/* FACILITIES */}
+            {/* ==================================================
+                FACILITIES
+            ================================================== */}
+
             <div className="border-t border-brand-light/40 px-5 py-5 sm:px-7 sm:py-6">
+
               <div className="mb-4 flex items-end justify-between gap-3">
+
                 <div>
+
                   <span className="text-[9px] font-extrabold tracking-[.2em] text-brand-deep uppercase">
                     Route Facilities
                   </span>
+
                   <p className="mt-1 text-xs text-navy/50 sm:text-sm">
                     Fasilitas yang tersedia selama race.
                   </p>
+
                 </div>
+
                 <span className="hidden rounded-full bg-[#97D91B]/15 px-3 py-1 text-[9px] font-bold text-[#468519] uppercase sm:block">
                   Race Ready
                 </span>
+
               </div>
 
               <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-5 sm:gap-3">
+
                 {facilities.map(([icon, title, desc], i) => (
+
                   <div
                     key={title}
                     className="group flex items-center gap-2.5 rounded-xl border border-brand-light/30 bg-brand-sky/30 p-2.5 transition-all hover:-translate-y-0.5 hover:bg-[#97D91B]/10 sm:flex-col sm:p-3.5 sm:text-center"
                   >
-                    <div className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl text-base ${
-                      i === 1 || i === 4 ? "bg-[#F18B1F]/10" : "bg-[#97D91B]/15"
-                    }`}>
+
+                    <div
+                      className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl text-base ${
+                        i === 1 || i === 4
+                          ? "bg-[#F18B1F]/10"
+                          : "bg-[#97D91B]/15"
+                      }`}
+                    >
                       {icon}
                     </div>
 
                     <div className="min-w-0">
+
                       <div className="truncate text-[9px] font-extrabold text-navy uppercase sm:text-[10px]">
                         {title}
                       </div>
+
                       <p className="mt-0.5 text-[9px] text-navy/45 sm:text-[10px]">
                         {desc}
                       </p>
+
                     </div>
+
                   </div>
+
                 ))}
+
               </div>
             </div>
 
-            {/* RUNDOWN */}
+            {/* ==================================================
+                RUNDOWN
+            ================================================== */}
+
             <div className="border-t border-brand-light/40 bg-[#1492FA]/[0.025] px-5 py-7 sm:px-7 sm:py-8">
 
               {/* RUNDOWN HEADER */}
+
               <div className="mb-7 flex flex-col gap-3 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
+
                 <div>
 
                   <h3 className="mt-1 font-display text-2xl text-navy uppercase sm:text-3xl">
-                    Rundown <span className="text-[#F18B1F]">Race Day</span>
+                    Rundown{" "}
+                    <span className="text-[#F18B1F]">
+                      Race Day
+                    </span>
                   </h3>
+
                 </div>
 
                 <p className="max-w-sm text-xs leading-relaxed text-navy/50 sm:text-right sm:text-sm">
                   Pastikan hadir tepat waktu dan ikuti setiap rangkaian kegiatan.
                 </p>
+
               </div>
 
-              {/* TIMELINE */}
+              {/* ==================================================
+                  TIMELINE
+              ================================================== */}
+
               <div className="relative">
+
                 <span className="absolute bottom-5 left-[17px] top-5 w-0.5 bg-gradient-to-b from-[#F18B1F] via-[#97D91B] to-[#1492FA] sm:left-[24px]" />
 
                 <div className="space-y-3 sm:space-y-4">
+
                   {rundown.map((r, i) => {
-                    const start = r.title.toLowerCase().includes("start");
+
+                    const start = r.title
+                      .toLowerCase()
+                      .includes("start");
 
                     return (
-                      <Reveal key={`${r.time}-${r.title}`} delay={i * 40}>
+                      <Reveal
+                        key={`${r.time}-${r.title}`}
+                        delay={i * 40}
+                      >
+
                         <div className="relative pl-10 sm:pl-14">
 
-                          {/* DOT */}
-                          <span className={`absolute left-[9px] top-1/2 z-10 h-4 w-4 -translate-y-1/2 rounded-full border-[3px] border-background sm:left-[17px] ${
-                            start
-                              ? "bg-[#F18B1F] shadow-[0_0_0_4px_rgba(241,139,31,.15)]"
-                              : "bg-[#97D91B]"
-                          }`} />
+                          {/* ==================================================
+                              DOT
+                          ================================================== */}
 
-                          {/* ITEM */}
-                          <div className={`group relative overflow-hidden rounded-2xl border bg-background transition-all duration-300 hover:-translate-y-0.5 hover:shadow-soft ${
-                            start
-                              ? "border-[#F18B1F]/30 bg-[#FFF9F2]"
-                              : "border-brand-light/30"
-                          }`}>
-                            {start && <span className="absolute inset-y-0 left-0 w-1 bg-[#F18B1F]" />}
+                          <span
+                            className={`absolute left-[9px] top-1/2 z-10 h-4 w-4 -translate-y-1/2 rounded-full border-[3px] border-background sm:left-[17px] ${
+                              start
+                                ? "bg-[#F18B1F] shadow-[0_0_0_4px_rgba(241,139,31,.15)]"
+                                : "bg-[#97D91B]"
+                            }`}
+                          />
+
+                          {/* ==================================================
+                              ITEM
+                          ================================================== */}
+
+                          <div
+                            className={`group relative overflow-hidden rounded-2xl border bg-background transition-all duration-300 hover:-translate-y-0.5 hover:shadow-soft ${
+                              start
+                                ? "border-[#F18B1F]/30 bg-[#FFF9F2]"
+                                : "border-brand-light/30"
+                            }`}
+                          >
+
+                            {start && (
+                              <span className="absolute inset-y-0 left-0 w-1 bg-[#F18B1F]" />
+                            )}
 
                             <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 p-3 sm:gap-4 sm:p-4">
 
                               {/* TIME */}
-                              <div className={`flex min-w-[64px] flex-col items-center rounded-xl px-2.5 py-2 sm:min-w-[76px] sm:rounded-2xl sm:px-3 sm:py-2.5 ${
-                                start ? "bg-[#F18B1F]" : "bg-[#97D91B]/15"
-                              }`}>
-                                <span className={`font-display text-base leading-none tabular-nums sm:text-lg ${
-                                  start ? "text-white" : "text-[#468519]"
-                                }`}>
+
+                              <div
+                                className={`flex min-w-[64px] flex-col items-center rounded-xl px-2.5 py-2 sm:min-w-[76px] sm:rounded-2xl sm:px-3 sm:py-2.5 ${
+                                  start
+                                    ? "bg-[#F18B1F]"
+                                    : "bg-[#97D91B]/15"
+                                }`}
+                              >
+
+                                <span
+                                  className={`font-display text-base leading-none tabular-nums sm:text-lg ${
+                                    start
+                                      ? "text-white"
+                                      : "text-[#468519]"
+                                  }`}
+                                >
                                   {r.time}
                                 </span>
-                                <span className={`mt-1 text-[7px] font-bold tracking-wider uppercase ${
-                                  start ? "text-white/70" : "text-navy/40"
-                                }`}>
+
+                                <span
+                                  className={`mt-1 text-[7px] font-bold tracking-wider uppercase ${
+                                    start
+                                      ? "text-white/70"
+                                      : "text-navy/40"
+                                  }`}
+                                >
                                   WIB
                                 </span>
+
                               </div>
 
                               {/* INFO */}
+
                               <div className="min-w-0">
+
                                 <div className="flex flex-wrap items-center gap-2">
+
                                   <h4 className="text-xs font-extrabold text-navy uppercase sm:text-sm">
                                     {r.title}
                                   </h4>
@@ -353,28 +690,39 @@ export function RouteMap() {
                                       Start
                                     </span>
                                   )}
+
                                 </div>
 
                                 <p className="mt-1 text-[9px] leading-relaxed text-navy/50 sm:text-xs">
                                   {r.desc}
                                 </p>
+
                               </div>
+
                             </div>
 
-                            <span className={`absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full ${
-                              start ? "bg-[#F18B1F]" : "bg-[#97D91B]"
-                            }`} />
+                            <span
+                              className={`absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full ${
+                                start
+                                  ? "bg-[#F18B1F]"
+                                  : "bg-[#97D91B]"
+                              }`}
+                            />
+
                           </div>
                         </div>
+
                       </Reveal>
                     );
                   })}
+
                 </div>
               </div>
             </div>
 
           </div>
         </Reveal>
+
       </div>
     </section>
   );
@@ -385,98 +733,7 @@ export function Rundown() {
 }
 
 export function HowTo() {
-  return (
-    <section
-      id="cara-daftar"
-      className="relative overflow-hidden bg-[#F18B1F]/90 py-20 lg:py-28"
-    >
-      {/* Decorative Background */}
-      <div
-        className="pointer-events-none absolute inset-0 overflow-hidden"
-        aria-hidden="true"
-      >
-        <div className="absolute -left-32 -top-32 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
-        <div className="absolute -bottom-40 -right-32 h-96 w-96 rounded-full bg-black/10 blur-3xl" />
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
-        {/* =====================================================
-            HEADING
-        ===================================================== */}
-        <Reveal>
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-display text-4xl text-white uppercase sm:text-5xl lg:text-6xl">
-              5 Langkah Menuju Garis Start.
-            </h2>
-
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/80 sm:text-base">
-              Ikuti langkah pendaftaran berikut dan bersiap menjadi bagian
-              dari PKU Muhammadiyah Sukoharjo Fun Run.
-            </p>
-          </div>
-        </Reveal>
-
-        {/* =====================================================
-            MAIN CARD
-        ===================================================== */}
-        <Reveal delay={100}>
-          <div className="mt-12 rounded-[2rem] border border-white/40 bg-white/95 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.12)] sm:p-8 lg:p-10">
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-0">
-              {steps.map((s, i) => (
-                <div
-                  key={s.no}
-                  className="relative flex flex-col items-center text-center lg:px-5"
-                >
-                  {/* Connecting Line */}
-                  {i < steps.length - 1 && (
-                    <div className="absolute left-[calc(50%+32px)] top-8 hidden h-[2px] w-[calc(100%-64px)] rounded-full bg-[#F18B1F]/25 lg:block" />
-                  )}
-
-                  {/* Step Number */}
-                  <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full border-2 border-[#F18B1F]/70 bg-[#FFF3E8]/80">
-                    <span className="font-display text-2xl text-[#F18B1F]">
-                      {s.no}
-                    </span>
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="mt-5 font-display text-lg text-navy uppercase sm:text-xl">
-                    {s.title}
-                  </h3>
-
-                  <p className="mt-2 max-w-[220px] text-sm leading-relaxed text-navy/60">
-                    {s.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
-
-        {/* =====================================================
-            BUTTONS
-        ===================================================== */}
-        <Reveal delay={200}>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <a
-              href={eventInfo.pdfUrl}
-              className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-white/95 px-7 py-3.5 font-display text-sm tracking-wide text-[#F18B1F] uppercase shadow-sm transition-all hover:-translate-y-0.5 hover:bg-white"
-            >
-              <Download className="h-4 w-4" />
-              Download PDF Tata Cara Daftar
-            </a>
-
-            <a
-              href={eventInfo.registerUrl}
-              className="rounded-full border-2 border-white/70 bg-[#D96F0F]/90 px-8 py-3.5 font-display text-sm tracking-wide text-white uppercase shadow-sm transition-all hover:-translate-y-0.5 hover:bg-[#C9630D]/95 hover:shadow-md"
-            >
-              Daftar Sekarang
-            </a>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
+  return null;
 }
 
 function MarqueeRow({

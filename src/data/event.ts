@@ -12,7 +12,6 @@ import kbsyariahLogo from "@/assets/kbsyariah.png";
 
 // ============================================================
 // SEMUA DATA EVENT ADA DI SINI
-// Mudah diedit / dipindah ke Blade
 // ============================================================
 
 // ============================================================
@@ -30,7 +29,11 @@ export const eventInfo = {
   totalPrize: "Rp 25.000.000",
   instagram: "https://www.instagram.com/pkurun26/",
   whatsapp: "https://wa.me/6281234567890",
-  registerUrl: "/register",
+
+  // Tidak lagi digunakan untuk proses pendaftaran React.
+  // Pendaftaran dilakukan melalui ticketing EO.
+  registerUrl: "",
+
   pdfUrl: "/assets/pdf/tata-cara-daftar.pdf",
 };
 
@@ -46,7 +49,6 @@ export const navItems = [
   { label: "Cara Daftar", href: "#cara-daftar" },
   { label: "Sponsor", href: "#sponsor" },
   { label: "FAQ", href: "#faq" },
-  
 ];
 
 // ============================================================
@@ -55,14 +57,15 @@ export const navItems = [
 
 export const podium = {
   putra: [
-    { medal: "🥇", place: "Juara 1", prize: "Rp1.500.000" },
-    { medal: "🥈", place: "Juara 2", prize: "Rp1.000.000" },
-    { medal: "🥉", place: "Juara 3", prize: "Rp750.000" },
+    { medal: "🥇", place: "Juara 1", prize: "cooming soon" },
+    { medal: "🥈", place: "Juara 2", prize: "cooming soon" },
+    { medal: "🥉", place: "Juara 3", prize: "cooming soon" },
   ],
+
   putri: [
-    { medal: "🥇", place: "Juara 1", prize: "Rp1.500.000" },
-    { medal: "🥈", place: "Juara 2", prize: "Rp1.000.000" },
-    { medal: "🥉", place: "Juara 3", prize: "Rp750.000" },
+    { medal: "🥇", place: "Juara 1", prize: "cooming soon" },
+    { medal: "🥈", place: "Juara 2", prize: "cooming soon" },
+    { medal: "🥉", place: "Juara 3", prize: "cooming soon" },
   ],
 };
 
@@ -79,6 +82,7 @@ export type Category = {
   registrationPeriod?: string;
   benefits: string[];
   requirement?: string;
+
   tone:
     | "bright"
     | "sky"
@@ -86,42 +90,31 @@ export type Category = {
     | "cyan"
     | "light"
     | "navy";
+
   quota: number;
   registered: number;
+
+  // URL ticketing EO
   registerUrl?: string;
 
-  // true  = kategori tampil di halaman /daftar
-  // false = kategori tidak tampil sama sekali
+  // true  = kategori tampil
+  // false = kategori tidak tampil
   enabled: boolean;
 
-  // true  = tombol bisa dipilih dan menuju /bayar
-  // false = kategori tampil tetapi tombol "Belum Dibuka"
+  // true  = tombol Daftar aktif
+  // false = tombol Belum Dibuka
   registrationOpen: boolean;
 };
 
 // ============================================================
 // CATEGORY CONFIGURATION
 // ============================================================
-//
-// SATU-SATUNYA TEMPAT UNTUK MENGATUR KATEGORI YANG TAMPIL.
-//
-// enabled: true  -> tampil di /daftar
-// enabled: false -> tidak tampil di /daftar
-// registrationOpen: true  -> bisa dipilih
-// registrationOpen: false -> tampil "Belum Dibuka"
-//
-// Contoh membuka kategori reguler:
-// enabled: true, registrationOpen: true
-//
-// Contoh menutup kategori presale sepenuhnya:
-// enabled: false, registrationOpen: false
-//
-// ============================================================
 
 export const categories: Category[] = [
   // ==========================================================
   // 1. 5K PRESALE
   // ==========================================================
+
   {
     slug: "5k-presale",
     name: "5K UMUM",
@@ -129,6 +122,7 @@ export const categories: Category[] = [
     price: "Rp 123.456",
     note: "EARLY BIRD",
     registrationPeriod: "1 September – 10 September 2026",
+
     benefits: [
       "BIB",
       "Jersey",
@@ -136,10 +130,16 @@ export const categories: Category[] = [
       "Race Pack",
       "Snack",
     ],
+
     requirement: "NIK",
     tone: "bright",
+
     quota: 300,
     registered: 0,
+
+    // GANTI DENGAN LINK TICKETING EO
+    registerUrl: "https://www.instagram.com/pkufreshrun26?stkn=eW1pNjZkdHNtYWlk",
+
     enabled: true,
     registrationOpen: true,
   },
@@ -147,14 +147,14 @@ export const categories: Category[] = [
   // ==========================================================
   // 2. 5K UMUM
   // ==========================================================
-  // Ubah enabled menjadi true dan registrationOpen menjadi true
-  // ketika periode 5K Umum dibuka.
+
   {
     slug: "5k-umum",
     name: "5K UMUM",
     productKey: "5K_UMUM",
     price: "Rp 170.000",
     registrationPeriod: "Setelah periode presale",
+
     benefits: [
       "BIB",
       "Jersey",
@@ -162,10 +162,16 @@ export const categories: Category[] = [
       "Race Pack",
       "Snack",
     ],
+
     requirement: "NIK",
     tone: "bright",
+
     quota: 300,
     registered: 0,
+
+    // GANTI DENGAN LINK TICKETING EO
+    registerUrl: "https://www.instagram.com/pkufreshrun26?stkn=eW1pNjZkdHNtYWlk",
+
     enabled: false,
     registrationOpen: false,
   },
@@ -173,6 +179,7 @@ export const categories: Category[] = [
   // ==========================================================
   // 3. 2.5K PRESALE
   // ==========================================================
+
   {
     slug: "2-5k-presale",
     name: "2.5K UMUM",
@@ -180,15 +187,22 @@ export const categories: Category[] = [
     price: "Rp 123.456",
     note: "EARLY BIRD",
     registrationPeriod: "1 September – 10 September 2026",
+
     benefits: [
       "BIB",
       "Jersey",
       "Snack",
     ],
+
     requirement: "NIK",
     tone: "cyan",
+
     quota: 300,
     registered: 0,
+
+    // GANTI DENGAN LINK TICKETING EO
+    registerUrl: "https://www.instagram.com/pkufreshrun26?stkn=eW1pNjZkdHNtYWlk",
+
     enabled: true,
     registrationOpen: true,
   },
@@ -196,23 +210,29 @@ export const categories: Category[] = [
   // ==========================================================
   // 4. 2.5K UMUM
   // ==========================================================
-  // Ubah enabled menjadi true dan registrationOpen menjadi true
-  // ketika periode 2.5K Umum dibuka.
+
   {
     slug: "2-5k-umum",
     name: "2.5K UMUM",
     productKey: "2_5K_UMUM",
     price: "Rp 75.000",
     registrationPeriod: "Setelah periode presale",
+
     benefits: [
       "BIB",
       "Jersey",
       "Snack",
     ],
+
     requirement: "NIK",
     tone: "cyan",
+
     quota: 300,
     registered: 0,
+
+    // GANTI DENGAN LINK TICKETING EO
+    registerUrl: "https://www.instagram.com/pkufreshrun26?stkn=eW1pNjZkdHNtYWlk",
+
     enabled: false,
     registrationOpen: false,
   },
@@ -220,13 +240,14 @@ export const categories: Category[] = [
   // ==========================================================
   // 5. PELAJAR / MAHASISWA 5K
   // ==========================================================
-  // Tampil tetapi belum dibuka.
+
   {
     slug: "pelajar-mahasiswa",
     name: "PELAJAR / MAHASISWA 5K",
     productKey: "5K_MAHASISWA",
-    price: "Rp 125.000",
+    price: "Rp 123.456",
     registrationPeriod: "11 September – 11 Oktober 2026",
+
     benefits: [
       "BIB",
       "Jersey",
@@ -234,10 +255,16 @@ export const categories: Category[] = [
       "Race Pack",
       "Snack",
     ],
+
     requirement: "NISN / NPM / NIM",
     tone: "light",
+
     quota: 500,
     registered: 0,
+
+    // GANTI DENGAN LINK TICKETING EO
+    registerUrl: "https://www.instagram.com/pkufreshrun26?stkn=eW1pNjZkdHNtYWlk",
+
     enabled: true,
     registrationOpen: true,
   },
@@ -330,6 +357,7 @@ export const steps = [
 // ============================================================
 // SPONSORS
 // ============================================================
+
 export const mainSponsor = {
   name: "KB SYARIAH",
   logo: kbsyariahLogo,
