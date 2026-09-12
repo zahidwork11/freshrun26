@@ -48,21 +48,15 @@ export function RacePack() {
   return (
     <section
       id="racepack"
-      className="relative isolate overflow-hidden bg-[#EAF3C8] py-20 sm:py-24 lg:py-28"
+      className="relative isolate overflow-hidden bg-[#E5F6FC] py-20 sm:py-24 lg:py-28"
     >
-      {/* SOFT BACKGROUND */}
       <div
-        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#F0F7D5] via-[#EAF3C8] to-[#DDEBAF]"
+        className="pointer-events-none absolute left-[-8%] top-[10%] -z-10 h-72 w-72 rounded-full bg-[#1492FA]/10 blur-3xl"
         aria-hidden="true"
       />
 
       <div
-        className="pointer-events-none absolute left-[-8%] top-[10%] -z-10 h-72 w-72 rounded-full bg-[#97D91B]/10 blur-3xl"
-        aria-hidden="true"
-      />
-
-      <div
-        className="pointer-events-none absolute bottom-[-10%] right-[-8%] -z-10 h-80 w-80 rounded-full bg-[#468519]/10 blur-3xl"
+        className="pointer-events-none absolute bottom-[-10%] right-[-8%] -z-10 h-80 w-80 rounded-full bg-[#97D91B]/10 blur-3xl"
         aria-hidden="true"
       />
 
@@ -120,7 +114,7 @@ export function RacePack() {
                   <div className="absolute inset-x-0 top-0 h-1 bg-[#97D91B]" />
 
                   <div
-                    className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#97D91B]/10 blur-2xl"
+                    className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#1492FA]/10 blur-2xl"
                     aria-hidden="true"
                   />
 
@@ -168,30 +162,10 @@ export function RacePack() {
             </Reveal>
           ))}
         </div>
-
-        {/* BOTTOM MESSAGE */}
-        <Reveal delay={400}>
-          <div className="mx-auto mt-10 max-w-2xl text-center sm:mt-12">
-            <p className="font-display text-xl uppercase text-[#468519] sm:text-2xl lg:text-3xl">
-              Finish Strong.
-              <span className="text-navy">
-                {" "}Wear Your Story.
-              </span>
-            </p>
-
-            <div className="mx-auto mt-4 flex max-w-xs items-center gap-3">
-              <span className="h-px flex-1 bg-[#97D91B]/40" />
-              <span className="h-2 w-2 rounded-full bg-[#97D91B]" />
-              <span className="h-px flex-1 bg-[#97D91B]/40" />
-            </div>
-          </div>
-        </Reveal>
-
       </div>
     </section>
   );
 }
-
 
 export function RouteMap() {
   const [tab, setTab] = useState<"5k" | "2.5k">("5k");

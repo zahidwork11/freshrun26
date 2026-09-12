@@ -243,83 +243,67 @@ export function Hero() {
 
           </div>
         </Reveal>
-
+        
         {/* ====================================================
-            PRESALE REGISTRATION
+            EARLY BIRD — LIMITED SLOT
         ==================================================== */}
 
         <Reveal delay={300}>
-          <div className="mx-auto mt-4 max-w-3xl rounded-2xl border-2 border-[#F18B1F]/35 bg-white p-4 shadow-[0_10px_30px_rgba(6,45,80,0.16)] sm:mt-5 sm:rounded-3xl sm:p-5">
+          <div className="mx-auto mt-4 w-full max-w-3xl overflow-hidden rounded-2xl border-2 border-[#F18B1F] shadow-[0_14px_40px_rgba(6,45,80,0.25)] sm:mt-5 sm:rounded-3xl">
 
-            {/* HEADER */}
+            {/* CARD BACKGROUND */}
+            <div className="relative overflow-hidden bg-gradient-to-br from-[#063A67] via-[#0A5490] to-[#F18B1F]">
 
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2">
-
-                <span className="h-2 w-2 animate-pulse rounded-full bg-[#F18B1F]" />
-
-                <span className="text-[9px] font-extrabold tracking-[0.16em] text-[#0A5490] uppercase sm:text-[10px]">
-                  Presale 5K & 2.5K
-                </span>
-
-              </div>
-
-              <span className="rounded-full bg-[#F18B1F] px-2.5 py-1 text-[8px] font-extrabold tracking-wider text-white uppercase">
-                Terbatas
-              </span>
-            </div>
-
-            {/* SLOT */}
-
-            <div className="mt-3 flex items-center justify-between gap-3">
-
-              <div className="flex items-baseline gap-1.5">
-
-                <span className="font-display text-2xl leading-none text-[#0A5490] sm:text-3xl">
-                  {presaleRegistered}
-                </span>
-
-                <span className="text-xs font-semibold text-[#0A5490]/45">
-                  / {presaleQuota} terdaftar
-                </span>
-
-              </div>
-
-              <p className="shrink-0 font-display text-base text-[#1492FA] sm:text-lg">
-                <span className="font-sans text-[9px] font-bold uppercase">
-                  Sisa {presaleRemaining} Slot
-                </span>
-              </p>
-
-            </div>
-
-            {/* PROGRESS */}
-
-            <div className="mt-3 h-2 overflow-hidden rounded-full bg-[#0A5490]/10">
+              {/* DIAGONAL STRIPES */}
               <div
-                className="h-full rounded-full bg-[#1492FA] transition-all duration-700"
+                className="pointer-events-none absolute inset-0 opacity-[0.13]"
                 style={{
-                  width: `${presaleProgress}%`,
+                  backgroundImage:
+                    "repeating-linear-gradient(135deg, transparent 0px, transparent 14px, #ffffff 14px, #ffffff 18px, transparent 18px, transparent 32px)",
                 }}
               />
+
+              {/* SOFT GRADIENT LIGHT */}
+              <div className="pointer-events-none absolute -left-20 -top-20 h-56 w-56 rounded-full bg-[#1492FA]/30 blur-3xl" />
+
+              <div className="pointer-events-none absolute -bottom-24 -right-16 h-64 w-64 rounded-full bg-[#F59A38]/35 blur-3xl" />
+
+
+              {/* CONTENT */}
+              <div className="relative px-4 py-7 text-center sm:px-8 sm:py-9">
+
+                {/* EARLY BIRD */}
+                <h3 className="font-display text-4xl leading-none tracking-tight text-white uppercase drop-shadow-[0_3px_8px_rgba(0,0,0,.25)] sm:text-5xl lg:text-6xl">
+                  EARLY BIRD
+                </h3>
+
+
+                {/* CATEGORY */}
+                <div className="mt-3 flex justify-center">
+                  <span className="rounded-full border border-white/40 bg-white/15 px-4 py-1.5 text-[9px] font-extrabold tracking-[0.22em] text-white uppercase backdrop-blur-sm sm:px-5 sm:text-[10px]">
+                    5K & 2.5K
+                  </span>
+                </div>
+
+
+                {/* DEADLINE */}
+                <div className="mx-auto mt-5 w-full max-w-xs rounded-2xl border border-white/30 bg-white/95 px-4 py-3.5 shadow-[0_8px_25px_rgba(0,0,0,.18)] sm:mt-6 sm:max-w-sm sm:px-6 sm:py-4">
+
+                  <p className="text-[8px] font-extrabold tracking-[0.22em] text-[#0A5490]/55 uppercase sm:text-[9px]">
+                    BERAKHIR
+                  </p>
+
+                  <p className="mt-1 font-display text-xl tracking-wide text-[#D94A16] uppercase sm:text-2xl lg:text-3xl">
+                    10 SEPTEMBER 2026
+                  </p>
+
+                </div>
+
+              </div>
             </div>
-
-            {/* DEADLINE */}
-
-            <div className="mt-3 flex items-center justify-between rounded-xl bg-[#F2FBDD] px-3 py-2.5">
-
-              <span className="text-[8px] font-bold tracking-wider text-[#468519]/60 uppercase">
-                Berakhir
-              </span>
-
-              <span className="font-display text-sm tracking-wide text-[#468519] uppercase sm:text-base">
-                10 September 2026
-              </span>
-
-            </div>
-
           </div>
         </Reveal>
+
 
         {/* ====================================================
             CTA
@@ -362,34 +346,18 @@ export function RaceInfo() {
       label: "Lokasi",
       value: eventInfo.location,
       icon: MapPin,
-      mapsUrl: "https://maps.app.goo.gl/5fPUKkWnujbFhgij9",
+      mapsUrl:
+        "https://maps.app.goo.gl/5fPUKkWnujbFhgij9",
     },
   ];
 
   return (
     <section
       id="race"
-      className="relative isolate overflow-hidden bg-[#CFE2ED] py-20 sm:py-24 lg:py-28"
+      className="relative bg-brand-sky py-20 lg:py-28"
     >
-      {/* SOFT BACKGROUND */}
-      <div
-        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#C8DFEA] via-[#CFE2ED] to-[#BDD5E2]"
-        aria-hidden="true"
-      />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
 
-      <div
-        className="pointer-events-none absolute -left-20 top-10 -z-10 h-64 w-64 rounded-full bg-[#1492FA]/10 blur-3xl"
-        aria-hidden="true"
-      />
-
-      <div
-        className="pointer-events-none absolute -bottom-20 right-[-5%] -z-10 h-72 w-72 rounded-full bg-[#97D91B]/10 blur-3xl"
-        aria-hidden="true"
-      />
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
-
-        {/* HEADER */}
         <Reveal>
           <p className="text-center text-xs font-bold tracking-[0.25em] text-brand uppercase">
             Race Info
@@ -400,27 +368,30 @@ export function RaceInfo() {
           </h2>
         </Reveal>
 
-        {/* COUNTDOWN */}
         <Reveal delay={120} className="mt-10">
           <Countdown dateISO={eventInfo.dateISO} />
         </Reveal>
 
-        {/* INFO CARDS */}
         <Reveal delay={180}>
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
+
             {info.map((i) => {
               const Icon = i.icon;
 
               const cardClassName =
-                "group flex items-center gap-5 rounded-3xl border border-white/80 bg-white/90 p-6 shadow-[0_12px_35px_rgba(6,45,80,0.10)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(6,45,80,0.16)]";
+                "group flex items-center gap-5 rounded-3xl border border-brand-light/60 bg-background p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lg";
 
               const content = (
                 <>
                   <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
-                    <Icon size={28} strokeWidth={2.2} />
+                    <Icon
+                      size={28}
+                      strokeWidth={2.2}
+                    />
                   </div>
 
                   <div className="min-w-0 flex-1">
+
                     <div className="text-[11px] font-bold tracking-[0.2em] text-brand uppercase">
                       {i.label}
                     </div>
@@ -434,6 +405,7 @@ export function RaceInfo() {
                         Buka Google Maps →
                       </div>
                     )}
+
                   </div>
                 </>
               );
@@ -450,11 +422,15 @@ export function RaceInfo() {
                   {content}
                 </a>
               ) : (
-                <div key={i.label} className={cardClassName}>
+                <div
+                  key={i.label}
+                  className={cardClassName}
+                >
                   {content}
                 </div>
               );
             })}
+
           </div>
         </Reveal>
 

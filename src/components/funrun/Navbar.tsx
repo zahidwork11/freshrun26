@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { navItems } from "@/data/event";
+import { eventInfo, navItems } from "@/data/event";
 import pkuLogo from "@/assets/pkulogo.png";
 import pkuLogo2 from "@/assets/pkulogo2.png";
 
@@ -23,6 +23,9 @@ export function Navbar() {
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
+
+  // Link pendaftaran dari event.ts
+  const registerUrl = eventInfo.registerUrl?.trim() || "#kategori";
 
   return (
     <header
@@ -80,13 +83,15 @@ export function Navbar() {
             </a>
           ))}
 
-          {/* CEK PENDAFTARAN */}
+          {/* DAFTAR SEKARANG */}
 
           <a
-            href="/cek"
+            href={registerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="ml-2 rounded-full gradient-brand px-5 py-2.5 text-[13px] font-bold tracking-wide text-primary-foreground uppercase shadow-soft transition-all duration-200 hover:scale-105 hover:shadow-lg"
           >
-             DAFTAR SEKARANG
+            DAFTAR SEKARANG
           </a>
         </nav>
 
@@ -128,10 +133,12 @@ export function Navbar() {
             </a>
           ))}
 
-          {/* MOBILE CEK PENDAFTARAN */}
+          {/* MOBILE DAFTAR SEKARANG */}
 
           <a
-            href="/cek"
+            href={registerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setOpen(false)}
             className="mt-2 rounded-full gradient-brand px-5 py-3 text-center text-sm font-bold tracking-wide text-primary-foreground uppercase shadow-soft transition-all duration-200 hover:shadow-lg"
           >
