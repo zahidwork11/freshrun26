@@ -9,7 +9,9 @@ import totebag from "@/assets/totebag3.png";
 import bibs2 from "@/assets/bibs2.png";
 import route5k from "@/assets/maps/route-5k.png";
 import route25k from "@/assets/maps/route-2-5k.png";
-import pkuLogo from "@/assets/faviconn.png";
+import pkuLogo from "@/assets/pkulogo.png";
+import freshLogo from "@/assets/faviconn.png";
+import skhRunner from "@/assets/skhrunner.jpg";
 import { Reveal } from "./Reveal";
 import {
   Accordion,
@@ -914,9 +916,17 @@ export function Footer() {
               className="h-11 w-auto shrink-0 object-contain"
             />
 
-            <span className="font-display text-lg uppercase">
-              PKU FRESH RUN
-            </span>
+            <img
+              src={freshLogo}
+              alt="Logo PKU Muhammadiyah Sukoharjo"
+              className="h-11 w-auto shrink-0 object-contain"
+            />
+
+            <img
+              src={skhRunner}
+              alt="Logo PKU Muhammadiyah Sukoharjo"
+              className="h-11 w-auto shrink-0 object-contain"
+            />
           </div>
 
           <p className="mt-4 max-w-md text-sm leading-relaxed text-primary-foreground/70">
