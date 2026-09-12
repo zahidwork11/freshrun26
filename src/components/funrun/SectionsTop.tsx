@@ -54,6 +54,13 @@ export function Hero() {
       : 0;
 
   // ==========================================================
+  // LINK PENDAFTARAN
+  // Diambil langsung dari event.ts
+  // ==========================================================
+
+  const registerUrl = eventInfo.registerUrl?.trim() || "#kategori";
+
+  // ==========================================================
   // PARALLAX
   // ==========================================================
 
@@ -314,23 +321,22 @@ export function Hero() {
           </div>
         </Reveal>
 
-        {/* CTA */}
+        {/* ====================================================
+            CTA
+        ==================================================== */}
 
         <Reveal delay={340}>
           <div className="mx-auto mt-8 flex w-full max-w-md flex-row justify-center gap-2.5 sm:mt-10 sm:max-w-lg sm:gap-3">
 
-            <a
-              href="#cara-daftar"
-              className="flex min-w-0 flex-1 items-center justify-center rounded-full bg-[#F18B1F] px-4 py-4 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(241,139,31,0.3)] transition-all duration-300 hover:scale-[1.03] hover:bg-[#D97706] sm:px-6 sm:py-4.5"
-            >
-              Cara Daftar
-            </a>
+            {/* LIHAT KATEGORI → LINK DARI event.ts */}
 
             <a
-              href="#kategori"
+              href={registerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex min-w-0 flex-1 items-center justify-center rounded-full bg-[#97D91B] px-4 py-4 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(151,217,27,0.3)] transition-all duration-300 hover:scale-[1.03] hover:bg-[#7DB817] sm:px-6 sm:py-4.5"
             >
-              Lihat Kategori
+              DAFTAR SEKARANG
             </a>
 
           </div>

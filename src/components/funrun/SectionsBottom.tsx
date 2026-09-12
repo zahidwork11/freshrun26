@@ -69,11 +69,6 @@ export function RacePack() {
               </span>
             </h2>
 
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-navy/60 sm:text-base">
-              Lengkapi persiapanmu dan nikmati race pack eksklusif untuk
-              menemani langkahmu sampai garis finish.
-            </p>
-
           </div>
         </Reveal>
 

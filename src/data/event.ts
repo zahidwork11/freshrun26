@@ -32,7 +32,7 @@ export const eventInfo = {
 
   // Tidak lagi digunakan untuk proses pendaftaran React.
   // Pendaftaran dilakukan melalui ticketing EO.
-  registerUrl: "",
+  registerUrl: "https://www.instagram.com/pkufreshrun26?stkn=eW1pNjZkdHNtYWlk",
 
   pdfUrl: "/assets/pdf/tata-cara-daftar.pdf",
 };
