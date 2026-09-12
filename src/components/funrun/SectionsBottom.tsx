@@ -48,17 +48,29 @@ export function RacePack() {
   return (
     <section
       id="racepack"
-      className="relative bg-brand-sky py-20 sm:py-24 lg:py-28"
+      className="relative isolate overflow-hidden bg-[#EAF3C8] py-20 sm:py-24 lg:py-28"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      {/* SOFT BACKGROUND */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#F0F7D5] via-[#EAF3C8] to-[#DDEBAF]"
+        aria-hidden="true"
+      />
 
-        {/* ======================================================
-            HEADING
-        ====================================================== */}
+      <div
+        className="pointer-events-none absolute left-[-8%] top-[10%] -z-10 h-72 w-72 rounded-full bg-[#97D91B]/10 blur-3xl"
+        aria-hidden="true"
+      />
 
+      <div
+        className="pointer-events-none absolute bottom-[-10%] right-[-8%] -z-10 h-80 w-80 rounded-full bg-[#468519]/10 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+
+        {/* HEADING */}
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-
             <p className="text-xs font-bold tracking-[0.25em] text-brand uppercase">
               Race Pack
             </p>
@@ -70,58 +82,34 @@ export function RacePack() {
                 Tampil di Garis Start?
               </span>
             </h2>
-
           </div>
         </Reveal>
 
-        {/* ======================================================
-            RACE PACK ITEMS
-        ====================================================== */}
-
+        {/* RACE PACK ITEMS */}
         <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
-
           {items.map((it, i) => (
-
-            <Reveal
-              key={it.label}
-              delay={i * 100}
-            >
-
+            <Reveal key={it.label} delay={i * 100}>
               <div
                 className="
-                  group
-                  h-full
-                  overflow-hidden
-                  rounded-[2rem]
-                  border
-                  border-brand-light/60
-                  bg-background
+                  group h-full overflow-hidden rounded-[2rem]
+                  border border-white/80
+                  bg-white/90
                   p-4
-                  shadow-soft
-                  transition-all
-                  duration-300
+                  shadow-[0_12px_35px_rgba(6,45,80,0.10)]
+                  backdrop-blur-sm
+                  transition-all duration-300
                   hover:-translate-y-2
-                  hover:border-brand-light
-                  hover:shadow-lg
+                  hover:shadow-[0_18px_45px_rgba(6,45,80,0.16)]
                   sm:p-5
                 "
               >
-
-                {/* ==================================================
-                    IMAGE AREA
-                ================================================== */}
-
+                {/* IMAGE */}
                 <div
                   className="
-                    relative
-                    flex
-                    min-h-[250px]
-                    items-center
-                    justify-center
-                    overflow-hidden
-                    rounded-[1.5rem]
-                    border
-                    border-brand-light/40
+                    relative flex min-h-[250px]
+                    items-center justify-center
+                    overflow-hidden rounded-[1.5rem]
+                    border border-[#DCE8A8]
                     bg-[#F5FBDD]
                     p-4
                     sm:min-h-[280px]
@@ -129,52 +117,17 @@ export function RacePack() {
                     sm:p-5
                   "
                 >
-
-                  {/* TOP ACCENT */}
-
-                  <div
-                    className="
-                      absolute
-                      inset-x-0
-                      top-0
-                      h-1
-                      bg-[#97D91B]
-                    "
-                  />
-
-                  {/* SOFT DECORATION */}
+                  <div className="absolute inset-x-0 top-0 h-1 bg-[#97D91B]" />
 
                   <div
-                    className="
-                      pointer-events-none
-                      absolute
-                      -right-10
-                      -top-10
-                      h-28
-                      w-28
-                      rounded-full
-                      bg-[#97D91B]/10
-                      blur-2xl
-                    "
+                    className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#97D91B]/10 blur-2xl"
                     aria-hidden="true"
                   />
 
                   <div
-                    className="
-                      pointer-events-none
-                      absolute
-                      -bottom-10
-                      -left-10
-                      h-24
-                      w-24
-                      rounded-full
-                      bg-[#F18B1F]/10
-                      blur-2xl
-                    "
+                    className="pointer-events-none absolute -bottom-10 -left-10 h-24 w-24 rounded-full bg-[#F18B1F]/10 blur-2xl"
                     aria-hidden="true"
                   />
-
-                  {/* IMAGE */}
 
                   <img
                     src={it.img}
@@ -183,38 +136,21 @@ export function RacePack() {
                     height={900}
                     loading="lazy"
                     className="
-                      relative
-                      z-10
-                      mx-auto
-                      h-52
-                      w-auto
-                      max-w-full
-                      object-contain
-                      transition-transform
-                      duration-500
+                      relative z-10 mx-auto h-52 w-auto max-w-full
+                      object-contain transition-transform duration-500
                       group-hover:scale-105
-                      sm:h-60
-                      lg:h-64
+                      sm:h-60 lg:h-64
                     "
                   />
-
                 </div>
 
-                {/* ==================================================
-                    CONTENT
-                ================================================== */}
-
+                {/* CONTENT */}
                 <div className="px-1 pb-1 text-center">
-
                   <h3
                     className="
-                      mt-5
-                      font-display
-                      text-2xl
-                      uppercase
+                      mt-5 font-display text-2xl uppercase
                       text-[#468519]
-                      transition-colors
-                      duration-300
+                      transition-colors duration-300
                       group-hover:text-[#70A916]
                       sm:text-3xl
                     "
@@ -222,52 +158,20 @@ export function RacePack() {
                     {it.label}
                   </h3>
 
-                  <p
-                    className="
-                      mx-auto
-                      mt-2
-                      min-h-[48px]
-                      max-w-xs
-                      text-sm
-                      leading-relaxed
-                      text-navy/55
-                    "
-                  >
+                  <p className="mx-auto mt-2 min-h-[48px] max-w-xs text-sm leading-relaxed text-navy/55">
                     {it.desc}
                   </p>
 
-                  {/* ACCENT */}
-
-                  <div
-                    className="
-                      mx-auto
-                      mt-5
-                      h-1
-                      w-8
-                      rounded-full
-                      bg-[#97D91B]
-                      transition-all
-                      duration-300
-                      group-hover:w-14
-                    "
-                  />
-
+                  <div className="mx-auto mt-5 h-1 w-8 rounded-full bg-[#97D91B] transition-all duration-300 group-hover:w-14" />
                 </div>
-
               </div>
-
             </Reveal>
           ))}
-
         </div>
 
-        {/* ======================================================
-            BOTTOM MESSAGE
-        ====================================================== */}
-
+        {/* BOTTOM MESSAGE */}
         <Reveal delay={400}>
           <div className="mx-auto mt-10 max-w-2xl text-center sm:mt-12">
-
             <p className="font-display text-xl uppercase text-[#468519] sm:text-2xl lg:text-3xl">
               Finish Strong.
               <span className="text-navy">
@@ -276,15 +180,10 @@ export function RacePack() {
             </p>
 
             <div className="mx-auto mt-4 flex max-w-xs items-center gap-3">
-
               <span className="h-px flex-1 bg-[#97D91B]/40" />
-
               <span className="h-2 w-2 rounded-full bg-[#97D91B]" />
-
               <span className="h-px flex-1 bg-[#97D91B]/40" />
-
             </div>
-
           </div>
         </Reveal>
 

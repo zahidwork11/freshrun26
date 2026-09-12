@@ -362,18 +362,34 @@ export function RaceInfo() {
       label: "Lokasi",
       value: eventInfo.location,
       icon: MapPin,
-      mapsUrl:
-        "https://maps.app.goo.gl/5fPUKkWnujbFhgij9",
+      mapsUrl: "https://maps.app.goo.gl/5fPUKkWnujbFhgij9",
     },
   ];
 
   return (
     <section
       id="race"
-      className="relative bg-brand-sky py-20 lg:py-28"
+      className="relative isolate overflow-hidden bg-[#CFE2ED] py-20 sm:py-24 lg:py-28"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      {/* SOFT BACKGROUND */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#C8DFEA] via-[#CFE2ED] to-[#BDD5E2]"
+        aria-hidden="true"
+      />
 
+      <div
+        className="pointer-events-none absolute -left-20 top-10 -z-10 h-64 w-64 rounded-full bg-[#1492FA]/10 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div
+        className="pointer-events-none absolute -bottom-20 right-[-5%] -z-10 h-72 w-72 rounded-full bg-[#97D91B]/10 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+
+        {/* HEADER */}
         <Reveal>
           <p className="text-center text-xs font-bold tracking-[0.25em] text-brand uppercase">
             Race Info
@@ -384,30 +400,27 @@ export function RaceInfo() {
           </h2>
         </Reveal>
 
+        {/* COUNTDOWN */}
         <Reveal delay={120} className="mt-10">
           <Countdown dateISO={eventInfo.dateISO} />
         </Reveal>
 
+        {/* INFO CARDS */}
         <Reveal delay={180}>
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
-
             {info.map((i) => {
               const Icon = i.icon;
 
               const cardClassName =
-                "group flex items-center gap-5 rounded-3xl border border-brand-light/60 bg-background p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lg";
+                "group flex items-center gap-5 rounded-3xl border border-white/80 bg-white/90 p-6 shadow-[0_12px_35px_rgba(6,45,80,0.10)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(6,45,80,0.16)]";
 
               const content = (
                 <>
                   <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
-                    <Icon
-                      size={28}
-                      strokeWidth={2.2}
-                    />
+                    <Icon size={28} strokeWidth={2.2} />
                   </div>
 
                   <div className="min-w-0 flex-1">
-
                     <div className="text-[11px] font-bold tracking-[0.2em] text-brand uppercase">
                       {i.label}
                     </div>
@@ -421,7 +434,6 @@ export function RaceInfo() {
                         Buka Google Maps →
                       </div>
                     )}
-
                   </div>
                 </>
               );
@@ -438,15 +450,11 @@ export function RaceInfo() {
                   {content}
                 </a>
               ) : (
-                <div
-                  key={i.label}
-                  className={cardClassName}
-                >
+                <div key={i.label} className={cardClassName}>
                   {content}
                 </div>
               );
             })}
-
           </div>
         </Reveal>
 
