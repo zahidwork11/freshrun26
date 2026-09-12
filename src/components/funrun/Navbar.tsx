@@ -86,7 +86,7 @@ export function Navbar() {
             href="/cek"
             className="ml-2 rounded-full gradient-brand px-5 py-2.5 text-[13px] font-bold tracking-wide text-primary-foreground uppercase shadow-soft transition-all duration-200 hover:scale-105 hover:shadow-lg"
           >
-            Unduh E-Tiket
+             DAFTAR SEKARANG
           </a>
         </nav>
 
@@ -135,7 +135,7 @@ export function Navbar() {
             onClick={() => setOpen(false)}
             className="mt-2 rounded-full gradient-brand px-5 py-3 text-center text-sm font-bold tracking-wide text-primary-foreground uppercase shadow-soft transition-all duration-200 hover:shadow-lg"
           >
-            Unduh E-Tiket
+            Daftar Sekarang
           </a>
         </nav>
       </div>
