@@ -278,11 +278,19 @@ export function Hero() {
                 </h3>
 
 
-                {/* CATEGORY */}
-                <div className="mt-3 flex justify-center">
-                  <span className="rounded-full border border-white/40 bg-white/15 px-4 py-1.5 text-[9px] font-extrabold tracking-[0.22em] text-white uppercase backdrop-blur-sm sm:px-5 sm:text-[10px]">
+                {/* CATEGORY + PRICE */}
+                <div className="mt-4 flex items-center justify-center gap-2.5 sm:mt-5 sm:gap-3">
+
+                  {/* CATEGORY */}
+                  <span className="shrink-0 rounded-full border border-white/40 bg-white/10 px-3.5 py-1.5 font-display text-sm tracking-wide text-white uppercase backdrop-blur-sm sm:px-5 sm:py-2 sm:text-base lg:text-lg">
                     5K & 2.5K
                   </span>
+
+                  {/* PRICE BUTTON */}
+                  <span className="shrink-0 rounded-full border-2 border-[#97D91B] bg-gradient-to-r from-[#E8F8C8] via-[#B8E94E] to-[#76C457] px-3.5 py-1.5 font-display text-sm tracking-wide text-[#28600F] uppercase shadow-[0_5px_16px_rgba(151,217,27,.30)] sm:px-5 sm:py-2 sm:text-base lg:text-lg">
+                    Rp. 123.456
+                  </span>
+
                 </div>
 
 
