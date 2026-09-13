@@ -32,7 +32,7 @@ export const eventInfo = {
 
   // Tidak lagi digunakan untuk proses pendaftaran React.
   // Pendaftaran dilakukan melalui ticketing EO.
-  registerUrl: "https://www.instagram.com/pkufreshrun26?stkn=eW1pNjZkdHNtYWlk",
+  registerUrl: "https://ayoplayon.com/event/pkufreshrun2026",
 
   pdfUrl: "/assets/pdf/tata-cara-daftar.pdf",
 };
@@ -138,7 +138,7 @@ export const categories: Category[] = [
     registered: 0,
 
     // GANTI DENGAN LINK TICKETING EO
-    registerUrl: "https://www.instagram.com/pkufreshrun26?stkn=eW1pNjZkdHNtYWlk",
+    registerUrl: "https://ayoplayon.com/event/pkufreshrun2026",
 
     enabled: true,
     registrationOpen: true,

@@ -302,7 +302,7 @@ export function Hero() {
                   </p>
 
                   <p className="mt-1 font-display text-xl tracking-wide text-[#D94A16] uppercase sm:text-2xl lg:text-3xl">
-                    10 SEPTEMBER 2026
+                    30 SEPTEMBER 2026
                   </p>
 
                 </div>
