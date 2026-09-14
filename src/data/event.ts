@@ -1,13 +1,13 @@
-import japfaLogo from "@/assets/japfa.png";
-import mandiriLogo from "@/assets/mandiri.png";
-import astraLogo from "@/assets/astra.png";
-import smartfrenLogo from "@/assets/smartfren.png";
-import telkomselLogo from "@/assets/telkomsel.png";
-import danaLogo from "@/assets/dana.png";
-import erafoneLogo from "@/assets/erafone.png";
-import vivoLogo from "@/assets/vivo.png";
-import xiaomiLogo from "@/assets/xiaomi.png";
-import samsungLogo from "@/assets/samsung.png";
+import japfaLogo from "@/assets/opensponsor.png";
+import mandiriLogo from "@/assets/opensponsor.png";
+import astraLogo from "@/assets/opensponsor.png";
+import smartfrenLogo from "@/assets/opensponsor.png";
+import telkomselLogo from "@/assets/opensponsor.png";
+import danaLogo from "@/assets/opensponsor.png";
+import erafoneLogo from "@/assets/opensponsor.png";
+import vivoLogo from "@/assets/opensponsor.png";
+import xiaomiLogo from "@/assets/opensponsor.png";
+import samsungLogo from "@/assets/opensponsor.png";
 import kbsyariahLogo from "@/assets/kbsyariah.png";
 
 // ============================================================
