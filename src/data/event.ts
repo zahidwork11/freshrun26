@@ -30,6 +30,11 @@ export const eventInfo = {
   instagram: "https://www.instagram.com/pkurun26/",
   whatsapp: "https://wa.me/6281234567890",
 
+    // BATAS EARLY BIRD
+  earlyBirdEndISO: "2026-09-30T23:59:59+07:00",
+  earlyBirdEndLabel: "30 September 2026",
+
+
   // Tidak lagi digunakan untuk proses pendaftaran React.
   // Pendaftaran dilakukan melalui ticketing EO.
   registerUrl: "https://ayoplayon.com/event/pkufreshrun2026",
@@ -43,10 +48,10 @@ export const eventInfo = {
 
 export const navItems = [
   { label: "Informasi", href: "#race" },
-  { label: "Kategori", href: "#kategori" },
+  // { label: "Kategori", href: "#kategori" },
   { label: "Race Pack", href: "#racepack" },
   { label: "Rute & Rundown", href: "#rute" },
-  { label: "Cara Daftar", href: "#cara-daftar" },
+  // { label: "Cara Daftar", href: "#cara-daftar" },
   { label: "Sponsor", href: "#sponsor" },
   { label: "FAQ", href: "#faq" },
 ];

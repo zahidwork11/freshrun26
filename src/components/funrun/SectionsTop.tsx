@@ -24,41 +24,91 @@ import { Link } from "@tanstack/react-router";
 export function Hero() {
   const [offset, setOffset] = useState(0);
 
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
   // ==========================================================
-  // PRESALE DATA
-  // Hanya menghitung kategori yang memiliki note PRESALE
+  // EARLY BIRD DATA
   // ==========================================================
 
-  const presaleCategories = categories.filter(
-    (c) => c.note === "PRESALE" && c.enabled
+  const earlyBirdCategories = categories.filter(
+    (c) => c.note === "EARLY BIRD" && c.enabled
   );
 
-  const presaleRegistered = presaleCategories.reduce(
+  const earlyBirdRegistered = earlyBirdCategories.reduce(
     (sum, c) => sum + (c.registered ?? 0),
     0
   );
 
-  const presaleQuota = presaleCategories.reduce(
+  const earlyBirdQuota = earlyBirdCategories.reduce(
     (sum, c) => sum + (c.quota ?? 0),
     0
   );
 
-  const presaleRemaining = Math.max(
-    presaleQuota - presaleRegistered,
+  const earlyBirdRemaining = Math.max(
+    earlyBirdQuota - earlyBirdRegistered,
     0
   );
 
-  const presaleProgress =
-    presaleQuota > 0
-      ? Math.min((presaleRegistered / presaleQuota) * 100, 100)
+  const earlyBirdProgress =
+    earlyBirdQuota > 0
+      ? Math.min(
+          (earlyBirdRegistered / earlyBirdQuota) * 100,
+          100
+        )
       : 0;
 
   // ==========================================================
   // LINK PENDAFTARAN
-  // Diambil langsung dari event.ts
   // ==========================================================
 
-  const registerUrl = eventInfo.registerUrl?.trim() || "#kategori";
+  const registerUrl =
+    eventInfo.registerUrl?.trim() || "#kategori";
+
+  // ==========================================================
+  // COUNTDOWN
+  // ==========================================================
+
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const target = new Date(
+        eventInfo.earlyBirdEndISO
+      ).getTime();
+
+      const difference = Math.max(
+        target - Date.now(),
+        0
+      );
+
+      setTimeLeft({
+        days: Math.floor(
+          difference / 86400000
+        ),
+        hours: Math.floor(
+          (difference / 3600000) % 24
+        ),
+        minutes: Math.floor(
+          (difference / 60000) % 60
+        ),
+        seconds: Math.floor(
+          (difference / 1000) % 60
+        ),
+      });
+    };
+
+    calculateTimeLeft();
+
+    const interval = window.setInterval(
+      calculateTimeLeft,
+      1000
+    );
+
+    return () => window.clearInterval(interval);
+  }, []);
 
   // ==========================================================
   // PARALLAX
@@ -66,11 +116,11 @@ export function Hero() {
 
   useEffect(() => {
     const onScroll = () => {
-      if (window.innerWidth >= 1024) {
-        setOffset(Math.min(window.scrollY * 0.18, 120));
-      } else {
-        setOffset(0);
-      }
+      setOffset(
+        window.innerWidth >= 1024
+          ? Math.min(window.scrollY * 0.18, 120)
+          : 0
+      );
     };
 
     onScroll();
@@ -79,10 +129,16 @@ export function Hero() {
       passive: true,
     });
 
-    return () => {
+    return () =>
       window.removeEventListener("scroll", onScroll);
-    };
   }, []);
+
+  // ==========================================================
+  // FORMAT TIME
+  // ==========================================================
+
+  const formatTime = (value: number) =>
+    String(value).padStart(2, "0");
 
   return (
     <section
@@ -90,7 +146,7 @@ export function Hero() {
       className="relative isolate overflow-hidden"
     >
       {/* ======================================================
-          HERO BACKGROUND
+          BACKGROUND
       ====================================================== */}
 
       <div className="absolute inset-0 -z-30 overflow-hidden">
@@ -106,28 +162,20 @@ export function Hero() {
         />
       </div>
 
-      {/* BLUE OVERLAY */}
-
       <div
         className="absolute inset-0 -z-20 bg-[#0A5490]/15"
         aria-hidden="true"
       />
-
-      {/* TOP GRADIENT */}
 
       <div
         className="absolute inset-x-0 top-0 -z-10 h-[55%] bg-gradient-to-b from-[#062D50]/75 via-[#0A5490]/45 to-transparent"
         aria-hidden="true"
       />
 
-      {/* BOTTOM GRADIENT */}
-
       <div
         className="absolute inset-x-0 bottom-0 -z-10 h-[55%] bg-gradient-to-t from-[#062D50]/70 via-[#0A5490]/35 to-transparent"
         aria-hidden="true"
       />
-
-      {/* SOFT BLUE LIGHT */}
 
       <div
         className="absolute left-[-10%] top-[20%] -z-10 h-72 w-72 rounded-full bg-[#1492FA]/20 blur-3xl"
@@ -138,8 +186,6 @@ export function Hero() {
         className="absolute bottom-[5%] right-[-10%] -z-10 h-80 w-80 rounded-full bg-[#1492FA]/20 blur-3xl"
         aria-hidden="true"
       />
-
-      {/* BLUE BLEND */}
 
       <div
         className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0A5490]/20 via-transparent to-[#1492FA]/20"
@@ -156,7 +202,7 @@ export function Hero() {
 
         <Reveal>
           <div className="mx-auto flex w-fit max-w-full items-center justify-center rounded-full border border-white/35 bg-[#F18B1F]/90 px-4 py-2.5 text-center shadow-[0_8px_30px_rgba(6,45,80,0.3)] backdrop-blur-md sm:mx-0 sm:px-5 sm:py-3 lg:mx-auto">
-            <span className="text-center text-[10px] font-bold tracking-[0.12em] text-white sm:text-xs sm:tracking-[0.15em]">
+            <span className="text-[10px] font-bold tracking-[0.12em] text-white sm:text-xs sm:tracking-[0.15em]">
               Milad RS PKU Muhammadiyah Sukoharjo
             </span>
           </div>
@@ -166,16 +212,12 @@ export function Hero() {
 
         <Reveal delay={100}>
           <h1 className="mx-auto mt-6 max-w-4xl text-center font-display text-5xl leading-[0.95] tracking-tight text-white uppercase drop-shadow-[0_1px_4px_rgba(255,255,255,0.22)] sm:mx-0 sm:text-left sm:text-7xl lg:mx-auto lg:text-center lg:text-8xl">
-            <span className="text-white">
-              Rayakan
-            </span>{" "}
+            <span>Rayakan</span>{" "}
             <span className="text-[#97D91B]">
               Milad,
             </span>
             <br />
-            <span className="text-white">
-              Langkahkan
-            </span>{" "}
+            <span>Langkahkan</span>{" "}
             <span className="text-[#97D91B]">
               Semangat!
             </span>
@@ -201,21 +243,19 @@ export function Hero() {
 
             <div className="group rounded-2xl border border-white/35 bg-white/5 p-3.5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:bg-white/10 sm:rounded-3xl sm:p-5">
               <div className="flex items-center gap-3 sm:gap-4">
-
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/30 bg-white/10 sm:h-12 sm:w-12 sm:rounded-2xl">
                   <Flag className="h-4 w-4 text-white sm:h-5 sm:w-5" />
                 </div>
 
                 <div className="min-w-0 text-left">
                   <p className="text-[9px] font-bold tracking-[0.18em] text-white/70 uppercase sm:text-[10px] sm:tracking-[0.22em]">
-                    Kategori
+                    Kategori Event
                   </p>
 
                   <p className="mt-0.5 font-display text-base tracking-wide text-white uppercase sm:mt-1 sm:text-xl">
                     {eventInfo.distances}
                   </p>
                 </div>
-
               </div>
             </div>
 
@@ -223,38 +263,36 @@ export function Hero() {
 
             <div className="group rounded-2xl border border-white/35 bg-white/5 p-3.5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:bg-white/10 sm:rounded-3xl sm:p-5">
               <div className="flex items-center gap-3 sm:gap-4">
-
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/30 bg-white/10 sm:h-12 sm:w-12 sm:rounded-2xl">
                   <CalendarDays className="h-4 w-4 text-white sm:h-5 sm:w-5" />
                 </div>
 
                 <div className="min-w-0 text-left">
                   <p className="text-[9px] font-bold tracking-[0.18em] text-white/70 uppercase sm:text-[10px] sm:tracking-[0.22em]">
-                    Tanggal
+                    Tanggal Event
                   </p>
 
                   <p className="mt-0.5 font-display text-base tracking-wide text-white uppercase sm:mt-1 sm:text-xl">
                     {eventInfo.dateLabel}
                   </p>
                 </div>
-
               </div>
             </div>
 
           </div>
         </Reveal>
-        
+
         {/* ====================================================
-            EARLY BIRD — LIMITED SLOT
+            EARLY BIRD
         ==================================================== */}
 
         <Reveal delay={300}>
           <div className="mx-auto mt-4 w-full max-w-3xl overflow-hidden rounded-2xl border-2 border-[#F18B1F] shadow-[0_14px_40px_rgba(6,45,80,0.25)] sm:mt-5 sm:rounded-3xl">
 
-            {/* CARD BACKGROUND */}
             <div className="relative overflow-hidden bg-gradient-to-br from-[#063A67] via-[#0A5490] to-[#F18B1F]">
 
               {/* DIAGONAL STRIPES */}
+
               <div
                 className="pointer-events-none absolute inset-0 opacity-[0.13]"
                 style={{
@@ -263,48 +301,115 @@ export function Hero() {
                 }}
               />
 
-              {/* SOFT GRADIENT LIGHT */}
+              {/* LIGHT */}
+
               <div className="pointer-events-none absolute -left-20 -top-20 h-56 w-56 rounded-full bg-[#1492FA]/30 blur-3xl" />
 
               <div className="pointer-events-none absolute -bottom-24 -right-16 h-64 w-64 rounded-full bg-[#F59A38]/35 blur-3xl" />
 
-
               {/* CONTENT */}
-              <div className="relative px-4 py-7 text-center sm:px-8 sm:py-9">
 
-                {/* EARLY BIRD */}
-                <h3 className="font-display text-4xl leading-none tracking-tight text-white uppercase drop-shadow-[0_3px_8px_rgba(0,0,0,.25)] sm:text-5xl lg:text-6xl">
+              <div className="relative px-4 py-6 text-center sm:px-8 sm:py-8">
+
+                {/* TITLE */}
+
+                <h3 className="font-display text-3xl leading-none tracking-tight text-white uppercase drop-shadow-[0_3px_8px_rgba(0,0,0,.25)] sm:text-5xl lg:text-6xl">
                   EARLY BIRD
                 </h3>
 
+                {/* PRICE */}
 
-                {/* CATEGORY + PRICE */}
-                <div className="mt-4 flex items-center justify-center gap-2.5 sm:mt-5 sm:gap-3">
+                <div className="mt-4 flex items-center justify-center gap-3 sm:mt-5 sm:gap-4">
 
-                  {/* CATEGORY */}
-                  <span className="shrink-0 rounded-full border border-white/40 bg-white/10 px-3.5 py-1.5 font-display text-sm tracking-wide text-white uppercase backdrop-blur-sm sm:px-5 sm:py-2 sm:text-base lg:text-lg">
-                    5K & 2.5K
+                  {/* NORMAL PRICE */}
+
+                  <span className="font-display text-xl font-extrabold tracking-wide text-white/80 line-through decoration-[3px] decoration-white/90 underline-offset-2 sm:text-2xl lg:text-3xl">
+                    Rp. 160.000
                   </span>
 
-                  {/* PRICE BUTTON */}
-                  <span className="shrink-0 rounded-full border-2 border-[#97D91B] bg-gradient-to-r from-[#E8F8C8] via-[#B8E94E] to-[#76C457] px-3.5 py-1.5 font-display text-sm tracking-wide text-[#28600F] uppercase shadow-[0_5px_16px_rgba(151,217,27,.30)] sm:px-5 sm:py-2 sm:text-base lg:text-lg">
+                  {/* PROMO PRICE */}
+
+                  <span className="relative rounded-full border-2 border-[#97D91B] bg-gradient-to-r from-[#E8F8C8] via-[#B8E94E] to-[#76C457] px-4 py-2 font-display text-base font-extrabold tracking-wide text-[#28600F] shadow-[0_6px_20px_rgba(151,217,27,.40)] transition-transform duration-300 hover:scale-105 sm:px-6 sm:py-2.5 sm:text-xl lg:text-2xl">
+
                     Rp. 123.456
+
+                    {/* PROMO BADGE */}
+
+                    <span className="absolute -right-2.5 -top-3 rounded-full bg-[#F18B1F] px-2 py-0.5 text-[7px] font-extrabold tracking-wider text-white uppercase shadow-md sm:-right-3 sm:-top-3 sm:px-2.5 sm:text-[9px]">
+                      PROMO
+                    </span>
+
                   </span>
 
                 </div>
 
+                {/* COUNTDOWN */}
 
-                {/* DEADLINE */}
-                <div className="mx-auto mt-5 w-full max-w-xs rounded-2xl border border-white/30 bg-white/95 px-4 py-3.5 shadow-[0_8px_25px_rgba(0,0,0,.18)] sm:mt-6 sm:max-w-sm sm:px-6 sm:py-4">
+                <div className="mx-auto mt-5 w-full max-w-sm overflow-hidden rounded-xl border border-white/30 bg-white/95 shadow-[0_8px_25px_rgba(0,0,0,.18)] sm:mt-6 sm:rounded-2xl">
 
-                  <p className="text-[8px] font-extrabold tracking-[0.22em] text-[#0A5490]/55 uppercase sm:text-[9px]">
-                    BERAKHIR
-                  </p>
+                  {/* COUNTDOWN HEADER */}
 
-                  <p className="mt-1 font-display text-xl tracking-wide text-[#D94A16] uppercase sm:text-2xl lg:text-3xl">
-                    30 SEPTEMBER 2026
-                  </p>
+                  <div className="border-b border-[#0A5490]/10 px-3 py-2 sm:px-5 sm:py-2.5">
+                    <p className="text-[7px] font-extrabold tracking-[0.2em] text-[#0A5490]/60 uppercase sm:text-[9px]">
+                      EARLY BIRD BERAKHIR DALAM
+                    </p>
+                  </div>
 
+                  {/* COUNTDOWN VALUES */}
+
+                  <div className="flex items-center justify-center px-2 py-2.5 sm:px-5 sm:py-3.5">
+
+                    {[
+                      ["days", "Hari"],
+                      ["hours", "Jam"],
+                      ["minutes", "Menit"],
+                      ["seconds", "Detik"],
+                    ].map(([key, label], index) => (
+
+                      <div
+                        key={key}
+                        className="flex items-center"
+                      >
+
+                        <div className="min-w-[48px] text-center sm:min-w-[65px]">
+
+                          <p
+                            className={`font-display text-xl leading-none sm:text-3xl ${
+                              key === "seconds"
+                                ? "text-[#D94A16]"
+                                : "text-[#0A5490]"
+                            }`}
+                          >
+                            {formatTime(
+                              timeLeft[
+                                key as keyof typeof timeLeft
+                              ]
+                            )}
+                          </p>
+
+                          <p
+                            className={`mt-1 text-[6px] font-bold tracking-[0.12em] uppercase sm:text-[8px] ${
+                              key === "seconds"
+                                ? "text-[#D94A16]/60"
+                                : "text-[#0A5490]/50"
+                            }`}
+                          >
+                            {label}
+                          </p>
+
+                        </div>
+
+                        {index < 3 && (
+                          <span className="-mt-3 px-0.5 font-display text-base text-[#F18B1F] sm:text-xl">
+                            :
+                          </span>
+                        )}
+
+                      </div>
+
+                    ))}
+
+                  </div>
                 </div>
 
               </div>
@@ -312,21 +417,18 @@ export function Hero() {
           </div>
         </Reveal>
 
-
         {/* ====================================================
             CTA
         ==================================================== */}
 
         <Reveal delay={340}>
-          <div className="mx-auto mt-8 flex w-full max-w-md flex-row justify-center gap-2.5 sm:mt-10 sm:max-w-lg sm:gap-3">
-
-            {/* LIHAT KATEGORI → LINK DARI event.ts */}
+          <div className="mx-auto mt-8 flex w-full max-w-md justify-center sm:mt-10 sm:max-w-lg">
 
             <a
               href={registerUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex min-w-0 flex-1 items-center justify-center rounded-full bg-[#97D91B] px-4 py-4 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(151,217,27,0.3)] transition-all duration-300 hover:scale-[1.03] hover:bg-[#7DB817] sm:px-6 sm:py-4.5"
+              className="flex w-full items-center justify-center rounded-full bg-[#97D91B] px-4 py-4 font-display text-sm tracking-wide text-white uppercase shadow-[0_8px_25px_rgba(151,217,27,0.3)] transition-all duration-300 hover:scale-[1.03] hover:bg-[#7DB817] sm:px-6 sm:py-4.5"
             >
               DAFTAR SEKARANG
             </a>
@@ -338,6 +440,8 @@ export function Hero() {
     </section>
   );
 }
+
+
 
 // ============================================================
 // RACE INFO
