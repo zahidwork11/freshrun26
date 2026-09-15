@@ -9,6 +9,7 @@ import totebag from "@/assets/totebag3.png";
 import bibs2 from "@/assets/bibs2.png";
 import route5k from "@/assets/maps/route-5k.png";
 import route25k from "@/assets/maps/route-2-5k.png";
+import partner from "@/assets/partner.png";
 import pkuLogo from "@/assets/pkulogo.png";
 import freshLogo from "@/assets/faviconn.png";
 import skhRunner from "@/assets/skhrunner.jpg";
@@ -702,27 +703,21 @@ export function Footer() {
 
         {/* BRAND */}
         <div className="flex flex-col items-center">
-          <div className="flex items-center justify-center gap-3">
-            <img
-              src={pkuLogo}
-              alt="Logo PKU Muhammadiyah Sukoharjo"
-              className="h-11 w-auto shrink-0 object-contain"
-            />
 
+          {/* PARTNER IMAGE */}
+          <div className="flex w-full items-center justify-center">
             <img
-              src={freshLogo}
-              alt="Logo PKU Muhammadiyah Sukoharjo"
-              className="h-11 w-auto shrink-0 object-contain"
-            />
-
-            <img
-              src={skhRunner}
-              alt="Logo PKU Muhammadiyah Sukoharjo"
-              className="h-11 w-auto shrink-0 object-contain"
+              src={partner}
+              alt="Partner PKU Fresh Run"
+              width={1200}
+              height={200}
+              loading="lazy"
+              className="h-auto w-full max-w-xl object-contain sm:max-w-2xl"
             />
           </div>
 
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-primary-foreground/70">
+          {/* TAGLINE */}
+          <p className="mt-6 max-w-md text-sm leading-relaxed text-primary-foreground/70">
             PKU FRESH RUN, Your Run, Your Health Start.
           </p>
 
