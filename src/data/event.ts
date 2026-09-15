@@ -421,15 +421,27 @@ export const faqs = [
     a: "Terbuka untuk umum, pelajar/mahasiswa, warga Muhammadiyah, staff RS PKU, dan AUM. Peserta dalam kondisi sehat dan mengisi form kesehatan saat pendaftaran.",
   },
   {
-    q: "Apa syarat Pelajar / Mahasiswa?",
-    a: "Tetap menggunakan nik karna sistem pendaftaran terhubung dengan data kependudukan",
+    q: "Apa syarat kategori 5K Umum?",
+    a: "Cukup mendaftar dengan NIK yang valid dan melakukan pembayaran sesuai kategori.",
   },
   {
-    q: "Apa benefit yang didapatkan?",
-    a: "Jersey, Medali, Race Pack, BIB, Doorprize, Hiburan, Waterstation & Refreshment",
+    q: "Apa syarat Pelajar / Mahasiswa?",
+    a: "Melampirkan NISN / NPM / NIM aktif beserta kartu pelajar atau kartu mahasiswa.",
+  },
+  {
+    q: "Apa syarat Warga Muhammadiyah?",
+    a: "Melampirkan KTA Muhammadiyah yang masih berlaku. Kategori ini mendapatkan BIB only.",
+  },
+  {
+    q: "Apa benefit setiap kategori?",
+    a: "Kategori 5K mendapat Jersey, Medal, Race Bag, dan Snack. Kategori 2.5K mendapat Jersey & BIB. Warga Muhammadiyah mendapat BIB only.",
+  },
+  {
+    q: "Bagaimana mendapatkan e-ticket?",
+    a: "Setelah pembayaran terverifikasi, e-ticket dikirim otomatis ke email dan dapat diunduh dari tautan pada email tersebut.",
   },
   {
     q: "Bagaimana mengambil racepack?",
-    a: "Menunjukkan bukti transaksi",
+    a: "Tunjukkan e-ticket dan identitas asli di lokasi race pack collection sesuai jadwal yang diumumkan.",
   },
 ];
