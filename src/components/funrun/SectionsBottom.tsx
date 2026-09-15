@@ -4,7 +4,7 @@ import jersey from "@/assets/jersey.png";
 import jersey2 from "@/assets/jersey2.png";
 import jersey3 from "@/assets/jersey3.png";
 import hero17 from "@/assets/hero17.png";
-import medal3 from "@/assets/medal3.png";
+import medal from "@/assets/medal4.png";
 import totebag from "@/assets/totebag3.png";
 import bibs2 from "@/assets/bibs2.png";
 import route5k from "@/assets/maps/route-5k.png";
@@ -29,7 +29,7 @@ export function RacePack() {
       desc: "Bahan dry-fit ringan dengan desain Milad.",
     },
     {
-      img: medal3,
+      img: medal,
       label: "Medal",
       desc: "Medali finisher eksklusif edisi khusus.",
     },
