@@ -27,8 +27,8 @@ export const eventInfo = {
   startTime: "06.00 WIB",
   distances: "5K & 2.5K FRESH RUN",
   totalPrize: "Rp 25.000.000",
-  instagram: "https://www.instagram.com/pkurun26/",
-  whatsapp: "https://wa.me/6281234567890",
+  instagram: "https://www.instagram.com/pkufreshrun26/",
+  whatsapp: "https://wa.me/6289694719567",
 
     // BATAS EARLY BIRD
   earlyBirdEndISO: "2026-09-25T23:59:59+07:00",
