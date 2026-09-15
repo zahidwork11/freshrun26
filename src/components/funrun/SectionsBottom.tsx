@@ -294,10 +294,12 @@ export function RouteMap() {
                 {tab === "5k" ? "5 KM Route" : "2.5 KM Route"}
               </span>
             </div>
-
-            {/* MAP */}
+            
+            {/* MAP — COMING SOON */}
             <div className="p-2 sm:p-3">
               <div className="relative overflow-hidden rounded-[1.5rem] bg-brand-sky sm:rounded-[1.75rem]">
+
+                {/* ROUTE IMAGE */}
                 {tabs.map((t) => (
                   <img
                     key={t.id}
@@ -306,13 +308,35 @@ export function RouteMap() {
                     width={1200}
                     height={800}
                     loading="lazy"
-                    className={`block w-full transition-all duration-500 ${
+                    className={`block w-full scale-105 transition-all duration-500 ${
                       tab === t.id
-                        ? "relative opacity-100"
-                        : "absolute inset-0 opacity-0"
+                        ? "relative opacity-100 blur-[6px]"
+                        : "absolute inset-0 opacity-0 blur-[6px]"
                     }`}
                   />
                 ))}
+
+                {/* DARK OVERLAY */}
+                <div className="absolute inset-0 bg-black/35 backdrop-blur-[1px]" />
+
+                {/* COMING SOON CONTENT */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="px-6 text-center">
+
+                    {/* TITLE */}
+                    <h4 className="font-display text-4xl font-extrabold tracking-wide text-white uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)] sm:text-5xl lg:text-6xl">
+                      Coming Soon
+                    </h4>
+
+                    {/* DESCRIPTION */}
+                    <p className="mx-auto mt-3 max-w-md text-xs leading-relaxed text-white/80 sm:text-sm">
+                      Rute resmi untuk race ini akan segera diumumkan.
+                      <br className="hidden sm:block" />
+                      Stay tuned!
+                    </p>
+                  </div>
+                </div>
+
               </div>
             </div>
 

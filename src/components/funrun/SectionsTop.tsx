@@ -557,11 +557,11 @@ export function RaceInfo() {
 
 export function TotalPrize() {
   const chips = [
-    "cooming soon",
-    "cooming soon",
-    "cooming soon",
-    "cooming soon",
-    "cooming soon",
+    "coming soon",
+    "coming soon",
+    "coming soon",
+    "coming soon",
+    "coming soon",
   ];
 
   return (
@@ -839,21 +839,21 @@ export function TotalPrize() {
                 <div className="min-w-0">
 
                   <div className="font-display text-xl text-white uppercase sm:text-2xl">
-                    20 Finisher Berikutnya
+                    10 Finisher Berikutnya
                   </div>
 
                   <p className="mt-1 text-xs text-white/90 sm:text-sm">
-                    Finisher 5K 4–13 Putra
+                    Finisher 5K 4–8 Putra
                   </p>
 
                   <p className="mt-0.5 text-xs text-white/90 sm:text-sm">
-                    Finisher 5K 4–13 Putri
+                    Finisher 5K 4–8 Putri
                   </p>
 
                 </div>
 
                 <div className="shrink-0 rounded-2xl bg-white px-4 py-3 text-center font-display text-base text-[#76C457] shadow-sm sm:px-5 sm:text-lg">
-                  cooming soon
+                  coming soon
                   <span className="text-xs">
                     
                   </span>

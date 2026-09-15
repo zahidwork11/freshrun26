@@ -31,8 +31,8 @@ export const eventInfo = {
   whatsapp: "https://wa.me/6281234567890",
 
     // BATAS EARLY BIRD
-  earlyBirdEndISO: "2026-09-30T23:59:59+07:00",
-  earlyBirdEndLabel: "30 September 2026",
+  earlyBirdEndISO: "2026-09-25T23:59:59+07:00",
+  earlyBirdEndLabel: "25 September 2026",
 
 
   // Tidak lagi digunakan untuk proses pendaftaran React.
@@ -62,15 +62,15 @@ export const navItems = [
 
 export const podium = {
   putra: [
-    { medal: "🥇", place: "Juara 1", prize: "cooming soon" },
-    { medal: "🥈", place: "Juara 2", prize: "cooming soon" },
-    { medal: "🥉", place: "Juara 3", prize: "cooming soon" },
+    { medal: "🥇", place: "Juara 1", prize: "coming soon" },
+    { medal: "🥈", place: "Juara 2", prize: "coming soon" },
+    { medal: "🥉", place: "Juara 3", prize: "coming soon" },
   ],
 
   putri: [
-    { medal: "🥇", place: "Juara 1", prize: "cooming soon" },
-    { medal: "🥈", place: "Juara 2", prize: "cooming soon" },
-    { medal: "🥉", place: "Juara 3", prize: "cooming soon" },
+    { medal: "🥇", place: "Juara 1", prize: "coming soon" },
+    { medal: "🥈", place: "Juara 2", prize: "coming soon" },
+    { medal: "🥉", place: "Juara 3", prize: "coming soon" },
   ],
 };
 
