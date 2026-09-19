@@ -62,15 +62,15 @@ export const navItems = [
 
 export const podium = {
   putra: [
-    { medal: "🥇", place: "Juara 1", prize: "coming soon" },
-    { medal: "🥈", place: "Juara 2", prize: "coming soon" },
-    { medal: "🥉", place: "Juara 3", prize: "coming soon" },
+    { medal: "🥇", place: "Juara 1", prize: "1.234.567" },
+    { medal: "🥈", place: "Juara 2", prize: "750.000" },
+    { medal: "🥉", place: "Juara 3", prize: "500.0000" },
   ],
 
   putri: [
-    { medal: "🥇", place: "Juara 1", prize: "coming soon" },
-    { medal: "🥈", place: "Juara 2", prize: "coming soon" },
-    { medal: "🥉", place: "Juara 3", prize: "coming soon" },
+    { medal: "🥇", place: "Juara 1", prize: "1.234.567" },
+    { medal: "🥈", place: "Juara 2", prize: "750.000" },
+    { medal: "🥉", place: "Juara 3", prize: "500.0000" },
   ],
 };
 

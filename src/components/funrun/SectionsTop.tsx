@@ -853,9 +853,9 @@ export function TotalPrize() {
                 </div>
 
                 <div className="shrink-0 rounded-2xl bg-white px-4 py-3 text-center font-display text-base text-[#76C457] shadow-sm sm:px-5 sm:text-lg">
-                  coming soon
+                  150.000
                   <span className="text-xs">
-                    
+                    /orang
                   </span>
                 </div>
 
