@@ -9,7 +9,7 @@ import totebag from "@/assets/totebag3.png";
 import bibs2 from "@/assets/bibs2.png";
 import route5k from "@/assets/maps/route-5k.png";
 import route25k from "@/assets/maps/route-2-5k.png";
-import partner from "@/assets/partner.png";
+import partner from "@/assets/partner1.png";
 import pkuLogo from "@/assets/pkulogo.png";
 import freshLogo from "@/assets/faviconn.png";
 import skhRunner from "@/assets/skhrunner.jpg";

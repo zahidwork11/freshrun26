@@ -432,4 +432,12 @@ export const faqs = [
     q: "Apa saja benefit yang didapatkan peserta?",
     a: "Jersey, Medal, Tote Bag, BIB, Refreshment, Doorprize, Waterstation, & Entertainment ",
   },
+    {
+    q: "Saya sudah transfer, tapi tidak mendapatkan email?",
+    a: "untuk status pembayaran silahkan di cek di https://ayoplayon.com/receipt.php dengan input no transaksi yang ada di email anda. simpan barcode untuk pengambilan racepack, dan tunggu info terbaru dari sosial media pkufreshrun26",
+  },
+    {
+    q: "saya sudah daftar 2 tapi saya hanya mendapatkan 1 barcode?",
+    a: "Ya, betul runnners. semua data peserta dalam satu payment akan mendapatkan 1 barcode. simpan barcode dan tunggu info pengambilan racepack di sosmed pkufreshrun26",
+  },
 ];
