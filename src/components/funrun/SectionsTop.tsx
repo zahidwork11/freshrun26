@@ -314,7 +314,7 @@ export function Hero() {
                 {/* TITLE */}
 
                 <h3 className="font-display text-3xl leading-none tracking-tight text-white uppercase drop-shadow-[0_3px_8px_rgba(0,0,0,.25)] sm:text-5xl lg:text-6xl">
-                  EARLY BIRD
+                  EARLY BIRD TICKET
                 </h3>
 
                 {/* PRICE */}
@@ -323,92 +323,38 @@ export function Hero() {
 
                   {/* NORMAL PRICE */}
 
-                  <span className="font-display text-xl font-extrabold tracking-wide text-white/80 line-through decoration-[3px] decoration-white/90 underline-offset-2 sm:text-2xl lg:text-3xl">
-                    Rp. 160.000
-                  </span>
-
                   {/* PROMO PRICE */}
 
-                  <span className="relative rounded-full border-2 border-[#97D91B] bg-gradient-to-r from-[#E8F8C8] via-[#B8E94E] to-[#76C457] px-4 py-2 font-display text-base font-extrabold tracking-wide text-[#28600F] shadow-[0_6px_20px_rgba(151,217,27,.40)] transition-transform duration-300 hover:scale-105 sm:px-6 sm:py-2.5 sm:text-xl lg:text-2xl">
+                <span className="relative rounded-full border-2 border-[#FF8A8A] bg-gradient-to-r from-[#FF5A5A] via-[#EF1C1C] to-[#C90000] px-4 py-2 font-display text-base font-extrabold tracking-wide text-white shadow-[0_6px_20px_rgba(239,28,28,.45)] transition-transform duration-300 hover:scale-105 sm:px-6 sm:py-2.5 sm:text-xl lg:text-2xl">
 
-                    Rp. 123.456
+                  SOLD OUT !!!
 
                     {/* PROMO BADGE */}
-
-                    <span className="absolute -right-2.5 -top-3 rounded-full bg-[#F18B1F] px-2 py-0.5 text-[7px] font-extrabold tracking-wider text-white uppercase shadow-md sm:-right-3 sm:-top-3 sm:px-2.5 sm:text-[9px]">
-                      PROMO
-                    </span>
 
                   </span>
 
                 </div>
 
-                {/* COUNTDOWN */}
+                {/* CTA HARGA NORMAL */}
+                <div className="mx-auto mt-5 w-full max-w-md sm:mt-6">
+                  <div className="relative overflow-hidden rounded-2xl border border-white/70 bg-white/95 px-5 py-4 text-center shadow-[0_8px_25px_rgba(0,0,0,.18)] backdrop-blur-sm sm:rounded-3xl sm:px-7 sm:py-5">
 
-                <div className="mx-auto mt-5 w-full max-w-sm overflow-hidden rounded-xl border border-white/30 bg-white/95 shadow-[0_8px_25px_rgba(0,0,0,.18)] sm:mt-6 sm:rounded-2xl">
+                    <div className="relative flex flex-col items-center justify-center">
 
-                  {/* COUNTDOWN HEADER */}
-
-                  <div className="border-b border-[#0A5490]/10 px-3 py-2 sm:px-5 sm:py-2.5">
-                    <p className="text-[7px] font-extrabold tracking-[0.2em] text-[#0A5490]/60 uppercase sm:text-[9px]">
-                      EARLY BIRD BERAKHIR DALAM
-                    </p>
-                  </div>
-
-                  {/* COUNTDOWN VALUES */}
-
-                  <div className="flex items-center justify-center px-2 py-2.5 sm:px-5 sm:py-3.5">
-
-                    {[
-                      ["days", "Hari"],
-                      ["hours", "Jam"],
-                      ["minutes", "Menit"],
-                      ["seconds", "Detik"],
-                    ].map(([key, label], index) => (
-
-                      <div
-                        key={key}
-                        className="flex items-center"
-                      >
-
-                        <div className="min-w-[48px] text-center sm:min-w-[65px]">
-
-                          <p
-                            className={`font-display text-xl leading-none sm:text-3xl ${
-                              key === "seconds"
-                                ? "text-[#D94A16]"
-                                : "text-[#0A5490]"
-                            }`}
-                          >
-                            {formatTime(
-                              timeLeft[
-                                key as keyof typeof timeLeft
-                              ]
-                            )}
-                          </p>
-
-                          <p
-                            className={`mt-1 text-[6px] font-bold tracking-[0.12em] uppercase sm:text-[8px] ${
-                              key === "seconds"
-                                ? "text-[#D94A16]/60"
-                                : "text-[#0A5490]/50"
-                            }`}
-                          >
-                            {label}
-                          </p>
-
-                        </div>
-
-                        {index < 3 && (
-                          <span className="-mt-3 px-0.5 font-display text-base text-[#F18B1F] sm:text-xl">
-                            :
-                          </span>
-                        )}
+                      {/* STATUS */}
+                      <div className="mb-1.5 flex items-center justify-center gap-2">
+                        
+                        <p className="text-[8px] font-extrabold tracking-[0.18em] text-[#F18B1F] uppercase sm:text-[10px]">
+                          KUOTA EARLY BIRD TELAH HABIS
+                        </p>
 
                       </div>
 
-                    ))}
-
+                      {/* MAIN TEXT */}
+                      <p className="font-display text-sm font-extrabold leading-tight text-[#063A67] sm:text-lg">
+                        DAFTAR SEKARANG DENGAN HARGA NORMAL
+                      </p>
+                    </div>
                   </div>
                 </div>
 
@@ -416,6 +362,7 @@ export function Hero() {
             </div>
           </div>
         </Reveal>
+
 
         {/* ====================================================
             CTA
